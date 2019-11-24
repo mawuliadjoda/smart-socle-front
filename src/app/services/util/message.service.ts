@@ -9,7 +9,7 @@ export class MessageService {
 private subject = new Subject<any>();
 constructor(private propertyService: PropertyService) { }
 
-sendLoginMessage(message: boolean){
+sendLoginMessage(message: boolean) {
   this.subject.next({text: message});
   this.propertyService.setProperty(message);
 }

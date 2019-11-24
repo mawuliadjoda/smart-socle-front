@@ -22,7 +22,7 @@ setProperty(property: any) {
   this.property.next(property);
 }
 
-getProperty(){
+getProperty() {
   return this.property;
 }
 

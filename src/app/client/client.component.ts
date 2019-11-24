@@ -11,6 +11,7 @@ import {DeleteDialogComponent} from '../dialogs/delete/delete.dialog.component';
 import {BehaviorSubject, fromEvent, merge, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import { AddDialogComponent } from '../dialogs/add/add-dialog.component';
+import { IssueService } from '../services/issue.service';
 
 
 @Component({
@@ -20,14 +21,14 @@ import { AddDialogComponent } from '../dialogs/add/add-dialog.component';
 })
 export class ClientComponent implements OnInit {
   displayedColumns = ['id', 'title', 'state', 'url', 'created_at', 'updated_at', 'actions'];
-  exampleDatabase: DataService | null;
+  exampleDatabase: IssueService | null;
   dataSource: ExampleDataSource | null;
   index: number;
   id: number;
 
   constructor(public httpClient: HttpClient,
               public dialog: MatDialog,
-              public dataService: DataService) {}
+              public dataService: IssueService) {}
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -43,7 +44,7 @@ export class ClientComponent implements OnInit {
 
   addNew(issue: Issue) {
     const dialogRef = this.dialog.open(AddDialogComponent, {
-      data: {issue: issue }
+      data: {issue }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -62,7 +63,7 @@ export class ClientComponent implements OnInit {
     this.index = i;
     console.log(this.index);
     const dialogRef = this.dialog.open(EditDialogComponent, {
-      data: {id: id, title: title, state: state, url: url, created_at: created_at, updated_at: updated_at}
+      data: {id, title, state, url, created_at, updated_at}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -81,7 +82,7 @@ export class ClientComponent implements OnInit {
     this.index = i;
     this.id = id;
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
-      data: {id: id, title: title, state: state, url: url}
+      data: {id, title, state, url}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -122,7 +123,7 @@ export class ClientComponent implements OnInit {
 
 
   public loadData() {
-    this.exampleDatabase = new DataService(this.httpClient);
+    this.exampleDatabase = new IssueService(this.httpClient);
     this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator, this.sort);
     fromEvent(this.filter.nativeElement, 'keyup')
       // .debounceTime(150)
@@ -150,7 +151,7 @@ export class ExampleDataSource extends DataSource<Issue> {
   filteredData: Issue[] = [];
   renderedData: Issue[] = [];
 
-  constructor(public _exampleDatabase: DataService,
+  constructor(public _exampleDatabase: IssueService,
               public _paginator: MatPaginator,
               public _sort: MatSort) {
     super();

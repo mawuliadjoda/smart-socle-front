@@ -90,12 +90,12 @@ export class NavComponent  implements OnInit,  OnDestroy {
     // shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 
    ngOnInit() {
-     this.message= this.propertyService.getProperty();
+     this.message = this.propertyService.getProperty();
      this.message.subscribe(
-       data =>{
+       data => {
          this.isLogged = data;
-         console.log('-------isLogged---------:'+this.isLogged);
+         console.log('-------isLogged---------:' + this.isLogged);
        }
-     )
+     );
    }
 }

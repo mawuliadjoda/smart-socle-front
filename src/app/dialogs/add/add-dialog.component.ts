@@ -3,6 +3,7 @@ import {Component, Inject} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { Issue } from 'src/app/models/issue';
 import { DataService } from 'src/app/services/data.service';
+import { IssueService } from 'src/app/services/issue.service';
 @Component({
   selector: 'app-add-dialog',
   templateUrl: './add-dialog.component.html',
@@ -11,7 +12,7 @@ import { DataService } from 'src/app/services/data.service';
 export class AddDialogComponent {
   constructor(public dialogRef: MatDialogRef<AddDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Issue,
-              public dataService: DataService) { }
+              public dataService: IssueService) { }
 
   formControl = new FormControl('', [
     Validators.required
@@ -33,7 +34,7 @@ export class AddDialogComponent {
   }
 
   public confirmAdd(): void {
-    this.dataService.addIssue(this.data);
+    this.dataService.add(this.data);
   }
 }
 
