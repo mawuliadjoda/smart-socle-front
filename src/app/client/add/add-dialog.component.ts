@@ -34,7 +34,11 @@ export class AddDialogComponent {
   }
 
   public confirmAdd(): void {
-    this.dataService.add(this.data);
+    // this.dataService.add(this.data).subscribe(
+    //   data => {
+    //     this.data = data;
+    //   }
+    // );
   }
 }
 

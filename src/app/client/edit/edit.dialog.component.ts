@@ -6,8 +6,8 @@ import { IssueService } from 'src/app/services/issue.service';
 
 @Component({
   selector: 'app-baza.dialog',
-  templateUrl: '../../dialogs/edit/edit.dialog.html',
-  styleUrls: ['../../dialogs/edit/edit.dialog.css']
+  templateUrl: './edit.dialog.html',
+  styleUrls: ['./edit.dialog.css']
 })
 export class EditDialogComponent {
 
@@ -34,7 +34,5 @@ export class EditDialogComponent {
   }
 
   stopEdit(): void {
-    console.log('---------data edit' + this.data);
-    this.dataService.update(this.data);
   }
 }

@@ -5,8 +5,8 @@ import { IssueService } from 'src/app/services/issue.service';
 
 @Component({
   selector: 'app-delete.dialog',
-  templateUrl: '../../dialogs/delete/delete.dialog.html',
-  styleUrls: ['../../dialogs/delete/delete.dialog.css']
+  templateUrl: './delete.dialog.html',
+  styleUrls: ['./delete.dialog.css']
 })
 export class DeleteDialogComponent {
 
@@ -18,6 +18,5 @@ export class DeleteDialogComponent {
   }
 
   confirmDelete(): void {
-    this.dataService.delete(this.data.id);
   }
 }
