@@ -1,33 +1,29 @@
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
-import { DataService } from "../services/data.service";
-import { HttpClient } from "@angular/common/http";
-import { MatDialog } from "@angular/material/dialog";
-import { MatPaginator } from "@angular/material/paginator";
-import { MatSort } from "@angular/material/sort";
-import { Issue } from "../models/issue";
-import { DataSource } from "@angular/cdk/collections";
-import { EditDialogComponent } from "./edit/edit.dialog.component";
-import { DeleteDialogComponent } from "./delete/delete.dialog.component";
-import { BehaviorSubject, fromEvent, merge, Observable } from "rxjs";
-import { map } from "rxjs/operators";
-import { AddDialogComponent } from "./add/add-dialog.component";
-import { IssueService } from "../services/issue.service";
-import { MatTableDataSource } from "@angular/material";
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core'
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { Issue } from '../models/issue';
+import { EditDialogComponent } from './edit/edit.dialog.component';
+import { DeleteDialogComponent } from './delete/delete.dialog.component';
+import { AddDialogComponent } from './add/add-dialog.component';
+import { IssueService } from '../services/issue.service';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
-  selector: "app-client",
-  templateUrl: "./client.component.html",
-  styleUrls: ["./client.component.css"]
+  selector: 'app-client',
+  templateUrl: './client.component.html',
+  styleUrls: ['./client.component.css']
 })
 export class ClientComponent implements OnInit {
   displayedColumns = [
-    "id",
-    "title",
-    "state",
-    "url",
-    "created_at",
-    "updated_at",
-    "actions"
+    'id',
+    'title',
+    'state',
+    'url',
+    'created_at',
+    'updated_at',
+    'actions'
   ];
 
   index: number;
@@ -37,7 +33,7 @@ export class ClientComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  @ViewChild("filter", { static: true }) filter: ElementRef;
+  @ViewChild('filter', { static: true }) filter: ElementRef;
 
   constructor(
     public httpClient: HttpClient,
@@ -57,13 +53,17 @@ export class ClientComponent implements OnInit {
     const dialogRef = this.dialog.open(AddDialogComponent, {
       data: issueToSave
     });
-
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
-        this.issueService.add(issueToSave).subscribe(data => {
-          this.data.push(data);
-          this.dataSource = new MatTableDataSource(this.data);
-        });
+        this.issueService.add(issueToSave).subscribe(
+          data => {
+            this.data.push(data);
+            this.dataSource = new MatTableDataSource(this.data);
+          },
+          (err: HttpErrorResponse) => {
+            console.log(err.name + ' ' + err.message);
+          }
+        );
       }
     });
   }
@@ -78,6 +78,9 @@ export class ClientComponent implements OnInit {
         this.issueService.update(issue).subscribe(data => {
           this.data[index] = data;
           this.dataSource = new MatTableDataSource(this.data);
+        },
+        (err: HttpErrorResponse) => {
+          console.log(err.name + ' ' + err.message);
         });
       }
     });
@@ -93,6 +96,9 @@ export class ClientComponent implements OnInit {
         this.issueService.delete(issue.id).subscribe(() => {
           this.data.splice(index, 1);
           this.dataSource = new MatTableDataSource(this.data);
+        },
+        (err: HttpErrorResponse) => {
+          console.log(err.name + ' ' + err.message);
         });
       }
     });
@@ -104,6 +110,9 @@ export class ClientComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+    },
+    (err: HttpErrorResponse) => {
+      console.log(err.name + ' ' + err.message);
     });
   }
 

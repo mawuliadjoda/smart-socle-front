@@ -1,11 +1,10 @@
-import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable } from "rxjs";
-import { Issue } from "../models/issue";
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { environment } from "src/environments/environment";
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class DataService<T> {
   public baseUrl: string;
