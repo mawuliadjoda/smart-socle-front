@@ -24,6 +24,6 @@ export class DataService<T> {
   }
 
   delete(id: number): Observable<any> {
-    return this.http.delete(this.baseUrl + id);
+    return this.http.delete(`${this.baseUrl}/` + id);
   }
 }
