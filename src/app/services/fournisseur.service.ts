@@ -7,10 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class FournisseurService extends DataService <Fournisseur> {
-
   constructor(private httpClient: HttpClient) {
-     super();
-     super.init('fournisseurs/', this.httpClient);
+    super(httpClient, 'fournisseurs/');
   }
-
 }

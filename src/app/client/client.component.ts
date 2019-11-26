@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core'
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -49,7 +49,7 @@ export class ClientComponent implements OnInit {
   }
 
   addNew() {
-    let issueToSave = new Issue();
+    const issueToSave = new Issue();
     const dialogRef = this.dialog.open(AddDialogComponent, {
       data: issueToSave
     });

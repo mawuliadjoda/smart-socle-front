@@ -9,8 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class IssueService extends DataService <Issue> {
 
   constructor(private httpClient: HttpClient) {
-     super();
-     super.init('issues/', this.httpClient);
+    super(httpClient, 'issues');
   }
 
 }

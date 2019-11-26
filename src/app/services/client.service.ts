@@ -10,8 +10,7 @@ import { DataService } from './data.service';
 })
 export class ClientService extends DataService <Client> {
   constructor(private httpClient: HttpClient) {
-    super();
-    super.init('clients', this.httpClient);
+    super(httpClient, 'clients');
   }
 
 }

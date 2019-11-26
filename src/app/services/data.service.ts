@@ -8,13 +8,9 @@ import { environment } from 'src/environments/environment';
 })
 export class DataService<T> {
   public baseUrl: string;
-
-  private http: HttpClient;
-  public init(endPoint: string, http: HttpClient) {
+  constructor(private http: HttpClient, endPoint: string){
     this.baseUrl = environment.baseUrl + endPoint;
-    this.http = http;
   }
-
   getAll(): Observable<any> {
     return this.http.get<any>(this.baseUrl);
   }
