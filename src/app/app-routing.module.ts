@@ -5,12 +5,14 @@ import { ClientComponent } from './client/client.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { ProduitComponent } from './produit/produit.component';
 
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'client', component: ClientComponent},
   {path: 'home', component: HomeComponent},
+  {path: 'smart/produits', component: ProduitComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

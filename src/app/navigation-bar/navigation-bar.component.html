@@ -1,14 +1,14 @@
 
 
-<mat-toolbar color="primary" class="crm-navigation-bar">
+<mat-toolbar style="background-color: #019786" class="crm-navigation-bar">
 
   <mat-toolbar-row>
 
     <button mat-icon-button (click)="toggleSidenav.emit()">
-      <mat-icon>menu</mat-icon>
+      <mat-icon style="color: white;">menu</mat-icon>
     </button>
 
-    <span class="toolbar-title label">SMART </span>
+    <span (click)="goToHome()" class="toolbar-title label_ifrs17">SMART Pharma </span>
 
     <span class="spacer"></span>
     <span class="spacer"></span>
@@ -16,10 +16,12 @@
 
 
     <div>
-      <button mat-button> <i class="label-header-person material-icons">person</i>
+      <button mat-button>
+        <i  class="label-header-person material-icons">person</i>
         <span class="label">Mawuli ADJODA</span>
       </button>
     </div>
+    <span class="filler"></span>
     <span class="spacer label" >Dernière connexion: 16/11/2019 à 21h:48</span>
 
     <div class="spacer"></div>

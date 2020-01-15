@@ -11,8 +11,25 @@ $toolbar-title-padding: 16px !default;
   cursor: pointer;
 }
 
+.label-header-person {
+  color: #98CB0B;
+  margin-bottom: 2px;
+}
 
-
+.label_ifrs17 {
+  font-size: 20px;
+  font-family: sans-serif;
+  color: white;
+}
+.label {
+  font-size: 15px;
+  font-family: sans-serif;
+  color: white;
+  float: right;
+}
+.filler {
+  flex: 1 1 auto;
+}
 // .crm-navigation-bar {
 //   position: fixed;
 //   top: 0;
@@ -22,9 +39,9 @@ $toolbar-title-padding: 16px !default;
 // }
 
 
-// .spacer {
-//   flex: 1;
-// }
+ .spacer {
+  flex: 1;
+ }
 // .label {
 //   font-size: 12px;
 //   font-family: sans-serif;

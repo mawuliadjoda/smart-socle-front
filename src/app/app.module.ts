@@ -17,6 +17,10 @@ import { AddDialogComponent } from './client/add/add-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FournisseurComponent } from './fournisseur/fournisseur.component';
+import { ProduitComponent } from './produit/produit.component';
+import { AddProduitComponent } from './produit/add-produit/add-produit.component';
+import { EditProduitComponent } from './produit/edit-produit/edit-produit.component';
+import { DeleteProduitComponent } from './produit/delete-produit/delete-produit.component';
 
 @NgModule({
    declarations: [
@@ -30,7 +34,11 @@ import { FournisseurComponent } from './fournisseur/fournisseur.component';
       AddDialogComponent,
       DeleteDialogComponent,
       EditDialogComponent,
-      FournisseurComponent
+      FournisseurComponent,
+      ProduitComponent,
+      AddProduitComponent,
+      EditProduitComponent,
+      DeleteProduitComponent
    ],
    imports: [
       BrowserModule,
@@ -45,7 +53,11 @@ import { FournisseurComponent } from './fournisseur/fournisseur.component';
    entryComponents: [
       AddDialogComponent,
       EditDialogComponent,
-      DeleteDialogComponent
+      DeleteDialogComponent,
+
+      AddProduitComponent,
+      EditProduitComponent,
+      DeleteProduitComponent
    ],
    providers: [],
    bootstrap: [

@@ -31,8 +31,8 @@ export class NavComponent  implements OnInit,  OnDestroy {
 
     {
       icon: 'assignment',
-      route: 'sales/activities',
-      title: 'ACTIVITIES'
+      route: 'smart/produits',
+      title: 'Produits'
     },
     {
       icon:  'dashboard',

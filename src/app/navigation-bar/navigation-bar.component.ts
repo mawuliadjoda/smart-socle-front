@@ -21,4 +21,8 @@ export class NavigationBarComponent implements OnInit {
     this.router.navigateByUrl('');
   }
 
+  goToHome() {
+    this.router.navigateByUrl('/home');
+  }
+
 }

@@ -1,11 +1,8 @@
-<!-- <mat-toolbar color="primary"> -->
-  <!-- <span>Angular 8 MatTable CRUD Example</span> -->
+
   <span class="spacer"></span>
-  <!-- Reload data: -->
   <button mat-icon-button (click)="refresh()">
     <mat-icon>refresh</mat-icon>
   </button>
-<!-- </mat-toolbar> -->
 
 <div class="container mat-elevation-z8">
 
@@ -17,28 +14,34 @@
 
   <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
     ng update @angular/cli @angular/core
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
-    <!-- ID Column -->
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
       <mat-cell *matCellDef="let row" >{{row.id}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.title}}</mat-cell>
+    <ng-container matColumnDef="nom">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Nom</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.nom}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="state">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>State</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.state}}</mat-cell>
+    <ng-container matColumnDef="reference">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Reference</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.reference}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="url">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Url</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.url}}</mat-cell>
+    <ng-container matColumnDef="categorie">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Categorie</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.categorie}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="qte">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>qte</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.qte}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="prixUnitaire">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>prixUnitaire</mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.prixUnitaire}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="created_at">
