@@ -27,7 +27,7 @@ export class NavComponent  implements OnInit,  OnDestroy {
   subscription: Subscription;
 
   shouldRun = true;
-  myWorkRoutes = [
+  customerRoutes = [
 
     {
       icon: 'assignment',
@@ -36,33 +36,24 @@ export class NavComponent  implements OnInit,  OnDestroy {
     },
     {
       icon:  'dashboard',
-      route: 'smart/commandes',
-      title: 'Commandes'
+      route: 'smart/fournisseur',
+      title: 'Fournisseur'
     } ];
 
 
-    customerRoutes = [
+    myWorkRoutes = [
 
     {
       icon: 'contacts',
-      route: 'accounts',
-      title: 'ACCOUNTS'
+      route: 'smart/commandes',
+      title: 'Commandes'
     },
     {
       icon: 'people',
-      route: 'sales/contacts',
-      title: 'CONTACTS'
-    },
-    {
-      icon: 'settings_phone',
-      route: 'leads',
-      title: 'LEADS'
-    },
-    {
-      icon: 'account_box',
-      route: 'opportunities',
-      title: 'OPPORTUNITIES'
-    }];
+      route: 'smart/facture',
+      title: 'Factures'
+    }
+  ];
     mobileQuery: MediaQueryList;
 
     fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);

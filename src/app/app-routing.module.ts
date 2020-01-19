@@ -6,6 +6,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ProduitComponent } from './produit/produit.component';
+import { CommandeComponent } from './commande/commande.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'client', component: ClientComponent},
   {path: 'home', component: HomeComponent},
   {path: 'smart/produits', component: ProduitComponent},
+  {path: 'smart/commandes', component: CommandeComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

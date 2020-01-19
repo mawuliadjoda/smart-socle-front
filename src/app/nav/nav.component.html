@@ -1,4 +1,4 @@
-<div
+<div style="margin-left: 10%; margin-right: 10%;"
   class="example-container"
   [class.example-is-mobile]="mobileQuery.matches"
   *ngIf="shouldRun"
@@ -18,10 +18,10 @@
       [mode]="'over'"
       [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56"
-      style="width: 300px!important;"
+      style="width: 300px!important;background-color:#f2f2f2"
     >
       <mat-nav-list>
-        <ng-container>
+        <ng-container >
           <h2 matSubheader class="label-sidebar-separateur">Mes activités</h2>
 
           <a mat-list-item routerLink="/" style="height: 0;"></a>

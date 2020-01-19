@@ -15,12 +15,12 @@ export class DataService<T> {
     return this.http.get<any>(this.baseUrl);
   }
 
-  add(issue: T): Observable<any> {
-    return this.http.post(this.baseUrl, issue);
+  add(t: T): Observable<any> {
+    return this.http.post(this.baseUrl, t);
   }
 
-  update(issue: T): Observable<any> {
-    return this.http.put(this.baseUrl, issue);
+  update(t: T): Observable<any> {
+    return this.http.put(this.baseUrl, t);
   }
 
   delete(id: number): Observable<any> {

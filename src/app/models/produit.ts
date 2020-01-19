@@ -7,4 +7,5 @@ export class Produit {
   barcode: string;
   qte: number;
   prixUnitaire: number;
+  description: string;
 }
