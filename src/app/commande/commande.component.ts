@@ -29,6 +29,7 @@ export class CommandeComponent implements OnInit, AfterViewInit  {
   data2: Array<Produit> = [];
 
   nbProduitPanier: number = 0;
+  maxDisplayProduct: number = 2;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild('filter', { static: true }) filter: ElementRef;
@@ -40,8 +41,6 @@ export class CommandeComponent implements OnInit, AfterViewInit  {
   ) {}
   ngOnInit() {
     this.loadData();
-    this.dataSource.paginator = this.paginator;
-    this.nbProduitPanier = 0;
   }
 
   ngAfterViewInit() {
@@ -59,6 +58,10 @@ export class CommandeComponent implements OnInit, AfterViewInit  {
       this.dataSource = new MatTableDataSource(this.data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+
+      this.nbProduitPanier = 0;
+      let obj = { pageIndex: 0, pageSize : this.maxDisplayProduct };
+      this.getData(obj);
     },
     (err: HttpErrorResponse) => {
       console.log(err.name + ' ' + err.message);
@@ -71,13 +74,15 @@ export class CommandeComponent implements OnInit, AfterViewInit  {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+    let obj = { pageIndex: 0, pageSize : this.maxDisplayProduct };
+    this.getData(obj);
   }
 
 
   page = 0;
-  size = 5;
+  size = 2;
   getData(obj) {
-    let index=0
+    let index = 0
     let startingIndex = obj.pageIndex * obj.pageSize;
     let endingIndex = startingIndex + obj.pageSize;
 

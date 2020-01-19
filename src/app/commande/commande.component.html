@@ -1,8 +1,9 @@
+<br>
 <div class="container mat-elevation-z8">
     <div class="form">
 
           <mat-form-field>
-              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher un produit">
           </mat-form-field>
 
 
@@ -33,7 +34,7 @@
               <p mat-line>
                 <span>{{produit.categorie}}</span>
               </p>
-              <span>{{produit.reference}}</span>
+              <!-- <span>{{produit.reference}}</span> -->
           </div>
 
           <div style="text-align: right; flex: 1 auto;">
