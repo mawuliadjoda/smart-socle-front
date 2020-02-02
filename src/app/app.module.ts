@@ -22,6 +22,7 @@ import { AddProduitComponent } from './produit/add-produit/add-produit.component
 import { EditProduitComponent } from './produit/edit-produit/edit-produit.component';
 import { DeleteProduitComponent } from './produit/delete-produit/delete-produit.component';
 import { CommandeComponent } from './commande/commande.component';
+import { PannierComponent } from './commande/pannier/pannier.component';
 
 @NgModule({
    declarations: [
@@ -40,7 +41,8 @@ import { CommandeComponent } from './commande/commande.component';
       AddProduitComponent,
       EditProduitComponent,
       DeleteProduitComponent,
-      CommandeComponent
+      CommandeComponent,
+      PannierComponent
    ],
    imports: [
       BrowserModule,

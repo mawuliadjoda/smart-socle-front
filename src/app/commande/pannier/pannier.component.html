@@ -1,0 +1,79 @@
+<br>
+<div class="container mat-elevation-z8">
+    <div class="form">
+
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher un produit">
+        </mat-form-field>
+
+        <div style="text-align: right; flex: 1 auto;">
+            <button mat-raised-button title="Mon panier">
+                <i matBadge="{{produitsPanier?.length}}" matBadgeColor="warn" class="material-icons">shopping_cart</i>
+            </button>
+        </div>
+
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div>
+
+        <mat-nav-list>
+            <mat-list-item *ngFor="let produit of produitsPanier; index as i">
+
+                <div>
+                    <img mat-list-avatar src="assets/images/product_image.png.webp" alt="Desc 1" />
+                    <a matLine [href]="produit.nom" target="_blank">
+                        <!-- <mat-icon [class]="link.CSSClass"></mat-icon> -->
+                        <span class="link-caption">{{ produit.nom }} </span>
+                    </a>
+                    <br>
+                    <span class="link-caption">{{ produit.description }} </span>
+                    <p mat-line>
+                        <span>{{produit.categorie}}</span>
+                    </p>
+                    <!-- <span>{{produit.reference}}</span> -->
+                </div>
+
+                <div style="text-align: right; flex: 1 auto;">
+                    <a matLine [href]="produit.nom" target="_blank">
+                        <span class="link-caption">{{ produit.nom }} </span>
+                    </a>
+
+                    <h3 mat-line>{{produit.prixUnitaire}} fcfa</h3>
+                    <span *ngIf="produit.qte > 0" style="color: green;">En stock</span>
+                    <span *ngIf="produit.qte === 0" style="color: red;">Non disponible</span>
+                    <br>
+
+                    <div>
+                        <mat-form-field>
+                            <input matInput placeholder="Quantité"
+                                   type="number"
+                                   class="example-right-align"
+                                   [(ngModel)]="produit.qteCommande">
+                        </mat-form-field>
+                        <button mat-raised-button color="primary">Voir le produit</button>
+                    </div>
+
+                </div>
+
+                <mat-divider></mat-divider>
+                <!-- <mat-divider *ngIf="i !== (data.length -1)"></mat-divider> -->
+            </mat-list-item>
+        </mat-nav-list>
+    </div>
+
+    <br><br>
+    <div class="mat-elevation-z8">
+      <div style="text-align: right; float: right; width: 50%;">
+          <span>Sous-Total:  {{getTotal()}} FCFA</span>
+          <br>
+          <mat-divider></mat-divider>
+          <br>
+          <div>
+              <a [href]="fileUrl" download="file.txt">DownloadFile</a>
+            <!-- <button mat-raised-button color="primary" (click)="downloadFacture()">Facture</button> -->
+        </div>
+      </div>
+
+    </div>

@@ -8,4 +8,6 @@ export class Produit {
   qte: number;
   prixUnitaire: number;
   description: string;
+
+  qteCommande: number;
 }

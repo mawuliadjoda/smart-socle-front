@@ -7,14 +7,18 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ProduitComponent } from './produit/produit.component';
 import { CommandeComponent } from './commande/commande.component';
+import { PannierComponent } from './commande/pannier/pannier.component';
 
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
+  //{path: '', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'client', component: ClientComponent},
   {path: 'home', component: HomeComponent},
   {path: 'smart/produits', component: ProduitComponent},
   {path: 'smart/commandes', component: CommandeComponent},
+  {path: 'smart/pannier', component: PannierComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

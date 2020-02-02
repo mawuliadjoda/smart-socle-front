@@ -1,8 +1,9 @@
 import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { Produit } from '../models/produit';
-import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort, MatDialog, MatSnackBar } from '@angular/material';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ProduitService } from '../services/produit.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-commande',
@@ -10,36 +11,34 @@ import { ProduitService } from '../services/produit.service';
   styleUrls: ['./commande.component.css']
 })
 export class CommandeComponent implements OnInit, AfterViewInit  {
-  displayedColumns = [
-    'id',
-    'nom',
-    'reference',
-    'categorie',
-    'qte',
-    'prixUnitaire',
-    'created_at',
-    'updated_at',
-    'actions'
-  ];
-
   index: number;
   id: number;
   dataSource = new MatTableDataSource<Produit>([]);
   data: Array<Produit> = [];
   data2: Array<Produit> = [];
 
+  produitsPanier: Array<Produit> = [];
+
   nbProduitPanier: number = 0;
   maxDisplayProduct: number = 2;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild('filter', { static: true }) filter: ElementRef;
+  isCommande = true;
+  isPannier = false;
+  isFacture = false;
 
   constructor(
     public httpClient: HttpClient,
     public dialog: MatDialog,
-    public produitService: ProduitService
+    public produitService: ProduitService,
+    private _snackBar: MatSnackBar,
+    private router: Router
   ) {}
   ngOnInit() {
+    this.isCommande = true;
+    this.isPannier = false;
+    this.isFacture = false;
     this.loadData();
   }
 
@@ -83,8 +82,8 @@ export class CommandeComponent implements OnInit, AfterViewInit  {
   size = 2;
   getData(obj) {
     let index = 0
-    let startingIndex = obj.pageIndex * obj.pageSize;
-    let endingIndex = startingIndex + obj.pageSize;
+    const startingIndex = obj.pageIndex * obj.pageSize;
+    const endingIndex = startingIndex + obj.pageSize;
 
     this.data = this.dataSource.filteredData.filter(() => {
       index++;
@@ -95,6 +94,21 @@ export class CommandeComponent implements OnInit, AfterViewInit  {
   }
 
   addShoppingCard(produit: Produit){
+    const action = 'sussès';
+    const message = `le produit ${produit.nom} a été ajouté au pannier !`;
+    this._snackBar.open(message, action, {
+      duration: 500,
+    });
+    produit.qteCommande = produit.qteCommande ?  produit.qteCommande + 1 : produit.qteCommande;
+    this.produitsPanier.push(produit);
     this.nbProduitPanier ++;
+  }
+
+  viewShoppingCart(){
+    console.log('befor: ' + this.produitsPanier);
+    this.isPannier = true;
+    this.isCommande = false;
+    this.router.navigate(['smart/pannier'], {state: {data: this.produitsPanier}});
+    // this.router.navigateByUrl('smart/pannier');
   }
 }

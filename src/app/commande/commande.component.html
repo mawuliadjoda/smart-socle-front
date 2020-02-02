@@ -1,107 +1,72 @@
 <br>
-<div class="container mat-elevation-z8">
-    <div class="form">
+<!-- <div *ngIf="isCommande"> -->
+  <div>
+    <div class="container mat-elevation-z8">
+        <div class="form">
 
-          <mat-form-field>
-              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher un produit">
-          </mat-form-field>
+            <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher un produit">
+            </mat-form-field>
 
+            <div style="text-align: right; flex: 1 auto;">
+                <button mat-raised-button title="Mon panier" (click)="viewShoppingCart()">
+                    <i matBadge="{{nbProduitPanier}}" matBadgeColor="warn" class="material-icons">shopping_cart</i>
+                </button>
+            </div>
 
+        </div>
 
-        <div style="text-align: right; flex: 1 auto;">
-            <button mat-raised-button title="Mon panier" >
-                <i matBadge="{{nbProduitPanier}}" matBadgeColor="warn"   class="material-icons">shopping_cart</i>
-            </button>
+        <mat-divider></mat-divider>
+
+        <div>
+
+            <mat-nav-list>
+                <mat-list-item *ngFor="let produit of data; index as i">
+
+                    <div>
+                        <img mat-list-avatar src="assets/images/product_image.png.webp" alt="Desc 1" />
+                        <a matLine [href]="produit.nom" target="_blank">
+                            <span class="link-caption">{{ produit.nom }} </span>
+                        </a>
+                        <br>
+                        <span class="link-caption">{{ produit.description }} </span>
+                        <p mat-line>
+                            <span>{{produit.categorie}}</span>
+                        </p>
+                    </div>
+
+                    <div style="text-align: right; flex: 1 auto;">
+                        <a matLine [href]="produit.nom" target="_blank">
+                            <span class="link-caption">{{ produit.nom }} </span>
+                        </a>
+
+                        <h3 mat-line>{{produit.prixUnitaire}} fcfa</h3>
+                        <span *ngIf="produit.qte > 0" style="color: green;">En stock</span>
+                        <span *ngIf="produit.qte === 0" style="color: red;">Non disponible</span>
+                        <br>
+
+                        <div>
+                            <button mat-raised-button color="primary">Voir le produit</button>
+
+                            <button [disabled]="produit.qte === 0" mat-raised-button title="Ajouter au panier" [ngStyle]="{'margin-left': '5px', 'cursor': produit.qte === 0 ? 'not-allowed' : ''}" (click)="addShoppingCard(produit)">
+                                <i class="material-icons">add_shopping_cart</i>
+
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <mat-divider></mat-divider>
+                </mat-list-item>
+            </mat-nav-list>
+
+            <mat-paginator [length]="data2.length" [pageSize]="size" [pageIndex]="page" [pageSizeOptions]="[1, 2, 5]" [showFirstLastButtons]="true" (page)="getData($event)">
+            </mat-paginator>
         </div>
 
     </div>
-
-<mat-divider></mat-divider>
-
-<div>
-
-    <mat-nav-list>
-        <mat-list-item *ngFor="let produit of data; index as i">
-
-          <div >
-              <img mat-list-avatar src="assets/images/product_image.png.webp"alt="Desc 1" />
-              <a matLine [href]="produit.nom" target="_blank">
-                <!-- <mat-icon [class]="link.CSSClass"></mat-icon> -->
-                <span class="link-caption">{{ produit.nom }} </span>
-              </a>
-              <br>
-              <span  class="link-caption">{{ produit.description }} </span>
-              <p mat-line>
-                <span>{{produit.categorie}}</span>
-              </p>
-              <!-- <span>{{produit.reference}}</span> -->
-          </div>
-
-          <div style="text-align: right; flex: 1 auto;">
-              <a matLine [href]="produit.nom" target="_blank">
-                <span class="link-caption">{{ produit.nom }} </span>
-              </a>
-
-              <h3 mat-line>{{produit.prixUnitaire}} fcfa</h3>
-              <span *ngIf="produit.qte > 0" style="color: green;">En stock</span>
-              <span *ngIf="produit.qte === 0" style="color: red;" >Non disponible</span>
-              <br>
-
-              <div>
-                  <button mat-raised-button color="primary">Voir le produit</button>
-
-                  <button [disabled] ="produit.qte === 0" mat-raised-button title="Ajouter au panier"
-                          [ngStyle]="{'margin-left': '5px', 'cursor': produit.qte === 0 ? 'not-allowed' : ''}"
-                          (click)="addShoppingCard(produit)">
-                      <i  class="material-icons">add_shopping_cart</i>
-
-                  </button>
-              </div>
-
-
-          </div>
-
-          <mat-divider></mat-divider>
-          <!-- <mat-divider *ngIf="i !== (data.length -1)"></mat-divider> -->
-        </mat-list-item>
-      </mat-nav-list>
-
-      <mat-paginator [length]="data2.length"
-                  [pageSize]="size"
-                  [pageIndex]="page"
-                  [pageSizeOptions]="[1, 2, 5]"
-                  [showFirstLastButtons] = "true"
-                  (page)="getData($event)">
-    </mat-paginator>
-
-      <!-- <mat-paginator [pageSizeOptions]="[1, 2, 5, 100]"></mat-paginator> -->
-<!--
-      <mat-paginator [pageSize]="1"
-                     [length]="dataSource.filteredData.length"
-
-                     [pageSizeOptions]="[1, 2, 100]">
-      </mat-paginator> -->
-  <!-- <mat-paginator [length]="data.length"
-    [pageSize]="1"
-    [pageSizeOptions]="[1, 2, 25, 100]">
-</mat-paginator> -->
 </div>
 
-
-<!-- <div fxFill fxLayout="column" fxLayoutAlign="space-between">
-    <div fxLayout="row wrap">
-      <ng-container *ngFor="let produit of data">
-          <span>{{produit.nom}}</span><br>
-      </ng-container>
-    </div>
-
-    <mat-paginator [length]="data2.length"
-                  [pageSize]="size"
-                  [pageIndex]="page"
-                  [pageSizeOptions]="[1, 2, 5]"
-                  (page)="getData($event)">
-    </mat-paginator>
-  </div> -->
-
-
-
+<!-- <div *ngIf="isPannier">
+    <app-pannier [produitsPanier]="produitsPanier"></app-pannier>
+</div> -->
