@@ -7,6 +7,9 @@ import { ProduitService } from 'src/app/services/produit.service';
 import { FileService } from 'src/app/services/util/file.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
+import { ProductState } from 'src/app/ngxs/state';
+import { Observable } from 'rxjs';
+import { Select } from '@ngxs/store';
 
 @Component({
   selector: 'app-pannier',
@@ -29,6 +32,9 @@ export class PannierComponent implements OnInit  {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild('filter', { static: true }) filter: ElementRef;
 
+  @Select(ProductState) state$: Observable<any>;
+  cartTotal = 0;
+
   constructor(
     public httpClient: HttpClient,
     public dialog: MatDialog,
@@ -38,8 +44,10 @@ export class PannierComponent implements OnInit  {
     private sanitizer: DomSanitizer
   ) {}
   ngOnInit() {
-    this.produitsPanier = history && history.state && history.state.data ? history.state.data : [];
+    // this.produitsPanier = history && history.state && history.state.data ? history.state.data : [];
     console.log('panier from pannier component ' + this.produitsPanier);
+
+    this.loadCartTotal();
   }
 
   applyFilter(filterValue: string) {
@@ -112,5 +120,13 @@ export class PannierComponent implements OnInit  {
   }
 
 
+  loadCartTotal() {
+    this.state$.subscribe(
+      (data) => {
+        this.cartTotal = data.cart.length;
+        this.produitsPanier = data.cart;
+      }
+    );
+  }
 
 }

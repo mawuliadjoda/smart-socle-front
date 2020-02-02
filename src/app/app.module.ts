@@ -23,6 +23,8 @@ import { EditProduitComponent } from './produit/edit-produit/edit-produit.compon
 import { DeleteProduitComponent } from './produit/delete-produit/delete-produit.component';
 import { CommandeComponent } from './commande/commande.component';
 import { PannierComponent } from './commande/pannier/pannier.component';
+import { NgxsModule } from '@ngxs/store';
+import { ProductState } from './ngxs/state';
 
 @NgModule({
    declarations: [
@@ -52,7 +54,10 @@ import { PannierComponent } from './commande/pannier/pannier.component';
       FormsModule,
       AppRoutingModule,
       BrowserAnimationsModule,
-      AngularMaterialModule
+      AngularMaterialModule,
+      NgxsModule.forRoot([
+        ProductState
+      ], { developmentMode: true })
    ],
    entryComponents: [
       AddDialogComponent,

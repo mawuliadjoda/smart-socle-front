@@ -4,6 +4,10 @@ import { MatTableDataSource, MatPaginator, MatSort, MatDialog, MatSnackBar } fro
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ProduitService } from '../services/produit.service';
 import { Router } from '@angular/router';
+import { Store, Select } from '@ngxs/store';
+import { AddProductToCart } from '../ngxs/action';
+import { ProductState } from '../ngxs/state';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-commande',
@@ -19,7 +23,7 @@ export class CommandeComponent implements OnInit, AfterViewInit  {
 
   produitsPanier: Array<Produit> = [];
 
-  nbProduitPanier: number = 0;
+  // nbProduitPanier: number = 0;
   maxDisplayProduct: number = 2;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -28,18 +32,22 @@ export class CommandeComponent implements OnInit, AfterViewInit  {
   isPannier = false;
   isFacture = false;
 
+  @Select(ProductState) state$: Observable<any>;
+
   constructor(
     public httpClient: HttpClient,
     public dialog: MatDialog,
     public produitService: ProduitService,
     private _snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private store: Store
   ) {}
   ngOnInit() {
     this.isCommande = true;
     this.isPannier = false;
     this.isFacture = false;
     this.loadData();
+    this.loadCartTotal();
   }
 
   ngAfterViewInit() {
@@ -58,7 +66,7 @@ export class CommandeComponent implements OnInit, AfterViewInit  {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
 
-      this.nbProduitPanier = 0;
+      //this.nbProduitPanier = 0;
       let obj = { pageIndex: 0, pageSize : this.maxDisplayProduct };
       this.getData(obj);
     },
@@ -100,15 +108,26 @@ export class CommandeComponent implements OnInit, AfterViewInit  {
       duration: 500,
     });
     produit.qteCommande = produit.qteCommande ?  produit.qteCommande + 1 : produit.qteCommande;
-    this.produitsPanier.push(produit);
-    this.nbProduitPanier ++;
+    //this.produitsPanier.push(produit);
+    //this.nbProduitPanier ++;
+
+    this.store.dispatch(new AddProductToCart(produit));
   }
 
   viewShoppingCart(){
     console.log('befor: ' + this.produitsPanier);
     this.isPannier = true;
     this.isCommande = false;
-    this.router.navigate(['smart/pannier'], {state: {data: this.produitsPanier}});
-    // this.router.navigateByUrl('smart/pannier');
+    //this.router.navigate(['smart/pannier'], {state: {data: this.produitsPanier}});
+    this.router.navigateByUrl('smart/pannier');
+  }
+
+  loadCartTotal() {
+    this.state$.subscribe(
+      (data) => {
+        // this.nbProduitPanier = data.cart.length;
+        this.produitsPanier = data.cart;
+      }
+    );
   }
 }
