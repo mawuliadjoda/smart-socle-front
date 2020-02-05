@@ -1,6 +1,6 @@
 import { State, Action, StateContext } from '@ngxs/store';
 
-import { LoadProducts, AddProductToCart } from '../action';
+import { LoadProducts, AddProductToCart, DeleteProductToCart , UpdateProductToCart} from '../action';
 import { Produit } from 'src/app/models/produit';
 import { ProduitService } from 'src/app/services/produit.service';
 
@@ -47,4 +47,30 @@ export class ProductState {
       ]
     });
   }
+
+  // @see https://www.daptontechnologies.com/angular-ngxs-crud
+  @Action(DeleteProductToCart)
+  deleteTodo(ctx: StateContext<ProductStateModel>, {id}: DeleteProductToCart) {
+    const state = ctx.getState();
+    const filteredArray = state.cart.filter(item => item.id !== id);
+    ctx.setState({
+        ...state,
+        cart: filteredArray,
+    });
+  }
+
+  // @see https://www.daptontechnologies.com/angular-ngxs-crud
+  @Action(UpdateProductToCart)
+  updateTodo({getState, setState}: StateContext<ProductStateModel>, {payload, id}: UpdateProductToCart) {
+    const state = getState();
+    const todoList = [...state.cart];
+    const todoIndex = todoList.findIndex(item => item.id === id);
+    todoList[todoIndex] = payload;
+    setState({
+        ...state,
+        cart: todoList,
+    });
+  }
+
+
 }

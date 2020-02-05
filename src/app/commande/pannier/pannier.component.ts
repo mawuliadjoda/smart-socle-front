@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 import { ProductState } from 'src/app/ngxs/state';
 import { Observable } from 'rxjs';
 import { Select } from '@ngxs/store';
-
+import * as fileSaver from 'file-saver'; // npm i --save file-saver
 @Component({
   selector: 'app-pannier',
   templateUrl: './pannier.component.html',
@@ -70,7 +70,7 @@ export class PannierComponent implements OnInit  {
   download(url: string): any {
     let headers = new HttpHeaders();
     // headers = headers.append('Authorization', 'Bearer ' + this.getToken());
-    this.fileService.getDownload().subscribe((res) => {
+    this.fileService.getDownload(this.produitsPanier).subscribe((res) => {
       const file = new Blob([res], {
         type: 'application/pdf',
       });
@@ -98,7 +98,7 @@ export class PannierComponent implements OnInit  {
 
 
   downloadFacture(){
-    this.fileService.getImage().subscribe(data => {
+    this.fileService.getDownload(this.produitsPanier).subscribe(data => {
      console.log('download ok' + data);
 
      const a = document.createElement('a');
@@ -129,4 +129,20 @@ export class PannierComponent implements OnInit  {
     );
   }
 
+
+  downloadFileSystem() {
+    console.log('============download begin=========:');
+    this.fileService.downloadFileSystem(this.produitsPanier)
+      .subscribe(response => {
+        const filename = response.headers.get('filename');
+
+        console.log('============filename=========:' + filename);
+        this.saveFile(response.body, 'facture.pdf');
+      });
+  }
+  saveFile(data: any, filename?: string) {
+    console.log('============filename=========:' + filename);
+    const blob = new Blob([data], {type: 'application/pdf; charset=utf-8'});
+    fileSaver.saveAs(blob, filename);
+  }
 }
