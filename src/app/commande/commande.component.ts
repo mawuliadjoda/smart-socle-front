@@ -111,7 +111,7 @@ export class CommandeComponent implements OnInit, AfterViewInit  {
     //this.produitsPanier.push(produit);
     //this.nbProduitPanier ++;
 
-    this.store.dispatch(new AddProductToCart(produit));
+    this.store.dispatch(new AddProductToCart(produit, 1));
   }
 
   viewShoppingCart(){

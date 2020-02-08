@@ -3,6 +3,7 @@ import { HttpResponse, HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Produit } from 'src/app/models/produit';
+import { LigneCommande } from 'src/app/models/ligne-commande';
 
 @Injectable({
   providedIn: 'root'
@@ -49,7 +50,7 @@ export class FileService {
   //   });
   // }
 
-  downloadFileSystem(produitsPanier: Array<Produit>): Observable<HttpResponse<Blob>> {
+  downloadFileSystem(produitsPanier: Array<LigneCommande>): Observable<HttpResponse<Blob>> {
     let headers = new HttpHeaders();
     headers = headers.append('Accept', 'application/pdf; charset=utf-8');
 

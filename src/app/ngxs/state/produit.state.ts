@@ -3,9 +3,10 @@ import { State, Action, StateContext } from '@ngxs/store';
 import { LoadProducts, AddProductToCart, DeleteProductToCart , UpdateProductToCart} from '../action';
 import { Produit } from 'src/app/models/produit';
 import { ProduitService } from 'src/app/services/produit.service';
+import { LigneCommande } from 'src/app/models/ligne-commande';
 
 export interface ProductStateModel {
-    cart: Produit[];
+    cart: LigneCommande[];
     products: Produit[];
 }
 
@@ -39,12 +40,16 @@ export class ProductState {
   @Action(AddProductToCart)
   addProductToCart(ctx: StateContext<ProductStateModel>, action: AddProductToCart){
     const state = ctx.getState();
+    let ligneCommande = {
+      id: action.product.id,
+      produit: action.product,
+      qte: action.qte
+    };
+
     ctx.setState({
       ...state,
-      cart: [
-        ...state.cart,
-        action.product
-      ]
+      // cart: [ ...state.cart, action.product]
+      cart: [ ...state.cart, ligneCommande]
     });
   }
 
@@ -61,11 +66,19 @@ export class ProductState {
 
   // @see https://www.daptontechnologies.com/angular-ngxs-crud
   @Action(UpdateProductToCart)
-  updateTodo({getState, setState}: StateContext<ProductStateModel>, {payload, id}: UpdateProductToCart) {
+  updateTodo({getState, setState}: StateContext<ProductStateModel>, {payload, id, qte}: UpdateProductToCart) {
     const state = getState();
     const todoList = [...state.cart];
     const todoIndex = todoList.findIndex(item => item.id === id);
-    todoList[todoIndex] = payload;
+
+    let ligneCommande = {
+      id: payload.id,
+      produit: payload,
+      qte: qte
+    };
+
+    // todoList[todoIndex] = payload;
+    todoList[todoIndex] = ligneCommande;
     setState({
         ...state,
         cart: todoList,

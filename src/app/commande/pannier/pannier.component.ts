@@ -11,6 +11,7 @@ import { ProductState } from 'src/app/ngxs/state';
 import { Observable } from 'rxjs';
 import { Select } from '@ngxs/store';
 import * as fileSaver from 'file-saver'; // npm i --save file-saver
+import { LigneCommande } from 'src/app/models/ligne-commande';
 @Component({
   selector: 'app-pannier',
   templateUrl: './pannier.component.html',
@@ -19,9 +20,9 @@ import * as fileSaver from 'file-saver'; // npm i --save file-saver
 export class PannierComponent implements OnInit  {
   index: number;
   id: number;
-  dataSource = new MatTableDataSource<Produit>([]);
+  dataSource = new MatTableDataSource<LigneCommande>([]);
   // @Input()
-  produitsPanier: Array<Produit> = [];
+  ligneCommandes: Array<LigneCommande> = [];
 
   nbProduitPanier: number = 0;
   maxDisplayProduct: number = 2;
@@ -45,14 +46,14 @@ export class PannierComponent implements OnInit  {
   ) {}
   ngOnInit() {
     // this.produitsPanier = history && history.state && history.state.data ? history.state.data : [];
-    console.log('panier from pannier component ' + this.produitsPanier);
+    console.log('panier from pannier component ' + this.ligneCommandes);
 
     this.loadCartTotal();
   }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
-    this.produitsPanier = this.dataSource.filteredData;
+    this.ligneCommandes = this.dataSource.filteredData;
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
@@ -60,63 +61,10 @@ export class PannierComponent implements OnInit  {
 
   getTotal(){
     let total = 0;
-    this.produitsPanier.forEach(element => {
-      total += element.prixUnitaire;
+    this.ligneCommandes.forEach(element => {
+      total += element.produit.prixUnitaire;
     });
     return total;
-  }
-
-
-  download(url: string): any {
-    let headers = new HttpHeaders();
-    // headers = headers.append('Authorization', 'Bearer ' + this.getToken());
-    this.fileService.getDownload(this.produitsPanier).subscribe((res) => {
-      const file = new Blob([res], {
-        type: 'application/pdf',
-      });
-      const a = document.createElement('a');
-      a.href = environment.baseUrl + 'download4' + (<any>res)._body;
-      a.target = '_blank';
-      document.body.appendChild(a);
-      a.click();
-      return res;
-    }, error => {
-      let alert: any = {
-        title: 'Notify Title',
-        body: 'Notify Body',
-      };
-      alert.body = error.error.message || JSON.stringify(error.error);
-      alert.title = error.error.error;
-      // alert = this.alertService.handleError(error);
-      alert.position = 'rightTop';
-      console.log(error);
-      // this.alertService.notifyError(alert);
-      return error;
-    });
-  }
-
-
-
-  downloadFacture(){
-    this.fileService.getDownload(this.produitsPanier).subscribe(data => {
-     console.log('download ok' + data);
-
-     const a = document.createElement('a');
-      // a.href = environment.baseUrl + 'download2' + (<any>data)._body;
-     a.href = environment.baseUrl + 'download2';
-     a.target = '_blank';
-     document.body.appendChild(a);
-     a.click();
-     //window.open(environment.baseUrl + 'download2');
-
-    // const blob = new Blob([data], { type: 'application/octet-stream' });
-
-    // this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
-
-    },
-    (err: HttpErrorResponse) => {
-      console.log(err.name + ' ' + err.message);
-    });
   }
 
 
@@ -124,7 +72,7 @@ export class PannierComponent implements OnInit  {
     this.state$.subscribe(
       (data) => {
         this.cartTotal = data.cart.length;
-        this.produitsPanier = data.cart;
+        this.ligneCommandes = data.cart;
       }
     );
   }
@@ -132,7 +80,7 @@ export class PannierComponent implements OnInit  {
 
   downloadFileSystem() {
     console.log('============download begin=========:');
-    this.fileService.downloadFileSystem(this.produitsPanier)
+    this.fileService.downloadFileSystem(this.ligneCommandes)
       .subscribe(response => {
         const filename = response.headers.get('filename');
 
