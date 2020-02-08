@@ -107,9 +107,6 @@ export class CommandeComponent implements OnInit, AfterViewInit  {
     this._snackBar.open(message, action, {
       duration: 500,
     });
-    produit.qteCommande = produit.qteCommande ?  produit.qteCommande + 1 : produit.qteCommande;
-    //this.produitsPanier.push(produit);
-    //this.nbProduitPanier ++;
 
     this.store.dispatch(new AddProductToCart(produit, 1));
   }

@@ -8,8 +8,6 @@ export class Produit {
   qte: number;
   prixUnitaire: number;
   description: string;
-  qteCommande: number;
-
   constructor(attrs: any = null) {
       if (attrs) {
           this.build(attrs);
@@ -24,7 +22,6 @@ export class Produit {
     this.qte =  attrs.qte;
     this.prixUnitaire =  attrs.prixUnitaire;
     this.description =  attrs.description;
-    this.qteCommande = attrs.qteCommande;
   }
 
   /**
@@ -38,8 +35,7 @@ export class Produit {
         categorie :  this.categorie,
         qte :  this.qte,
         prixUnitaire :  this.prixUnitaire,
-        description :  this.description,
-        qteCommande: this.qteCommande
+        description :  this.description
     };
   }
 }

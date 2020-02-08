@@ -71,8 +71,10 @@ export class PannierComponent implements OnInit  {
   loadCartTotal() {
     this.state$.subscribe(
       (data) => {
-        this.cartTotal = data.cart.length;
-        this.ligneCommandes = data.cart;
+        this.ligneCommandes = this.reduceArray(data.cart);
+        var total = [0, 1, 2, 3].reduce((a, b)=> a + b,0);
+        this.cartTotal =  this.ligneCommandes.reduce((a, b) => a + b.qte, 0);
+        console.log('==============cartTotal:' + this.cartTotal);
       }
     );
   }
@@ -80,7 +82,7 @@ export class PannierComponent implements OnInit  {
 
   downloadFileSystem() {
     console.log('============download begin=========:');
-    this.fileService.downloadFileSystem(this.ligneCommandes)
+    this.fileService.downloadFileSystem(this.reduceArray(this.ligneCommandes))
       .subscribe(response => {
         const filename = response.headers.get('filename');
 
@@ -92,5 +94,26 @@ export class PannierComponent implements OnInit  {
     console.log('============filename=========:' + filename);
     const blob = new Blob([data], {type: 'application/pdf; charset=utf-8'});
     fileSaver.saveAs(blob, filename);
+  }
+
+  reduceArray(ligneCommandes: Array<LigneCommande> ){
+
+    const result = [...ligneCommandes.reduce((r, o) => {
+      const key = o.id;
+
+      const item = r.get(key) || Object.assign({}, o, {
+        qte: 0
+      });
+
+      item.qte += o.qte;
+
+      return r.set(key, item);
+    }, new Map).values()];
+
+    console.log('===============================reduce:' + result);
+    result.forEach(element => {
+      console.log(element.id, element.produit.nom, element.qte);
+    });
+    return result;
   }
 }

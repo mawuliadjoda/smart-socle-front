@@ -39,6 +39,28 @@ export class ProductState {
 
   @Action(AddProductToCart)
   addProductToCart(ctx: StateContext<ProductStateModel>, action: AddProductToCart){
+    // const state = ctx.getState();
+
+    /*let ligneCommande = null;
+    let newCarts = [];
+    if(state.cart){
+      let initialList = state.cart;
+      const foundLineCommand = initialList.find(element => element.id === action.product.id);
+      if (foundLineCommand) {
+        foundLineCommand.qte = foundLineCommand.qte = action.qte;
+        const index = initialList.findIndex(element => element.id === action.product.id);
+        initialList.splice(index, 1, foundLineCommand);
+        newCarts = initialList;
+      } else {
+        ligneCommande = {
+          id: action.product.id,
+          produit: action.product,
+          qte: action.qte
+        };
+        newCarts = [ ...state.cart, ligneCommande]
+      }
+    }*/
+
     const state = ctx.getState();
     let ligneCommande = {
       id: action.product.id,
@@ -51,6 +73,7 @@ export class ProductState {
       // cart: [ ...state.cart, action.product]
       cart: [ ...state.cart, ligneCommande]
     });
+
   }
 
   // @see https://www.daptontechnologies.com/angular-ngxs-crud

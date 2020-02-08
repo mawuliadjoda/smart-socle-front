@@ -8,7 +8,7 @@
 
         <div style="text-align: right; flex: 1 auto;">
             <button mat-raised-button title="Mon panier">
-                <i matBadge="{{ligneCommandes?.length}}" matBadgeColor="warn" class="material-icons">shopping_cart</i>
+                <i matBadge="{{cartTotal}}" matBadgeColor="warn" class="material-icons">shopping_cart</i>
             </button>
         </div>
 
@@ -23,7 +23,7 @@
 
                 <div>
                     <img mat-list-avatar src="assets/images/product_image.png.webp" alt="Desc 1" />
-                    <a matLine [href]="ligneCommande.produit.nom" target="_blank">
+                    <a matLine [href]="ligneCommande?.produit?.nom" target="_blank">
                         <!-- <mat-icon [class]="link.CSSClass"></mat-icon> -->
                         <span class="link-caption">{{ ligneCommande.produit.nom }} </span>
                     </a>
@@ -50,7 +50,7 @@
                             <input matInput placeholder="Quantité"
                                    type="number"
                                    class="example-right-align"
-                                   [(ngModel)]="ligneCommande.produit.qteCommande">
+                                   [(ngModel)]="ligneCommande.qte">
                         </mat-form-field>
                         <button mat-raised-button color="primary">Voir le produit</button>
                     </div>
