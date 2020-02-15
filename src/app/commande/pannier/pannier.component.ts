@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 import { Select } from '@ngxs/store';
 import * as fileSaver from 'file-saver'; // npm i --save file-saver
 import { LigneCommande } from 'src/app/models/ligne-commande';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-pannier',
   templateUrl: './pannier.component.html',
@@ -33,6 +34,10 @@ export class PannierComponent implements OnInit  {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild('filter', { static: true }) filter: ElementRef;
 
+  // @ViewChild('pdfViewerOnDemand', { static: true }) pdfViewerOnDemand;
+  // @ViewChild('pdfViewerAutoLoad', { static: true }) pdfViewerAutoLoad;
+
+
   @Select(ProductState) state$: Observable<any>;
   cartTotal = 0;
 
@@ -42,8 +47,22 @@ export class PannierComponent implements OnInit  {
     public produitService: ProduitService,
     public fileService: FileService,
     private _snackBar: MatSnackBar,
-    private sanitizer: DomSanitizer
-  ) {}
+    private sanitizer: DomSanitizer,
+    private router: Router
+  ) {
+
+    // this.loadCartTotal();
+    // this.fileService.downloadFileSystem(this.ligneCommandes)
+    //   .subscribe(response => {
+    //     const filename = response.headers.get('filename');
+
+    //     this.pdfViewerAutoLoad.pdfSrc = response.body;// pdfSrc can be Blob or Uint8Array
+    //     this.pdfViewerAutoLoad.refresh();
+
+    //     console.log('============filename=========:' + filename);
+    //   });
+
+  }
   ngOnInit() {
     // this.produitsPanier = history && history.state && history.state.data ? history.state.data : [];
     console.log('panier from pannier component ' + this.ligneCommandes);
@@ -114,5 +133,9 @@ export class PannierComponent implements OnInit  {
       console.log(element.id, element.produit.nom, element.qte);
     });
     return result;
+  }
+
+  visualiserFacture(){
+    this.router.navigateByUrl('smart/facture');
   }
 }

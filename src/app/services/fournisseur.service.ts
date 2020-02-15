@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Fournisseur } from '../model/fournisseur';
-import { DataService } from './data.service';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FournisseurService extends DataService <Fournisseur> {
+export class FournisseurService {
   constructor(private httpClient: HttpClient) {
-    super(httpClient, 'fournisseurs');
+
   }
 }

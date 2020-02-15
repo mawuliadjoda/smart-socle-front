@@ -2,7 +2,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {Component, Inject} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { Issue } from 'src/app/models/issue';
-import { DataService } from 'src/app/services/data.service';
 import { IssueService } from 'src/app/services/issue.service';
 @Component({
   selector: 'app-add-dialog',

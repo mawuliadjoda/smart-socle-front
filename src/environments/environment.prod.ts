@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'http://localhost:8080/smart/api'
+  baseUrl: 'http://localhost:8080/smart/'
 };

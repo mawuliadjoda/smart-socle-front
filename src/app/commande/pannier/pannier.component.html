@@ -70,10 +70,24 @@
           <br>
           <mat-divider></mat-divider>
           <br>
-          <div>
-              <!-- <a [href]="fileUrl" download="file.txt">DownloadFile</a> -->
-            <button mat-raised-button color="primary" (click)="downloadFileSystem()">Facture</button>
-        </div>
+          <div style="float: left;">
+                <!-- <a [href]="fileUrl" download="file.txt">DownloadFile</a> -->
+              <button mat-raised-button color="primary" (click)="downloadFileSystem()">Facture</button>
+          </div>
+          <div style="float: right;">
+            <button mat-raised-button color="primary" (click)="visualiserFacture()">Visualiser Facture</button>
+          </div>
       </div>
 
     </div>
+
+
+
+
+    <!-- <div style="height: 600px">
+      <ng2-pdfjs-viewer pdfSrc="file:///C:/Users/koffi/Downloads/facture%20(28).pdf" viewerId="MyUniqueID"  >
+      </ng2-pdfjs-viewer>
+    </div> -->
+    <!-- <div style="width: 800px; height: 400px">
+      <ng2-pdfjs-viewer #pdfViewerAutoLoad></ng2-pdfjs-viewer>
+    </div> -->

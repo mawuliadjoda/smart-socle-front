@@ -3,14 +3,30 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Client } from '../model/client';
-import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClientService extends DataService <Client> {
-  constructor(private httpClient: HttpClient) {
-    super(httpClient, 'clients');
+export class ClientService {
+  private baseUrl = environment.baseUrl + 'clients';
+  constructor(private http: HttpClient) {
+
   }
 
+
+  getAll(): Observable<any> {
+    return this.http.get<any>(this.baseUrl);
+  }
+
+  add(t: Client): Observable<any> {
+    return this.http.post(this.baseUrl, t);
+  }
+
+  update(t: Client): Observable<any> {
+    return this.http.put(this.baseUrl, t);
+  }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/` + id);
+  }
 }

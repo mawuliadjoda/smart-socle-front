@@ -16,7 +16,7 @@ import { EditDialogComponent } from './client/edit/edit.dialog.component';
 import { AddDialogComponent } from './client/add/add-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { FournisseurComponent } from './fournisseur/fournisseur.component';
+
 import { ProduitComponent } from './produit/produit.component';
 import { AddProduitComponent } from './produit/add-produit/add-produit.component';
 import { EditProduitComponent } from './produit/edit-produit/edit-produit.component';
@@ -26,6 +26,8 @@ import { PannierComponent } from './commande/pannier/pannier.component';
 import { NgxsModule } from '@ngxs/store';
 import { ProductState } from './ngxs/state';
 
+import { PdfJsViewerModule } from 'ng2-pdfjs-viewer';
+import { FactureComponent } from './commande/facture/facture.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -38,13 +40,13 @@ import { ProductState } from './ngxs/state';
       AddDialogComponent,
       DeleteDialogComponent,
       EditDialogComponent,
-      FournisseurComponent,
       ProduitComponent,
       AddProduitComponent,
       EditProduitComponent,
       DeleteProduitComponent,
       CommandeComponent,
-      PannierComponent
+      PannierComponent,
+      FactureComponent
    ],
    imports: [
       BrowserModule,
@@ -55,6 +57,7 @@ import { ProductState } from './ngxs/state';
       AppRoutingModule,
       BrowserAnimationsModule,
       AngularMaterialModule,
+      PdfJsViewerModule,
       NgxsModule.forRoot([
         ProductState
       ], { developmentMode: true })
