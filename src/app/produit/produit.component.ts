@@ -49,9 +49,10 @@ export class ProduitComponent implements OnInit {
   }
 
   addNew() {
+
     const produitToSave = new Produit();
     const dialogRef = this.dialog.open(AddProduitComponent, {
-      data: produitToSave
+      data: produitToSave, disableClose: true
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
@@ -70,7 +71,7 @@ export class ProduitComponent implements OnInit {
 
   startEdit(index: number, produit: Produit) {
     const dialogRef = this.dialog.open(EditProduitComponent, {
-      data: produit
+      data: produit, disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -28,6 +28,7 @@ import { ProductState } from './ngxs/state';
 
 import { PdfJsViewerModule } from 'ng2-pdfjs-viewer';
 import { FactureComponent } from './commande/facture/facture.component';
+import { CommandListComponent } from './commandList/commandList.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -46,7 +47,9 @@ import { FactureComponent } from './commande/facture/facture.component';
       DeleteProduitComponent,
       CommandeComponent,
       PannierComponent,
-      FactureComponent
+      FactureComponent,
+      CommandListComponent
+
    ],
    imports: [
       BrowserModule,

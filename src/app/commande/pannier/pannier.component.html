@@ -70,12 +70,15 @@
           <br>
           <mat-divider></mat-divider>
           <br>
-          <div style="float: left;">
-                <!-- <a [href]="fileUrl" download="file.txt">DownloadFile</a> -->
+          <!-- <div style="float: left;">
               <button mat-raised-button color="primary" (click)="downloadFileSystem()">Facture</button>
-          </div>
+          </div> -->
           <div style="float: right;">
-            <button mat-raised-button color="primary" (click)="visualiserFacture()">Visualiser Facture</button>
+            <button mat-raised-button color="primary"
+                    (click)="visualiserFacture()"
+                    [disabled] = "! (ligneCommandes.length > 0)">
+                    Passer la commande
+            </button>
           </div>
       </div>
 
