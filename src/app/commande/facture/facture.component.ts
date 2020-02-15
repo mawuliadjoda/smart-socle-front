@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductState } from 'src/app/ngxs/state';
-import { Observable } from 'rxjs';
 import { Select } from '@ngxs/store';
 import { LigneCommande } from 'src/app/models/ligne-commande';
 import { FileService } from 'src/app/services/util/file.service';
-
+import { Observable, of, pipe } from 'rxjs';
+import { switchMap, debounceTime, catchError } from 'rxjs/operators';
+import { CommandeService } from 'src/app/services/commande.service.ts';
 @Component({
   selector: 'app-facture',
   templateUrl: './facture.component.html',
@@ -18,12 +19,31 @@ export class FactureComponent implements OnInit {
   cartTotal = 0;
   ligneCommandes: Array<LigneCommande> = [];
 
-  constructor(public fileService: FileService) { }
+  constructor(public fileService: FileService, public commandeService: CommandeService) { }
 
   ngOnInit() {
     this.loadCartTotal();
-    this.fileService.downloadFileSystem(this.ligneCommandes)
-    .subscribe(response => {
+    this.saveLigneFactureAndBuildPdf();
+    // this.fileService.downloadFileSystem(this.ligneCommandes)
+    // .subscribe(response => {
+    //   const filename = response.headers.get('filename');
+
+    //   this.pdfViewerAutoLoad.pdfSrc = response.body;
+    //   this.pdfViewerAutoLoad.refresh();
+
+    //   console.log('============filename=========:' + filename);
+    // });
+  }
+
+  saveLigneFactureAndBuildPdf(){
+    this.commandeService.save(this.ligneCommandes).pipe(
+      debounceTime(500),
+      switchMap(data => {
+         console.log(data);
+         return this.fileService.downloadFileSystem(this.ligneCommandes);
+      }),
+      catchError(err => of(null))
+    ).subscribe(response => {
       const filename = response.headers.get('filename');
 
       this.pdfViewerAutoLoad.pdfSrc = response.body; // pdfSrc can be Blob or Uint8Array
@@ -34,7 +54,16 @@ export class FactureComponent implements OnInit {
     });
   }
 
-
+//   Observable.forkJoin([
+//     this.http.get('http://www.server.com/dataA').map(res => res.json()),
+//     this.http.get('http://www.server.com/dataB').map(res => res.json()),
+//     this.http.get('http://www.server.com/dataC').map(res => res.json())
+// ])
+// .subscribe(([A,B,C]) => {
+//   this.dataA = A;
+//   this.dataB = B;
+//   this.dataC = C;
+// });
   loadCartTotal() {
     this.state$.subscribe(
       (data) => {

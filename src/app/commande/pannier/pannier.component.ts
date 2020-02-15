@@ -42,27 +42,15 @@ export class PannierComponent implements OnInit  {
   cartTotal = 0;
 
   constructor(
-    public httpClient: HttpClient,
     public dialog: MatDialog,
     public produitService: ProduitService,
     public fileService: FileService,
     private _snackBar: MatSnackBar,
     private sanitizer: DomSanitizer,
     private router: Router
-  ) {
+  ) {  }
 
-    // this.loadCartTotal();
-    // this.fileService.downloadFileSystem(this.ligneCommandes)
-    //   .subscribe(response => {
-    //     const filename = response.headers.get('filename');
 
-    //     this.pdfViewerAutoLoad.pdfSrc = response.body;// pdfSrc can be Blob or Uint8Array
-    //     this.pdfViewerAutoLoad.refresh();
-
-    //     console.log('============filename=========:' + filename);
-    //   });
-
-  }
   ngOnInit() {
     // this.produitsPanier = history && history.state && history.state.data ? history.state.data : [];
     console.log('panier from pannier component ' + this.ligneCommandes);
