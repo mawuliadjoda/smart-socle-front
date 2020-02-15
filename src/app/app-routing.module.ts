@@ -9,6 +9,7 @@ import { ProduitComponent } from './produit/produit.component';
 import { CommandeComponent } from './commande/commande.component';
 import { PannierComponent } from './commande/pannier/pannier.component';
 import { FactureComponent } from './commande/facture/facture.component';
+import { CommandListComponent } from './commandList/commandList.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'smart/commandes', component: CommandeComponent},
   {path: 'smart/pannier', component: PannierComponent},
   {path: 'smart/facture', component: FactureComponent},
+  {path: 'smart/list-commande', component: CommandListComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

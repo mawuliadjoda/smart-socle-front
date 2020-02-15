@@ -50,8 +50,8 @@ export class NavComponent  implements OnInit,  OnDestroy {
     },
     {
       icon: 'people',
-      route: 'smart/facture',
-      title: 'Factures'
+      route: 'smart/list-commande',
+      title: 'Liste des commandes'
     }
   ];
     mobileQuery: MediaQueryList;

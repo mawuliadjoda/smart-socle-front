@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductState } from 'src/app/ngxs/state';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { LigneCommande } from 'src/app/models/ligne-commande';
 import { FileService } from 'src/app/services/util/file.service';
 import { Observable, of, pipe } from 'rxjs';
 import { switchMap, debounceTime, catchError } from 'rxjs/operators';
 import { CommandeService } from 'src/app/services/commande.service.ts';
+import { DeleteAllProductToCart } from 'src/app/ngxs/action';
 @Component({
   selector: 'app-facture',
   templateUrl: './facture.component.html',
@@ -19,7 +20,9 @@ export class FactureComponent implements OnInit {
   cartTotal = 0;
   ligneCommandes: Array<LigneCommande> = [];
 
-  constructor(public fileService: FileService, public commandeService: CommandeService) { }
+  constructor(public fileService: FileService,
+              public commandeService: CommandeService,
+              private store: Store) { }
 
   ngOnInit() {
     this.loadCartTotal();
@@ -36,7 +39,17 @@ export class FactureComponent implements OnInit {
   }
 
   saveLigneFactureAndBuildPdf(){
-    this.commandeService.save(this.ligneCommandes).pipe(
+    let ligneCommandeToSave = this.ligneCommandes.map(item => {
+
+      const container = {
+        id: null,
+        produit: item.produit,
+        qte: item.qte
+      };
+      return container;
+    });
+
+    this.commandeService.save(ligneCommandeToSave).pipe(
       debounceTime(500),
       switchMap(data => {
          console.log(data);
@@ -51,6 +64,9 @@ export class FactureComponent implements OnInit {
 
       console.log('============filename=========:' + filename);
       // this.saveFile(response.body, 'facture.pdf');
+
+      // Vider le panier
+      this.store.dispatch(new DeleteAllProductToCart());
     });
   }
 

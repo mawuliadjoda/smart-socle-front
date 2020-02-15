@@ -16,6 +16,12 @@ export class DeleteProductToCart {
   constructor(public id: number) {
   }
 }
+export class DeleteAllProductToCart {
+  static readonly type = '[Product] DeleteAllProductToCart';
+  constructor() {
+  }
+}
+
 // @see https://www.daptontechnologies.com/angular-ngxs-crud
 export class UpdateProductToCart {
   static readonly type = '[Produit] UpdateProductToCart';

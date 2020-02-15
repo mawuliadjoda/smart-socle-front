@@ -2,7 +2,7 @@ import { State, Action, StateContext } from '@ngxs/store';
 
 import { Produit } from 'src/app/models/produit';
 import { ProduitService } from 'src/app/services/produit.service';
-import { LoadLigneCommande, AddLigneCommandeToCart, DeleteLigneCommandeToCart, UpdateLigneCommandeToCart } from '../action/commande.action';
+import { LoadLigneCommande, AddLigneCommandeToCart, DeleteLigneCommandeToCart, UpdateLigneCommandeToCart, DeleteAllLigneCommandeToCart } from '../action/commande.action';
 import { LigneCommande } from 'src/app/models/ligne-commande';
 
 export interface LigneCommandeStateModel {
@@ -54,6 +54,16 @@ export class LigneCommandeState {
   deleteTodo(ctx: StateContext<LigneCommandeStateModel>, {id}: DeleteLigneCommandeToCart) {
     const state = ctx.getState();
     const filteredArray = state.cart.filter(item => item.id !== id);
+    ctx.setState({
+        ...state,
+        cart: filteredArray,
+    });
+  }
+
+  @Action(DeleteAllLigneCommandeToCart)
+  deleteAllTodo(ctx: StateContext<LigneCommandeStateModel>, {}: DeleteAllLigneCommandeToCart) {
+    const state = ctx.getState();
+    const filteredArray = [];
     ctx.setState({
         ...state,
         cart: filteredArray,

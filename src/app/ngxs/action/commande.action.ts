@@ -17,6 +17,13 @@ export class DeleteLigneCommandeToCart {
   constructor(public id: number) {
   }
 }
+
+export class DeleteAllLigneCommandeToCart {
+  static readonly type = '[LigneCommande] DeleteAllLigneCommandeToCart';
+  constructor() {
+  }
+}
+
 // @see https://www.daptontechnologies.com/angular-ngxs-crud
 export class UpdateLigneCommandeToCart {
   static readonly type = '[LigneCommande] UpdateLigneCommandeToCart';
