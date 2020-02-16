@@ -21,8 +21,8 @@ export class ProduitComponent implements OnInit {
     'categorie',
     'qte',
     'prixUnitaire',
-    'created_at',
-    'updated_at',
+    'createdAt',
+    'updatedAt',
     'actions'
   ];
 

@@ -46,7 +46,7 @@ export class NavComponent  implements OnInit,  OnDestroy {
     {
       icon: 'contacts',
       route: 'smart/commandes',
-      title: 'Commandes'
+      title: 'Nouvelle commande'
     },
     {
       icon: 'people',
