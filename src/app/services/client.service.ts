@@ -3,7 +3,6 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Client } from '../model/client';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +11,6 @@ export class ClientService {
   constructor(private http: HttpClient) {
 
   }
-
 
   getAll(): Observable<any> {
     return this.http.get<any>(this.baseUrl);

@@ -17,4 +17,8 @@ export class LigneCommandeService {
     return this.http.get<any>(this.baseUrl);
   }
 
+  getAllStat(): Observable<any> {
+    return this.http.get<any>(this.baseUrl + '/stat');
+  }
+
 }

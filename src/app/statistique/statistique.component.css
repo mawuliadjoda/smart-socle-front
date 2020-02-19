@@ -1,0 +1,8 @@
+.jqx-chart-legend-text{
+  display: none!important;
+  visibility: hidden;
+}
+
+.avoid-clicks {
+  pointer-events: none;
+}

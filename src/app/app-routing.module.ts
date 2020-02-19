@@ -10,6 +10,9 @@ import { CommandeComponent } from './commande/commande.component';
 import { PannierComponent } from './commande/pannier/pannier.component';
 import { FactureComponent } from './commande/facture/facture.component';
 import { CommandListComponent } from './commandList/commandList.component';
+import { JqxchartComponent } from './jqxchart/jqxchart.component';
+import { StatistiqueComponent } from './statistique/statistique.component';
+import { NotificationComponent } from './notification/notification.component';
 
 
 const routes: Routes = [
@@ -23,6 +26,9 @@ const routes: Routes = [
   {path: 'smart/pannier', component: PannierComponent},
   {path: 'smart/facture', component: FactureComponent},
   {path: 'smart/list-commande', component: CommandListComponent},
+  {path: 'smart/chart', component: JqxchartComponent},
+  {path: 'smart/stat', component: StatistiqueComponent},
+  {path: 'smart/notification', component: NotificationComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

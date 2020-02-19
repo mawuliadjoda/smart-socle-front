@@ -16,6 +16,7 @@ import { EditDialogComponent } from './client/edit/edit.dialog.component';
 import { AddDialogComponent } from './client/add/add-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { jqxChartModule } from 'jqwidgets-ng/jqxchart';
 
 import { ProduitComponent } from './produit/produit.component';
 import { AddProduitComponent } from './produit/add-produit/add-produit.component';
@@ -29,6 +30,9 @@ import { ProductState } from './ngxs/state';
 import { PdfJsViewerModule } from 'ng2-pdfjs-viewer';
 import { FactureComponent } from './commande/facture/facture.component';
 import { CommandListComponent } from './commandList/commandList.component';
+import { NotificationComponent } from './notification/notification.component';
+import { StatistiqueComponent } from './statistique/statistique.component';
+import { JqxchartComponent } from './jqxchart/jqxchart.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -48,7 +52,10 @@ import { CommandListComponent } from './commandList/commandList.component';
       CommandeComponent,
       PannierComponent,
       FactureComponent,
-      CommandListComponent
+      CommandListComponent,
+      JqxchartComponent,
+      StatistiqueComponent,
+      NotificationComponent
 
    ],
    imports: [
@@ -63,7 +70,8 @@ import { CommandListComponent } from './commandList/commandList.component';
       PdfJsViewerModule,
       NgxsModule.forRoot([
         ProductState
-      ], { developmentMode: true })
+      ], { developmentMode: true }),
+      jqxChartModule
    ],
    entryComponents: [
       AddDialogComponent,
