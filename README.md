@@ -31,3 +31,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 # https://github.com/swimlane/ngx-graph
 # https://swimlane.github.io/ngx-graph/#demos/interactive-demo#dimensions
 # https://stackblitz.com/edit/ngx-graph-demo?file=src%2Fapp%2Fdata.ts
+# https://valor-software.com/ng2-charts/#/LineChart
+# https://ej2.syncfusion.com/angular/documentation/dashboard-layout/responsive-adaptive/?no-cache=1
