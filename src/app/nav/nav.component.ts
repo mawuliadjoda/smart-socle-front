@@ -36,7 +36,7 @@ export class NavComponent  implements OnInit,  OnDestroy {
     },
     {
       icon: 'assignment',
-      route: 'smart/stat',
+      route: 'smart/am-chart',
       title: 'Statistique'
     },
     {

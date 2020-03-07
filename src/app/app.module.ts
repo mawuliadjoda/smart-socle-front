@@ -34,6 +34,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
 import { JqxchartComponent } from './jqxchart/jqxchart.component';
 import { D3OrgChartComponent } from './d3-org-chart/d3-org-chart.component';
+import { AmChartComponent } from './am-chart/am-chart.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -57,7 +58,8 @@ import { D3OrgChartComponent } from './d3-org-chart/d3-org-chart.component';
       JqxchartComponent,
       StatistiqueComponent,
       NotificationComponent,
-      D3OrgChartComponent
+      D3OrgChartComponent,
+      AmChartComponent
 
    ],
    imports: [
