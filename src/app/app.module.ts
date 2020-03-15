@@ -35,6 +35,11 @@ import { StatistiqueComponent } from './statistique/statistique.component';
 import { JqxchartComponent } from './jqxchart/jqxchart.component';
 import { D3OrgChartComponent } from './d3-org-chart/d3-org-chart.component';
 import { AmChartComponent } from './am-chart/am-chart.component';
+import { RefProduitComponent } from './ref-produit/ref-produit.component';
+import { AddRefProduitComponent } from './ref-produit/add-ref-produit/add-ref-produit.component';
+import { EditRefProduitComponent } from './ref-produit/edit-ref-produit/edit-ref-produit.component';
+import { DeleteRefProduitComponent } from './ref-produit/delete-ref-produit/delete-ref-produit.component';
+import { ApprovisionnementComponent } from './produit/approvisionnement/approvisionnement.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -59,8 +64,13 @@ import { AmChartComponent } from './am-chart/am-chart.component';
       StatistiqueComponent,
       NotificationComponent,
       D3OrgChartComponent,
-      AmChartComponent
+      AmChartComponent,
+      RefProduitComponent,
+      ApprovisionnementComponent,
 
+      AddRefProduitComponent,
+      EditRefProduitComponent,
+      DeleteRefProduitComponent
    ],
    imports: [
       BrowserModule,
@@ -71,10 +81,10 @@ import { AmChartComponent } from './am-chart/am-chart.component';
       AppRoutingModule,
       BrowserAnimationsModule,
       AngularMaterialModule,
-      PdfJsViewerModule,
       NgxsModule.forRoot([
         ProductState
       ], { developmentMode: true }),
+      PdfJsViewerModule,
       jqxChartModule
    ],
    entryComponents: [
@@ -83,7 +93,11 @@ import { AmChartComponent } from './am-chart/am-chart.component';
       DeleteDialogComponent,
       AddProduitComponent,
       EditProduitComponent,
-      DeleteProduitComponent
+      DeleteProduitComponent,
+      ApprovisionnementComponent,
+      AddRefProduitComponent,
+      EditRefProduitComponent,
+      DeleteRefProduitComponent
    ],
    providers: [],
    bootstrap: [

@@ -67,6 +67,10 @@
       </mat-header-cell>
 
       <mat-cell *matCellDef="let row; let i=index;">
+        <button mat-icon-button color="accent" (click)="approvisionner(i, row)">
+          <mat-icon aria-label="add_alert">add_alert</mat-icon>
+        </button>
+
         <button mat-icon-button color="accent" (click)="startEdit(i, row)">
           <mat-icon aria-label="Edit">edit</mat-icon>
         </button>

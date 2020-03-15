@@ -36,6 +36,12 @@ export class NavComponent  implements OnInit,  OnDestroy {
     },
     {
       icon: 'assignment',
+      route: 'smart/ref-produit',
+      title: 'Ref. Produits'
+    },
+
+    {
+      icon: 'assignment',
       route: 'smart/am-chart',
       title: 'Statistique'
     },

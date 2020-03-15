@@ -14,6 +14,7 @@ import { JqxchartComponent } from './jqxchart/jqxchart.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
 import { NotificationComponent } from './notification/notification.component';
 import { AmChartComponent } from './am-chart/am-chart.component';
+import { RefProduitComponent } from './ref-produit/ref-produit.component';
 
 
 const routes: Routes = [
@@ -31,7 +32,7 @@ const routes: Routes = [
   {path: 'smart/stat', component: StatistiqueComponent},
   {path: 'smart/notification', component: NotificationComponent},
   {path: 'smart/am-chart', component: AmChartComponent},
-
+  {path: 'smart/ref-produit', component: RefProduitComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

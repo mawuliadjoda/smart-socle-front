@@ -1,23 +1,22 @@
-import { Component, OnInit, Inject, HostListener } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Produit } from 'src/app/models/produit';
 import { ProduitService } from 'src/app/services/produit.service';
 import { FormControl, Validators } from '@angular/forms';
 import { RefProduitService } from 'src/app/services/ref-produit.service';
-
+import { RefProduit } from 'src/app/models/ref-produit';
 
 @Component({
-  selector: 'app-add-produit',
-  templateUrl: './add-produit.component.html',
-  styleUrls: ['./add-produit.component.css']
+  selector: 'app-add-ref-produit',
+  templateUrl: './add-ref-produit.component.html',
+  styleUrls: ['./add-ref-produit.component.css']
 })
-export class AddProduitComponent implements OnInit {
+export class AddRefProduitComponent implements OnInit {
 
   constructor(
-    public dialogRef: MatDialogRef<AddProduitComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Produit,
-    public dataService: ProduitService,
-    private refProduitService: RefProduitService
+    public dialogRef: MatDialogRef<AddRefProduitComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: RefProduit,
+    public dataService: RefProduitService
   ) {}
 
   formControl = new FormControl('', [
@@ -25,16 +24,6 @@ export class AddProduitComponent implements OnInit {
     // Validators.email,
   ]);
   ngOnInit() {}
-
-  // @HostListener('window:mousedown', ['$event'])
-  getRefProduit(event){
-    this.refProduitService.findByReference(event).subscribe(data => {
-      this.data.setRefProduit(data);
-      console.log(data);
-    });
-    console.log('value change ');
-  }
-
   getErrorMessage() {
     return this.formControl.hasError('required')
       ? 'Required field'
@@ -52,7 +41,6 @@ export class AddProduitComponent implements OnInit {
   }
 
   public confirmAdd(): void {
-    console.log(this.data);
     // this.dataService.add(this.data).subscribe(
     //   data => {
     //     this.data = data;
