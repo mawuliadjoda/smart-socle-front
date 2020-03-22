@@ -1,3 +1,18 @@
+.spinner-container {
+  height: 360px;
+  width: 390px;
+  position: fixed;
+  vertical-align: middle;
+}
+
+
+.myPagination .ngx-pagination .current {
+  background: white;
+  font-size: 24px;
+  border-bottom: 3px solid red;
+  color: black;
+}
+
 /* Structure */
 .container {
   display: flex;
@@ -38,36 +53,26 @@
 
 .mat-cell:nth-child(1),
 .mat-header-cell:nth-child(1){
-  flex: 0 0 3%;
+  flex: 0 0 10%;
 }
 
 .mat-cell:nth-child(2),
 .mat-header-cell:nth-child(2){
-  flex: 0 0 20%;
+  flex: 0 0 30%;
 }
 
 .mat-cell:nth-child(3),
 .mat-header-cell:nth-child(3){
-  flex: 0 0 9%;
+  flex: 0 0 20%;
 }
 
 .mat-cell:nth-child(4),
 .mat-header-cell:nth-child(4){
-  flex: 0 0 11%;
+  flex: 0 0 10%;
 }
 
 .mat-cell:nth-child(5),
 .mat-header-cell:nth-child(5){
-  flex: 0 0 5%;
-}
-
-.mat-cell:nth-child(6),
-.mat-header-cell:nth-child(6){
-  flex: 0 0 7%;
-}
-
-.mat-cell:nth-child(9),
-.mat-header-cell:nth-child(9){
-  flex: 0 0 10%;
+  flex: 0 0 25%;
 }
 

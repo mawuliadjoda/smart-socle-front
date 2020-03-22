@@ -1,3 +1,5 @@
+import { RefProduit } from "./ref-produit";
+
 export class Produit {
   id: number;
   nom: string;
@@ -8,36 +10,42 @@ export class Produit {
   qte: number;
   prixUnitaire: number;
   description: string;
+  // refProduit: RefProduit;
   constructor(attrs: any = null) {
-      if (attrs) {
-          this.build(attrs);
-      }
+    if (attrs) {
+      this.build(attrs);
+    }
   }
 
   build(attrs: any): void {
-    this.nom= attrs.nom;
+    this.nom = attrs.nom;
     this.reference = attrs.reference;
-    this.categorie =  attrs.categorie;
+    this.categorie = attrs.categorie;
 
-    this.qte =  attrs.qte;
-    this.prixUnitaire =  attrs.prixUnitaire;
-    this.description =  attrs.description;
+    this.qte = attrs.qte;
+    this.prixUnitaire = attrs.prixUnitaire;
+    this.description = attrs.description;
+    // this.refProduit = new RefProduit();
   }
-
+  setRefProduit(refProduit: RefProduit) {
+    this.nom = refProduit.nom;
+    this.reference = refProduit.reference;
+    this.categorie = refProduit.categorie;
+    this.description = refProduit.description;
+    this.prixUnitaire = refProduit.prixUnitaire;
+  }
   /**
-  * Return a JSON object representation of the object
-  * @return {Object}
-  */
+   * Return a JSON object representation of the object
+   * @return {Object}
+   */
   toJson(): Object {
     return {
-        nom: this.nom,
-        reference : this.reference,
-        categorie :  this.categorie,
-        qte :  this.qte,
-        prixUnitaire :  this.prixUnitaire,
-        description :  this.description
+      nom: this.nom,
+      reference: this.reference,
+      categorie: this.categorie,
+      qte: this.qte,
+      prixUnitaire: this.prixUnitaire,
+      description: this.description
     };
   }
 }
-
-

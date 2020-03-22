@@ -4,17 +4,15 @@ import { Produit } from 'src/app/models/produit';
 import { ProduitService } from 'src/app/services/produit.service';
 import { FormControl, Validators } from '@angular/forms';
 import { RefProduitService } from 'src/app/services/ref-produit.service';
-
-
 @Component({
-  selector: 'app-add-produit',
-  templateUrl: './add-produit.component.html',
-  styleUrls: ['./add-produit.component.css']
+  selector: 'app-approvisionnement',
+  templateUrl: './approvisionnement.component.html',
+  styleUrls: ['./approvisionnement.component.css']
 })
-export class AddProduitComponent implements OnInit {
-
+export class ApprovisionnementComponent implements OnInit {
+  //public qteAajouter: number;
   constructor(
-    public dialogRef: MatDialogRef<AddProduitComponent>,
+    public dialogRef: MatDialogRef<ApprovisionnementComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Produit,
     public dataService: ProduitService,
     private refProduitService: RefProduitService
@@ -51,8 +49,9 @@ export class AddProduitComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  public confirmAdd(): void {
-    console.log(this.data);
+  public confirm(qteAajouter: HTMLInputElement): void {
+    this.data.qte = qteAajouter.value ?  this.data.qte + Number(qteAajouter.value) : this.data.qte ;
+    console.log(this.formControl);
     // this.dataService.add(this.data).subscribe(
     //   data => {
     //     this.data = data;

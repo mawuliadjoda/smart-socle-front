@@ -33,6 +33,16 @@ import { CommandListComponent } from './commandList/commandList.component';
 import { NotificationComponent } from './notification/notification.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
 import { JqxchartComponent } from './jqxchart/jqxchart.component';
+import { D3OrgChartComponent } from './d3-org-chart/d3-org-chart.component';
+import { AmChartComponent } from './am-chart/am-chart.component';
+import { RefProduitComponent } from './ref-produit/ref-produit.component';
+import { AddRefProduitComponent } from './ref-produit/add-ref-produit/add-ref-produit.component';
+import { EditRefProduitComponent } from './ref-produit/edit-ref-produit/edit-ref-produit.component';
+import { DeleteRefProduitComponent } from './ref-produit/delete-ref-produit/delete-ref-produit.component';
+import { ApprovisionnementComponent } from './produit/approvisionnement/approvisionnement.component';
+import { RefMedicamentANSMComponent } from './referentiels/refMedicamentANSM/refMedicamentANSM.component';
+import { MatPaginatorIntl } from '@angular/material';
+import { getDutchPaginatorIntl } from './smart-paginator-override';
 @NgModule({
    declarations: [
       AppComponent,
@@ -55,8 +65,17 @@ import { JqxchartComponent } from './jqxchart/jqxchart.component';
       CommandListComponent,
       JqxchartComponent,
       StatistiqueComponent,
-      NotificationComponent
+      NotificationComponent,
+      D3OrgChartComponent,
+      AmChartComponent,
+      RefProduitComponent,
+      ApprovisionnementComponent,
 
+      AddRefProduitComponent,
+      EditRefProduitComponent,
+      DeleteRefProduitComponent,
+
+      RefMedicamentANSMComponent
    ],
    imports: [
       BrowserModule,
@@ -67,10 +86,10 @@ import { JqxchartComponent } from './jqxchart/jqxchart.component';
       AppRoutingModule,
       BrowserAnimationsModule,
       AngularMaterialModule,
-      PdfJsViewerModule,
       NgxsModule.forRoot([
         ProductState
       ], { developmentMode: true }),
+      PdfJsViewerModule,
       jqxChartModule
    ],
    entryComponents: [
@@ -79,9 +98,16 @@ import { JqxchartComponent } from './jqxchart/jqxchart.component';
       DeleteDialogComponent,
       AddProduitComponent,
       EditProduitComponent,
-      DeleteProduitComponent
+      DeleteProduitComponent,
+      ApprovisionnementComponent,
+      AddRefProduitComponent,
+      EditRefProduitComponent,
+      DeleteRefProduitComponent
    ],
-   providers: [],
+   providers: [
+     // Translate angular-material paginator
+     { provide: MatPaginatorIntl, useValue: getDutchPaginatorIntl() }
+   ],
    bootstrap: [
       AppComponent
    ]

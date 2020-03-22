@@ -3,14 +3,27 @@
 
     <form class="mat-dialog-content" (ngSubmit)="submit()" #formControl="ngForm">
 
-      <!-- <div class="form">
+      <div class="form">
         <mat-form-field color="accent">
-          <input matInput #input class="form-control" placeholder="Id" [(ngModel)]="data.id" name="id" required >
+          <input (ngModelChange)="getRefProduit($event)" matInput #inputstate class="form-control" placeholder="Reference" [(ngModel)]="data.reference" name="reference" maxlength="10" required >
           <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
-      </div> -->
+      </div>
 
-      <!--Textarea for demo purposes-->
+
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput placeholder="Quantite" [(ngModel)]="data.qte" name="qte">
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+          <mat-form-field color="accent">
+            <input matInput placeholder="Prix unitaire" [(ngModel)]="data.prixUnitaire" name="prixUnitaire">
+          </mat-form-field>
+      </div>
+
+
       <div class="form">
         <mat-form-field color="accent">
           <textarea matInput #input class="form-control" placeholder="Nom" [(ngModel)]="data.nom" name="nom" required ></textarea>
@@ -19,12 +32,6 @@
       </div>
 
       <!--Contains mat-hint for characters count and has maxLengt set-->
-      <div class="form">
-        <mat-form-field color="accent">
-          <input matInput #inputstate class="form-control" placeholder="Reference" [(ngModel)]="data.reference" name="reference" maxlength="10" required >
-          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field>
-      </div>
 
       <div class="form">
         <mat-form-field color="accent">
@@ -37,18 +44,6 @@
             <input matInput placeholder="Description" [(ngModel)]="data.description" name="description">
           </mat-form-field>
       </div>
-
-      <div class="form">
-        <mat-form-field color="accent">
-          <input matInput placeholder="Quantite" [(ngModel)]="data.qte" name="qte">
-        </mat-form-field>
-      </div>
-
-      <div class="form">
-          <mat-form-field color="accent">
-            <input matInput placeholder="Prix unitaire" [(ngModel)]="data.prixUnitaire" name="prixUnitaire">
-          </mat-form-field>
-        </div>
 
 
       <div mat-dialog-actions>

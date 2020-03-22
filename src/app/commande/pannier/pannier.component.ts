@@ -69,7 +69,7 @@ export class PannierComponent implements OnInit  {
   getTotal(){
     let total = 0;
     this.ligneCommandes.forEach(element => {
-      total += element.produit.prixUnitaire;
+      total += element.produit.prixUnitaire * element.qte;
     });
     return total;
   }

@@ -1,0 +1,78 @@
+
+  <div class="form">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+  <div class="container mat-elevation-z8">
+
+    <!-- <div class="form">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div> -->
+
+    <div class="spinner-container" *ngIf="loading">
+
+      <mat-spinner></mat-spinner>
+
+    </div>
+
+    <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+      ng update @angular/cli @angular/core
+      <ng-container matColumnDef="cis">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>CIS</mat-header-cell>
+        <mat-cell *matCellDef="let row" >{{row.cis}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="nom">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Nom</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.nom}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="libelleAtc">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Libelle ATC</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.libelleAtc}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="codeAtc">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Code ATC</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.codeAtc}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="titulaire">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Titulaire</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.titulaire}}</mat-cell>
+     </ng-container>
+
+
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+
+    <div class="no-results" [style.display]="dataSource.data.length == 0 ? '' : 'none'">
+      No results
+    </div>
+
+    <!-- <mat-paginator
+          [length]="length"
+          [pageIndex]="pageIndex"
+          [pageSize]="pageSize"
+
+          (page)="pageEvent = getServerData($event)"
+
+    >
+
+    </mat-paginator> -->
+
+    <mat-paginator class="myPagination"
+                   [length]="length"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions"
+
+                   (page)="changePage($event)"
+                   [showFirstLastButtons] = "true">
+    </mat-paginator>
+  </div>

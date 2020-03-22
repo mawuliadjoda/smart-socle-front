@@ -1,0 +1,30 @@
+<div class="container">
+  <h3 mat-dialog-title>Approvisionner</h3>
+
+  <form class="mat-dialog-content" (ngSubmit)="submit()" #formControl="ngForm">
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput  placeholder="Nom" [(ngModel)]="data.nom" name="nom" required >
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input disabled matInput placeholder="Quantite initiale" [(ngModel)]="data.qte" name="qte">
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput placeholder="Quantite à ajouter" #qteAajouter>
+      </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions>
+      <button mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="confirm(qteAajouter)">Save</button>
+      <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </div>
+  </form>
+</div>
