@@ -41,6 +41,8 @@ import { EditRefProduitComponent } from './ref-produit/edit-ref-produit/edit-ref
 import { DeleteRefProduitComponent } from './ref-produit/delete-ref-produit/delete-ref-produit.component';
 import { ApprovisionnementComponent } from './produit/approvisionnement/approvisionnement.component';
 import { RefMedicamentANSMComponent } from './referentiels/refMedicamentANSM/refMedicamentANSM.component';
+import { MatPaginatorIntl } from '@angular/material';
+import { getDutchPaginatorIntl } from './smart-paginator-override';
 @NgModule({
    declarations: [
       AppComponent,
@@ -102,7 +104,10 @@ import { RefMedicamentANSMComponent } from './referentiels/refMedicamentANSM/ref
       EditRefProduitComponent,
       DeleteRefProduitComponent
    ],
-   providers: [],
+   providers: [
+     // Translate angular-material paginator
+     { provide: MatPaginatorIntl, useValue: getDutchPaginatorIntl() }
+   ],
    bootstrap: [
       AppComponent
    ]

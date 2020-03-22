@@ -118,4 +118,16 @@ export class RefMedicamentANSMComponent implements OnInit, AfterViewInit {
   //   const part = this.data.slice(start, end);
   //   this.dataSource = new MatTableDataSource(part);
   // }
+
+  // private toTableData(books: Book[]): TableData[] {
+  //   return books.map(b => {
+  //     return {
+  //       isbn: b.isbn,
+  //       name: b.name,
+  //       authors: b.authorName,
+  //       year: b.year,
+  //       pages: b.totalPage,
+  //     };
+  //   });
+  // }
 }
