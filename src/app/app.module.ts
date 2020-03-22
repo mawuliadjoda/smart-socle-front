@@ -40,6 +40,7 @@ import { AddRefProduitComponent } from './ref-produit/add-ref-produit/add-ref-pr
 import { EditRefProduitComponent } from './ref-produit/edit-ref-produit/edit-ref-produit.component';
 import { DeleteRefProduitComponent } from './ref-produit/delete-ref-produit/delete-ref-produit.component';
 import { ApprovisionnementComponent } from './produit/approvisionnement/approvisionnement.component';
+import { RefMedicamentANSMComponent } from './referentiels/refMedicamentANSM/refMedicamentANSM.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -70,7 +71,9 @@ import { ApprovisionnementComponent } from './produit/approvisionnement/approvis
 
       AddRefProduitComponent,
       EditRefProduitComponent,
-      DeleteRefProduitComponent
+      DeleteRefProduitComponent,
+
+      RefMedicamentANSMComponent
    ],
    imports: [
       BrowserModule,
