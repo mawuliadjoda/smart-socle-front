@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpResponse, HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpResponse, HttpClient, HttpHeaders, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Produit } from 'src/app/models/produit';
@@ -68,4 +68,14 @@ export class FileService {
        });
   }
 
+  pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
+    let url = environment.baseUrl + '/savefile';
+    const data: FormData = new FormData();
+    data.append('file', file);
+    const newRequest = new HttpRequest('POST', url, data, {
+          reportProgress: true,
+          responseType: 'text'
+    });
+    return this.http.request(newRequest);
+  }
 }

@@ -43,6 +43,7 @@ import { ApprovisionnementComponent } from './produit/approvisionnement/approvis
 import { RefMedicamentANSMComponent } from './referentiels/refMedicamentANSM/refMedicamentANSM.component';
 import { MatPaginatorIntl } from '@angular/material';
 import { getDutchPaginatorIntl } from './smart-paginator-override';
+import { FileUploadComponent } from './util-component/file-upload/file-upload.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -75,7 +76,8 @@ import { getDutchPaginatorIntl } from './smart-paginator-override';
       EditRefProduitComponent,
       DeleteRefProduitComponent,
 
-      RefMedicamentANSMComponent
+      RefMedicamentANSMComponent,
+      FileUploadComponent
    ],
    imports: [
       BrowserModule,

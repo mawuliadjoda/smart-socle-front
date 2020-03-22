@@ -16,6 +16,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { AmChartComponent } from './am-chart/am-chart.component';
 import { RefProduitComponent } from './ref-produit/ref-produit.component';
 import { RefMedicamentANSMComponent } from './referentiels/refMedicamentANSM/refMedicamentANSM.component';
+import { FileUploadComponent } from './util-component/file-upload/file-upload.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,7 @@ const routes: Routes = [
   {path: 'smart/am-chart', component: AmChartComponent},
   {path: 'smart/ref-produit', component: RefProduitComponent},
   {path: 'smart/ref-medicament-ansm', component: RefMedicamentANSMComponent},
+  {path: 'smart/app-file-upload', component: FileUploadComponent},
 
   {path: '**', component: PageNotFoundComponent}
 ];
