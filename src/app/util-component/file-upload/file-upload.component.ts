@@ -14,7 +14,8 @@ export class FileUploadComponent implements OnInit {
   currentFileUpload: File;
   progress: { percentage: number } = { percentage: 0 };
   selectedFile = null;
-  changeImage = false;
+
+  downloadUrl = environment.baseUrl + '/download5';
   constructor(private fileService: FileService) { }
 
   ngOnInit() {
@@ -38,23 +39,4 @@ export class FileUploadComponent implements OnInit {
   selectFile(event) {
     this.selectedFiles = event.target.files;
   }
-
-  downloadFile(){
-    let url = environment.baseUrl + '/download5';
-    const link = document.createElement('a');
-    link.setAttribute('target', '_blank');
-    link.setAttribute('href', url);
-    link.setAttribute('download', 'file_name.pdf');
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-  }
-
-  change($event) {
-    this.changeImage = true;
-  }
-  changedImage(event) {
-    this.selectedFile = event.target.files[0];
-  }
-
 }
