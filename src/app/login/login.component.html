@@ -8,8 +8,8 @@
 
 
 
-
-<mat-card>
+<!--
+  <mat-card>
     <mat-card-title>Login</mat-card-title>
 
 <mat-card-content>
@@ -38,5 +38,43 @@
 </mat-card-content>
 </mat-card>
 
+-->
 
-<!-- <app-d3-org-chart></app-d3-org-chart> -->
+
+
+<mat-card>
+  <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+      <form>
+          <table class="example-full-width" cellspacing="0">
+              <tr>
+                  <td>
+                      <mat-form-field class="example-full-width">
+                          <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+                      </mat-form-field>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <mat-form-field class="example-full-width">
+                          <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+                      </mat-form-field>
+                  </td>
+              </tr>
+              <p *ngIf="error" class="error">
+                  {{ error }}
+              </p>
+          </table>
+      </form>
+      <!-- <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner> -->
+  </mat-card-content>
+
+  <div class="button">
+    <mat-card-actions>
+      <button mat-raised-button (click)="checkLogin()" color="primary">Login</button>
+    </mat-card-actions>
+  </div>
+
+</mat-card>

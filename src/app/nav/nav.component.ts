@@ -3,6 +3,7 @@ import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import { LoggerService } from '../util/services/logger/logger.service';
 import { Observable, Subscription } from 'rxjs';
 import { PropertyService } from '../services/util/property.service';
+import { AuthenticationService } from '../services/jwt-auth/authentication.service';
 
 
 
@@ -79,7 +80,8 @@ export class NavComponent  implements OnInit,  OnDestroy {
     private mobileQueryListener: () => void;
 
     constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,
-                private propertyService: PropertyService) {
+                private propertyService: PropertyService,
+                private loginService:AuthenticationService) {
       this.mobileQuery = media.matchMedia('(max-width: 600px)');
       this.mobileQueryListener = () => changeDetectorRef.detectChanges();
       this.mobileQuery.addListener(this.mobileQueryListener);
@@ -92,12 +94,13 @@ export class NavComponent  implements OnInit,  OnDestroy {
     // shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 
    ngOnInit() {
-     this.message = this.propertyService.getProperty();
-     this.message.subscribe(
-       data => {
-         this.isLogged = data;
-         console.log('-------isLogged---------:' + this.isLogged);
-       }
-     );
+
+      this.message = this.propertyService.getProperty();
+      this.message.subscribe(
+        data => {
+          this.isLogged = data && this.loginService.isUserLoggedIn();
+          console.log('-------isLogged---------:' + this.isLogged);
+        }
+      );
    }
 }

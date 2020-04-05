@@ -16,25 +16,31 @@ import { NotificationComponent } from './notification/notification.component';
 import { AmChartComponent } from './am-chart/am-chart.component';
 import { RefProduitComponent } from './ref-produit/ref-produit.component';
 import { RefMedicamentANSMComponent } from './referentiels/refMedicamentANSM/refMedicamentANSM.component';
+import { FileUploadComponent } from './util-component/file-upload/file-upload.component';
+import { AuthGaurdService } from './services/jwt-auth/auth-gaurd.service';
+import { ElasticsearchComponent } from './elasticsearch/elasticsearch.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
   //{path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'client', component: ClientComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'smart/produits', component: ProduitComponent},
-  {path: 'smart/commandes', component: CommandeComponent},
-  {path: 'smart/pannier', component: PannierComponent},
-  {path: 'smart/facture', component: FactureComponent},
-  {path: 'smart/list-commande', component: CommandListComponent},
-  {path: 'smart/chart', component: JqxchartComponent},
-  {path: 'smart/stat', component: StatistiqueComponent},
-  {path: 'smart/notification', component: NotificationComponent},
-  {path: 'smart/am-chart', component: AmChartComponent},
-  {path: 'smart/ref-produit', component: RefProduitComponent},
-  {path: 'smart/ref-medicament-ansm', component: RefMedicamentANSMComponent},
+  {path: 'client', component: ClientComponent, canActivate: [AuthGaurdService]},
+  {path: 'home', component: HomeComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/produits', component: ProduitComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/commandes', component: CommandeComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/pannier', component: PannierComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/facture', component: FactureComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/list-commande', component: CommandListComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/chart', component: JqxchartComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/stat', component: StatistiqueComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/notification', component: NotificationComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/am-chart', component: AmChartComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/ref-produit', component: RefProduitComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/ref-medicament-ansm', component: RefMedicamentANSMComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/app-file-upload', component: FileUploadComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/search', component: ElasticsearchComponent, canActivate: [AuthGaurdService]},
+
 
   {path: '**', component: PageNotFoundComponent}
 ];

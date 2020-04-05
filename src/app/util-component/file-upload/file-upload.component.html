@@ -1,0 +1,18 @@
+
+<input id="customFile"
+      class="file-upload"
+      type="file"
+      style="margin-right: 5px;"
+      (change)="selectFile($event)">
+
+<button mat-raised-button
+        [disabled]="!selectedFiles"
+        (click)="upload()">
+        <mat-icon>file_upload</mat-icon>
+        Valider
+</button>
+
+<br>
+
+
+<app-file-download [downloadUrl] = "downloadUrl"></app-file-download>

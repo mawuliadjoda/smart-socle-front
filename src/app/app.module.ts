@@ -15,7 +15,7 @@ import { DeleteDialogComponent } from './client/delete/delete.dialog.component';
 import { EditDialogComponent } from './client/edit/edit.dialog.component';
 import { AddDialogComponent } from './client/add/add-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { jqxChartModule } from 'jqwidgets-ng/jqxchart';
 
 import { ProduitComponent } from './produit/produit.component';
@@ -43,6 +43,11 @@ import { ApprovisionnementComponent } from './produit/approvisionnement/approvis
 import { RefMedicamentANSMComponent } from './referentiels/refMedicamentANSM/refMedicamentANSM.component';
 import { MatPaginatorIntl } from '@angular/material';
 import { getDutchPaginatorIntl } from './smart-paginator-override';
+import { FileUploadComponent } from './util-component/file-upload/file-upload.component';
+import { FileDownloadComponent } from './util-component/file-download/file-download.component';
+import { FooterComponent } from './footer/footer.component';
+import { BasicAuthHtppInterceptorService } from './services/jwt-auth/basic-auth-interceptor.service';
+import { ElasticsearchComponent } from './elasticsearch/elasticsearch.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -75,7 +80,12 @@ import { getDutchPaginatorIntl } from './smart-paginator-override';
       EditRefProduitComponent,
       DeleteRefProduitComponent,
 
-      RefMedicamentANSMComponent
+      RefMedicamentANSMComponent,
+      FileUploadComponent,
+      FileDownloadComponent,
+
+      FooterComponent,
+      ElasticsearchComponent
    ],
    imports: [
       BrowserModule,
@@ -106,7 +116,10 @@ import { getDutchPaginatorIntl } from './smart-paginator-override';
    ],
    providers: [
      // Translate angular-material paginator
-     { provide: MatPaginatorIntl, useValue: getDutchPaginatorIntl() }
+     { provide: MatPaginatorIntl, useValue: getDutchPaginatorIntl() },
+
+     // Security auth Corps interceptor
+     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthHtppInterceptorService, multi: true }
    ],
    bootstrap: [
       AppComponent

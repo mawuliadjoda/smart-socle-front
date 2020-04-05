@@ -1,0 +1,36 @@
+<div class="form">
+  <mat-form-field>
+    <input [(ngModel)]="fieldValue" (keyup)="search($event)" matInput placeholder="Rechercher un médicament" >
+  </mat-form-field>
+</div>
+
+<!-- <input type="text" (keyup)="search($event)" placeholder="Rechercher un médicament" class="input"> -->
+<!--
+<div *ngFor="let hit of hits">
+  <p>{{hit._source.nom}}
+</div> -->
+
+<div class="form">
+  <div *ngIf="hits?.length < 1">
+    <p class="no-results" >Aucun résultat!</p>
+  </div>
+
+
+  <mat-form-field *ngIf="hits?.length > 0">
+    <mat-label>Résultats</mat-label>
+    <mat-select [formControl]="selecton" multiple>
+      <mat-select-trigger>
+        {{selecton.value ? selecton.value[0]?.nom : ''}}
+        <span *ngIf="selecton.value?.length > 1" class="example-additional-selection">
+          (+{{selecton.value.length - 1}} {{selecton.value?.length === 2 ? 'autre' : 'autres'}})
+        </span>
+      </mat-select-trigger>
+      <mat-option *ngFor="let hit of hits" [value]="hit._source">{{hit._source.nom}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button title="Ajouter au panier" (click)="ajoutPanier()">
+   Ajouter
+  </button>
+
+</div>
