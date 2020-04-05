@@ -47,6 +47,7 @@ import { FileUploadComponent } from './util-component/file-upload/file-upload.co
 import { FileDownloadComponent } from './util-component/file-download/file-download.component';
 import { FooterComponent } from './footer/footer.component';
 import { BasicAuthHtppInterceptorService } from './services/jwt-auth/basic-auth-interceptor.service';
+import { ElasticsearchComponent } from './elasticsearch/elasticsearch.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -83,7 +84,8 @@ import { BasicAuthHtppInterceptorService } from './services/jwt-auth/basic-auth-
       FileUploadComponent,
       FileDownloadComponent,
 
-      FooterComponent
+      FooterComponent,
+      ElasticsearchComponent
    ],
    imports: [
       BrowserModule,

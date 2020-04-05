@@ -18,6 +18,7 @@ import { RefProduitComponent } from './ref-produit/ref-produit.component';
 import { RefMedicamentANSMComponent } from './referentiels/refMedicamentANSM/refMedicamentANSM.component';
 import { FileUploadComponent } from './util-component/file-upload/file-upload.component';
 import { AuthGaurdService } from './services/jwt-auth/auth-gaurd.service';
+import { ElasticsearchComponent } from './elasticsearch/elasticsearch.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,8 @@ const routes: Routes = [
   {path: 'smart/ref-produit', component: RefProduitComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/ref-medicament-ansm', component: RefMedicamentANSMComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/app-file-upload', component: FileUploadComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/search', component: ElasticsearchComponent, canActivate: [AuthGaurdService]},
+
 
   {path: '**', component: PageNotFoundComponent}
 ];
