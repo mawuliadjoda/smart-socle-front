@@ -2,30 +2,39 @@
   <mat-form-field>
     <input [(ngModel)]="fieldValue" (keyup)="search($event)" matInput placeholder="Rechercher un médicament" >
   </mat-form-field>
+
+  <div style="text-align: right; flex: 1 auto;">
+    <button mat-raised-button title="Mon panier" (click)="viewShoppingCart()">
+        <i matBadge="{{produitsPanier?.length}}" matBadgeColor="warn" class="material-icons">shopping_cart</i>
+    </button>
+</div>
 </div>
 
 <!-- <input type="text" (keyup)="search($event)" placeholder="Rechercher un médicament" class="input"> -->
 <!--
-<div *ngFor="let hit of hits">
+<div *ngFor="let hit of produits">
   <p>{{hit._source.nom}}
 </div> -->
 
 <div class="form">
-  <div *ngIf="hits?.length < 1">
+  <div *ngIf="produits?.length < 1">
     <p class="no-results" >Aucun résultat!</p>
   </div>
 
 
-  <mat-form-field *ngIf="hits?.length > 0">
+  <mat-form-field *ngIf="produits?.length > 0" style="width:95%!important;">
     <mat-label>Résultats</mat-label>
-    <mat-select [formControl]="selecton" multiple>
+    <mat-select [formControl]="selecton" multiple style="width:95%!important;">
       <mat-select-trigger>
         {{selecton.value ? selecton.value[0]?.nom : ''}}
         <span *ngIf="selecton.value?.length > 1" class="example-additional-selection">
           (+{{selecton.value.length - 1}} {{selecton.value?.length === 2 ? 'autre' : 'autres'}})
         </span>
       </mat-select-trigger>
-      <mat-option *ngFor="let hit of hits" [value]="hit._source">{{hit._source.nom}}</mat-option>
+      <mat-option  *ngFor="let produit of produits" [value]="produit" matTooltip="{{produit.nom}}" style="font-size: 10px;">
+        <!-- <mat-option [disabled]="produit.qte === 0" *ngFor="let produit of produits" [value]="produit" matTooltip="{{produit.nom}}" style="font-size: 10px;"> -->
+        {{ (produit.nom.length>100)? (produit.nom | slice:0:100)+'...':(produit.nom) }} /  Qte:{{produit.qte}} /  Prix:{{produit.prixUnitaire}} /  Empl.:{{produit.emplacement}}
+      </mat-option>
     </mat-select>
   </mat-form-field>
 
@@ -34,3 +43,51 @@
   </button>
 
 </div>
+
+<mat-divider></mat-divider>
+
+        <div>
+
+            <mat-nav-list *ngIf="selecton?.value?.length > 0" >
+                <mat-list-item *ngFor="let produit of selecton?.value; index as i">
+
+                    <div>
+                        <img mat-list-avatar src="assets/images/product_image.png.webp" alt="Desc 1" />
+                        <a matLine [href]="produit.nom" target="_blank">
+                            <span class="link-caption">{{ produit.nom }} </span>
+                        </a>
+                        <br>
+                        <span class="link-caption">{{ produit.description }} </span>
+                        <p mat-line>
+                            <span>{{produit.categorie}}</span>
+                        </p>
+                    </div>
+
+                    <div style="text-align: right; flex: 1 auto;">
+                        <a matLine [href]="produit.nom" target="_blank">
+                            <span class="link-caption">{{ produit.nom }} </span>
+                        </a>
+
+                        <h3 mat-line>{{produit.prixUnitaire}} fcfa</h3>
+                        <span *ngIf="produit.qte > 0" style="color: green;">En stock</span>
+                        <span *ngIf="produit.qte === 0" style="color: red;">Non disponible</span>
+                        <br>
+
+                        <div>
+                            <button mat-raised-button color="primary">Voir le produit</button>
+
+                            <button [disabled]="produit.qte === 0" mat-raised-button title="Ajouter au panier" [ngStyle]="{'margin-left': '5px', 'cursor': produit.qte === 0 ? 'not-allowed' : ''}" (click)="addShoppingCard(produit)">
+                                <i class="material-icons">add_shopping_cart</i>
+
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <mat-divider></mat-divider>
+                </mat-list-item>
+            </mat-nav-list>
+
+
+
+        </div>

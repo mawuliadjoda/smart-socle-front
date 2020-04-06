@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ElasticsearchService } from '../services/elasticsearch/elasticsearch.service';
 import { FormControl } from '@angular/forms';
+import { Produit } from '../models/produit';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-elasticsearch',
@@ -10,10 +12,13 @@ import { FormControl } from '@angular/forms';
 export class ElasticsearchComponent implements OnInit {
 
   fieldValue: string;
-  hits: [];
+  produits: [];
 
   selecton = new FormControl();
-  constructor(private elasticsearchService: ElasticsearchService) { }
+
+  produitsPanier: Array<Produit> = [];
+  constructor(private elasticsearchService: ElasticsearchService,
+             private router: Router) { }
 
   ngOnInit() {
   }
@@ -21,19 +26,26 @@ export class ElasticsearchComponent implements OnInit {
   search($event) {
     this.fieldValue = $event.target.value;
     if (this.fieldValue.length > 2) {
-      this.elasticsearchService.search('nom', this.fieldValue).subscribe(
+      this.elasticsearchService.searchProduit('nom', this.fieldValue).subscribe(
         data => {
-          this.hits = data;
-          // console.log(this.hits);
+          this.produits = data;
+          console.log(this.produits);
         }
       );
     }
   }
 
   ajoutPanier() {
+    console.log(this.selecton);
+
+
+
     this.fieldValue = '';
     this.selecton = new FormControl();
-    console.log(this.selecton);
+  }
+
+  viewShoppingCart(){
+    this.router.navigateByUrl('smart/pannier');
   }
 
 }
