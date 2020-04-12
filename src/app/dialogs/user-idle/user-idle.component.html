@@ -1,0 +1,11 @@
+<!-- <h2 matDialogTitle>Unregister?</h2> -->
+<mat-dialog-content>
+  <p *ngIf="isLogged">Votre session sera expirée dans:  {{ (minutesDisplay) }}:{{ (secondsDisplay) && (secondsDisplay <=59) ? secondsDisplay : '00' }}
+                     Souhaitez-vous rester connecter ?
+  </p>
+  <p *ngIf="!isLogged">Vous avez étez déconnecter suite à une inactivité !</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button *ngIf="isLogged" mat-button matDialogClose="cancel" color="primary">Non</button>
+  <button mat-button matDialogClose="confirm" color="warn">{{isLogged ? 'Oui': 'Ok'}}</button>
+</mat-dialog-actions>

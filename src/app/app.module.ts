@@ -48,6 +48,9 @@ import { FileDownloadComponent } from './util-component/file-download/file-downl
 import { FooterComponent } from './footer/footer.component';
 import { BasicAuthHtppInterceptorService } from './services/jwt-auth/basic-auth-interceptor.service';
 import { ElasticsearchComponent } from './elasticsearch/elasticsearch.component';
+
+import { BnNgIdleService } from 'bn-ng-idle';
+import { UserIdleComponent } from './dialogs/user-idle/user-idle.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -85,7 +88,9 @@ import { ElasticsearchComponent } from './elasticsearch/elasticsearch.component'
       FileDownloadComponent,
 
       FooterComponent,
-      ElasticsearchComponent
+      ElasticsearchComponent,
+
+      UserIdleComponent
    ],
    imports: [
       BrowserModule,
@@ -112,14 +117,16 @@ import { ElasticsearchComponent } from './elasticsearch/elasticsearch.component'
       ApprovisionnementComponent,
       AddRefProduitComponent,
       EditRefProduitComponent,
-      DeleteRefProduitComponent
+      DeleteRefProduitComponent,
+      UserIdleComponent
    ],
    providers: [
      // Translate angular-material paginator
      { provide: MatPaginatorIntl, useValue: getDutchPaginatorIntl() },
 
      // Security auth Corps interceptor
-     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthHtppInterceptorService, multi: true }
+     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthHtppInterceptorService, multi: true },
+     BnNgIdleService
    ],
    bootstrap: [
       AppComponent

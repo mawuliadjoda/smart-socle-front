@@ -13,6 +13,7 @@ export class AuthenticationService {
    // let url = 'http://localhost:8080/token/generate-token';
    url = 'http://localhost:8080/api/auth/signin';
   constructor(private httpClient: HttpClient) {}
+  isResetTimer_: boolean;
 // Provide username and password for authentication, and once authentication is successful,
 //store JWT token in session
   authenticate(username, password) {
@@ -42,5 +43,11 @@ export class AuthenticationService {
 
   logOut() {
     sessionStorage.removeItem("username");
+  }
+  setisResetTimer(isResetTimer_ :boolean) {
+    this.isResetTimer_ = isResetTimer_;
+  }
+  isResetTimer() {
+    return this.isResetTimer_;
   }
 }
