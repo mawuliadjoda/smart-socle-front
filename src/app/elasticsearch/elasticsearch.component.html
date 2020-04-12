@@ -1,13 +1,17 @@
 <div class="form">
   <mat-form-field>
-    <input [(ngModel)]="fieldValue" (keyup)="search($event)" matInput placeholder="Rechercher un médicament" >
+    <input [(ngModel)]="fieldValue"
+           (keyup)="search($event)"
+           matInput
+           placeholder="----Rechercher un médicament par nom, categorie, référence, ... ----" >
   </mat-form-field>
 
-  <div style="text-align: right; flex: 1 auto;">
+  <!-- <div style="text-align: right; flex: 1 auto;">
+    <app-shopping-card></app-shopping-card>
     <button mat-raised-button title="Mon panier" (click)="viewShoppingCart()">
         <i matBadge="{{produitsPanier?.length}}" matBadgeColor="warn" class="material-icons">shopping_cart</i>
     </button>
-</div>
+  </div> -->
 </div>
 
 <!-- <input type="text" (keyup)="search($event)" placeholder="Rechercher un médicament" class="input"> -->
@@ -38,7 +42,7 @@
     </mat-select>
   </mat-form-field>
 
-  <button mat-raised-button title="Ajouter au panier" (click)="ajoutPanier()">
+  <button mat-raised-button title="Ajouter au panier" (click)="ajoutPanier(selecton.value)">
    Ajouter
   </button>
 
@@ -76,7 +80,7 @@
                         <div>
                             <button mat-raised-button color="primary">Voir le produit</button>
 
-                            <button [disabled]="produit.qte === 0" mat-raised-button title="Ajouter au panier" [ngStyle]="{'margin-left': '5px', 'cursor': produit.qte === 0 ? 'not-allowed' : ''}" (click)="addShoppingCard(produit)">
+                            <button [disabled]="produit.qte === 0" mat-raised-button title="Ajouter au panier" [ngStyle]="{'margin-left': '5px', 'cursor': produit.qte === 0 ? 'not-allowed' : ''}" >
                                 <i class="material-icons">add_shopping_cart</i>
 
                             </button>

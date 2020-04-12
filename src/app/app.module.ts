@@ -33,7 +33,6 @@ import { CommandListComponent } from './commandList/commandList.component';
 import { NotificationComponent } from './notification/notification.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
 import { JqxchartComponent } from './jqxchart/jqxchart.component';
-import { D3OrgChartComponent } from './d3-org-chart/d3-org-chart.component';
 import { AmChartComponent } from './am-chart/am-chart.component';
 import { RefProduitComponent } from './ref-produit/ref-produit.component';
 import { AddRefProduitComponent } from './ref-produit/add-ref-produit/add-ref-produit.component';
@@ -51,6 +50,7 @@ import { ElasticsearchComponent } from './elasticsearch/elasticsearch.component'
 
 import { BnNgIdleService } from 'bn-ng-idle';
 import { UserIdleComponent } from './dialogs/user-idle/user-idle.component';
+import { ShoppingCardComponent } from './shopping-card/shopping-card.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -74,7 +74,6 @@ import { UserIdleComponent } from './dialogs/user-idle/user-idle.component';
       JqxchartComponent,
       StatistiqueComponent,
       NotificationComponent,
-      D3OrgChartComponent,
       AmChartComponent,
       RefProduitComponent,
       ApprovisionnementComponent,
@@ -90,7 +89,8 @@ import { UserIdleComponent } from './dialogs/user-idle/user-idle.component';
       FooterComponent,
       ElasticsearchComponent,
 
-      UserIdleComponent
+      UserIdleComponent,
+      ShoppingCardComponent
    ],
    imports: [
       BrowserModule,

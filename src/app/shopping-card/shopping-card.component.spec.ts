@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { D3OrgChartComponent } from './d3-org-chart.component';
+import { ShoppingCardComponent } from './shopping-card.component';
 
-describe('D3OrgChartComponent', () => {
-  let component: D3OrgChartComponent;
-  let fixture: ComponentFixture<D3OrgChartComponent>;
+describe('ShoppingCardComponent', () => {
+  let component: ShoppingCardComponent;
+  let fixture: ComponentFixture<ShoppingCardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ D3OrgChartComponent ]
+      declarations: [ ShoppingCardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(D3OrgChartComponent);
+    fixture = TestBed.createComponent(ShoppingCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

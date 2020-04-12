@@ -55,7 +55,4 @@ export class AppComponent implements OnInit{
     });
 
   }
-  stop() {
-    this.bnNgIdleService.resetTimer();
-  }
 }

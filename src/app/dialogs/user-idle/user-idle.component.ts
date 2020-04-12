@@ -48,9 +48,7 @@ export class UserIdleComponent implements OnInit {
       }
     );
   }
-  // reset() {
-  //   this.bnNgIdleService.resetTimer();
-  // }
+
   private render(count) {
     this.secondsDisplay = this.getSeconds(count);
     this.minutesDisplay = this.getMinutes(count);
