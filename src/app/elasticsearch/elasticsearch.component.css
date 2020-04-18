@@ -43,3 +43,10 @@
 
 
 
+.cell-width-10 {
+  flex: 0 0 10%;
+}
+
+.cell-width-60 {
+  flex: 0 0 60%;
+}

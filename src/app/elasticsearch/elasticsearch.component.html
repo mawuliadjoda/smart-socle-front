@@ -1,3 +1,4 @@
+<br>
 <div class="form">
   <mat-form-field>
     <input [(ngModel)]="fieldValue"
@@ -37,12 +38,12 @@
       </mat-select-trigger>
       <mat-option  *ngFor="let produit of produits" [value]="produit" matTooltip="{{produit.nom}}" style="font-size: 10px;">
         <!-- <mat-option [disabled]="produit.qte === 0" *ngFor="let produit of produits" [value]="produit" matTooltip="{{produit.nom}}" style="font-size: 10px;"> -->
-        {{ (produit.nom.length>100)? (produit.nom | slice:0:100)+'...':(produit.nom) }} /  Qte:{{produit.qte}} /  Prix:{{produit.prixUnitaire}} /  Empl.:{{produit.emplacement}}
+        {{ (produit.nom.length>50)? (produit.nom | slice:0:50)+'...':(produit.nom) }} /  Qte:{{produit.qte}} /  Prix:{{produit.prixUnitaire}} /  Empl.:{{produit.emplacement}}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
-  <button mat-raised-button title="Ajouter au panier" (click)="ajoutPanier(selecton.value)">
+  <button *ngIf="produits?.length > 0" mat-raised-button title="Ajouter au panier" (click)="ajoutPanier(selecton.value)">
    Ajouter
   </button>
 
@@ -50,15 +51,84 @@
 
 <mat-divider></mat-divider>
 
-        <div>
+        <div *ngIf="produits?.length > 0">
 
-            <mat-nav-list *ngIf="selecton?.value?.length > 0" >
+          <div *ngFor="let produit of selecton?.value; index as i">
+            <div class="grid">
+
+                <div class="cell cell-width-10">
+                  <div class="grid">
+                    <img style="width: 60px!important; height: 80px!important;" mat-list-avatar src="assets/images/product_image.png.webp" alt="Desc 1" />
+                  </div>
+                  <div class="grid">
+                    <a href="#">Afficher détail</a>
+                  </div>
+                </div>
+
+                <div class="cell cell-width-60">
+                    <div class="grid">
+                        <span class="link-caption" matTooltip="{{produit.nom}}">
+                          {{(produit.nom.length>50)? (produit.nom | slice:0:50)+'...':(produit.nom) }}
+                        </span>
+                    </div>
+                    <div class="grid">
+                      <p mat-line>Ref.</p>
+                    </div>
+                    <div class="grid">
+                      <p mat-line>Conditionnement: </p>
+                    </div>
+                    <div class="grid">
+                        <p mat-line>Laboratoire: </p>
+                    </div>
+                </div>
+
+                <div class="cell">
+                    <div class="grid">
+                      <p mat-line>Prix unit. {{produit.prixUnitaire}} fcfa</p>
+                    </div>
+                    <div class="grid">
+                      <div class="cell" style="flex: 0 0 1%">
+                        <div class="grid">
+                          <mat-form-field>
+                            <input  type="number"
+                                    min="0"
+                                    class="form-control"
+                                    matInput
+                                    name="value"
+                                    placeholder="Qte"
+                                    (change)="checkQte()"
+                                    value="1">
+                          </mat-form-field>
+                        </div>
+                        <div class="grid">
+                          <span *ngIf="produit.qte > 0" style="color: green;">En stock</span>
+                          <span *ngIf="produit.qte === 0" style="color: red;">Non disponible</span>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="grid">
+                        <button [disabled]="produit.qte === 0" mat-raised-button title="Ajouter au panier" [ngStyle]="{'margin-left': '5px', 'cursor': produit.qte === 0 ? 'not-allowed' : ''}">
+                            <i class="material-icons">add_shopping_cart</i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <hr>
+        </div>
+
+
+
+            <!-- <mat-nav-list *ngIf="selecton?.value?.length > 0" >
                 <mat-list-item *ngFor="let produit of selecton?.value; index as i">
 
                     <div>
                         <img mat-list-avatar src="assets/images/product_image.png.webp" alt="Desc 1" />
                         <a matLine [href]="produit.nom" target="_blank">
-                            <span class="link-caption">{{ produit.nom }} </span>
+                            <span class="link-caption" matTooltip="{{produit.nom}}">
+                              {{(produit.nom.length>50)? (produit.nom | slice:0:50)+'...':(produit.nom) }}
+                            </span>
                         </a>
                         <br>
                         <span class="link-caption">{{ produit.description }} </span>
@@ -69,7 +139,9 @@
 
                     <div style="text-align: right; flex: 1 auto;">
                         <a matLine [href]="produit.nom" target="_blank">
-                            <span class="link-caption">{{ produit.nom }} </span>
+                            <span class="link-caption" matTooltip="{{produit.nom}}">
+                              {{(produit.nom.length>50)? (produit.nom | slice:0:50)+'...':(produit.nom) }}
+                            </span>
                         </a>
 
                         <h3 mat-line>{{produit.prixUnitaire}} fcfa</h3>
@@ -82,7 +154,6 @@
 
                             <button [disabled]="produit.qte === 0" mat-raised-button title="Ajouter au panier" [ngStyle]="{'margin-left': '5px', 'cursor': produit.qte === 0 ? 'not-allowed' : ''}" >
                                 <i class="material-icons">add_shopping_cart</i>
-
                             </button>
                         </div>
 
@@ -90,8 +161,12 @@
 
                     <mat-divider></mat-divider>
                 </mat-list-item>
-            </mat-nav-list>
+            </mat-nav-list> -->
 
 
 
         </div>
+
+
+
+

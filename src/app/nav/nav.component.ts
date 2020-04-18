@@ -33,37 +33,50 @@ export class NavComponent  implements OnInit,  OnDestroy {
     {
       icon: 'assignment',
       route: 'smart/produits',
-      title: 'Produits'
+      title: 'Produits',
+      isActive: true
     },
     {
       icon: 'assignment',
       route: 'smart/ref-produit',
-      title: 'Ref. Produits'
+      title: 'Ref. Produits',
+      isActive: true
     },
 
     {
       icon: 'assignment',
       route: 'smart/am-chart',
-      title: 'Statistique'
+      title: 'Statistique',
+      isActive: true
     },
     {
       icon:  'dashboard',
       route: 'smart/notification',
-      title: 'Notification'
-    } ];
+      title: 'Notification',
+      isActive: true
+    }
+  ];
 
 
     myWorkRoutes = [
 
     {
-      icon: 'contacts',
+      icon: '',
       route: 'smart/commandes',
-      title: 'Nouvelle commande'
+      title: 'Nouvelle commande',
+      isActive: false
     },
     {
-      icon: 'people',
+      icon: '',
+      route: 'smart/search',
+      title: 'Rechercher un produit',
+      isActive: true
+    },
+    {
+      icon: '',
       route: 'smart/list-commande',
-      title: 'Liste des commandes'
+      title: 'Liste des commandes',
+      isActive: true
     }
   ];
     mobileQuery: MediaQueryList;

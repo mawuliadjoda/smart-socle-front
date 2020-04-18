@@ -64,6 +64,8 @@ export class ElasticsearchComponent implements OnInit {
     });
   }
 
+  checkQte() {
+  }
   // loadCartTotal() {
   //   this.state$.subscribe(
   //     (data) => {

@@ -51,7 +51,8 @@ export class LoginComponent implements OnInit {
       },
       error => {
         this.invalidLogin = true;
-        this.error = error.message;
+        this.error = 'Veuillez vérifier les informations saisies !';
+        console.error(error.message);
 
       }
     )
