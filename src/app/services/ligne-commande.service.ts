@@ -17,6 +17,10 @@ export class LigneCommandeService {
     return this.http.get<any>(this.baseUrl);
   }
 
+  getCommandesEnAttente(): Observable<any> {
+    return this.http.get<any>(environment.baseUrl + 'commandes-en-attente');
+  }
+
   getAllStat(): Observable<any> {
     return this.http.get<any>(this.baseUrl + '/stat');
   }

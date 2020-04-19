@@ -51,6 +51,10 @@ import { ElasticsearchComponent } from './elasticsearch/elasticsearch.component'
 import { BnNgIdleService } from 'bn-ng-idle';
 import { UserIdleComponent } from './dialogs/user-idle/user-idle.component';
 import { ShoppingCardComponent } from './shopping-card/shopping-card.component';
+import { CommandeEntrantComponent } from './commande-entrant/commande-entrant.component';
+import { SearchComponent } from './util-component/search/search.component';
+import { CommandeEntrantReceptionComponent } from './commande-entrant-reception/commande-entrant-reception.component';
+import { CommandeEntrantAttenteComponent } from './commande-entrant-attente/commande-entrant-attente.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -90,7 +94,11 @@ import { ShoppingCardComponent } from './shopping-card/shopping-card.component';
       ElasticsearchComponent,
 
       UserIdleComponent,
-      ShoppingCardComponent
+      ShoppingCardComponent,
+      CommandeEntrantComponent,
+      SearchComponent,
+      CommandeEntrantReceptionComponent,
+      CommandeEntrantAttenteComponent
    ],
    imports: [
       BrowserModule,

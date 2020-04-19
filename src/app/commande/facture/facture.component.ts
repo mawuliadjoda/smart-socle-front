@@ -7,6 +7,7 @@ import { Observable, of, pipe } from 'rxjs';
 import { switchMap, debounceTime, catchError } from 'rxjs/operators';
 import { CommandeService } from 'src/app/services/commande.service.ts';
 import { DeleteAllProductToCart } from 'src/app/ngxs/action';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-facture',
   templateUrl: './facture.component.html',
@@ -44,7 +45,9 @@ export class FactureComponent implements OnInit {
       const container = {
         id: null,
         produit: item.produit,
-        qte: item.qte
+        qte: item.qte,
+        // important pour enregistrer une commande de type vente
+        typeCommande: environment.lib_commande_sortant
       };
       return container;
     });

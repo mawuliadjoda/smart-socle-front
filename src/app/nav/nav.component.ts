@@ -51,6 +51,18 @@ export class NavComponent  implements OnInit,  OnDestroy {
     },
     {
       icon:  'dashboard',
+      route: 'smart/commandes-entrant',
+      title: 'Aprovisionnement',
+      isActive: true
+    },
+    {
+      icon:  'dashboard',
+      route: 'smart/commandes-attente',
+      title: 'Commandes en attente',
+      isActive: true
+    },
+    {
+      icon:  'dashboard',
       route: 'smart/notification',
       title: 'Notification',
       isActive: true
@@ -62,8 +74,8 @@ export class NavComponent  implements OnInit,  OnDestroy {
 
     {
       icon: '',
-      route: 'smart/commandes',
-      title: 'Nouvelle commande',
+      route: 'smart/commandes-sortant',
+      title: 'Nouvelle vente',
       isActive: false
     },
     {
@@ -74,8 +86,8 @@ export class NavComponent  implements OnInit,  OnDestroy {
     },
     {
       icon: '',
-      route: 'smart/list-commande',
-      title: 'Liste des commandes',
+      route: 'smart/list-commande-sortant',
+      title: 'Ventes',
       isActive: true
     }
   ];

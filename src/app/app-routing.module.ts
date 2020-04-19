@@ -19,6 +19,9 @@ import { RefMedicamentANSMComponent } from './referentiels/refMedicamentANSM/ref
 import { FileUploadComponent } from './util-component/file-upload/file-upload.component';
 import { AuthGaurdService } from './services/jwt-auth/auth-gaurd.service';
 import { ElasticsearchComponent } from './elasticsearch/elasticsearch.component';
+import { ApprovisionnementComponent } from './produit/approvisionnement/approvisionnement.component';
+import { CommandeEntrantComponent } from './commande-entrant/commande-entrant.component';
+import { CommandeEntrantAttenteComponent } from './commande-entrant-attente/commande-entrant-attente.component';
 
 
 const routes: Routes = [
@@ -28,10 +31,10 @@ const routes: Routes = [
   {path: 'client', component: ClientComponent, canActivate: [AuthGaurdService]},
   {path: 'home', component: HomeComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/produits', component: ProduitComponent, canActivate: [AuthGaurdService]},
-  {path: 'smart/commandes', component: CommandeComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/commandes-sortant', component: CommandeComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/pannier', component: PannierComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/facture', component: FactureComponent, canActivate: [AuthGaurdService]},
-  {path: 'smart/list-commande', component: CommandListComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/list-commande-sortant', component: CommandListComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/chart', component: JqxchartComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/stat', component: StatistiqueComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/notification', component: NotificationComponent, canActivate: [AuthGaurdService]},
@@ -40,7 +43,8 @@ const routes: Routes = [
   {path: 'smart/ref-medicament-ansm', component: RefMedicamentANSMComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/app-file-upload', component: FileUploadComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/search', component: ElasticsearchComponent, canActivate: [AuthGaurdService]},
-
+  {path: 'smart/commandes-entrant', component: CommandeEntrantComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/commandes-attente', component: CommandeEntrantAttenteComponent, canActivate: [AuthGaurdService]},
 
   {path: '**', component: PageNotFoundComponent}
 ];

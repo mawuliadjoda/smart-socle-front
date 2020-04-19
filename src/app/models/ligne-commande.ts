@@ -4,4 +4,6 @@ export class LigneCommande {
   id: number;
   produit: Produit;
   qte: number;
+  typeCommande?: string;
+  fournisseur?: any;
 }
