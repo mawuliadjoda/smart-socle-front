@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -55,6 +55,8 @@ import { CommandeEntrantComponent } from './commande-entrant/commande-entrant.co
 import { SearchComponent } from './util-component/search/search.component';
 import { CommandeEntrantReceptionComponent } from './commande-entrant-reception/commande-entrant-reception.component';
 import { CommandeEntrantAttenteComponent } from './commande-entrant-attente/commande-entrant-attente.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 @NgModule({
    declarations: [
       AppComponent,
@@ -113,8 +115,11 @@ import { CommandeEntrantAttenteComponent } from './commande-entrant-attente/comm
         ProductState
       ], { developmentMode: true }),
       PdfJsViewerModule,
-      jqxChartModule
+      jqxChartModule,
+      // https://www.npmjs.com/package/ngx-spinner
+      NgxSpinnerModule
    ],
+   schemas: [CUSTOM_ELEMENTS_SCHEMA],
    entryComponents: [
       AddDialogComponent,
       EditDialogComponent,

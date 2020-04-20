@@ -8,6 +8,7 @@ import { switchMap, debounceTime, catchError } from 'rxjs/operators';
 import { CommandeService } from 'src/app/services/commande.service.ts';
 import { DeleteAllProductToCart } from 'src/app/ngxs/action';
 import { environment } from 'src/environments/environment';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-facture',
   templateUrl: './facture.component.html',
@@ -23,9 +24,18 @@ export class FactureComponent implements OnInit {
 
   constructor(public fileService: FileService,
               public commandeService: CommandeService,
-              private store: Store) { }
+              private store: Store,
+              private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
+    /** spinner starts on init */
+    this.spinner.show();
+
+    /** spinner ends after 5 seconds */
+    // setTimeout(() => {
+    //   this.spinner.hide();
+    // }, 5000);
+
     this.loadCartTotal();
     this.saveLigneFactureAndBuildPdf();
     // this.fileService.downloadFileSystem(this.ligneCommandes)
@@ -70,6 +80,9 @@ export class FactureComponent implements OnInit {
 
       // Vider le panier
       this.store.dispatch(new DeleteAllProductToCart());
+
+      this.spinner.hide();
+
     });
   }
 

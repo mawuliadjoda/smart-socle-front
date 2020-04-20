@@ -7,19 +7,18 @@
     <div class="grid">
       <div class="cell cell-width-40 "> Nom </div>
       <div class="cell"> Qte. init. </div>
-      <div class="cell"> Prix unit. </div>
       <div class="cell"> Fournisseur </div>
+      <div class="cell"> Prix unit. </div>
       <div class="cell"> Qte à commander </div>
     </div>
     <hr>
   </div>
   <div *ngFor="let item of selecton; let i=index" >
     <div class="grid">
-      <div class="cell cell-width-60 " matTooltip="{{item.nom}}">
+      <div class="cell cell-width-40 " matTooltip="{{item.nom}}">
         {{ (item?.produit?.nom.length>50)? (item?.produit?.nom | slice:0:50)+'...':(item?.produit?.nom) }}
       </div>
       <div class="cell"> {{item?.produit?.qte}} </div>
-      <div class="cell"> {{item?.produit?.prixUnitaire}} </div>
       <div class="cell">
         <mat-form-field style="width: 100px;">
           <mat-label>Fournisseur</mat-label>
@@ -31,6 +30,11 @@
         </mat-form-field>
       </div>
 
+      <div class="cell">
+        <mat-form-field class="my-form-field" style="width: 100px;">
+          <input matInput type="number" placeholder="Prix. unit." [(ngModel)]="item.produit.prixUnitaire">
+        </mat-form-field>
+      </div>
       <div class="cell">
         <mat-form-field class="my-form-field" style="width: 100px;">
           <input matInput type="number" min="1" placeholder="Qte à commander" [(ngModel)]="item.qte">

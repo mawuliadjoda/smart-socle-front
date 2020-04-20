@@ -3,6 +3,7 @@ import { LigneCommande } from '../models/ligne-commande';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { LigneCommandeService } from '../services/ligne-commande.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-commande-entrant-attente',
@@ -29,18 +30,21 @@ export class CommandeEntrantAttenteComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild('filter', { static: true }) filter: ElementRef;
 
-  constructor(private ligneCommandeService: LigneCommandeService) { }
+  constructor(private ligneCommandeService: LigneCommandeService,
+              private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.loadData();
   }
 
   public loadData() {
+    this.spinner.show();
     this.ligneCommandeService.getCommandesEnAttente().subscribe(data => {
       this.data = data;
       this.dataSource = new MatTableDataSource(this.data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      this.spinner.hide();
     },
     (err: HttpErrorResponse) => {
       console.log(err.name + ' ' + err.message);
