@@ -22,6 +22,7 @@ import { ElasticsearchComponent } from './elasticsearch/elasticsearch.component'
 import { ApprovisionnementComponent } from './produit/approvisionnement/approvisionnement.component';
 import { CommandeEntrantComponent } from './commande-entrant/commande-entrant.component';
 import { CommandeEntrantAttenteComponent } from './commande-entrant-attente/commande-entrant-attente.component';
+import { CommandeEntrantReceptionComponent } from './commande-entrant-reception/commande-entrant-reception.component';
 
 
 const routes: Routes = [
@@ -45,6 +46,7 @@ const routes: Routes = [
   {path: 'smart/search', component: ElasticsearchComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/commandes-entrant', component: CommandeEntrantComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/commandes-attente', component: CommandeEntrantAttenteComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/commandes-entrant-reception', component: CommandeEntrantReceptionComponent, canActivate: [AuthGaurdService]},
 
   {path: '**', component: PageNotFoundComponent}
 ];

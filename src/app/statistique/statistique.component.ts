@@ -3,6 +3,7 @@ import { LigneCommande } from '../models/ligne-commande';
 import { LigneCommandeService } from '../services/ligne-commande.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { StatUtil } from '../model/statUtil';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-statistique',
@@ -17,7 +18,8 @@ export class StatistiqueComponent implements OnInit {
   titlePadding: any = { left: 30, top: 5, right: 0, bottom: 10 };
 
   // statUtils: Array<StatUtil> = [];
-  constructor(private ligneCommandeService: LigneCommandeService) { }
+  constructor(private ligneCommandeService: LigneCommandeService,
+              private spinner: NgxSpinnerService) { }
 
   valueAxis: any =
   {
@@ -104,6 +106,7 @@ export class StatistiqueComponent implements OnInit {
   }
 
   public getData() {
+    this.spinner.show();
     this.ligneCommandeService.getAllStat().subscribe(data => {
      // this.statUtils = data;
      const source =
@@ -123,6 +126,7 @@ export class StatistiqueComponent implements OnInit {
           loadError: (xhr: any, status: any, error: any) => { alert('Error loading "' + source+ '" : ' + error); }
         }
       );
+      this.spinner.hide();
 
     },
     (err: HttpErrorResponse) => {

@@ -6,4 +6,6 @@ export class LigneCommande {
   qte: number;
   typeCommande?: string;
   fournisseur?: any;
+  isReceive?: boolean;
+  receiveDate?: any;
 }

@@ -10,7 +10,9 @@ export class Produit {
   qte: number;
   prixUnitaire: number;
   description: string;
+  cis: string;
   // refProduit: RefProduit;
+  emplacement?: string;
   constructor(attrs: any = null) {
     if (attrs) {
       this.build(attrs);

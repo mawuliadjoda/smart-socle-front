@@ -6,6 +6,7 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { LigneCommandeService } from '../services/ligne-commande.service';
 import { environment } from 'src/environments/environment';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 am4core.useTheme(am4themes_animated);
 
@@ -19,7 +20,9 @@ export class AmChartComponent implements OnInit, AfterViewInit {
   private chart: am4charts.XYChart;
   data = [];
 
-  constructor(private zone: NgZone, private ligneCommandeService: LigneCommandeService) {}
+  constructor(private zone: NgZone,
+              private ligneCommandeService: LigneCommandeService,
+              private spinner: NgxSpinnerService) {}
 
   ngOnInit() {
     // this.ligneCommandeService.getAllStat().subscribe( data =>{
@@ -28,6 +31,7 @@ export class AmChartComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    // this.spinner.show();
     this.zone.runOutsideAngular(() => {
       let chart = am4core.create("chartdiv", am4charts.XYChart);
       // Create chart instance
@@ -87,6 +91,7 @@ export class AmChartComponent implements OnInit, AfterViewInit {
 
       this.chart = chart;
 
+      // this.spinner.hide();
       });
 
 

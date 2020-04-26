@@ -8,7 +8,9 @@ export const environment = {
   devisePays: 'FCFA',
   userIdleDuration: 30 * 60,
   lib_commande_sortant: 'CMD_SORTANT',
-  lib_commande_entrant: 'CMD_ENTRANT'
+  lib_commande_entrant: 'CMD_ENTRANT',
+  sizeOfCis: 8,
+  durationOfSnackBar: 1000
 };
 
 /*
