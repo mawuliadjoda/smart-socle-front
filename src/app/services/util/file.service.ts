@@ -10,10 +10,10 @@ import { LigneCommande } from 'src/app/models/ligne-commande';
 })
 export class FileService {
   public baseUrl: string = environment.baseUrl + 'download';
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient) {
   }
   getDownload(produitsPanier: Array<Produit>): Observable<any> {
-     //return this.http.get<any>(this.baseUrl);
+     // return this.http.get<any>(this.baseUrl);
      return this.http.post(this.baseUrl, produitsPanier);
   }
 
@@ -60,16 +60,16 @@ export class FileService {
     //   responseType: 'arraybuffer'
     // });
 
-      return this.http.post(this.baseUrl, produitsPanier,
+    return this.http.post(this.baseUrl, produitsPanier,
         {
-         headers: headers,
+         headers,
          observe: 'response',
          responseType: 'blob'
        });
   }
 
   pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
-    let url = environment.baseUrl + '/savefile';
+    const url = environment.baseUrl + '/savefile';
     const data: FormData = new FormData();
     data.append('file', file);
     const newRequest = new HttpRequest('POST', url, data, {

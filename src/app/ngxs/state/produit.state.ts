@@ -38,7 +38,7 @@ export class ProductState {
   }
 
   @Action(AddProductToCart)
-  addProductToCart(ctx: StateContext<ProductStateModel>, action: AddProductToCart){
+  addProductToCart(ctx: StateContext<ProductStateModel>, action: AddProductToCart) {
     // const state = ctx.getState();
 
     /*let ligneCommande = null;
@@ -62,7 +62,7 @@ export class ProductState {
     }*/
 
     const state = ctx.getState();
-    let ligneCommande = {
+    const ligneCommande = {
       id: action.product.id,
       produit: action.product,
       qte: action.qte,
@@ -93,8 +93,8 @@ export class ProductState {
   @Action(DeleteAllProductToCart)
   deleteAllTodo(ctx: StateContext<ProductStateModel>, {}: DeleteAllProductToCart) {
     const state = ctx.getState();
-    //const filteredArray = state.cart.filter(item => item.id !== id);
-    //state.cart.length = 0;
+    // const filteredArray = state.cart.filter(item => item.id !== id);
+    // state.cart.length = 0;
     ctx.setState({
         ...state,
         cart: [],
@@ -108,10 +108,10 @@ export class ProductState {
     const todoList = [...state.cart];
     const todoIndex = todoList.findIndex(item => item.id === id);
 
-    let ligneCommande = {
+    const ligneCommande = {
       id: payload.id,
       produit: payload,
-      qte: qte,
+      qte,
       isReceive: true,
       isActif: true
     };

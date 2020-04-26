@@ -25,7 +25,8 @@ export class FactureComponent implements OnInit {
   constructor(public fileService: FileService,
               public commandeService: CommandeService,
               private store: Store,
-              private spinner: NgxSpinnerService) { }
+              private spinner: NgxSpinnerService) {
+              }
 
   ngOnInit() {
     /** spinner starts on init */
@@ -49,8 +50,8 @@ export class FactureComponent implements OnInit {
     // });
   }
 
-  saveLigneFactureAndBuildPdf(){
-    let ligneCommandeToSave = this.ligneCommandes.map(item => {
+  saveLigneFactureAndBuildPdf() {
+    const ligneCommandeToSave = this.ligneCommandes.map(item => {
 
       const container = {
         id: null,
@@ -108,7 +109,7 @@ export class FactureComponent implements OnInit {
     );
   }
 
-  reduceArray(ligneCommandes: Array<LigneCommande> ){
+  reduceArray(ligneCommandes: Array<LigneCommande> ) {
 
     const result = [...ligneCommandes.reduce((r, o) => {
       const key = o.id;
@@ -120,7 +121,7 @@ export class FactureComponent implements OnInit {
       item.qte += o.qte;
 
       return r.set(key, item);
-    }, new Map).values()];
+    }, new Map()).values()];
 
     console.log('===============================reduce:' + result);
     result.forEach(element => {

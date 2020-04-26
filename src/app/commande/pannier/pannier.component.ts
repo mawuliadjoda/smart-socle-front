@@ -26,8 +26,8 @@ export class PannierComponent implements OnInit  {
   // @Input()
   ligneCommandes: Array<LigneCommande> = [];
 
-  nbProduitPanier: number = 0;
-  maxDisplayProduct: number = 2;
+  nbProduitPanier = 0;
+  maxDisplayProduct = 2;
 
   fileUrl = environment.baseUrl + 'download2';
 
@@ -44,15 +44,14 @@ export class PannierComponent implements OnInit  {
 
 
   oldQteValue: number;
-  constructor(
-    public dialog: MatDialog,
-    public produitService: ProduitService,
-    public fileService: FileService,
-    private snackBar: MatSnackBar,
-    private sanitizer: DomSanitizer,
-    private router: Router,
-    private store: Store
-  ) {  }
+  constructor(public dialog: MatDialog,
+              public produitService: ProduitService,
+              public fileService: FileService,
+              private snackBar: MatSnackBar,
+              private sanitizer: DomSanitizer,
+              private router: Router,
+              private store: Store) {
+  }
 
 
   ngOnInit() {
@@ -70,7 +69,7 @@ export class PannierComponent implements OnInit  {
     }
   }
 
-  getTotal(){
+  getTotal() {
     let total = 0;
     this.ligneCommandes.forEach(element => {
       total += element.produit.prixUnitaire * element.qte;
@@ -106,7 +105,7 @@ export class PannierComponent implements OnInit  {
     fileSaver.saveAs(blob, filename);
   }
 
-  reduceArray(ligneCommandes: Array<LigneCommande> ){
+  reduceArray(ligneCommandes: Array<LigneCommande> ) {
 
     const result = [...ligneCommandes.reduce((r, o) => {
       const key = o.id;
@@ -120,7 +119,7 @@ export class PannierComponent implements OnInit  {
       item.qte += o.qte;
 
       return r.set(key, item);
-    }, new Map).values()];
+    }, new Map()).values()];
 
     console.log('===============================reduce:' + result);
     result.forEach(element => {

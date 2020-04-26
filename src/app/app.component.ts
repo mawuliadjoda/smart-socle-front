@@ -16,7 +16,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'angular8-socle-project';
 
   path: any = (jsonData as any).default[0];
@@ -41,7 +41,7 @@ export class AppComponent implements OnInit{
         console.log('session expired');
         if (this.authentocationService.isUserLoggedIn()) {
           this.authentocationService.setisResetTimer(false);
-          let dialogRef = this.dialog.open(UserIdleComponent);
+          const dialogRef = this.dialog.open(UserIdleComponent);
           dialogRef.afterClosed().subscribe(result => {
             // NOTE: The result can also be nothing if the user presses the `esc` key or clicks outside the dialog
             if (result === 'confirm') {

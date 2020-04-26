@@ -29,9 +29,9 @@ export class ElasticsearchComponent implements OnInit {
   // @Select(ProductState) state$: Observable<any>;
 
   constructor(private elasticsearchService: ElasticsearchService,
-             private router: Router,
-             private _snackBar: MatSnackBar,
-             private store: Store) { }
+              private router: Router,
+              private snackBar: MatSnackBar,
+              private store: Store) { }
 
   ngOnInit() {
     // this.loadCartTotal();
@@ -92,7 +92,7 @@ export class ElasticsearchComponent implements OnInit {
     this.fieldValue = '';
     this.selecton = new FormControl();
 
-    this._snackBar.open(message, action, {
+    this.snackBar.open(message, action, {
       duration: environment.durationOfSnackBar,
     });
   }
@@ -116,7 +116,7 @@ export class ElasticsearchComponent implements OnInit {
       message = 'Quantité insuffisante !';
       action = 'Erreur';
     }
-    this._snackBar.open(message, action, {
+    this.snackBar.open(message, action, {
       duration: environment.durationOfSnackBar,
     });
 
@@ -132,7 +132,7 @@ export class ElasticsearchComponent implements OnInit {
 
     const action = 'sussès';
     const message = `produit supprimé du pannier !`;
-    this._snackBar.open(message, action, {
+    this.snackBar.open(message, action, {
       duration: environment.durationOfSnackBar,
     });
   }

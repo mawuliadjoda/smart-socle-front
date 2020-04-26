@@ -65,13 +65,13 @@ export class CommandeEntrantReceptionComponent implements OnInit {
   }
 
   reception() {
-    let cis = this.scanCode.substring(0, environment.sizeOfCis);
+    const cis = this.scanCode.substring(0, environment.sizeOfCis);
 
-    let newArray = this.data.filter( data => data.produit.cis === cis );
+    const newArray = this.data.filter( data => data.produit.cis === cis );
 
     if (newArray.length > 0) {
 
-      let receiveProduct =  newArray[0].produit;
+      const receiveProduct =  newArray[0].produit;
       receiveProduct.qte = receiveProduct.qte + newArray[0].qte;
       // p.setQte(p.qte);
 

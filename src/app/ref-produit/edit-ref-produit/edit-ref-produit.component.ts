@@ -10,7 +10,7 @@ import { RefProduitService } from 'src/app/services/ref-produit.service';
 export class EditRefProduitComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<EditRefProduitComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, public dataService: RefProduitService) { }
+              @Inject(MAT_DIALOG_DATA) public data: any, public dataService: RefProduitService) { }
 
     formControl = new FormControl('', [
     Validators.required

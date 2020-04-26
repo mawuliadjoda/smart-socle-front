@@ -112,7 +112,7 @@ export class NavComponent  implements OnInit,  OnDestroy {
 
     constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,
                 private propertyService: PropertyService,
-                private loginService:AuthenticationService) {
+                private loginService: AuthenticationService) {
       this.mobileQuery = media.matchMedia('(max-width: 600px)');
       this.mobileQueryListener = () => changeDetectorRef.detectChanges();
       this.mobileQuery.addListener(this.mobileQueryListener);

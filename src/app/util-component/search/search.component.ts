@@ -22,9 +22,9 @@ export class SearchComponent implements OnInit {
   @Output() selectonEmitter = new EventEmitter<string>();
 
   constructor(private elasticsearchService: ElasticsearchService,
-             private router: Router,
-             private _snackBar: MatSnackBar,
-             private store: Store) { }
+              private router: Router,
+              private snackBar: MatSnackBar,
+              private store: Store) { }
 
   ngOnInit() {
     // this.loadCartTotal();

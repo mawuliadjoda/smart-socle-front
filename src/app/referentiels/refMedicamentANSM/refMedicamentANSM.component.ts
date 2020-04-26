@@ -33,9 +33,9 @@ export class RefMedicamentANSMComponent implements OnInit, AfterViewInit {
 
   // pageIndex = 1;
     /** The current page index. */
-  pageIndex: number = 0;
+  pageIndex = 0;
   /** The current page size */
-  pageSize: number = 5;
+  pageSize = 5;
   /** The current total number of items being paged */
   length: number;
   /**

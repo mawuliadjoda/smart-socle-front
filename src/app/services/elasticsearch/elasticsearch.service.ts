@@ -12,7 +12,7 @@ export class ElasticsearchService {
   constructor(private http: HttpClient) {
 
   }
-  search(fieldName,fieldValue): Observable<any> {
+  search(fieldName, fieldValue): Observable<any> {
     return this.http.get<any>(this.baseUrl + `?fieldName=${fieldName}&fieldValue=${fieldValue}`);
   }
 

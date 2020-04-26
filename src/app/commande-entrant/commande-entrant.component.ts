@@ -52,10 +52,10 @@ export class CommandeEntrantComponent implements OnInit, AfterViewInit {
   }
 
   recieveSelection($event) {
-    //this.selecton = [...this.selecton, ...$event];
-    //this.dataSource = new MatTableDataSource<Produit>(this.selecton);
+    // this.selecton = [...this.selecton, ...$event];
+    // this.dataSource = new MatTableDataSource<Produit>(this.selecton);
 
-    let transformReceiveProduit = $event.map(item => {
+    const transformReceiveProduit = $event.map(item => {
 
       const container = {
         id: null,

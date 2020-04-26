@@ -11,7 +11,7 @@ import { FormControl, Validators } from '@angular/forms';
 export class EditProduitComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<EditProduitComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, public dataService: ProduitService) { }
+              @Inject(MAT_DIALOG_DATA) public data: any, public dataService: ProduitService) { }
 
     formControl = new FormControl('', [
     Validators.required

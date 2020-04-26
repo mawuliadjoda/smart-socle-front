@@ -22,7 +22,7 @@ export class ConsoleLoggerService implements Logger {
 
   get info() {
     if (this.config.isDebugMode) {
-      return console.info.bind(console);
+      // return console.info.bind(console);
     } else {
       return noop;
     }

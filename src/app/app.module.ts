@@ -7,13 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material-module';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { NavComponent } from './nav/nav.component';
-import { ClientComponent } from './client/client.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
-import { DeleteDialogComponent } from './client/delete/delete.dialog.component';
-import { EditDialogComponent } from './client/edit/edit.dialog.component';
-import { AddDialogComponent } from './client/add/add-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { jqxChartModule } from 'jqwidgets-ng/jqxchart';
@@ -32,7 +28,6 @@ import { FactureComponent } from './commande/facture/facture.component';
 import { CommandListComponent } from './commandList/commandList.component';
 import { NotificationComponent } from './notification/notification.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
-import { JqxchartComponent } from './jqxchart/jqxchart.component';
 import { AmChartComponent } from './am-chart/am-chart.component';
 import { RefProduitComponent } from './ref-produit/ref-produit.component';
 import { AddRefProduitComponent } from './ref-produit/add-ref-produit/add-ref-produit.component';
@@ -56,20 +51,17 @@ import { SearchComponent } from './util-component/search/search.component';
 import { CommandeEntrantReceptionComponent } from './commande-entrant-reception/commande-entrant-reception.component';
 import { CommandeEntrantAttenteComponent } from './commande-entrant-attente/commande-entrant-attente.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { DeleteCommandeEntrantAttenteComponent } from './commande-entrant-attente/delete-commande-entrant-attente/delete-commande-entrant-attente.component';
+import { DeleteCommandeEntrantAttenteComponent
+       } from './commande-entrant-attente/delete-commande-entrant-attente/delete-commande-entrant-attente.component';
 
 @NgModule({
    declarations: [
       AppComponent,
       NavigationBarComponent,
       NavComponent,
-      ClientComponent,
       LoginComponent,
       PageNotFoundComponent,
       HomeComponent,
-      AddDialogComponent,
-      DeleteDialogComponent,
-      EditDialogComponent,
       ProduitComponent,
       AddProduitComponent,
       EditProduitComponent,
@@ -78,7 +70,6 @@ import { DeleteCommandeEntrantAttenteComponent } from './commande-entrant-attent
       PannierComponent,
       FactureComponent,
       CommandListComponent,
-      JqxchartComponent,
       StatistiqueComponent,
       NotificationComponent,
       AmChartComponent,
@@ -123,9 +114,6 @@ import { DeleteCommandeEntrantAttenteComponent } from './commande-entrant-attent
    ],
    schemas: [CUSTOM_ELEMENTS_SCHEMA],
    entryComponents: [
-      AddDialogComponent,
-      EditDialogComponent,
-      DeleteDialogComponent,
       AddProduitComponent,
       EditProduitComponent,
       DeleteProduitComponent,

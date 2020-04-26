@@ -11,7 +11,7 @@ export class DeleteProduitComponent implements OnInit {
 
 
 constructor(public dialogRef: MatDialogRef<DeleteProduitComponent>,
-  @Inject(MAT_DIALOG_DATA) public data: any, public dataService: ProduitService) { }
+            @Inject(MAT_DIALOG_DATA) public data: any, public dataService: ProduitService) { }
 
   ngOnInit() {
   }

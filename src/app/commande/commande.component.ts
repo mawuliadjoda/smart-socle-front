@@ -15,6 +15,15 @@ import { Observable } from 'rxjs';
   styleUrls: ['./commande.component.css']
 })
 export class CommandeComponent implements OnInit, AfterViewInit  {
+
+  constructor(
+    public httpClient: HttpClient,
+    public dialog: MatDialog,
+    public produitService: ProduitService,
+    private snackBar: MatSnackBar,
+    private router: Router,
+    private store: Store
+  ) {}
   index: number;
   id: number;
   dataSource = new MatTableDataSource<Produit>([]);
@@ -24,7 +33,7 @@ export class CommandeComponent implements OnInit, AfterViewInit  {
   produitsPanier: Array<Produit> = [];
 
   // nbProduitPanier: number = 0;
-  maxDisplayProduct: number = 2;
+  maxDisplayProduct = 2;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild('filter', { static: true }) filter: ElementRef;
@@ -34,14 +43,9 @@ export class CommandeComponent implements OnInit, AfterViewInit  {
 
   @Select(ProductState) state$: Observable<any>;
 
-  constructor(
-    public httpClient: HttpClient,
-    public dialog: MatDialog,
-    public produitService: ProduitService,
-    private _snackBar: MatSnackBar,
-    private router: Router,
-    private store: Store
-  ) {}
+
+  page = 0;
+  size = 2;
   ngOnInit() {
     this.isCommande = true;
     this.isPannier = false;
@@ -66,8 +70,8 @@ export class CommandeComponent implements OnInit, AfterViewInit  {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
 
-      //this.nbProduitPanier = 0;
-      let obj = { pageIndex: 0, pageSize : this.maxDisplayProduct };
+      // this.nbProduitPanier = 0;
+      const obj = { pageIndex: 0, pageSize : this.maxDisplayProduct };
       this.getData(obj);
     },
     (err: HttpErrorResponse) => {
@@ -81,15 +85,11 @@ export class CommandeComponent implements OnInit, AfterViewInit  {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-    let obj = { pageIndex: 0, pageSize : this.maxDisplayProduct };
+    const obj = { pageIndex: 0, pageSize : this.maxDisplayProduct };
     this.getData(obj);
   }
-
-
-  page = 0;
-  size = 2;
   getData(obj) {
-    let index = 0
+    let index = 0;
     const startingIndex = obj.pageIndex * obj.pageSize;
     const endingIndex = startingIndex + obj.pageSize;
 
@@ -97,25 +97,25 @@ export class CommandeComponent implements OnInit, AfterViewInit  {
       index++;
       return (index > startingIndex && index <= endingIndex) ? true : false;
     });
-    //this.size = this.data.length;
+    // this.size = this.data.length;
     this.page = obj.pageIndex;
   }
 
-  addShoppingCard(produit: Produit){
+  addShoppingCard(produit: Produit) {
     const action = 'sussès';
     const message = `le produit ${produit.nom} a été ajouté au pannier !`;
-    this._snackBar.open(message, action, {
+    this.snackBar.open(message, action, {
       duration: 500,
     });
 
     this.store.dispatch(new AddProductToCart(produit, 1));
   }
 
-  viewShoppingCart(){
+  viewShoppingCart() {
     console.log('befor: ' + this.produitsPanier);
     this.isPannier = true;
     this.isCommande = false;
-    //this.router.navigate(['smart/pannier'], {state: {data: this.produitsPanier}});
+    // this.router.navigate(['smart/pannier'], {state: {data: this.produitsPanier}});
     this.router.navigateByUrl('smart/pannier');
   }
 

@@ -1,9 +1,9 @@
-import { Component, OnInit, NgZone, AfterViewInit } from '@angular/core';
+import { Component, OnInit, NgZone, AfterViewInit, OnDestroy } from '@angular/core';
 
 
-import * as am4core from "@amcharts/amcharts4/core";
-import * as am4charts from "@amcharts/amcharts4/charts";
-import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import * as am4core from '@amcharts/amcharts4/core';
+import * as am4charts from '@amcharts/amcharts4/charts';
+import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 import { LigneCommandeService } from '../services/ligne-commande.service';
 import { environment } from 'src/environments/environment';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -15,7 +15,7 @@ am4core.useTheme(am4themes_animated);
   templateUrl: './am-chart.component.html',
   styleUrls: ['./am-chart.component.css']
 })
-export class AmChartComponent implements OnInit, AfterViewInit {
+export class AmChartComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private chart: am4charts.XYChart;
   data = [];
@@ -33,7 +33,7 @@ export class AmChartComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     // this.spinner.show();
     this.zone.runOutsideAngular(() => {
-      let chart = am4core.create("chartdiv", am4charts.XYChart);
+      const chart = am4core.create('chartdiv', am4charts.XYChart);
       // Create chart instance
 
       chart.paddingRight = 20;
@@ -41,32 +41,38 @@ export class AmChartComponent implements OnInit, AfterViewInit {
 
 
         data.forEach(element => {
-          let dateString= element.date_.split('/');
-          let dateReformatString= dateString[1] + '/' + dateString[0] + '/' + dateString[2];
-          let val = new Date(dateReformatString);
+          const dateString = element.date_.split('/');
+          const dateReformatString = dateString[1] + '/' + dateString[0] + '/' + dateString[2];
+          const val = new Date(dateReformatString);
 
-          let montantEuro = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(element.total);
-          let montantFCFA = montantEuro.replace('€', environment.devisePays);
+          const montantEuro = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(element.total);
+          const montantFCFA = montantEuro.replace('€', environment.devisePays);
 
-          this.data.push({ date: val, name: "name" + element.total, value: element.total, customValue: montantFCFA , customDate: element.date_ });
+          const MY_DATA =   { date: val,
+                              name: 'name' + element.total,
+                              value: element.total,
+                              customValue: montantFCFA ,
+                              customDate: element.date_
+                            };
+          this.data.push(MY_DATA);
        });
 
-        console.log("data="+ JSON.stringify(this.data));
-      chart.data = this.data;
+        console.log('data=' + JSON.stringify(this.data));
+        chart.data = this.data;
 
-      let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-      dateAxis.renderer.grid.template.location = 0;
+        const dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+        dateAxis.renderer.grid.template.location = 0;
 
-      let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-      valueAxis.tooltip.disabled = true;
-      valueAxis.renderer.minWidth = 35;
+        const valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+        valueAxis.tooltip.disabled = true;
+        valueAxis.renderer.minWidth = 35;
 
-      let series = chart.series.push(new am4charts.LineSeries());
-      series.dataFields.dateX = "date";
-      series.dataFields.valueY = "value";
+        const series = chart.series.push(new am4charts.LineSeries());
+        series.dataFields.dateX = 'date';
+        series.dataFields.valueY = 'value';
 
-      series.tooltipText = "{valueY.value}";
-      series.tooltipHTML =
+        series.tooltipText = '{valueY.value}';
+        series.tooltipHTML =
        `<center><strong> Vente</strong></center>
         <hr />
         <table>
@@ -80,16 +86,16 @@ export class AmChartComponent implements OnInit, AfterViewInit {
             </tr>
         </table>
         <hr />`;
-      chart.cursor = new am4charts.XYCursor();
+        chart.cursor = new am4charts.XYCursor();
 
-      let scrollbarX = new am4charts.XYChartScrollbar();
-      scrollbarX.series.push(series);
-      chart.scrollbarX = scrollbarX;
+        const scrollbarX = new am4charts.XYChartScrollbar();
+        scrollbarX.series.push(series);
+        chart.scrollbarX = scrollbarX;
 
       // Enable export
-      chart.exporting.menu = new am4core.ExportMenu();
+        chart.exporting.menu = new am4core.ExportMenu();
 
-      this.chart = chart;
+        this.chart = chart;
 
       // this.spinner.hide();
       });

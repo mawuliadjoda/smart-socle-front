@@ -12,7 +12,7 @@ export class RefMedicamentAnsmService {
   constructor(private http: HttpClient) {
 
   }
-  getAll(pageSize,pageNo, sortBy): Observable<any> {
+  getAll(pageSize, pageNo, sortBy): Observable<any> {
     return this.http.get<any>(this.baseUrl + `?pageSize=${pageSize}&pageNo=${pageNo}&sortBy=${sortBy}`);
   }
 }
