@@ -6,9 +6,10 @@ export class LigneCommande {
   qte: number;
   typeCommande?: string;
   fournisseur?: any;
-  isReceive?: boolean;
+  isReceive: boolean;
   receiveDate?: any;
 
   // is just used on front
   isDisableUpdate?: boolean;
+  isActif: boolean;
 }

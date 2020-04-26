@@ -62,7 +62,9 @@ export class ElasticsearchComponent implements OnInit {
         qte: selectedProduit.qte > 0 ? 1 : 0,
         // important pour enregistrer une commande de type approvisionnnement
         typeCommande: environment.lib_commande_sortant,
-        isDisableUpdate: true
+        isDisableUpdate: true,
+        isReceive: true,
+        isActif: true
       };
       this.ligneCommandes.push(ligneCommande);
 

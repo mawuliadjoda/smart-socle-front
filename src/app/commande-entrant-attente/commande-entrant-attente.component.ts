@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { LigneCommande } from '../models/ligne-commande';
-import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
 import { LigneCommandeService } from '../services/ligne-commande.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { DeleteCommandeEntrantAttenteComponent } from './delete-commande-entrant-attente/delete-commande-entrant-attente.component';
 
 @Component({
   selector: 'app-commande-entrant-attente',
@@ -20,7 +21,8 @@ export class CommandeEntrantAttenteComponent implements OnInit {
     'qte',
     'prixUnitaire',
     'prixTotal',
-    'created_at'
+    'created_at',
+    'actions'
   ];
 
   dataSource = new MatTableDataSource<LigneCommande>([]);
@@ -31,7 +33,8 @@ export class CommandeEntrantAttenteComponent implements OnInit {
   @ViewChild('filter', { static: true }) filter: ElementRef;
 
   constructor(private ligneCommandeService: LigneCommandeService,
-              private spinner: NgxSpinnerService) { }
+              private spinner: NgxSpinnerService,
+              private dialog: MatDialog) { }
 
   ngOnInit() {
     this.loadData();
@@ -59,4 +62,23 @@ export class CommandeEntrantAttenteComponent implements OnInit {
     }
   }
 
+
+  deleteItem(index: number, ligneCommande: LigneCommande) {
+    const dialogRef = this.dialog.open(DeleteCommandeEntrantAttenteComponent, {
+      data: ligneCommande
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        // on ne surpprime rien pour des raisons de statistique. on desactive
+        this.ligneCommandeService.disable(ligneCommande).subscribe(() => {
+          this.data.splice(index, 1);
+          this.dataSource = new MatTableDataSource(this.data);
+        },
+        (err: HttpErrorResponse) => {
+          console.log(err.name + ' ' + err.message);
+        });
+      }
+    });
+  }
 }

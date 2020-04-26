@@ -54,6 +54,19 @@
         <mat-cell *matCellDef="let row"> {{row?.produit?.prixUnitaire * row.qte}}</mat-cell>
       </ng-container>
 
+          <!-- actions -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let row; let i=index;">
+        <button mat-icon-button color="accent" (click)="deleteItem(i, row)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>

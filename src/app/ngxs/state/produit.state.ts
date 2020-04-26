@@ -65,7 +65,9 @@ export class ProductState {
     let ligneCommande = {
       id: action.product.id,
       produit: action.product,
-      qte: action.qte
+      qte: action.qte,
+      isReceive: true,
+      isActif: true
     };
 
     ctx.setState({
@@ -109,7 +111,9 @@ export class ProductState {
     let ligneCommande = {
       id: payload.id,
       produit: payload,
-      qte: qte
+      qte: qte,
+      isReceive: true,
+      isActif: true
     };
 
     // todoList[todoIndex] = payload;

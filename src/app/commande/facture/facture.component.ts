@@ -57,7 +57,9 @@ export class FactureComponent implements OnInit {
         produit: item.produit,
         qte: item.qte,
         // important pour enregistrer une commande de type vente
-        typeCommande: environment.lib_commande_sortant
+        typeCommande: environment.lib_commande_sortant,
+        isReceive: true,
+        isActif: true
       };
       return container;
     });

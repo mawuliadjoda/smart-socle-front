@@ -83,7 +83,8 @@ export class CommandeEntrantReceptionComponent implements OnInit {
         typeCommande: environment.lib_commande_entrant,
         fournisseur: null,
         isReceive: true,
-        receiveDate: new Date()
+        receiveDate: new Date(),
+        isActif: true
       };
 
       this.commandeService.saveCommandeEntrantReception([ligneCommande]).subscribe(

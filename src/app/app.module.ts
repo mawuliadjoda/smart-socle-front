@@ -56,6 +56,7 @@ import { SearchComponent } from './util-component/search/search.component';
 import { CommandeEntrantReceptionComponent } from './commande-entrant-reception/commande-entrant-reception.component';
 import { CommandeEntrantAttenteComponent } from './commande-entrant-attente/commande-entrant-attente.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { DeleteCommandeEntrantAttenteComponent } from './commande-entrant-attente/delete-commande-entrant-attente/delete-commande-entrant-attente.component';
 
 @NgModule({
    declarations: [
@@ -100,7 +101,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
       CommandeEntrantComponent,
       SearchComponent,
       CommandeEntrantReceptionComponent,
-      CommandeEntrantAttenteComponent
+      CommandeEntrantAttenteComponent,
+      DeleteCommandeEntrantAttenteComponent
    ],
    imports: [
       BrowserModule,
@@ -131,7 +133,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
       AddRefProduitComponent,
       EditRefProduitComponent,
       DeleteRefProduitComponent,
-      UserIdleComponent
+      UserIdleComponent,
+      DeleteCommandeEntrantAttenteComponent
    ],
    providers: [
      // Translate angular-material paginator
