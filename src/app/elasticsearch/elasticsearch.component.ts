@@ -24,6 +24,7 @@ export class ElasticsearchComponent implements OnInit {
   ligneCommandes: LigneCommande [] = [];
   selecton = new FormControl();
 
+  oldQteValue: number;
   // produitsPanier: Array<Produit> = [];
   // @Select(ProductState) state$: Observable<any>;
 
@@ -60,7 +61,8 @@ export class ElasticsearchComponent implements OnInit {
         produit: selectedProduit,
         qte: selectedProduit.qte > 0 ? 1 : 0,
         // important pour enregistrer une commande de type approvisionnnement
-        typeCommande: environment.lib_commande_sortant
+        typeCommande: environment.lib_commande_sortant,
+        isDisableUpdate: true
       };
       this.ligneCommandes.push(ligneCommande);
 
@@ -91,6 +93,32 @@ export class ElasticsearchComponent implements OnInit {
     this._snackBar.open(message, action, {
       duration: environment.durationOfSnackBar,
     });
+  }
+
+  startUpdateQte(ligneCommande: LigneCommande) {
+    ligneCommande.isDisableUpdate = false;
+    this.oldQteValue = ligneCommande.qte;
+  }
+
+  updateQte(ligneCommande) {
+    let message = '';
+    let action = '';
+
+    if (ligneCommande.produit.qte > ligneCommande.qte) {
+      this.store.dispatch(new UpdateProductToCart(ligneCommande.produit, ligneCommande.produit.id, ligneCommande.qte));
+      message = 'Qantité modifiée !';
+      action = 'Succès';
+    } else {
+      // si qte disponible du produit < qte de la commande alors on annule l'ajout au pannier et on remet la valeur inital du paanier
+      ligneCommande.qte = this.oldQteValue;
+      message = 'Quantité insuffisante !';
+      action = 'Erreur';
+    }
+    this._snackBar.open(message, action, {
+      duration: environment.durationOfSnackBar,
+    });
+
+    ligneCommande.isDisableUpdate = true;
   }
   removeSelection(selected: LigneCommande) {
     const position = this.ligneCommandes.map(element =>  element.produit.id).indexOf(selected.produit.id);

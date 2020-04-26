@@ -8,4 +8,7 @@ export class LigneCommande {
   fournisseur?: any;
   isReceive?: boolean;
   receiveDate?: any;
+
+  // is just used on front
+  isDisableUpdate?: boolean;
 }
