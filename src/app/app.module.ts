@@ -53,6 +53,8 @@ import { CommandeEntrantAttenteComponent } from './commande-entrant-attente/comm
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { DeleteCommandeEntrantAttenteComponent
        } from './commande-entrant-attente/delete-commande-entrant-attente/delete-commande-entrant-attente.component';
+import { ProduitACoursStockComponent } from './administration/produit-a-cours-stock/produit-a-cours-stock.component';
+import { DashboardComponent } from './administration/dashboard/dashboard.component';
 
 @NgModule({
    declarations: [
@@ -93,7 +95,9 @@ import { DeleteCommandeEntrantAttenteComponent
       SearchComponent,
       CommandeEntrantReceptionComponent,
       CommandeEntrantAttenteComponent,
-      DeleteCommandeEntrantAttenteComponent
+      DeleteCommandeEntrantAttenteComponent,
+      ProduitACoursStockComponent,
+      DashboardComponent
    ],
    imports: [
       BrowserModule,

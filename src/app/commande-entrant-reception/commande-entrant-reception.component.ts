@@ -65,37 +65,39 @@ export class CommandeEntrantReceptionComponent implements OnInit {
   }
 
   reception() {
-    const cis = this.scanCode.substring(0, environment.sizeOfCis);
+    if (this.scanCode) {
+      const cis = this.scanCode.substring(0, environment.sizeOfCis);
 
-    const newArray = this.data.filter( data => data.produit.cis === cis );
+      const newArray = this.data.filter( data => data.produit.cis === cis );
 
-    if (newArray.length > 0) {
+      if (newArray.length > 0) {
 
-      const receiveProduct =  newArray[0].produit;
-      receiveProduct.qte = receiveProduct.qte + newArray[0].qte;
-      // p.setQte(p.qte);
+        const receiveProduct =  newArray[0].produit;
+        receiveProduct.qte = receiveProduct.qte + newArray[0].qte;
+        // p.setQte(p.qte);
 
-      const ligneCommande = {
-        id: newArray[0].id,
-        produit: receiveProduct,
-        qte: this.qteRecu,
-        // important pour enregistrer une commande de type approvisionnnement
-        typeCommande: environment.lib_commande_entrant,
-        fournisseur: null,
-        isReceive: true,
-        receiveDate: new Date(),
-        isActif: true
-      };
+        const ligneCommande = {
+          id: newArray[0].id,
+          produit: receiveProduct,
+          qte: this.qteRecu,
+          // important pour enregistrer une commande de type approvisionnnement
+          typeCommande: environment.lib_commande_entrant,
+          fournisseur: null,
+          isReceive: true,
+          receiveDate: new Date(),
+          isActif: true
+        };
 
-      this.commandeService.saveCommandeEntrantReception([ligneCommande]).subscribe(
-        data => {
-          this.data = this.data.filter( element => element.produit.cis !== cis );
-          this.dataSource = new MatTableDataSource(this.data);
-          this.qteRecu = 0;
-          this.scanCode = '';
+        this.commandeService.saveCommandeEntrantReception([ligneCommande]).subscribe(
+          data => {
+            this.data = this.data.filter( element => element.produit.cis !== cis );
+            this.dataSource = new MatTableDataSource(this.data);
+            this.qteRecu = 0;
+            this.scanCode = '';
 
-        }
-      );
+          }
+        );
+      }
     }
   }
 }

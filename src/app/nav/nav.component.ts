@@ -72,6 +72,12 @@ export class NavComponent  implements OnInit,  OnDestroy {
       route: 'smart/notification',
       title: 'Notification',
       isActive: true
+    },
+    {
+      icon:  'dashboard',
+      route: 'smart/produitsAcmder',
+      title: 'Produits à commander',
+      isActive: true
     }
   ];
 
