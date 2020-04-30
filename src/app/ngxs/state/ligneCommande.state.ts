@@ -27,20 +27,20 @@ export class LigneCommandeState {
     private LigneCommandeService: ProduitService
   ) {}
 
-  @Action(LoadLigneCommande)
-  all(ctx: StateContext<LigneCommandeStateModel>) {
-    const state = ctx.getState();
-    this.LigneCommandeService.getAll()
-      .subscribe(
-        (data) => {
-          ctx.setState({
-            ...state,
-            ligneCommandes: data.map(p => new Produit(p)),
-          });
-        },
-        (error) => {}
-      ).add(() => {});
-  }
+  // @Action(LoadLigneCommande)
+  // all(ctx: StateContext<LigneCommandeStateModel>) {
+  //   const state = ctx.getState();
+  //   this.LigneCommandeService.getAll()
+  //     .subscribe(
+  //       (data) => {
+  //         ctx.setState({
+  //           ...state,
+  //           ligneCommandes: data.map(p => new Produit(p)),
+  //         });
+  //       },
+  //       (error) => {}
+  //     ).add(() => {});
+  // }
 
   @Action(AddLigneCommandeToCart)
   addLigneCommandeToCart(ctx: StateContext<LigneCommandeStateModel>, action: AddLigneCommandeToCart) {

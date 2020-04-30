@@ -126,7 +126,7 @@ export class ProduitComponent implements OnInit {
   }
 
   public loadData() {
-    this.produitService.getAll().subscribe(data => {
+    this.produitService.getAllProduits().subscribe(data => {
       this.data = data;
       this.dataSource = new MatTableDataSource(this.data);
       this.dataSource.paginator = this.paginator;

@@ -13,7 +13,8 @@ export class ProduitService {
   constructor(private http: HttpClient) {
 
   }
-  getAll(): Observable<any> {
+  getAllProduits(): Observable<any> {
+    console.log('-------------------call-----------------------');
     return this.http.get<any>(this.baseUrl);
   }
 

@@ -63,7 +63,7 @@ export class CommandeComponent implements OnInit, AfterViewInit  {
   }
 
   public loadData() {
-    this.produitService.getAll().subscribe(data => {
+    this.produitService.getAllProduits().subscribe(data => {
       this.data = data;
       this.data2 = data;
       this.dataSource = new MatTableDataSource(this.data);

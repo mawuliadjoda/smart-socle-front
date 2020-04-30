@@ -22,20 +22,20 @@ export class ProductState {
     private productService: ProduitService
   ) {}
 
-  @Action(LoadProducts)
-  all(ctx: StateContext<ProductStateModel>) {
-    const state = ctx.getState();
-    this.productService.getAll()
-      .subscribe(
-        (data) => {
-          ctx.setState({
-            ...state,
-            products: data.map(p => new Produit(p)),
-          });
-        },
-        (error) => {}
-      ).add(() => {});
-  }
+  // @Action(LoadProducts)
+  // all(ctx: StateContext<ProductStateModel>) {
+  //   const state = ctx.getState();
+  //   this.productService.getAll()
+  //     .subscribe(
+  //       (data) => {
+  //         ctx.setState({
+  //           ...state,
+  //           products: data.map(p => new Produit(p)),
+  //         });
+  //       },
+  //       (error) => {}
+  //     ).add(() => {});
+  // }
 
   @Action(AddProductToCart)
   addProductToCart(ctx: StateContext<ProductStateModel>, action: AddProductToCart) {
