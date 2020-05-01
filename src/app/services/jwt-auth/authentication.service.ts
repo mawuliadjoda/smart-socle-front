@@ -40,6 +40,9 @@ export class AuthenticationService {
     console.log(!(user === null));
     return user !== null;
   }
+  getUserLogin() {
+    return sessionStorage.getItem('username');
+  }
 
   logOut() {
     sessionStorage.removeItem('username');
