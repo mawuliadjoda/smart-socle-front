@@ -22,6 +22,7 @@ import { CommandeEntrantComponent } from './commande-entrant/commande-entrant.co
 import { CommandeEntrantAttenteComponent } from './commande-entrant-attente/commande-entrant-attente.component';
 import { CommandeEntrantReceptionComponent } from './commande-entrant-reception/commande-entrant-reception.component';
 import { ProduitACoursStockComponent } from './administration/produit-a-cours-stock/produit-a-cours-stock.component';
+import { StatJournaliereComponent } from './statistique/stat-journaliere/stat-journaliere.component';
 
 
 const routes: Routes = [
@@ -46,6 +47,7 @@ const routes: Routes = [
   {path: 'smart/commandes-attente', component: CommandeEntrantAttenteComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/commandes-entrant-reception', component: CommandeEntrantReceptionComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/produitsAcmder', component: ProduitACoursStockComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/declaration-vente', component: StatJournaliereComponent, canActivate: [AuthGaurdService]},
 
   {path: '**', component: PageNotFoundComponent}
 ];

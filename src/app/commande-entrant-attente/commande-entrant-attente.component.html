@@ -12,7 +12,16 @@
       </mat-form-field>
     </div>
 
-    <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+    <div >
+      <button style="float: right;" mat-button (click)="exporter.exportTable('csv')">
+        <img mat-list-avatar src="assets/images/csv-file-icon.svg" alt="csv" style="width: 15px; height: 15px;" />
+      </button>
+      <button style="float: right;" mat-button (click)="exporter.exportTable('xlsx')">
+        <img mat-list-avatar src="assets/images/excel-icon.svg" alt="csv" style="width: 15px; height: 15px;" />
+      </button>
+
+    </div>
+    <mat-table matTableExporter #exporter="matTableExporter" #table [dataSource]="dataSource" matSort class="mat-cell">
       ng update @angular/cli @angular/core
       <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>

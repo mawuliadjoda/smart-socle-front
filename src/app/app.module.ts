@@ -55,7 +55,8 @@ import { DeleteCommandeEntrantAttenteComponent
        } from './commande-entrant-attente/delete-commande-entrant-attente/delete-commande-entrant-attente.component';
 import { ProduitACoursStockComponent } from './administration/produit-a-cours-stock/produit-a-cours-stock.component';
 import { DashboardComponent } from './administration/dashboard/dashboard.component';
-
+import { StatJournaliereComponent } from './statistique/stat-journaliere/stat-journaliere.component';
+import { MatTableExporterModule } from 'mat-table-exporter';
 @NgModule({
    declarations: [
       AppComponent,
@@ -97,7 +98,8 @@ import { DashboardComponent } from './administration/dashboard/dashboard.compone
       CommandeEntrantAttenteComponent,
       DeleteCommandeEntrantAttenteComponent,
       ProduitACoursStockComponent,
-      DashboardComponent
+      DashboardComponent,
+      StatJournaliereComponent
    ],
    imports: [
       BrowserModule,
@@ -114,7 +116,8 @@ import { DashboardComponent } from './administration/dashboard/dashboard.compone
       PdfJsViewerModule,
       jqxChartModule,
       // https://www.npmjs.com/package/ngx-spinner
-      NgxSpinnerModule
+      NgxSpinnerModule,
+      MatTableExporterModule
    ],
    schemas: [CUSTOM_ELEMENTS_SCHEMA],
    entryComponents: [

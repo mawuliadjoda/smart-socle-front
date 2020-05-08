@@ -101,6 +101,12 @@ export class NavComponent  implements OnInit,  OnDestroy {
       route: 'smart/list-commande-sortant',
       title: 'Ventes',
       isActive: true
+    },
+    {
+      icon: '',
+      route: 'smart/declaration-vente',
+      title: 'Déclaration ventes',
+      isActive: true
     }
   ];
     mobileQuery: MediaQueryList;

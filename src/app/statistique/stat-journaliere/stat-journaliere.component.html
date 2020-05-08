@@ -1,0 +1,18 @@
+<div class="smart-padding">
+  <div class="grid">
+    <div class="cell">
+      <mat-form-field style="width: 100px;">
+        <mat-label>Unité</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let unite of unites" [value]="unite">
+            {{unite.nom}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="cell">second</div>
+    <div class="cell">third</div>
+  </div>
+</div>
+
+
