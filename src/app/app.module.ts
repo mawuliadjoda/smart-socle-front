@@ -57,6 +57,7 @@ import { ProduitACoursStockComponent } from './administration/produit-a-cours-st
 import { DashboardComponent } from './administration/dashboard/dashboard.component';
 import { StatJournaliereComponent } from './statistique/stat-journaliere/stat-journaliere.component';
 import { MatTableExporterModule } from 'mat-table-exporter';
+import { PipeModule } from './pipe.module';
 @NgModule({
    declarations: [
       AppComponent,
@@ -117,7 +118,8 @@ import { MatTableExporterModule } from 'mat-table-exporter';
       jqxChartModule,
       // https://www.npmjs.com/package/ngx-spinner
       NgxSpinnerModule,
-      MatTableExporterModule
+      MatTableExporterModule,
+      PipeModule.forRoot()
    ],
    schemas: [CUSTOM_ELEMENTS_SCHEMA],
    entryComponents: [
