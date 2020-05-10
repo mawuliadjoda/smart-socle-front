@@ -18,9 +18,59 @@
       [mode]="'over'"
       [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56"
-      style="width: 300px!important;background-color:#f2f2f2"
+      style="width: 250px!important;background-color:#f2f2f2"
     >
-      <mat-nav-list>
+
+
+
+    <mat-nav-list>
+      <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+				<span class="full-width">Activités</span>
+				<mat-icon mat-list-icon>dashboard</mat-icon>
+				<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}">expand_more</mat-icon>
+			</mat-list-item>
+			<div *ngIf="showSubmenu" class="submenu" [ngClass]="{'expanded' : showSubmenu}" >
+        <a *ngFor="let item of myWorkRoutes"
+            (click)="snav.close()"
+            [routerLink]="[item.route]"
+            [ngClass]="{'disabled-element ': !item.isActive, '': item.isActive}"
+            class="label-sidebar" mat-list-item >
+            {{ item.title }}
+        </a>
+      </div>
+
+      <mat-list-item (click)="showSubmenuAdmin = !showSubmenuAdmin" class="parent">
+				<span class="full-width">Administration</span>
+				<mat-icon mat-list-icon>work</mat-icon>
+				<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenuAdmin}">expand_more</mat-icon>
+      </mat-list-item>
+      <div *ngIf="showSubmenuAdmin" class="submenu" [ngClass]="{'expanded' : showSubmenuAdmin}" >
+        <a *ngFor="let item of customerRoutes"
+            (click)="snav.close()"
+            [routerLink]="[item.route]"
+            [ngClass]="{'disabled-element ': !item.isActive, '': item.isActive}"
+            class="label-sidebar" mat-list-item >
+            {{ item.title }}
+        </a>
+      </div>
+
+      <mat-list-item (click)="showSubmenuParam = !showSubmenuParam" class="parent">
+				<span class="full-width">Paramétrage</span>
+				<mat-icon mat-list-icon>settings</mat-icon>
+				<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenuParam}">expand_more</mat-icon>
+      </mat-list-item>
+      <div *ngIf="showSubmenuParam" class="submenu" [ngClass]="{'expanded' : showSubmenuParam}" >
+        <a *ngFor="let item of paramRoutes"
+            (click)="snav.close()"
+            [routerLink]="[item.route]"
+            [ngClass]="{'disabled-element ': !item.isActive, '': item.isActive}"
+            class="label-sidebar" mat-list-item >
+            {{ item.title }}
+        </a>
+			</div>
+    </mat-nav-list>
+
+      <!-- <mat-nav-list>
         <ng-container >
           <h2 matSubheader class="label-sidebar-separateur">Mes activités</h2>
 
@@ -35,7 +85,6 @@
             [ngClass]="{'disabled-element ': !item.isActive, '': item.isActive}"
           >
             <mat-icon matListIcon class="nav-list-icon">
-              <!-- {{ item.icon }} -->
             </mat-icon>
             {{ item.title }}
           </a>
@@ -55,12 +104,11 @@
             [ngClass]="{'disabled-element ': !item.isActive, '': item.isActive}"
           >
             <mat-icon matListIcon class="nav-list-icon">
-              <!-- {{ item.icon }} -->
             </mat-icon>
             {{ item.title }}
           </a>
         </ng-container>
-      </mat-nav-list>
+      </mat-nav-list> -->
     </mat-sidenav>
 
     <mat-sidenav-content>

@@ -109,6 +109,23 @@ export class NavComponent  implements OnInit,  OnDestroy {
       isActive: true
     }
   ];
+
+
+  paramRoutes = [
+
+    {
+      icon: 'assignment',
+      route: 'smart/reglage',
+      title: 'Réglages',
+      isActive: true
+    },
+    {
+      icon: 'assignment',
+      route: 'smart/personalisation',
+      title: 'Personalisation',
+      isActive: true
+    }
+  ];
     mobileQuery: MediaQueryList;
 
     fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
@@ -146,4 +163,11 @@ export class NavComponent  implements OnInit,  OnDestroy {
         }
       );
    }
+
+  //  isExpanded = true;
+      showSubmenu: boolean = false;
+      showSubmenuAdmin: boolean = false;
+      showSubmenuParam: boolean = false;
+  //  isShowing = false;
+  //  showSubSubMenu: boolean = false;
 }
