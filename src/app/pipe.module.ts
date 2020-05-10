@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { MontantFormatterPipe } from './util-component/montant-formatter.pipe';
 
 @NgModule({
@@ -9,10 +9,10 @@ import { MontantFormatterPipe } from './util-component/montant-formatter.pipe';
 
  export class PipeModule {
 
-   static forRoot() {
-      return {
-          ngModule: PipeModule,
-          providers: [],
-      };
-   }
+   static forRoot(): ModuleWithProviders<PipeModule> {
+    return {
+        ngModule: PipeModule,
+        providers: [],
+    };
+}
  }

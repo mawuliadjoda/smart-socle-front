@@ -29,3 +29,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 # Multiple file upload https://ackerapple.github.io/angular-file/
 # https://ackerapple.github.io/angular-file/
+
+
+#Upgrade to Angular 9 https://update.angular.io/#8.0:9.0l2

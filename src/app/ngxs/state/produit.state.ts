@@ -4,6 +4,7 @@ import { LoadProducts, AddProductToCart, DeleteProductToCart , UpdateProductToCa
 import { Produit } from 'src/app/models/produit';
 import { ProduitService } from 'src/app/services/produit.service';
 import { LigneCommande } from 'src/app/models/ligne-commande';
+import { Injectable } from '@angular/core';
 
 export interface ProductStateModel {
     cart: LigneCommande[];
@@ -17,6 +18,7 @@ export interface ProductStateModel {
     products: []
   }
 })
+@Injectable()
 export class ProductState {
   constructor(
     private productService: ProduitService
