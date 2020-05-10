@@ -1,36 +1,135 @@
+<br>
 <div class="form">
-  <mat-form-field>
-    <input [(ngModel)]="fieldValue" (keyup)="search($event)" matInput placeholder="Rechercher un médicament" >
-  </mat-form-field>
+    <mat-form-field>
+        <input [(ngModel)]="fieldValue" (keyup)="search($event)" matInput placeholder="----Rechercher un médicament par nom, categorie, référence, ... ----">
+    </mat-form-field>
+
 </div>
 
-<!-- <input type="text" (keyup)="search($event)" placeholder="Rechercher un médicament" class="input"> -->
-<!--
-<div *ngFor="let hit of hits">
-  <p>{{hit._source.nom}}
-</div> -->
-
 <div class="form">
-  <div *ngIf="hits?.length < 1">
-    <p class="no-results" >Aucun résultat!</p>
-  </div>
+    <div *ngIf="produits?.length < 1">
+        <p class="no-results">Aucun résultat!</p>
+    </div>
 
+    <mat-form-field *ngIf="produits?.length > 0" style="width:95%!important;">
 
-  <mat-form-field *ngIf="hits?.length > 0">
-    <mat-label>Résultats</mat-label>
-    <mat-select [formControl]="selecton" multiple>
-      <mat-select-trigger>
-        {{selecton.value ? selecton.value[0]?.nom : ''}}
-        <span *ngIf="selecton.value?.length > 1" class="example-additional-selection">
+      <mat-label>Séléctionner un résultat</mat-label>
+      <mat-select [formControl]="selecton">
+        <!-- <mat-option>None</mat-option> -->
+        <mat-option *ngFor="let produit of produits" [value]="produit">
+          {{ (produit.nom.length>50)? (produit.nom | slice:0:50)+'...':(produit.nom) }} / Qte:{{produit.qte}} / Prix:{{produit.prixUnitaire}} / Empl.:{{produit.emplacement}}
+        </mat-option>
+      </mat-select>
+        <!--
+         <mat-select [formControl]="selecton" multiple style="width:95%!important;">
+            <mat-select-trigger>
+                {{selecton.value ? selecton.value[0]?.nom : ''}}
+                <span *ngIf="selecton.value?.length > 1" class="example-additional-selection">
           (+{{selecton.value.length - 1}} {{selecton.value?.length === 2 ? 'autre' : 'autres'}})
         </span>
-      </mat-select-trigger>
-      <mat-option *ngFor="let hit of hits" [value]="hit._source">{{hit._source.nom}}</mat-option>
-    </mat-select>
-  </mat-form-field>
+            </mat-select-trigger>
+            <mat-option *ngFor="let ligneCommande of ligneCommandes" [value]="ligneCommande" matTooltip="{{ligneCommande.produit.nom}}" style="font-size: 10px;">
+                {{ (ligneCommande.produit.nom.length>50)? (ligneCommande.produit.nom | slice:0:50)+'...':(ligneCommande.produit.nom) }} / Qte:{{ligneCommande.produit.qte}} / Prix:{{ligneCommande.produit.prixUnitaire}} / Empl.:{{ligneCommande.produit.emplacement}}
+            </mat-option>
+        </mat-select> -->
+    </mat-form-field>
 
-  <button mat-raised-button title="Ajouter au panier" (click)="ajoutPanier()">
-   Ajouter
-  </button>
+    <button *ngIf="produits?.length > 0"
+             [disabled]="!selecton.value"
+             mat-raised-button title="Ajouter au panier"
+             (click)="addToSelection(selecton.value)">
+        <i class="material-icons">add_shopping_cart</i> Ajouter
+    </button>
 
+</div>
+
+<mat-divider></mat-divider>
+
+<div *ngIf="ligneCommandes?.length > 0" style="padding: 8px 24px 0;">
+
+    <!-- <div *ngFor="let ligneCommande of selecton?.value; index as i"> -->
+      <div *ngFor="let ligneCommande of ligneCommandes; index as i">
+        <div class="grid">
+
+            <div class="cell cell-width-15">
+                <div class="grid">
+                    <img style="width: 60px!important; height: 80px!important;" mat-list-avatar src="assets/images/product_image.png.webp" alt="Desc 1" />
+                </div>
+                <div class="grid">
+                    <a href="#">Afficher détail</a>
+                </div>
+                <div class="grid">
+                    <span *ngIf="ligneCommande?.produit.qte > 0" style="color: green;">En stock | Qte: {{ligneCommande?.produit.qte}}</span>
+
+                    <span *ngIf="ligneCommande?.produit.qte === 0" style="color: red;">Non disponible | Qte: {{ligneCommande?.produit.qte}}</span>
+                </div>
+            </div>
+
+            <div class="cell cell-width-60">
+                <div class="grid">
+                    <span class="link-caption" matTooltip="{{ligneCommande.produit.nom}}">
+                          {{(ligneCommande?.produit?.nom.length>50)? (ligneCommande?.produit?.nom | slice:0:50)+'...':(ligneCommande.produit.nom) }}
+                    </span>
+                </div>
+                <div class="grid">
+                    <p mat-line>Ref.</p>
+                </div>
+                <div class="grid">
+                    <p mat-line>Conditionnement: </p>
+                </div>
+                <!-- <div class="grid">
+                        <p mat-line>Laboratoire: </p>
+                    </div> -->
+            </div>
+
+            <div class="cell">
+                <div class="grid">
+                    <p mat-line>Prix unit: {{ligneCommande?.produit.prixUnitaire}} fcfa</p>
+                </div>
+                <div class="grid">
+                    <div class="cell" style="flex: 0 0 1%">
+                        <div class="grid">
+                            <div class="cell">
+                                <mat-form-field style="width: 100px;" >
+                                    <input type="number" min="1"
+                                          [(ngModel)]="ligneCommande.qte"
+                                          [disabled]="ligneCommande?.isDisableUpdate"
+
+                                          class="form-control"
+                                          matInput placeholder="Qte à commander"
+                                          (change)="checkQte()">
+                                </mat-form-field>
+                            </div>
+                            <div class="cell" *ngIf="ligneCommande?.produit.qte > 0">
+                              <!-- <input [hidden] = "false" #modifStatus /> -->
+                              <button mat-raised-button title="Modifier la quantité"
+                                      *ngIf="ligneCommande?.isDisableUpdate"
+
+                                      style="margin-top: 10px; margin-left: 5px;"
+                                      (click)="startUpdateQte(ligneCommande)">
+                                  <i class="material-icons">edit</i>
+                              </button>
+                              <button  mat-raised-button title="Modifier la quantité"
+                                      *ngIf="!ligneCommande?.isDisableUpdate"
+                                      style="margin-top: 10px; margin-left: 5px;"
+                                      (click)="updateQte(ligneCommande)">
+                                  <i class="material-icons">save</i>
+                              </button>
+                            </div>
+                            <div class="cell">
+                                <button mat-raised-button title="supprimer du pannier" style="margin-top: 10px; margin-left: 5px;"
+                                        (click)="removeSelection(ligneCommande)">
+                                    <i class="material-icons">delete</i>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <hr>
+    </div>
 </div>

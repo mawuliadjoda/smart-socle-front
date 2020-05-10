@@ -27,7 +27,7 @@ export class AddProduitComponent implements OnInit {
   ngOnInit() {}
 
   // @HostListener('window:mousedown', ['$event'])
-  getRefProduit(event){
+  getRefProduit(event) {
     this.refProduitService.findByReference(event).subscribe(data => {
       this.data.setRefProduit(data);
       console.log(data);

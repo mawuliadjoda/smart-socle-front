@@ -1,0 +1,57 @@
+<br>
+<div class="form">
+  <mat-form-field>
+    <input [(ngModel)]="fieldValue"
+           (keyup)="search($event)"
+           matInput
+           placeholder="----Rechercher un médicament par nom, categorie, référence, ... ----" >
+  </mat-form-field>
+
+  <!-- <div style="text-align: right; flex: 1 auto;">
+    <app-shopping-card></app-shopping-card>
+    <button mat-raised-button title="Mon panier" (click)="viewShoppingCart()">
+        <i matBadge="{{produitsPanier?.length}}" matBadgeColor="warn" class="material-icons">shopping_cart</i>
+    </button>
+  </div> -->
+</div>
+
+<!-- <input type="text" (keyup)="search($event)" placeholder="Rechercher un médicament" class="input"> -->
+<!--
+<div *ngFor="let hit of produits">
+  <p>{{hit._source.nom}}
+</div> -->
+
+<div class="form">
+  <div *ngIf="produits?.length < 1">
+    <p class="no-results" >Aucun résultat!</p>
+  </div>
+
+
+  <mat-form-field *ngIf="produits?.length > 0" style="width:95%!important;">
+    <mat-label>Résultats</mat-label>
+    <mat-select [formControl]="selecton" multiple style="width:95%!important;">
+      <mat-select-trigger>
+        {{selecton.value ? selecton.value[0]?.nom : ''}}
+        <span *ngIf="selecton.value?.length > 1" class="example-additional-selection">
+          (+{{selecton.value.length - 1}} {{selecton.value?.length === 2 ? 'autre' : 'autres'}})
+        </span>
+      </mat-select-trigger>
+      <mat-option  *ngFor="let produit of produits" [value]="produit" matTooltip="{{produit.nom}}" style="font-size: 10px;">
+        <!-- <mat-option [disabled]="produit.qte === 0" *ngFor="let produit of produits" [value]="produit" matTooltip="{{produit.nom}}" style="font-size: 10px;"> -->
+        {{ (produit.nom.length>50)? (produit.nom | slice:0:50)+'...':(produit.nom) }} /  Qte:{{produit.qte}} /  Prix:{{produit.prixUnitaire}} /  Empl.:{{produit.emplacement}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button *ngIf="produits?.length > 0" mat-raised-button title="Ajouter au panier" (click)="add(selecton.value)">
+   Ajouter
+  </button>
+
+</div>
+
+
+
+<!-- <div>
+  <input [(ngModel)]="username" type="text" placeholder="username" />
+  <button (click)="sendName()"> Send Name </button>
+</div> -->

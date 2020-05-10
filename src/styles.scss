@@ -1,5 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~material-design-icons/iconfont/material-icons.css';
+
+// A decommenter si besoin d'utiliser juste grid de bootstrap === >  pb de conflit géré
+// @import "~bootstrap-4-grid/scss/grid.scss";
+@import "~grid-css/grid.css";
+
 html, body { height: 100%; widows: 50%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -17,4 +22,56 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-size: 12px;
   font-family: sans-serif;
   color: white;
+}
+
+a {
+  color: rgb(79, 113, 224);
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(79, 113, 224);
+  text-decoration: underline;
+}
+
+.cell-width-10 {
+  flex: 0 0 10%;
+}
+
+.cell-width-12 {
+  flex: 0 0 12%;
+}
+
+.cell-width-15 {
+  flex: 0 0 15%;
+}
+
+.cell-width-20 {
+  flex: 0 0 20%;
+}
+
+.cell-width-30 {
+  flex: 0 0 30%;
+}
+
+.cell-width-40 {
+  flex: 0 0 40%;
+}
+
+.cell-width-50 {
+  flex: 0 0 50%;
+}
+.cell-width-60 {
+  flex: 0 0 60%;
+}
+.cell-width-80 {
+  flex: 0 0 80%;
+}
+.cell-width-90 {
+  flex: 0 0 90%;
+}
+
+
+.smart-padding {
+  padding: 8px 24px 0;
 }

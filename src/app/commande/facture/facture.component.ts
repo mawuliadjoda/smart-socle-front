@@ -7,6 +7,8 @@ import { Observable, of, pipe } from 'rxjs';
 import { switchMap, debounceTime, catchError } from 'rxjs/operators';
 import { CommandeService } from 'src/app/services/commande.service.ts';
 import { DeleteAllProductToCart } from 'src/app/ngxs/action';
+import { environment } from 'src/environments/environment';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-facture',
   templateUrl: './facture.component.html',
@@ -22,9 +24,19 @@ export class FactureComponent implements OnInit {
 
   constructor(public fileService: FileService,
               public commandeService: CommandeService,
-              private store: Store) { }
+              private store: Store,
+              private spinner: NgxSpinnerService) {
+              }
 
   ngOnInit() {
+    /** spinner starts on init */
+    this.spinner.show();
+
+    /** spinner ends after 5 seconds */
+    // setTimeout(() => {
+    //   this.spinner.hide();
+    // }, 5000);
+
     this.loadCartTotal();
     this.saveLigneFactureAndBuildPdf();
     // this.fileService.downloadFileSystem(this.ligneCommandes)
@@ -38,13 +50,17 @@ export class FactureComponent implements OnInit {
     // });
   }
 
-  saveLigneFactureAndBuildPdf(){
-    let ligneCommandeToSave = this.ligneCommandes.map(item => {
+  saveLigneFactureAndBuildPdf() {
+    const ligneCommandeToSave = this.ligneCommandes.map(item => {
 
       const container = {
         id: null,
         produit: item.produit,
-        qte: item.qte
+        qte: item.qte,
+        // important pour enregistrer une commande de type vente
+        typeCommande: environment.lib_commande_sortant,
+        isReceive: true,
+        isActif: true
       };
       return container;
     });
@@ -67,6 +83,9 @@ export class FactureComponent implements OnInit {
 
       // Vider le panier
       this.store.dispatch(new DeleteAllProductToCart());
+
+      this.spinner.hide();
+
     });
   }
 
@@ -90,7 +109,7 @@ export class FactureComponent implements OnInit {
     );
   }
 
-  reduceArray(ligneCommandes: Array<LigneCommande> ){
+  reduceArray(ligneCommandes: Array<LigneCommande> ) {
 
     const result = [...ligneCommandes.reduce((r, o) => {
       const key = o.id;
@@ -102,7 +121,7 @@ export class FactureComponent implements OnInit {
       item.qte += o.qte;
 
       return r.set(key, item);
-    }, new Map).values()];
+    }, new Map()).values()];
 
     console.log('===============================reduce:' + result);
     result.forEach(element => {

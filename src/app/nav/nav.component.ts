@@ -33,37 +33,80 @@ export class NavComponent  implements OnInit,  OnDestroy {
     {
       icon: 'assignment',
       route: 'smart/produits',
-      title: 'Produits'
+      title: 'Produits',
+      isActive: true
     },
     {
       icon: 'assignment',
       route: 'smart/ref-produit',
-      title: 'Ref. Produits'
+      title: 'Ref. Produits',
+      isActive: true
     },
 
     {
       icon: 'assignment',
       route: 'smart/am-chart',
-      title: 'Statistique'
+      title: 'Statistique',
+      isActive: true
+    },
+    {
+      icon:  'dashboard',
+      route: 'smart/commandes-entrant',
+      title: 'Aprovisionnement',
+      isActive: true
+    },
+    {
+      icon:  'dashboard',
+      route: 'smart/commandes-attente',
+      title: 'Commandes en attente',
+      isActive: true
+    },
+    {
+      icon:  'dashboard',
+      route: 'smart/commandes-entrant-reception',
+      title: 'Reception commandes',
+      isActive: true
     },
     {
       icon:  'dashboard',
       route: 'smart/notification',
-      title: 'Notification'
-    } ];
+      title: 'Notification',
+      isActive: true
+    },
+    {
+      icon:  'dashboard',
+      route: 'smart/produitsAcmder',
+      title: 'Produits à commander',
+      isActive: true
+    }
+  ];
 
 
     myWorkRoutes = [
 
     {
-      icon: 'contacts',
-      route: 'smart/commandes',
-      title: 'Nouvelle commande'
+      icon: '',
+      route: 'smart/commandes-sortant',
+      title: 'Nouvelle vente',
+      isActive: false
     },
     {
-      icon: 'people',
-      route: 'smart/list-commande',
-      title: 'Liste des commandes'
+      icon: '',
+      route: 'smart/search',
+      title: 'Rechercher un produit',
+      isActive: true
+    },
+    {
+      icon: '',
+      route: 'smart/list-commande-sortant',
+      title: 'Ventes',
+      isActive: true
+    },
+    {
+      icon: '',
+      route: 'smart/declaration-vente',
+      title: 'Déclaration ventes',
+      isActive: true
     }
   ];
     mobileQuery: MediaQueryList;
@@ -81,7 +124,7 @@ export class NavComponent  implements OnInit,  OnDestroy {
 
     constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,
                 private propertyService: PropertyService,
-                private loginService:AuthenticationService) {
+                private loginService: AuthenticationService) {
       this.mobileQuery = media.matchMedia('(max-width: 600px)');
       this.mobileQueryListener = () => changeDetectorRef.detectChanges();
       this.mobileQuery.addListener(this.mobileQueryListener);

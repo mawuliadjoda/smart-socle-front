@@ -1,0 +1,15 @@
+
+
+.form {
+  min-height: 56px;
+  max-height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 8px 24px 0;
+  font-size: 20px;
+  justify-content: space-between;
+  border-bottom: 1px solid transparent;
+}
+.my-form-field .mat-form-field-wrapper{
+  padding: 0px;
+}

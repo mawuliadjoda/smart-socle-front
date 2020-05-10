@@ -69,7 +69,7 @@ export class RefProduitComponent implements OnInit {
 
   startEdit(index: number, refProduit: RefProduit) {
     // new RefProduit(refProduit):  give new reference to avoid modif in list before save
-    let refProduitToEdit = new RefProduit(refProduit);
+    const refProduitToEdit = new RefProduit(refProduit);
     const dialogRef = this.dialog.open(EditRefProduitComponent, {
       data: refProduitToEdit, disableClose: true
     });

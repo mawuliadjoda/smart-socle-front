@@ -1,0 +1,85 @@
+<div class="smart-padding">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <div class="grid">
+          <div class="cell cell-width-20"></div>
+          <div class="cell">
+              <mat-form-field style="width: 100px;" class="form-control">
+                  <mat-label>select.</mat-label>
+                  <mat-select formControlName="unite" required>
+                      <mat-option *ngFor="let unite of unites" [value]="unite">
+                          {{ unite.formatValue }}
+                      </mat-option>
+                  </mat-select>
+              </mat-form-field>
+          </div>
+          <div class="cell">
+              <mat-form-field class="example-full-width">
+                  <input type="number" min="1" matInput placeholder="Nombre" formControlName="qte" required />
+              </mat-form-field>
+          </div>
+          <div class="cell">
+              <button style="margin-top: 5px;" mat-raised-button type="submit" [disabled]="!myForm.valid">
+                  Ajouter
+              </button>
+          </div>
+          <div class="cell cell-width-10"></div>
+      </div>
+  </form>
+</div>
+<hr />
+
+<div class="grid">
+  <div class="cell"></div>
+  <div class="cell cell-width-80 mat-elevation-z8">
+    <mat-table *ngIf="dataSource && dataSource.data && dataSource.data.length > 0"  [dataSource]="dataSource" matSort style="max-height: 250px; overflow-y: scroll; overflow-x: hidden;">
+      ng update @angular/cli @angular/core
+      <ng-container matColumnDef="unite">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Unite</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{ row.unite }}</mat-cell>
+          <!-- <mat-footer-cell  *matFooterCellDef> Total</mat-footer-cell> -->
+      </ng-container>
+
+      <ng-container matColumnDef="qte">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ row.qte }}</mat-cell>
+          <!-- <mat-footer-cell  *matFooterCellDef style="flex: 0 0 40%;"> 1000</mat-footer-cell> -->
+      </ng-container>
+
+      <!-- actions -->
+      <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+
+          <mat-cell *matCellDef="let row; let i = index">
+              <button mat-icon-button (click)="delete(row, i)">
+                  <mat-icon aria-label="Delete">delete</mat-icon>
+              </button>
+          </mat-cell>
+          <!-- <mat-footer-cell  *matFooterCellDef> </mat-footer-cell> -->
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      <!-- <mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></mat-footer-row> -->
+  </mat-table>
+
+  <div *ngIf="dataSource && dataSource.data && dataSource.data.length > 0">
+    <div class="grid">
+      <div class="cell cell-width-50"></div>
+      <div class="cell cell-width-25">
+        <p style="margin-left: 20px;">Total: {{total | montantFormatter}} </p>
+      </div>
+      <div class="cell cell-width-25">
+        <button mat-raised-button style="float: right; margin-right: 20px;" (click)="enregistreVenteDuJour()">
+          Enregistrer
+        </button>
+      </div>
+    </div>
+
+
+  </div>
+      <div class="no-results" [style.display]="dataSource.data.length == 0 ? '' : 'none'">
+          No results
+      </div>
+  </div>
+  <div class="cell"></div>
+</div>

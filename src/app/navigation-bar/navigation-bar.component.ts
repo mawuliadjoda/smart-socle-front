@@ -11,11 +11,14 @@ import { AuthenticationService } from '../services/jwt-auth/authentication.servi
 export class NavigationBarComponent implements OnInit {
 
   @Output() toggleSidenav = new EventEmitter<void>();
+
+  login: string;
   constructor(private messageService: MessageService,
               private router: Router,
               private authentocationService: AuthenticationService) { }
 
   ngOnInit() {
+    this.login = this.authentocationService.getUserLogin();
   }
 
   public logout() {

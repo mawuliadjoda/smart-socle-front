@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LigneCommande } from '../models/ligne-commande';
 import { LigneCommandeService } from '../services/ligne-commande.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { StatUtil } from '../model/statUtil';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-statistique',
@@ -10,14 +9,15 @@ import { StatUtil } from '../model/statUtil';
   styleUrls: ['./statistique.component.css']
 })
 export class StatistiqueComponent implements OnInit {
+
+  // statUtils: Array<StatUtil> = [];
+  constructor(private ligneCommandeService: LigneCommandeService,
+              private spinner: NgxSpinnerService) { }
   xAxeAttribute = 'date_';
   yAxeAttribute = 'total';
   intervalVisualisation: string;
   padding: any = { left: 5, top: 5, right: 30, bottom: 5 };
   titlePadding: any = { left: 30, top: 5, right: 0, bottom: 10 };
-
-  // statUtils: Array<StatUtil> = [];
-  constructor(private ligneCommandeService: LigneCommandeService) { }
 
   valueAxis: any =
   {
@@ -59,19 +59,21 @@ export class StatistiqueComponent implements OnInit {
 
 
   months: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+
+
+
+
   toolTipCustomFormatFn: any = (value: any, itemIndex: any, serie: any, group: any, categoryValue: any, categoryAxis: any): any => {
-      let statUtil = this.dataAdapter.records[itemIndex];
+      const statUtil = this.dataAdapter.records[itemIndex];
       return '<div style="text-align:left; width: 100%!important; height: 100%!important">' +
          // categoryValue.getDate() + '-' + this.months[categoryValue.getMonth()] + '-' + categoryValue.getFullYear() +
-          //'</b><br />Date: ' + dataItem.date_ +
+          // '</b><br />Date: ' + dataItem.date_ +
          '<br /> Date:&nbsp;' + statUtil.date_ + '&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;' +
          '</b><br />Total: ' + statUtil.total + '&nbsp;Fcfa' +
          '</b><br /> &nbsp;' +
           '</div>';
-  };
-
-
-
+  }
   seriesGroups =
   [
       {
@@ -84,7 +86,7 @@ export class StatistiqueComponent implements OnInit {
   ];
 
   chartChange(event: any) {
-      let args = event.args;
+      const args = event.args;
       args.instance.description = args.minValue.getFullYear() + '-' + args.maxValue.getFullYear();
   }
 
@@ -104,10 +106,10 @@ export class StatistiqueComponent implements OnInit {
   }
 
   public getData() {
+    this.spinner.show();
     this.ligneCommandeService.getAllStat().subscribe(data => {
      // this.statUtils = data;
-     const source =
-     {
+     const source = {
          datatype: 'json',
          datafields: [
              { name: this.xAxeAttribute },
@@ -116,13 +118,14 @@ export class StatistiqueComponent implements OnInit {
         localdata: data
      };
 
-      this.dataAdapter = new jqx.dataAdapter(
+     this.dataAdapter = new jqx.dataAdapter(
         source,
         { async: false,
           autoBind: true,
-          loadError: (xhr: any, status: any, error: any) => { alert('Error loading "' + source+ '" : ' + error); }
+          loadError: (xhr: any, status: any, error: any) => { alert('Error loading "' + source + '" : ' + error); }
         }
       );
+     this.spinner.hide();
 
     },
     (err: HttpErrorResponse) => {

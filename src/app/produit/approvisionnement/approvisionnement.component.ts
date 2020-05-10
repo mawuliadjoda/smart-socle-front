@@ -10,7 +10,7 @@ import { RefProduitService } from 'src/app/services/ref-produit.service';
   styleUrls: ['./approvisionnement.component.css']
 })
 export class ApprovisionnementComponent implements OnInit {
-  //public qteAajouter: number;
+  // public qteAajouter: number;
   constructor(
     public dialogRef: MatDialogRef<ApprovisionnementComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Produit,
@@ -25,7 +25,7 @@ export class ApprovisionnementComponent implements OnInit {
   ngOnInit() {}
 
   // @HostListener('window:mousedown', ['$event'])
-  getRefProduit(event){
+  getRefProduit(event) {
     this.refProduitService.findByReference(event).subscribe(data => {
       this.data.setRefProduit(data);
       console.log(data);

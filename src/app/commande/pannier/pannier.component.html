@@ -16,55 +16,95 @@
 
     <mat-divider></mat-divider>
 
-    <div>
+    <div *ngIf="ligneCommandes?.length > 0" style="padding: 8px 24px 0;">
 
-        <mat-nav-list>
-            <mat-list-item *ngFor="let ligneCommande of ligneCommandes; index as i">
+      <!-- <div *ngFor="let ligneCommande of selecton?.value; index as i"> -->
+        <div *ngFor="let ligneCommande of ligneCommandes; index as i">
+          <div class="grid">
 
-                <div>
-                    <img mat-list-avatar src="assets/images/product_image.png.webp" alt="Desc 1" />
-                    <a matLine [href]="ligneCommande?.produit?.nom" target="_blank">
-                        <!-- <mat-icon [class]="link.CSSClass"></mat-icon> -->
-                        <span class="link-caption">{{ ligneCommande.produit.nom }} </span>
-                    </a>
-                    <br>
-                    <span class="link-caption">{{ ligneCommande.produit.description }} </span>
-                    <p mat-line>
-                        <span>{{ligneCommande.produit.categorie}}</span>
-                    </p>
-                    <!-- <span>{{ligneCommande.produit.reference}}</span> -->
-                </div>
+              <div class="cell cell-width-15">
+                  <div class="grid">
+                      <img style="width: 60px!important; height: 80px!important;" mat-list-avatar src="assets/images/product_image.png.webp" alt="Desc 1" />
+                  </div>
+                  <div class="grid">
+                      <a href="#">Afficher détail</a>
+                  </div>
+                  <div class="grid">
+                      <span *ngIf="ligneCommande?.produit.qte > 0" style="color: green;">En stock | Qte: {{ligneCommande?.produit.qte}}</span>
 
-                <div style="text-align: right; flex: 1 auto;">
-                    <a matLine [href]="ligneCommande.produit.nom" target="_blank">
-                        <span class="link-caption">{{ ligneCommande.produit.nom }} </span>
-                    </a>
+                      <span *ngIf="ligneCommande?.produit.qte === 0" style="color: red;">Non disponible | Qte: {{ligneCommande?.produit.qte}}</span>
+                  </div>
+              </div>
 
-                    <h3 mat-line>{{ligneCommande.produit.prixUnitaire}} fcfa</h3>
-                    <span *ngIf="ligneCommande.produit.qte > 0" style="color: green;">En stock</span>
-                    <span *ngIf="ligneCommande.produit.qte === 0" style="color: red;">Non disponible</span>
-                    <br>
+              <div class="cell cell-width-60">
+                  <div class="grid">
+                      <span class="link-caption" matTooltip="{{ligneCommande.produit.nom}}">
+                            {{(ligneCommande?.produit?.nom.length>50)? (ligneCommande?.produit?.nom | slice:0:50)+'...':(ligneCommande.produit.nom) }}
+                      </span>
+                  </div>
+                  <div class="grid">
+                      <p mat-line>Ref.</p>
+                  </div>
+                  <div class="grid">
+                      <p mat-line>Conditionnement: </p>
+                  </div>
+                  <!-- <div class="grid">
+                          <p mat-line>Laboratoire: </p>
+                      </div> -->
+              </div>
 
-                    <div>
-                        <mat-form-field>
-                            <input matInput placeholder="Quantité"
-                                   type="number"
-                                   class="example-right-align"
-                                   [(ngModel)]="ligneCommande.qte">
-                        </mat-form-field>
-                        <button mat-raised-button color="primary">Voir le produit</button>
-                    </div>
+              <div class="cell">
+                  <div class="grid">
+                      <p mat-line>Prix unit: {{ligneCommande?.produit.prixUnitaire}} fcfa</p>
+                  </div>
+                  <div class="grid">
+                      <div class="cell" style="flex: 0 0 1%">
+                          <div class="grid">
+                              <div class="cell">
+                                  <mat-form-field style="width: 100px;" >
+                                      <input type="number" min="1"
+                                            [(ngModel)]="ligneCommande.qte"
+                                            [disabled]="ligneCommande?.isDisableUpdate"
 
-                </div>
+                                            class="form-control"
+                                            matInput placeholder="Qte à commander">
+                                  </mat-form-field>
+                              </div>
+                              <div class="cell" *ngIf="ligneCommande?.produit.qte > 0">
+                                <!-- <input [hidden] = "false" #modifStatus /> -->
+                                <button mat-raised-button title="Modifier la quantité"
+                                        *ngIf="ligneCommande?.isDisableUpdate"
 
-                <mat-divider></mat-divider>
-                <!-- <mat-divider *ngIf="i !== (data.length -1)"></mat-divider> -->
-            </mat-list-item>
-        </mat-nav-list>
-    </div>
+                                        style="margin-top: 10px; margin-left: 5px;"
+                                        (click)="startUpdateQte(ligneCommande)">
+                                    <i class="material-icons">edit</i>
+                                </button>
+                                <button  mat-raised-button title="Modifier la quantité"
+                                        *ngIf="!ligneCommande?.isDisableUpdate"
+                                        style="margin-top: 10px; margin-left: 5px;"
+                                        (click)="updateQte(ligneCommande)">
+                                    <i class="material-icons">save</i>
+                                </button>
+                              </div>
+                              <div class="cell">
+                                  <button mat-raised-button title="supprimer du pannier" style="margin-top: 10px; margin-left: 5px;"
+                                          (click)="removeSelection(ligneCommande)">
+                                      <i class="material-icons">delete</i>
+                                  </button>
+                              </div>
 
-    <br><br>
-    <div class="mat-elevation-z8">
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+
+          </div>
+          <hr>
+      </div>
+  </div>
+
+    <div style="padding: 8px 24px 0;">
       <div style="text-align: right; float: right; width: 50%;">
           <span>Sous-Total:  {{getTotal()}} FCFA</span>
           <br>
@@ -74,7 +114,7 @@
               <button mat-raised-button color="primary" (click)="downloadFileSystem()">Facture</button>
           </div> -->
           <div style="float: right;">
-            <button mat-raised-button color="primary"
+            <button mat-raised-button
                     (click)="visualiserFacture()"
                     [disabled] = "! (ligneCommandes.length > 0)">
                     Passer la commande

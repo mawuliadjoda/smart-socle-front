@@ -18,18 +18,23 @@
     <div>
       <button mat-button>
         <i  class="label-header-person material-icons">person</i>
-        <span class="label">Mawuli ADJODA</span>
+        <span class="label">{{login}}</span>
       </button>
     </div>
     <span class="filler"></span>
-    <span class="spacer label" >Dernière connexion: 19/01/2020 à 15h:58</span>
+    <span class="spacer label" >Dernière connexion: 25/04/2020 à 16h:00</span>
 
     <div class="spacer"></div>
    <div style="float: right;">
     <button mat-button (click)="logout()">
       <i class="color-red material-icons" style="color: red;"> power_settings_new  </i>
-      <span class="label">Se déconnecter</span>
+      <!-- <span class="label"></span> -->
     </button>
+   </div>
+
+   <!-- <div class="spacer"></div> -->
+   <div style="float: right; margin-top: 10px; margin-left: 10px;">
+     <app-shopping-card></app-shopping-card>
    </div>
   </mat-toolbar-row>
 

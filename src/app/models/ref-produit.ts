@@ -23,11 +23,9 @@ export class RefProduit {
     this.prixUnitaire = attrs.prixUnitaire;
   }
 
-  /**
-  * Return a JSON object representation of the object
-  * @return {Object}
-  */
-  toJson(): Object {
+
+  // Return a JSON object representation of the object
+  toJson(): any {
     return {
         nom: this.nom,
         reference : this.reference,

@@ -34,3 +34,8 @@ h1.example-app-name {
   font-family: sans-serif;
   color: rgb(14, 13, 13);
 }
+
+.disabled-element {
+  pointer-events: none;
+  cursor: not-allowed;
+}

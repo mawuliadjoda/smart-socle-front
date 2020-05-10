@@ -23,4 +23,11 @@ export class CommandeService {
   save(ligneCommandes: Array<LigneCommande>): Observable<any> {
     return this.http.post(this.baseUrl, ligneCommandes);
   }
+  saveCommandeEntrant(ligneCommandes: Array<LigneCommande>): Observable<any> {
+    return this.http.post(environment.baseUrl + 'commandes-entrant', ligneCommandes);
+  }
+
+  saveCommandeEntrantReception(ligneCommandes: Array<LigneCommande>): Observable<any> {
+    return this.http.post(environment.baseUrl + 'commandes-entrant-reception', ligneCommandes);
+  }
 }

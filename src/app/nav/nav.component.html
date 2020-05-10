@@ -32,6 +32,7 @@
             (click)="snav.close()"
             [routerLink]="[item.route]"
             routerLinkActive="list-item-active"
+            [ngClass]="{'disabled-element ': !item.isActive, '': item.isActive}"
           >
             <mat-icon matListIcon class="nav-list-icon">
               <!-- {{ item.icon }} -->
@@ -51,6 +52,7 @@
             (click)="snav.close()"
             [routerLink]="[item.route]"
             routerLinkActive="list-item-active"
+            [ngClass]="{'disabled-element ': !item.isActive, '': item.isActive}"
           >
             <mat-icon matListIcon class="nav-list-icon">
               <!-- {{ item.icon }} -->

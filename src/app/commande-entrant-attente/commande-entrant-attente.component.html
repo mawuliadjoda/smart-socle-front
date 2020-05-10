@@ -1,0 +1,89 @@
+
+  <!-- <span class="spacer"></span>
+  <button mat-icon-button (click)="refresh()">
+    <mat-icon>refresh</mat-icon>
+  </button> -->
+
+  <div class="container mat-elevation-z8" style=" padding: 8px 24px 0;">
+
+    <div class="form">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+
+    <div >
+      <button style="float: right;" mat-button (click)="exporter.exportTable('csv')">
+        <img mat-list-avatar src="assets/images/csv-file-icon.svg" alt="csv" style="width: 15px; height: 15px;" />
+      </button>
+      <button style="float: right;" mat-button (click)="exporter.exportTable('xlsx')">
+        <img mat-list-avatar src="assets/images/excel-icon.svg" alt="csv" style="width: 15px; height: 15px;" />
+      </button>
+
+    </div>
+    <mat-table matTableExporter #exporter="matTableExporter" #table [dataSource]="dataSource" matSort class="mat-cell">
+      ng update @angular/cli @angular/core
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+        <mat-cell *matCellDef="let row" >{{row.id}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="nom">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Nom</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row?.produit?.nom}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="reference">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Reference</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row?.produit?.reference}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="categorie">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Categorie</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row?.produit?.categorie}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="qte">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Qte commandée</mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.qte}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="prixUnitaire">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>prixUnitaire</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row?.produit?.prixUnitaire}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="created_at">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Created at</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.createdAt | date: 'dd/MM/yyyy hh:mm'}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="prixTotal">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Prix total</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row?.produit?.prixUnitaire * row.qte}}</mat-cell>
+      </ng-container>
+
+          <!-- actions -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let row; let i=index;">
+        <button mat-icon-button color="accent" (click)="deleteItem(i, row)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+
+    <div class="no-results" [style.display]="dataSource.data.length == 0 ? '' : 'none'">
+      No results
+    </div>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>

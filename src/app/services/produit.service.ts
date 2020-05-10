@@ -13,7 +13,8 @@ export class ProduitService {
   constructor(private http: HttpClient) {
 
   }
-  getAll(): Observable<any> {
+  getAllProduits(): Observable<any> {
+    console.log('-------------------call-----------------------');
     return this.http.get<any>(this.baseUrl);
   }
 
@@ -27,5 +28,9 @@ export class ProduitService {
 
   delete(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/` + id);
+  }
+
+  findProduitACommander(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/produit-a-cmder`);
   }
 }

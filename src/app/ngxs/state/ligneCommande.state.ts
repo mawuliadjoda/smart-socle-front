@@ -2,7 +2,12 @@ import { State, Action, StateContext } from '@ngxs/store';
 
 import { Produit } from 'src/app/models/produit';
 import { ProduitService } from 'src/app/services/produit.service';
-import { LoadLigneCommande, AddLigneCommandeToCart, DeleteLigneCommandeToCart, UpdateLigneCommandeToCart, DeleteAllLigneCommandeToCart } from '../action/commande.action';
+import { LoadLigneCommande,
+         AddLigneCommandeToCart,
+         DeleteLigneCommandeToCart,
+         UpdateLigneCommandeToCart,
+         DeleteAllLigneCommandeToCart
+       } from '../action/commande.action';
 import { LigneCommande } from 'src/app/models/ligne-commande';
 
 export interface LigneCommandeStateModel {
@@ -22,23 +27,23 @@ export class LigneCommandeState {
     private LigneCommandeService: ProduitService
   ) {}
 
-  @Action(LoadLigneCommande)
-  all(ctx: StateContext<LigneCommandeStateModel>) {
-    const state = ctx.getState();
-    this.LigneCommandeService.getAll()
-      .subscribe(
-        (data) => {
-          ctx.setState({
-            ...state,
-            ligneCommandes: data.map(p => new Produit(p)),
-          });
-        },
-        (error) => {}
-      ).add(() => {});
-  }
+  // @Action(LoadLigneCommande)
+  // all(ctx: StateContext<LigneCommandeStateModel>) {
+  //   const state = ctx.getState();
+  //   this.LigneCommandeService.getAll()
+  //     .subscribe(
+  //       (data) => {
+  //         ctx.setState({
+  //           ...state,
+  //           ligneCommandes: data.map(p => new Produit(p)),
+  //         });
+  //       },
+  //       (error) => {}
+  //     ).add(() => {});
+  // }
 
   @Action(AddLigneCommandeToCart)
-  addLigneCommandeToCart(ctx: StateContext<LigneCommandeStateModel>, action: AddLigneCommandeToCart){
+  addLigneCommandeToCart(ctx: StateContext<LigneCommandeStateModel>, action: AddLigneCommandeToCart) {
     const state = ctx.getState();
     ctx.setState({
       ...state,

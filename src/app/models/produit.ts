@@ -1,4 +1,4 @@
-import { RefProduit } from "./ref-produit";
+import { RefProduit } from './ref-produit';
 
 export class Produit {
   id: number;
@@ -10,7 +10,9 @@ export class Produit {
   qte: number;
   prixUnitaire: number;
   description: string;
+  cis: string;
   // refProduit: RefProduit;
+  emplacement?: string;
   constructor(attrs: any = null) {
     if (attrs) {
       this.build(attrs);
@@ -36,9 +38,9 @@ export class Produit {
   }
   /**
    * Return a JSON object representation of the object
-   * @return {Object}
+   *
    */
-  toJson(): Object {
+  toJson(): any {
     return {
       nom: this.nom,
       reference: this.reference,
