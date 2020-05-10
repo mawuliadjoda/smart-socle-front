@@ -58,6 +58,7 @@ import { DashboardComponent } from './administration/dashboard/dashboard.compone
 import { StatJournaliereComponent } from './statistique/stat-journaliere/stat-journaliere.component';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { PipeModule } from './pipe.module';
+import { ClarityModule } from "@clr/angular";
 @NgModule({
    declarations: [
       AppComponent,
@@ -119,7 +120,8 @@ import { PipeModule } from './pipe.module';
       // https://www.npmjs.com/package/ngx-spinner
       NgxSpinnerModule,
       MatTableExporterModule,
-      PipeModule.forRoot()
+      PipeModule.forRoot(),
+      ClarityModule
    ],
    schemas: [CUSTOM_ELEMENTS_SCHEMA],
    entryComponents: [

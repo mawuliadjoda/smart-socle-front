@@ -1,76 +1,52 @@
-<div class="mat-elevation-z8" style="margin-left: 10%; margin-right: 10%; "
-  class="example-container"
-  [class.example-is-mobile]="mobileQuery.matches"
-  *ngIf="shouldRun"
->
-  <!-- <mat-toolbar color="primary" class="example-toolbar">
-      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-      <h1 class="example-app-name">Responsive App</h1>
-    </mat-toolbar> -->
-
+<div class="mat-elevation-z8" style="margin-left: 10%; margin-right: 10%;" class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="shouldRun">
   <app-navigation-bar *ngIf="isLogged" (toggleSidenav)="snav.toggle()"> </app-navigation-bar>
 
-  <mat-sidenav-container
-    class="example-sidenav-container"
-    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
-  >
-    <mat-sidenav #snav
-      [mode]="'over'"
-      [fixedInViewport]="mobileQuery.matches"
-      fixedTopGap="56"
-      style="width: 300px!important;background-color:#f2f2f2"
-    >
-      <mat-nav-list>
-        <ng-container >
-          <h2 matSubheader class="label-sidebar-separateur">Mes activités</h2>
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav #snav [mode]="'over'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+          <clr-vertical-nav>
+              <clr-vertical-nav-group routerLinkActive="active">
+                  <clr-icon shape="view-cards"></clr-icon>
+                  Activités
+                  <clr-vertical-nav-group-children>
+                      <a *ngFor="let item of myWorkRoutes" clrVerticalNavLink [routerLink]="[item.route]" (click)="snav.close()" [ngClass]="{'disabled-element ': !item.isActive, '': item.isActive}" routerLinkActive="active">
+                          {{ item.title }}
+                      </a>
+                  </clr-vertical-nav-group-children>
+              </clr-vertical-nav-group>
+              <clr-vertical-nav-group routerLinkActive="active">
+                  <clr-icon shape="administrator" clrVerticalNavIcon></clr-icon>
+                  Administration
+                  <clr-vertical-nav-group-children>
+                      <a *ngFor="let item of customerRoutes" clrVerticalNavLink [routerLink]="[item.route]" (click)="snav.close()" [ngClass]="{'disabled-element ': !item.isActive, '': item.isActive}" routerLinkActive="active">
+                          {{ item.title }}
+                      </a>
+                  </clr-vertical-nav-group-children>
+              </clr-vertical-nav-group>
+              <clr-vertical-nav-group routerLinkActive="active">
+                  <clr-icon shape="cog" clrVerticalNavIcon></clr-icon>
+                  Paramétrage
+                  <clr-vertical-nav-group-children>
+                      <a clrVerticalNavLink routerLink="./param/param1" routerLinkActive="active">
+                          param1
+                      </a>
+                      <a clrVerticalNavLink routerLink="./param/param2" routerLinkActive="active">
+                          param2
+                      </a>
+                  </clr-vertical-nav-group-children>
+              </clr-vertical-nav-group>
+              <a clrVerticalNavLink routerLinkActive="active" routerLink="./autre">
+                  <clr-icon shape="certificate" clrVerticalNavIcon></clr-icon>
+                  Autres
+              </a>
+          </clr-vertical-nav>
+      </mat-sidenav>
 
-          <a mat-list-item routerLink="/" style="height: 0;"></a>
-
-          <a class="label-sidebar"
-            *ngFor="let item of myWorkRoutes"
-            mat-list-item
-            (click)="snav.close()"
-            [routerLink]="[item.route]"
-            routerLinkActive="list-item-active"
-            [ngClass]="{'disabled-element ': !item.isActive, '': item.isActive}"
-          >
-            <mat-icon matListIcon class="nav-list-icon">
-              <!-- {{ item.icon }} -->
-            </mat-icon>
-            {{ item.title }}
-          </a>
-
-          <mat-divider></mat-divider>
-        </ng-container>
-
-        <ng-container>
-          <h2 matSubheader class="label-sidebar-separateur">Administration</h2>
-
-          <a class="label-sidebar"
-            *ngFor="let item of customerRoutes"
-            mat-list-item
-            (click)="snav.close()"
-            [routerLink]="[item.route]"
-            routerLinkActive="list-item-active"
-            [ngClass]="{'disabled-element ': !item.isActive, '': item.isActive}"
-          >
-            <mat-icon matListIcon class="nav-list-icon">
-              <!-- {{ item.icon }} -->
-            </mat-icon>
-            {{ item.title }}
-          </a>
-        </ng-container>
-      </mat-nav-list>
-    </mat-sidenav>
-
-    <mat-sidenav-content>
-      <div>
-          <router-outlet></router-outlet>
-      </div>
-    </mat-sidenav-content>
+      <mat-sidenav-content>
+          <div>
+              <router-outlet></router-outlet>
+          </div>
+      </mat-sidenav-content>
   </mat-sidenav-container>
 
   <app-footer></app-footer>
 </div>
-
-
