@@ -30,7 +30,7 @@
     "grid-css": "^1.3.4",
     "hammerjs": "^2.0.8",
     "jqwidgets-ng": "^9.0.0",
-    "mat-table-exporter": "^1.2.5",
+    "mat-table-exporter": "^9.0.1",
     "material-design-icons": "^3.0.1",
     "ng2-pdfjs-viewer": "^5.0.5",
     "ngx-spinner": "^9.0.2",
