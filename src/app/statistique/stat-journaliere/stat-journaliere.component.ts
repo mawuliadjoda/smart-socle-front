@@ -96,6 +96,8 @@ export class StatJournaliereComponent implements OnInit {
 
     this.declarationVenteService.add(declarationVente).subscribe(data => {
       console.log(data);
+      this.data = [];
+      this.dataSource = new MatTableDataSource(this.data);
     },
     (err: HttpErrorResponse) => {
       console.log(err.name + ' ' + err.message);
