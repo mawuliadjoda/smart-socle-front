@@ -32,3 +32,13 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 #Upgrade to Angular 9 https://update.angular.io/#8.0:9.0l2
+
+#Deploy to tomcat 
+https://medium.com/@nithin.biliya/deploying-angular-application-on-tomcat-server-fixing-deep-linking-issue-577565fe303d
+
+#Config tomcat 8 https://geekflare.com/tomcat-login-problem/
+https://geekflare.com/tomcat-login-problem/
+
+#build == > ng build --base-href /smart/
+create folder smart on ~tomcat/webapp
+

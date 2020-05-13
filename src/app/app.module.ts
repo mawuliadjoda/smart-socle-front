@@ -118,6 +118,7 @@ import { PipeModule } from './pipe.module';
       jqxChartModule,
       // https://www.npmjs.com/package/ngx-spinner
       NgxSpinnerModule,
+      // https://www.npmjs.com/package/mat-table-exporter
       MatTableExporterModule,
       PipeModule.forRoot()
    ],
