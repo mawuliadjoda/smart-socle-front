@@ -58,6 +58,7 @@ import { DashboardComponent } from './administration/dashboard/dashboard.compone
 import { StatJournaliereComponent } from './statistique/stat-journaliere/stat-journaliere.component';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { PipeModule } from './pipe.module';
+import { TestThingsComponent } from './util-component/test-things/test-things.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -100,7 +101,8 @@ import { PipeModule } from './pipe.module';
       DeleteCommandeEntrantAttenteComponent,
       ProduitACoursStockComponent,
       DashboardComponent,
-      StatJournaliereComponent
+      StatJournaliereComponent,
+      TestThingsComponent
    ],
    imports: [
       BrowserModule,

@@ -23,6 +23,7 @@ import { CommandeEntrantAttenteComponent } from './commande-entrant-attente/comm
 import { CommandeEntrantReceptionComponent } from './commande-entrant-reception/commande-entrant-reception.component';
 import { ProduitACoursStockComponent } from './administration/produit-a-cours-stock/produit-a-cours-stock.component';
 import { StatJournaliereComponent } from './statistique/stat-journaliere/stat-journaliere.component';
+import { TestThingsComponent } from './util-component/test-things/test-things.component';
 
 
 const routes: Routes = [
@@ -48,14 +49,19 @@ const routes: Routes = [
   {path: 'smart/commandes-entrant-reception', component: CommandeEntrantReceptionComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/produitsAcmder', component: ProduitACoursStockComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/declaration-vente', component: StatJournaliereComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/test-things', component: TestThingsComponent, canActivate: [AuthGaurdService]},
+
 
   {path: '**', component: PageNotFoundComponent}
 ];
 
+//useHash: true == > https://stackoverflow.com/questions/47366792/404-error-on-refresh-for-angularv4-deployed-on-tomcat-server
+// https://codecraft.tv/courses/angular/routing/routing-strategies/#_hashlocationstrategy
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
     onSameUrlNavigation: 'reload',
-    enableTracing: false
+    enableTracing: false,
+    useHash: true
   })],
   exports: [RouterModule]
 })

@@ -124,6 +124,12 @@ export class NavComponent  implements OnInit,  OnDestroy {
       route: 'smart/personalisation',
       title: 'Personalisation',
       isActive: true
+    },
+    {
+      icon: '',
+      route: 'smart/test-things',
+      title: 'Test Things',
+      isActive: true
     }
   ];
     mobileQuery: MediaQueryList;
