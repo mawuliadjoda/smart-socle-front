@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core';
 import { LigneCommandeService } from 'src/app/services/ligne-commande.service';
 import { FormBuilder } from '@angular/forms';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import {MatSort} from '@angular/material/sort';
 import { environment } from 'src/environments/environment';
 import { DeclarationVenteService } from 'src/app/services/declaration-vente.service';
@@ -36,6 +36,8 @@ export class StatJournaliereComponent implements OnInit {
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   constructor(private fb: FormBuilder,
+              public dialogRef: MatDialogRef<StatJournaliereComponent>,
+              @Inject(MAT_DIALOG_DATA ) public entryData: any,
               private declarationVenteService: DeclarationVenteService,
               private authenticationService: AuthenticationService) { }
 
@@ -102,5 +104,9 @@ export class StatJournaliereComponent implements OnInit {
     (err: HttpErrorResponse) => {
       console.log(err.name + ' ' + err.message);
     });
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

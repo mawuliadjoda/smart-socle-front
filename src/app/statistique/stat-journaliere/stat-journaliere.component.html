@@ -30,7 +30,7 @@
 
 <div class="grid">
   <div class="cell"></div>
-  <div class="cell cell-width-80 mat-elevation-z8">
+  <div class="cell cell-width-80 ">
     <mat-table *ngIf="dataSource && dataSource.data && dataSource.data.length > 0"  [dataSource]="dataSource" matSort style="max-height: 250px; overflow-y: scroll; overflow-x: hidden;">
       ng update @angular/cli @angular/core
       <ng-container matColumnDef="unite">
@@ -82,4 +82,11 @@
       </div>
   </div>
   <div class="cell"></div>
+</div>
+
+
+
+<div mat-dialog-actions style="float: right;">
+  <!-- <button style="float: right;" mat-button (click)="onNoClick()">Fermer</button> -->
+  <button mat-button [mat-dialog-close]="1" >Fermer</button>
 </div>

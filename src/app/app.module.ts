@@ -61,6 +61,7 @@ import { PipeModule } from './pipe.module';
 import { TestThingsComponent } from './util-component/test-things/test-things.component';
 
 import { MdePopoverModule } from '@material-extended/mde';
+import { DeclarationVenteJournaliereComponent } from './statistique/declarationVenteJournaliere/declarationVenteJournaliere.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -104,6 +105,7 @@ import { MdePopoverModule } from '@material-extended/mde';
       ProduitACoursStockComponent,
       DashboardComponent,
       StatJournaliereComponent,
+      DeclarationVenteJournaliereComponent,
       TestThingsComponent
    ],
    imports: [
@@ -137,7 +139,8 @@ import { MdePopoverModule } from '@material-extended/mde';
       EditRefProduitComponent,
       DeleteRefProduitComponent,
       UserIdleComponent,
-      DeleteCommandeEntrantAttenteComponent
+      DeleteCommandeEntrantAttenteComponent,
+      StatJournaliereComponent
    ],
    providers: [
      // Translate angular-material paginator

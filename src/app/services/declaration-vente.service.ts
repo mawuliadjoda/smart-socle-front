@@ -16,6 +16,10 @@ export class DeclarationVenteService {
     return this.http.get<any>(this.baseUrl);
   }
 
+  getAllByUserName(userName: string): Observable<any> {
+    return this.http.get<any>(this.baseUrl + `/findByUserName?userName=${userName}`);
+  }
+
   add(t: any): Observable<any> {
     return this.http.post(this.baseUrl, t);
   }
