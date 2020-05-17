@@ -59,6 +59,8 @@ import { StatJournaliereComponent } from './statistique/stat-journaliere/stat-jo
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { PipeModule } from './pipe.module';
 import { TestThingsComponent } from './util-component/test-things/test-things.component';
+
+import { MdePopoverModule } from '@material-extended/mde';
 @NgModule({
    declarations: [
       AppComponent,
@@ -122,7 +124,8 @@ import { TestThingsComponent } from './util-component/test-things/test-things.co
       NgxSpinnerModule,
       // https://www.npmjs.com/package/mat-table-exporter
       MatTableExporterModule,
-      PipeModule.forRoot()
+      PipeModule.forRoot(),
+      MdePopoverModule
    ],
    schemas: [CUSTOM_ELEMENTS_SCHEMA],
    entryComponents: [
