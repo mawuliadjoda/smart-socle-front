@@ -88,6 +88,7 @@ export class StatJournaliereComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.data);
     this.total = this.data.map(t => t.unite * t.qte).reduce((acc, value) => acc + value, 0);
   }
+  /*
   enregistreVenteDuJour() {
     const montantTotal = this.data.map(t => t.unite * t.qte).reduce((acc, value) => acc + value, 0);
 
@@ -105,6 +106,7 @@ export class StatJournaliereComponent implements OnInit {
       console.log(err.name + ' ' + err.message);
     });
   }
+  */
 
   onNoClick(): void {
     this.dialogRef.close();

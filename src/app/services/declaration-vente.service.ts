@@ -23,4 +23,8 @@ export class DeclarationVenteService {
   add(t: any): Observable<any> {
     return this.http.post(this.baseUrl, t);
   }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/` + id);
+  }
 }

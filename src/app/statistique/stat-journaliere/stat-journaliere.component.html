@@ -69,9 +69,9 @@
         <p style="margin-left: 20px;">Total: {{total | montantFormatter}} </p>
       </div>
       <div class="cell cell-width-25">
-        <button mat-raised-button style="float: right; margin-right: 20px;" (click)="enregistreVenteDuJour()">
+        <!-- <button mat-raised-button style="float: right; margin-right: 20px;" (click)="enregistreVenteDuJour()">
           Enregistrer
-        </button>
+        </button> -->
       </div>
     </div>
 
@@ -87,6 +87,6 @@
 
 
 <div mat-dialog-actions style="float: right;">
-  <!-- <button style="float: right;" mat-button (click)="onNoClick()">Fermer</button> -->
-  <button mat-button [mat-dialog-close]="1" >Fermer</button>
+  <button style="float: right;" mat-button (click)="onNoClick()">Fermer</button>
+  <button [disabled] = "dataSource.data.length == 0" mat-button [mat-dialog-close]="total" >Enregistrer</button>
 </div>
