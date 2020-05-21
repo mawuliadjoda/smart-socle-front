@@ -50,6 +50,13 @@ export class NavComponent  implements OnInit,  OnDestroy {
       isActive: true
     },
     {
+      icon: 'assignment',
+      route: 'smart/compare-stat',
+      title: 'Audit statistique',
+      isActive: true
+    },
+
+    {
       icon:  'dashboard',
       route: 'smart/commandes-entrant',
       title: 'Aprovisionnement',

@@ -27,4 +27,8 @@ export class DeclarationVenteService {
   delete(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/` + id);
   }
+
+  findForStat(annee: string): Observable<any> {
+    return this.http.get<any>(this.baseUrl + `/stat?annee=${annee}`);
+  }
 }

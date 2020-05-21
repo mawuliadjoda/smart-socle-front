@@ -25,6 +25,7 @@ import { ProduitACoursStockComponent } from './administration/produit-a-cours-st
 import { StatJournaliereComponent } from './statistique/stat-journaliere/stat-journaliere.component';
 import { TestThingsComponent } from './util-component/test-things/test-things.component';
 import { DeclarationVenteJournaliereComponent } from './statistique/declarationVenteJournaliere/declarationVenteJournaliere.component';
+import { CompaireStatComponent } from './statistique/compaire-stat/compaire-stat.component';
 
 
 const routes: Routes = [
@@ -50,6 +51,7 @@ const routes: Routes = [
   {path: 'smart/commandes-entrant-reception', component: CommandeEntrantReceptionComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/produitsAcmder', component: ProduitACoursStockComponent, canActivate: [AuthGaurdService]},
 
+  {path: 'smart/compare-stat', component: CompaireStatComponent, canActivate: [AuthGaurdService]},
 
   {path: 'smart/declaration-vente', component: DeclarationVenteJournaliereComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/test-things', component: TestThingsComponent, canActivate: [AuthGaurdService]},

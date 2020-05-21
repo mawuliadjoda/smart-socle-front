@@ -63,6 +63,7 @@ import { TestThingsComponent } from './util-component/test-things/test-things.co
 import { MdePopoverModule } from '@material-extended/mde';
 import { DeclarationVenteJournaliereComponent } from './statistique/declarationVenteJournaliere/declarationVenteJournaliere.component';
 import { DeleteDeclarationComponent } from './statistique/declarationVenteJournaliere/delete-declaration/delete-declaration.component';
+import { CompaireStatComponent } from './statistique/compaire-stat/compaire-stat.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -108,6 +109,7 @@ import { DeleteDeclarationComponent } from './statistique/declarationVenteJourna
       StatJournaliereComponent,
       DeclarationVenteJournaliereComponent,
       DeleteDeclarationComponent,
+      CompaireStatComponent,
       TestThingsComponent
    ],
    imports: [
