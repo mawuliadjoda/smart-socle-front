@@ -31,7 +31,7 @@ export class AmChartComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    // this.spinner.show();
+    this.spinner.show();
     this.zone.runOutsideAngular(() => {
       const chart = am4core.create('chartdiv', am4charts.XYChart);
       // Create chart instance
@@ -97,7 +97,7 @@ export class AmChartComponent implements OnInit, AfterViewInit, OnDestroy {
 
         this.chart = chart;
 
-      // this.spinner.hide();
+      this.spinner.hide();
       });
 
 
