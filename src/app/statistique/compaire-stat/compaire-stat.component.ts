@@ -34,7 +34,7 @@ export class CompaireStatComponent implements OnInit, AfterViewInit, OnDestroy {
     // Themes end
 
     // Create chart instance
-    this.chart = am4core.create("chartdivCompare", am4charts.XYChart);
+    this.chart = am4core.create('chartdivCompare', am4charts.XYChart);
 
     // Add data
     this.chart.data = data;
@@ -47,23 +47,23 @@ export class CompaireStatComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // Create series
     let series = this.chart.series.push(new am4charts.LineSeries());
-    series.dataFields.valueY = "value1";
-    series.dataFields.dateX = "date";
+    series.dataFields.valueY = 'value1';
+    series.dataFields.dateX = 'date';
     series.strokeWidth = 2;
     series.minBulletDistance = 10;
     // series.tooltipText = "[bold]{date.formatDate()}:[/bold] {value1}\n[]{previousDate.formatDate()}:[/] {value2}";
-    series.tooltipText = "{name}: [bold]{valueY}[/]";
-    series.tooltip.pointerOrientation = "vertical";
+    series.tooltipText = '{name}: [bold]{valueY}[/]';
+    series.tooltip.pointerOrientation = 'vertical';
     series.name = 'Systeme';
     // Create series
     let series2 = this.chart.series.push(new am4charts.LineSeries());
-    series2.dataFields.valueY = "value2";
-    series2.dataFields.dateX = "date";
+    series2.dataFields.valueY = 'value2';
+    series2.dataFields.dateX = 'date';
     series2.strokeWidth = 2;
-    series2.strokeDasharray = "3,4";
+    series2.strokeDasharray = '3,4';
     series2.stroke = series.stroke;
     series2.name = 'Declaration';
-    series2.tooltipText = "{name}: [bold]{valueY}[/]";
+    series2.tooltipText = '{name}: [bold]{valueY}[/]';
      // Add legend
     this.chart.legend = new am4charts.Legend();
     // Add cursor
@@ -101,7 +101,12 @@ export class CompaireStatComponent implements OnInit, AfterViewInit, OnDestroy {
         const dateReel = new Date(dateReformatString);
 
         // valueDeclare ? valueDeclare : 0
-        let row = {date: dateReel, value1: value, value2: valueDeclare ? valueDeclare : 0, previousDate: dateReel};
+        let row = {
+                    date: dateReel,
+                    value1: value,
+                    value2: valueDeclare ? valueDeclare : 0,
+                    previousDate: dateReel
+                  };
         data.push(row);
 
       }
