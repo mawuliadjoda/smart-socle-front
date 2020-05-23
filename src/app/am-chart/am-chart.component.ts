@@ -25,13 +25,11 @@ export class AmChartComponent implements OnInit, AfterViewInit, OnDestroy {
               private spinner: NgxSpinnerService) {}
 
   ngOnInit() {
-    // this.ligneCommandeService.getAllStat().subscribe( data =>{
-    //   this.data = data;
-    // })
+    this.spinner.show();
   }
 
   ngAfterViewInit() {
-    this.spinner.show();
+
     this.zone.runOutsideAngular(() => {
       const chart = am4core.create('chartdiv', am4charts.XYChart);
       // Create chart instance
