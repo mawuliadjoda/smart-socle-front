@@ -52,7 +52,21 @@ export class CompaireStatComponent implements OnInit, AfterViewInit, OnDestroy {
     series.strokeWidth = 2;
     series.minBulletDistance = 10;
     // series.tooltipText = "[bold]{date.formatDate()}:[/bold] {value1}\n[]{previousDate.formatDate()}:[/] {value2}";
-    series.tooltipText = '{name}: [bold]{valueY}[/]';
+    // series.tooltipText = '{name}: [bold]{valueY}[/]';
+    series.tooltipHTML =
+    `<center><strong> Vente Système </strong></center>
+     <hr />
+     <table>
+         <tr>
+           <th align="left">Date</th>
+           <td>{dateX}</td>
+         </tr>
+         <tr>
+           <th align="left">Montant</th>
+           <td>{valueY} </td>
+         </tr>
+     </table>
+     <hr />`;
     series.tooltip.pointerOrientation = 'vertical';
     series.name = 'Systeme';
     // Create series
@@ -63,7 +77,21 @@ export class CompaireStatComponent implements OnInit, AfterViewInit, OnDestroy {
     series2.strokeDasharray = '3,4';
     series2.stroke = series.stroke;
     series2.name = 'Declaration';
-    series2.tooltipText = '{name}: [bold]{valueY}[/]';
+    // series2.tooltipText = '{name}: [bold]{valueY}[/]';
+    series2.tooltipHTML =
+    `<center><strong> Vente déclarée </strong></center>
+     <hr />
+     <table>
+         <tr>
+           <th align="left">Date</th>
+           <td>{dateX}</td>
+         </tr>
+         <tr>
+           <th align="left">Montant</th>
+           <td>{valueY} </td>
+         </tr>
+     </table>
+     <hr />`;
      // Add legend
     this.chart.legend = new am4charts.Legend();
     // Add cursor
