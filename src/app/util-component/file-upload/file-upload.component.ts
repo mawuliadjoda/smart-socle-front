@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FileService } from 'src/app/services/util/file.service';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { EnvService } from 'src/app/services/config/env.service';
 
 @Component({
   selector: 'app-file-upload',
@@ -15,8 +16,8 @@ export class FileUploadComponent implements OnInit {
   progress: { percentage: number } = { percentage: 0 };
   selectedFile = null;
 
-  downloadUrl = environment.baseUrl + '/download5';
-  constructor(private fileService: FileService) { }
+  downloadUrl = this.env.baseUrl + '/smart/'+ '/download5';
+  constructor(private fileService: FileService, private env: EnvService) { }
 
   ngOnInit() {
   }

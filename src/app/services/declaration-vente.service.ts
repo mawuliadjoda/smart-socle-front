@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { EnvService } from './config/env.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeclarationVenteService {
 
-  private baseUrl = environment.baseUrl + 'declarationVentes';
-  constructor(private http: HttpClient) {
+  private baseUrl = this.env.baseUrl + '/smart/' + 'declarationVentes';
+  constructor(private http: HttpClient, private env: EnvService) {
 
   }
   getAll(): Observable<any> {

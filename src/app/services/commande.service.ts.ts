@@ -5,13 +5,14 @@ import { Client } from '../model/client';
 import { Commande } from '../models/commande';
 import { LigneCommande } from '../models/ligne-commande';
 import { Injectable } from '@angular/core';
+import { EnvService } from './config/env.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommandeService {
-  private baseUrl = environment.baseUrl + 'commandes';
-  constructor(private http: HttpClient) {
+  private baseUrl = this.env.baseUrl + '/smart/' + 'commandes';
+  constructor(private http: HttpClient, private env: EnvService) {
 
   }
 
@@ -24,10 +25,10 @@ export class CommandeService {
     return this.http.post(this.baseUrl, ligneCommandes);
   }
   saveCommandeEntrant(ligneCommandes: Array<LigneCommande>): Observable<any> {
-    return this.http.post(environment.baseUrl + 'commandes-entrant', ligneCommandes);
+    return this.http.post(this.env.baseUrl + '/smart/' + 'commandes-entrant', ligneCommandes);
   }
 
   saveCommandeEntrantReception(ligneCommandes: Array<LigneCommande>): Observable<any> {
-    return this.http.post(environment.baseUrl + 'commandes-entrant-reception', ligneCommandes);
+    return this.http.post(this.env.baseUrl + '/smart/' + 'commandes-entrant-reception', ligneCommandes);
   }
 }

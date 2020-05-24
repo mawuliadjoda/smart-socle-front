@@ -3,12 +3,13 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Client } from '../model/client';
+import { EnvService } from './config/env.service';
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
-  private baseUrl = environment.baseUrl + 'clients';
-  constructor(private http: HttpClient) {
+  private baseUrl = this.env.baseUrl + '/smart/' + 'clients';
+  constructor(private http: HttpClient, private env: EnvService) {
 
   }
 

@@ -14,6 +14,7 @@ import * as fileSaver from 'file-saver'; // npm i --save file-saver
 import { LigneCommande } from 'src/app/models/ligne-commande';
 import { Router } from '@angular/router';
 import { UpdateProductToCart, DeleteProductToCart } from 'src/app/ngxs/action';
+import { EnvService } from 'src/app/services/config/env.service';
 @Component({
   selector: 'app-pannier',
   templateUrl: './pannier.component.html',
@@ -29,7 +30,7 @@ export class PannierComponent implements OnInit  {
   nbProduitPanier = 0;
   maxDisplayProduct = 2;
 
-  fileUrl = environment.baseUrl + 'download2';
+  fileUrl = this.env.baseUrl + '/smart/' + 'download2';
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -50,7 +51,8 @@ export class PannierComponent implements OnInit  {
               private snackBar: MatSnackBar,
               private sanitizer: DomSanitizer,
               private router: Router,
-              private store: Store) {
+              private store: Store,
+              private env: EnvService) {
   }
 
 

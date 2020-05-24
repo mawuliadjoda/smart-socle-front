@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Produit } from 'src/app/models/produit';
 import { LigneCommande } from 'src/app/models/ligne-commande';
+import { EnvService } from '../config/env.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FileService {
-  public baseUrl: string = environment.baseUrl + 'download';
-  constructor(private http: HttpClient) {
+  public baseUrl: string = this.env.baseUrl + '/smart/' + 'download';
+  constructor(private http: HttpClient, private env: EnvService) {
   }
   getDownload(produitsPanier: Array<Produit>): Observable<any> {
      // return this.http.get<any>(this.baseUrl);
@@ -69,7 +70,7 @@ export class FileService {
   }
 
   pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
-    const url = environment.baseUrl + '/savefile';
+    const url = this.env.baseUrl + '/smart/' + 'savefile';
     const data: FormData = new FormData();
     data.append('file', file);
     const newRequest = new HttpRequest('POST', url, data, {

@@ -3,14 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Produit } from '../models/produit';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { EnvService } from './config/env.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProduitService {
 
-  private baseUrl = environment.baseUrl + 'produits';
-  constructor(private http: HttpClient) {
+  private baseUrl = this.env.baseUrl + '/smart/' + 'produits';
+  constructor(private http: HttpClient, private env: EnvService) {
 
   }
   getAllProduits(): Observable<any> {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { EnvService } from '../config/env.service';
 
 export class User {
   constructor(public status: string) {}
@@ -11,8 +12,9 @@ export class User {
 })
 export class AuthenticationService {
    // let url = 'http://localhost:8080/token/generate-token';
-   url = 'http://localhost:8080/api/auth/signin';
-  constructor(private httpClient: HttpClient) {}
+   url = this.env.baseUrl + '/api/auth/signin';
+
+  constructor(private httpClient: HttpClient, private env: EnvService) {}
   isResetTimerVar: boolean;
 // Provide username and password for authentication, and once authentication is successful,
 // store JWT token in session

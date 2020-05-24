@@ -64,6 +64,7 @@ import { MdePopoverModule } from '@material-extended/mde';
 import { DeclarationVenteJournaliereComponent } from './statistique/declarationVenteJournaliere/declarationVenteJournaliere.component';
 import { DeleteDeclarationComponent } from './statistique/declarationVenteJournaliere/delete-declaration/delete-declaration.component';
 import { CompaireStatComponent } from './statistique/compaire-stat/compaire-stat.component';
+import { EnvServiceProvider } from './services/config/env.service.provider';
 @NgModule({
    declarations: [
       AppComponent,
@@ -153,7 +154,10 @@ import { CompaireStatComponent } from './statistique/compaire-stat/compaire-stat
 
      // Security auth Corps interceptor
      { provide: HTTP_INTERCEPTORS, useClass: BasicAuthHtppInterceptorService, multi: true },
-     BnNgIdleService
+     BnNgIdleService,
+
+     // https://www.jvandemo.com/how-to-use-environment-variables-to-configure-your-angular-application-without-a-rebuild/
+     EnvServiceProvider
    ],
    bootstrap: [
       AppComponent
