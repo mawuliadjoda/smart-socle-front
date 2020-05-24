@@ -66,7 +66,8 @@ export class ElasticsearchComponent implements OnInit {
         isReceive: true,
         isActif: true
       };
-      this.ligneCommandes.push(ligneCommande);
+
+      this.ligneCommandes.unshift(ligneCommande);
 
       if (ligneCommande.qte > 0 && selectedProduit.qte > 0) {
         this.store.dispatch(new AddProductToCart(ligneCommande.produit, ligneCommande.qte));

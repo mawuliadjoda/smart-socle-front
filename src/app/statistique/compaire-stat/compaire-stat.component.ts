@@ -29,6 +29,50 @@ export class CompaireStatComponent implements OnInit, AfterViewInit, OnDestroy {
     this.getData();
   }
 
+
+  getData() {
+    let mapDeclaration = new Map();
+    let mapReel = new Map();
+
+    let statDeclaration = this.declarationVenteService.findForStat('2020');
+    let statReel = this.ligneCommandeService.getAllStat();
+
+
+    forkJoin([statDeclaration, statReel]).subscribe(results => {
+      results[0].forEach(element => {
+        mapDeclaration.set(element[0], element[1]);
+      });
+
+      results[1].forEach(element => {
+        mapReel.set(element.date_, element.total);
+      });
+
+      let data = [];
+      for (let [key, value] of mapReel) {
+        let valueDeclare = mapDeclaration.get(key);
+        if (valueDeclare) {
+          console.log(valueDeclare);
+        }
+        const dateString = key.split('/');
+        const dateReformatString = dateString[1] + '/' + dateString[0] + '/' + dateString[2];
+        const dateReel = new Date(dateReformatString);
+
+        // valueDeclare ? valueDeclare : 0
+        let row = {
+                    date: dateReel,
+                    value1: value,
+                    value2: valueDeclare ? valueDeclare : 0,
+                    previousDate: dateReel
+                  };
+        data.push(row);
+
+      }
+      this.buildChart(data);
+
+      this.spinner.hide();
+    });
+  }
+
   buildChart(data) {
     am4core.useTheme(am4themes_animated);
     // Themes end
@@ -97,51 +141,6 @@ export class CompaireStatComponent implements OnInit, AfterViewInit, OnDestroy {
     // Add cursor
     this.chart.cursor = new am4charts.XYCursor();
     this.chart.cursor.xAxis = dateAxis;
-  }
-
-
-  getData() {
-    this.spinner.show();
-    let mapDeclaration = new Map();
-    let mapReel = new Map();
-
-    let statDeclaration = this.declarationVenteService.findForStat('2020');
-    let statReel = this.ligneCommandeService.getAllStat();
-
-
-    forkJoin([statDeclaration, statReel]).subscribe(results => {
-      results[0].forEach(element => {
-        mapDeclaration.set(element[0], element[1]);
-      });
-
-      results[1].forEach(element => {
-        mapReel.set(element.date_, element.total);
-      });
-
-      let data = [];
-      for (let [key, value] of mapReel) {
-        let valueDeclare = mapDeclaration.get(key);
-        if (valueDeclare) {
-          console.log(valueDeclare);
-        }
-        const dateString = key.split('/');
-        const dateReformatString = dateString[1] + '/' + dateString[0] + '/' + dateString[2];
-        const dateReel = new Date(dateReformatString);
-
-        // valueDeclare ? valueDeclare : 0
-        let row = {
-                    date: dateReel,
-                    value1: value,
-                    value2: valueDeclare ? valueDeclare : 0,
-                    previousDate: dateReel
-                  };
-        data.push(row);
-
-      }
-      this.buildChart(data);
-
-      this.spinner.hide();
-    });
   }
 
   ngOnDestroy() {
