@@ -60,7 +60,7 @@ const routes: Routes = [
   {path: '**', component: PageNotFoundComponent}
 ];
 
-//useHash: true == > https://stackoverflow.com/questions/47366792/404-error-on-refresh-for-angularv4-deployed-on-tomcat-server
+// useHash: true == > https://stackoverflow.com/questions/47366792/404-error-on-refresh-for-angularv4-deployed-on-tomcat-server
 // https://codecraft.tv/courses/angular/routing/routing-strategies/#_hashlocationstrategy
 @NgModule({
   imports: [RouterModule.forRoot(routes, {

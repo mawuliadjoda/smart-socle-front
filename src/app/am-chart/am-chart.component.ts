@@ -95,7 +95,7 @@ export class AmChartComponent implements OnInit, AfterViewInit, OnDestroy {
 
         this.chart = chart;
 
-      this.spinner.hide();
+        this.spinner.hide();
       });
 
 

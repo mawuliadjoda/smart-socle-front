@@ -20,6 +20,14 @@ interface SideNavRoute {
 })
 export class NavComponent  implements OnInit,  OnDestroy {
 
+    constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,
+                private propertyService: PropertyService,
+                private loginService: AuthenticationService) {
+      this.mobileQuery = media.matchMedia('(max-width: 600px)');
+      this.mobileQueryListener = () => changeDetectorRef.detectChanges();
+      this.mobileQuery.addListener(this.mobileQueryListener);
+    }
+
 
   // fillerNav = Array.from({length: 5}, (_, i) => `Nav Item ${i + 1}`);
   isLogged: boolean;
@@ -152,13 +160,10 @@ export class NavComponent  implements OnInit,  OnDestroy {
 
     private mobileQueryListener: () => void;
 
-    constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,
-                private propertyService: PropertyService,
-                private loginService: AuthenticationService) {
-      this.mobileQuery = media.matchMedia('(max-width: 600px)');
-      this.mobileQueryListener = () => changeDetectorRef.detectChanges();
-      this.mobileQuery.addListener(this.mobileQueryListener);
-    }
+  //  isExpanded = true;
+      showSubmenu = false;
+      showSubmenuAdmin = false;
+      showSubmenuParam = false;
 
     ngOnDestroy(): void {
       this.mobileQuery.removeListener(this.mobileQueryListener);
@@ -176,11 +181,6 @@ export class NavComponent  implements OnInit,  OnDestroy {
         }
       );
    }
-
-  //  isExpanded = true;
-      showSubmenu: boolean = false;
-      showSubmenuAdmin: boolean = false;
-      showSubmenuParam: boolean = false;
   //  isShowing = false;
   //  showSubSubMenu: boolean = false;
 }

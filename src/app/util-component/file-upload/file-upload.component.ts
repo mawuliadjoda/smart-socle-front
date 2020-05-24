@@ -16,7 +16,7 @@ export class FileUploadComponent implements OnInit {
   progress: { percentage: number } = { percentage: 0 };
   selectedFile = null;
 
-  downloadUrl = this.env.baseUrl + '/smart/'+ '/download5';
+  downloadUrl = this.env.baseUrl + '/smart/' + '/download5';
   constructor(private fileService: FileService, private env: EnvService) { }
 
   ngOnInit() {

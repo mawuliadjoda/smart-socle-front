@@ -135,8 +135,8 @@ export class DeclarationVenteJournaliereComponent implements OnInit {
 
   isSaveDeclarationForThisDay(dataArray: Array<DeclarationVente>, paramDate) {
     let exist = false;
-    for (let index = 0; index < dataArray.length; index++) {
-      if (dataArray[index].createdAt === paramDate) {
+    for (const iterator of dataArray) {
+      if (iterator.createdAt === paramDate) {
         exist = true;
         break;
       }

@@ -5,7 +5,7 @@ import { MontantFormatterPipe } from './montant-formatter.pipe';
 
 describe('Pipe: MontantFormattere', () => {
   it('create an instance', () => {
-    let pipe = new MontantFormatterPipe();
+    const pipe = new MontantFormatterPipe();
     expect(pipe).toBeTruthy();
   });
 });

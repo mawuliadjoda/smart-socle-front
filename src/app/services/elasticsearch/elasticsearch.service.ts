@@ -8,7 +8,7 @@ import { EnvService } from '../config/env.service';
   providedIn: 'root'
 })
 export class ElasticsearchService {
-  private baseUrl = this.env.baseUrl + '/smart/'+ 'refMedicamentBDDFs/_search';
+  private baseUrl = this.env.baseUrl + '/smart/' + 'refMedicamentBDDFs/_search';
   private baseUrlSearchProduit = this.env.baseUrl + '/smart/' + 'produits/_search';
   constructor(private http: HttpClient, private env: EnvService) {
 

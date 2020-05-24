@@ -31,11 +31,11 @@ export class CompaireStatComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
   getData() {
-    let mapDeclaration = new Map();
-    let mapReel = new Map();
+    const mapDeclaration = new Map();
+    const mapReel = new Map();
 
-    let statDeclaration = this.declarationVenteService.findForStat('2020');
-    let statReel = this.ligneCommandeService.getAllStat();
+    const statDeclaration = this.declarationVenteService.findForStat('2020');
+    const statReel = this.ligneCommandeService.getAllStat();
 
 
     forkJoin([statDeclaration, statReel]).subscribe(results => {
@@ -47,9 +47,9 @@ export class CompaireStatComponent implements OnInit, AfterViewInit, OnDestroy {
         mapReel.set(element.date_, element.total);
       });
 
-      let data = [];
-      for (let [key, value] of mapReel) {
-        let valueDeclare = mapDeclaration.get(key);
+      const data = [];
+      for (const [key, value] of mapReel) {
+        const valueDeclare = mapDeclaration.get(key);
         if (valueDeclare) {
           console.log(valueDeclare);
         }
@@ -58,7 +58,7 @@ export class CompaireStatComponent implements OnInit, AfterViewInit, OnDestroy {
         const dateReel = new Date(dateReformatString);
 
         // valueDeclare ? valueDeclare : 0
-        let row = {
+        const row = {
                     date: dateReel,
                     value1: value,
                     value2: valueDeclare ? valueDeclare : 0,
@@ -84,13 +84,13 @@ export class CompaireStatComponent implements OnInit, AfterViewInit, OnDestroy {
     this.chart.data = data;
 
     // Create axes
-    let dateAxis = this.chart.xAxes.push(new am4charts.DateAxis());
+    const dateAxis = this.chart.xAxes.push(new am4charts.DateAxis());
     dateAxis.renderer.minGridDistance = 50;
 
-    let valueAxis = this.chart.yAxes.push(new am4charts.ValueAxis());
+    const valueAxis = this.chart.yAxes.push(new am4charts.ValueAxis());
 
     // Create series
-    let series = this.chart.series.push(new am4charts.LineSeries());
+    const series = this.chart.series.push(new am4charts.LineSeries());
     series.dataFields.valueY = 'value1';
     series.dataFields.dateX = 'date';
     series.strokeWidth = 2;
@@ -114,7 +114,7 @@ export class CompaireStatComponent implements OnInit, AfterViewInit, OnDestroy {
     series.tooltip.pointerOrientation = 'vertical';
     series.name = 'Systeme';
     // Create series
-    let series2 = this.chart.series.push(new am4charts.LineSeries());
+    const series2 = this.chart.series.push(new am4charts.LineSeries());
     series2.dataFields.valueY = 'value2';
     series2.dataFields.dateX = 'date';
     series2.strokeWidth = 2;
