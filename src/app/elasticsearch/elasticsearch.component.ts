@@ -66,7 +66,7 @@ export class ElasticsearchComponent implements OnInit {
         isReceive: true,
         isActif: true
       };
-
+      // on ajoute à la fin du tableau = > unshift
       this.ligneCommandes.unshift(ligneCommande);
 
       if (ligneCommande.qte > 0 && selectedProduit.qte > 0) {
