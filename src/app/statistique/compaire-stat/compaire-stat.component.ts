@@ -141,6 +141,8 @@ export class CompaireStatComponent implements OnInit, AfterViewInit, OnDestroy {
     // Add cursor
     this.chart.cursor = new am4charts.XYCursor();
     this.chart.cursor.xAxis = dateAxis;
+
+    this.chart.exporting.menu = new am4core.ExportMenu();
   }
 
   ngOnDestroy() {
