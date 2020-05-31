@@ -6,6 +6,9 @@ import { Produit } from '../models/produit';
 import { ReplaySubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CommandeService } from '../services/commande.service.ts';
+import { FournisseurService } from '../services/fournisseur.service';
+import { Fournisseur } from '../models/fournisseur';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-commande-entrant',
@@ -19,7 +22,7 @@ export class CommandeEntrantComponent implements OnInit, AfterViewInit {
   @ViewChild(SearchComponent, {static: true}) searchComponent: any;
 
   selecton: any = [];
-  fournisseurs: any = [];
+  // fournisseurs: any = [];
 
   displayedColumns = [
     'id',
@@ -36,14 +39,16 @@ export class CommandeEntrantComponent implements OnInit, AfterViewInit {
   id: number;
   dataSource = new MatTableDataSource<Produit>([]);
   data: Array<Produit>;
+  fournisseurs: Fournisseur[] = [];
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild('filter', { static: true }) filter: ElementRef;
-  constructor(private commandeService: CommandeService) { }
+  constructor(private commandeService: CommandeService,
+              private fournisseurService: FournisseurService) { }
 
   ngOnInit() {
-
+    this.loadFournisseurs();
   }
 
   ngAfterViewInit() {
@@ -77,5 +82,14 @@ export class CommandeEntrantComponent implements OnInit, AfterViewInit {
         this.selecton = [];
       }
     );
+  }
+
+  loadFournisseurs() {
+    this.fournisseurService.getAll().subscribe( data => {
+      this.fournisseurs = data;
+    },
+    (err: HttpErrorResponse) => {
+      console.log(err.name + ' ' + err.message);
+    });
   }
 }

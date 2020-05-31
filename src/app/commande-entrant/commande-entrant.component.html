@@ -24,7 +24,7 @@
       <div class="cell">
         <mat-form-field style="width: 100px;">
           <mat-label>Fournisseur</mat-label>
-          <mat-select>
+          <mat-select [(ngModel)]="item.fournisseur">
             <mat-option *ngFor="let f of fournisseurs" [value]="f">
               {{f.nom}}
             </mat-option>
