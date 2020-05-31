@@ -11,14 +11,14 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { jqxChartModule } from 'jqwidgets-ng/jqxchart';
-import { CommandeComponent } from './commande/commande.component';
-import { PannierComponent } from './commande/pannier/pannier.component';
+import { CommandeComponent } from './administration/commande/commande.component';
+import { PannierComponent } from './administration/commande/pannier/pannier.component';
 import { NgxsModule } from '@ngxs/store';
-import { ProductState } from './ngxs/state';
+import { ProductState } from './util/ngxs/state';
 
 import { PdfJsViewerModule } from 'ng2-pdfjs-viewer';
-import { FactureComponent } from './commande/facture/facture.component';
-import { CommandListComponent } from './commandList/commandList.component';
+import { FactureComponent } from './administration/commande/facture/facture.component';
+import { CommandListComponent } from './administration/commandList/commandList.component';
 import { MatPaginatorIntl } from '@angular/material';
 import { getDutchPaginatorIntl } from './smart-paginator-override';
 import { FooterComponent } from './template/footer/footer.component';
@@ -28,12 +28,12 @@ import { ElasticsearchComponent } from './elasticsearch/elasticsearch.component'
 import { BnNgIdleService } from 'bn-ng-idle';
 import { UserIdleComponent } from './authentication/user-idle/user-idle.component';
 import { ShoppingCardComponent } from './template/shopping-card/shopping-card.component';
-import { CommandeEntrantComponent } from './commande-entrant/commande-entrant.component';
-import { CommandeEntrantReceptionComponent } from './commande-entrant-reception/commande-entrant-reception.component';
-import { CommandeEntrantAttenteComponent } from './commande-entrant-attente/commande-entrant-attente.component';
+import { CommandeEntrantComponent } from './administration/commande-entrant/commande-entrant.component';
+import { CommandeEntrantReceptionComponent } from './administration/commande-entrant-reception/commande-entrant-reception.component';
+import { CommandeEntrantAttenteComponent } from './administration/commande-entrant-attente/commande-entrant-attente.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { DeleteCommandeEntrantAttenteComponent
-       } from './commande-entrant-attente/delete-commande-entrant-attente/delete-commande-entrant-attente.component';
+       } from './administration/commande-entrant-attente/delete-commande-entrant-attente/delete-commande-entrant-attente.component';
 import { ProduitACoursStockComponent } from './administration/produit-a-cours-stock/produit-a-cours-stock.component';
 import { DashboardComponent } from './administration/dashboard/dashboard.component';
 import { StatJournaliereComponent } from './statistique/stat-journaliere/stat-journaliere.component';

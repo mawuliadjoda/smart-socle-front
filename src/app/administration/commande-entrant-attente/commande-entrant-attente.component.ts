@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { LigneCommande } from '../models/ligne-commande';
+import { LigneCommande } from '../../models/ligne-commande';
 import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
-import { LigneCommandeService } from '../services/ligne-commande.service';
+import { LigneCommandeService } from '../../services/ligne-commande.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { DeleteCommandeEntrantAttenteComponent } from './delete-commande-entrant-attente/delete-commande-entrant-attente.component';

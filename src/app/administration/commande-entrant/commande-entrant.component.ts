@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
-import { LigneCommande } from '../models/ligne-commande';
+import { LigneCommande } from '../../models/ligne-commande';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
-import { Produit } from '../models/produit';
+import { Produit } from '../../models/produit';
 import { ReplaySubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CommandeService } from '../services/commande.service.ts';
-import { FournisseurService } from '../services/fournisseur.service';
-import { Fournisseur } from '../models/fournisseur';
+import { CommandeService } from '../../services/commande.service.ts';
+import { FournisseurService } from '../../services/fournisseur.service';
+import { Fournisseur } from '../../models/fournisseur';
 import { HttpErrorResponse } from '@angular/common/http';
-import { SearchComponent } from '../elasticsearch/search/search.component';
+import { SearchComponent } from '../../elasticsearch/search/search.component';
 
 @Component({
   selector: 'app-commande-entrant',

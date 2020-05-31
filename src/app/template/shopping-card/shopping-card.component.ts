@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Produit } from '../../models/produit';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { ProductState } from '../../ngxs/state';
+import { ProductState } from '../../util/ngxs/state';
 
 @Component({
   selector: 'app-shopping-card',

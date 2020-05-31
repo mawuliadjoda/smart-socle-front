@@ -7,13 +7,13 @@ import { ProduitService } from 'src/app/services/produit.service';
 import { FileService } from 'src/app/services/util/file.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
-import { ProductState } from 'src/app/ngxs/state';
+import { ProductState } from 'src/app/util/ngxs/state';
 import { Observable } from 'rxjs';
 import { Select, Store } from '@ngxs/store';
 import * as fileSaver from 'file-saver'; // npm i --save file-saver
 import { LigneCommande } from 'src/app/models/ligne-commande';
 import { Router } from '@angular/router';
-import { UpdateProductToCart, DeleteProductToCart } from 'src/app/ngxs/action';
+import { UpdateProductToCart, DeleteProductToCart } from 'src/app/util/ngxs/action';
 import { EnvService } from 'src/app/services/config/env.service';
 @Component({
   selector: 'app-pannier',

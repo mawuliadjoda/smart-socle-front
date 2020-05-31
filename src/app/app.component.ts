@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as jsonData from './_files/myJson.json';
 import { Store } from '@ngxs/store';
-import { LoadProducts } from './ngxs/action/index.js';
+import { LoadProducts } from './util/ngxs/action/index.js';
 import { BnNgIdleService } from 'bn-ng-idle';
 import { MatDialog } from '@angular/material';
 import { UserIdleComponent } from './authentication/user-idle/user-idle.component';

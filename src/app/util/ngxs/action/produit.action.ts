@@ -1,4 +1,4 @@
-import { Produit } from '../../models/produit';
+import { Produit } from '../../../models/produit';
 
 
 export class LoadProducts {

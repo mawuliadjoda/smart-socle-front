@@ -1,12 +1,12 @@
 import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
-import { Produit } from '../models/produit';
+import { Produit } from '../../models/produit';
 import { MatTableDataSource, MatPaginator, MatSort, MatDialog, MatSnackBar } from '@angular/material';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { ProduitService } from '../services/produit.service';
+import { ProduitService } from '../../services/produit.service';
 import { Router } from '@angular/router';
 import { Store, Select } from '@ngxs/store';
-import { AddProductToCart } from '../ngxs/action';
-import { ProductState } from '../ngxs/state';
+import { AddProductToCart } from '../../util/ngxs/action';
+import { ProductState } from '../../util/ngxs/state';
 import { Observable } from 'rxjs';
 
 @Component({

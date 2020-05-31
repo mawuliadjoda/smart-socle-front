@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { LigneCommande } from '../models/ligne-commande';
+import { LigneCommande } from '../../models/ligne-commande';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
-import { LigneCommandeService } from '../services/ligne-commande.service';
+import { LigneCommandeService } from '../../services/ligne-commande.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { environment } from 'src/environments/environment';
-import { CommandeService } from '../services/commande.service.ts';
-import { Produit } from '../models/produit';
+import { CommandeService } from '../../services/commande.service.ts';
+import { Produit } from '../../models/produit';
 
 @Component({
   selector: 'app-commande-entrant-reception',

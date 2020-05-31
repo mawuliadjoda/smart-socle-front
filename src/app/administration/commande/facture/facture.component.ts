@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ProductState } from 'src/app/ngxs/state';
+import { ProductState } from 'src/app/util/ngxs/state';
 import { Select, Store } from '@ngxs/store';
 import { LigneCommande } from 'src/app/models/ligne-commande';
 import { FileService } from 'src/app/services/util/file.service';
 import { Observable, of, pipe } from 'rxjs';
 import { switchMap, debounceTime, catchError } from 'rxjs/operators';
 import { CommandeService } from 'src/app/services/commande.service.ts';
-import { DeleteAllProductToCart } from 'src/app/ngxs/action';
+import { DeleteAllProductToCart } from 'src/app/util/ngxs/action';
 import { environment } from 'src/environments/environment';
 import { NgxSpinnerService } from 'ngx-spinner';
 @Component({

@@ -1,11 +1,11 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { Produit } from '../models/produit';
+import { Produit } from '../../models/produit';
 import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { CommandeService } from '../services/commande.service.ts';
-import { ProduitService } from '../services/produit.service';
-import { LigneCommande } from '../models/ligne-commande';
-import { LigneCommandeService } from '../services/ligne-commande.service';
+import { CommandeService } from '../../services/commande.service.ts';
+import { ProduitService } from '../../services/produit.service';
+import { LigneCommande } from '../../models/ligne-commande';
+import { LigneCommandeService } from '../../services/ligne-commande.service';
 
 @Component({
   selector: 'app-command-list',

@@ -1,4 +1,4 @@
-import { Produit } from '../../models/produit';
+import { Produit } from '../../../models/produit';
 import { LigneCommande } from 'src/app/models/ligne-commande';
 
 
