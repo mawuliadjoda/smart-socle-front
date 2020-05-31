@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Produit } from '../models/produit';
+import { Produit } from '../../models/produit';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { ProductState } from '../ngxs/state';
+import { ProductState } from '../../ngxs/state';
 
 @Component({
   selector: 'app-shopping-card',

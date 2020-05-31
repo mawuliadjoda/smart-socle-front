@@ -1,7 +1,7 @@
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Client } from '../model/client';
+import { Client } from '../models/client';
 import { Commande } from '../models/commande';
 import { LigneCommande } from '../models/ligne-commande';
 import { Injectable } from '@angular/core';

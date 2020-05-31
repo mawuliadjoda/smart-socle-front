@@ -5,9 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material-module';
-import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
-import { NavComponent } from './nav/nav.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './authentication/login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -39,13 +37,13 @@ import { MatPaginatorIntl } from '@angular/material';
 import { getDutchPaginatorIntl } from './smart-paginator-override';
 import { FileUploadComponent } from './util-component/file-upload/file-upload.component';
 import { FileDownloadComponent } from './util-component/file-download/file-download.component';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './template/footer/footer.component';
 import { BasicAuthHtppInterceptorService } from './services/jwt-auth/basic-auth-interceptor.service';
 import { ElasticsearchComponent } from './elasticsearch/elasticsearch.component';
 
 import { BnNgIdleService } from 'bn-ng-idle';
-import { UserIdleComponent } from './dialogs/user-idle/user-idle.component';
-import { ShoppingCardComponent } from './shopping-card/shopping-card.component';
+import { UserIdleComponent } from './authentication/user-idle/user-idle.component';
+import { ShoppingCardComponent } from './template/shopping-card/shopping-card.component';
 import { CommandeEntrantComponent } from './commande-entrant/commande-entrant.component';
 import { SearchComponent } from './util-component/search/search.component';
 import { CommandeEntrantReceptionComponent } from './commande-entrant-reception/commande-entrant-reception.component';
@@ -71,6 +69,8 @@ import { AddCategorieComponent } from './administration/categorie/add-categorie/
 import { FournisseurComponent } from './administration/fournisseur/fournisseur.component';
 import { DeleteFournisseurComponent } from './administration/fournisseur/delete-fournisseur/delete-fournisseur.component';
 import { AddFournisseurComponent } from './administration/fournisseur/add-fournisseur/add-fournisseur.component';
+import { NavigationBarComponent } from './template/navigation-bar/navigation-bar.component';
+import { NavComponent } from './template/nav/nav.component';
 @NgModule({
    declarations: [
       AppComponent,

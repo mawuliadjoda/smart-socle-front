@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EnvService } from '../services/config/env.service';
+import { EnvService } from '../../services/config/env.service';
 
 @Component({
   selector: 'app-footer',

@@ -1,9 +1,8 @@
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
-import { LoggerService } from '../util/services/logger/logger.service';
 import { Observable, Subscription } from 'rxjs';
-import { PropertyService } from '../services/util/property.service';
-import { AuthenticationService } from '../services/jwt-auth/authentication.service';
+import { PropertyService } from 'src/app/services/util/property.service';
+import { AuthenticationService } from 'src/app/services/jwt-auth/authentication.service';
 
 
 

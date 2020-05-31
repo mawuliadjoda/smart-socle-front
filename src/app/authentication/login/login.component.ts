@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MessageService } from '../services/util/message.service';
-import { AuthenticationService } from '../services/jwt-auth/authentication.service';
-
+import { MessageService } from 'src/app/services/util/message.service';
+import { AuthenticationService } from 'src/app/services/jwt-auth/authentication.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

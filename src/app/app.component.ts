@@ -4,7 +4,7 @@ import { Store } from '@ngxs/store';
 import { LoadProducts } from './ngxs/action/index.js';
 import { BnNgIdleService } from 'bn-ng-idle';
 import { MatDialog } from '@angular/material';
-import { UserIdleComponent } from './dialogs/user-idle/user-idle.component';
+import { UserIdleComponent } from './authentication/user-idle/user-idle.component';
 
 import { Subject, timer, Subscription } from 'rxjs';
 import { takeUntil, take } from 'rxjs/operators';
