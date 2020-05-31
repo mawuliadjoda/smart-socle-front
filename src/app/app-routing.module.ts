@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './authentication/login/login.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CommandeComponent } from './administration/commande/commande.component';
@@ -28,6 +27,7 @@ import { AmChartComponent } from './statistique/am-chart/am-chart.component';
 import { RefProduitComponent } from './administration/ref-produit/ref-produit.component';
 import { RefMedicamentANSMComponent } from './administration/refMedicamentANSM/refMedicamentANSM.component';
 import { ProduitComponent } from './administration/produit/produit.component';
+import { PageNotFoundComponent } from './util/page-not-found/page-not-found.component';
 
 
 const routes: Routes = [

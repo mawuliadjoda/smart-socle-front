@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material-module';
 import { LoginComponent } from './authentication/login/login.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -70,6 +69,7 @@ import { EditRefProduitComponent } from './administration/ref-produit/edit-ref-p
 import { DeleteRefProduitComponent } from './administration/ref-produit/delete-ref-produit/delete-ref-produit.component';
 import { RefMedicamentANSMComponent } from './administration/refMedicamentANSM/refMedicamentANSM.component';
 import { SearchComponent } from './elasticsearch/search/search.component';
+import { PageNotFoundComponent } from './util/page-not-found/page-not-found.component';
 @NgModule({
    declarations: [
       AppComponent,
