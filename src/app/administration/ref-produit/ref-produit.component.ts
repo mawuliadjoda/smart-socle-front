@@ -2,10 +2,11 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AddRefProduitComponent } from './add-ref-produit/add-ref-produit.component';
-import { RefProduit } from '../models/ref-produit';
 import { EditRefProduitComponent } from './edit-ref-produit/edit-ref-produit.component';
 import { DeleteRefProduitComponent } from './delete-ref-produit/delete-ref-produit.component';
-import { RefProduitService } from '../services/ref-produit.service';
+import { RefProduit } from 'src/app/models/ref-produit';
+import { RefProduitService } from 'src/app/services/ref-produit.service';
+
 
 @Component({
   selector: 'app-ref-produit',

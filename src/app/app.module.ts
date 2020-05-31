@@ -11,11 +11,6 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { jqxChartModule } from 'jqwidgets-ng/jqxchart';
-
-import { ProduitComponent } from './produit/produit.component';
-import { AddProduitComponent } from './produit/add-produit/add-produit.component';
-import { EditProduitComponent } from './produit/edit-produit/edit-produit.component';
-import { DeleteProduitComponent } from './produit/delete-produit/delete-produit.component';
 import { CommandeComponent } from './commande/commande.component';
 import { PannierComponent } from './commande/pannier/pannier.component';
 import { NgxsModule } from '@ngxs/store';
@@ -24,15 +19,6 @@ import { ProductState } from './ngxs/state';
 import { PdfJsViewerModule } from 'ng2-pdfjs-viewer';
 import { FactureComponent } from './commande/facture/facture.component';
 import { CommandListComponent } from './commandList/commandList.component';
-import { NotificationComponent } from './notification/notification.component';
-import { StatistiqueComponent } from './statistique/statistique.component';
-import { AmChartComponent } from './am-chart/am-chart.component';
-import { RefProduitComponent } from './ref-produit/ref-produit.component';
-import { AddRefProduitComponent } from './ref-produit/add-ref-produit/add-ref-produit.component';
-import { EditRefProduitComponent } from './ref-produit/edit-ref-produit/edit-ref-produit.component';
-import { DeleteRefProduitComponent } from './ref-produit/delete-ref-produit/delete-ref-produit.component';
-import { ApprovisionnementComponent } from './produit/approvisionnement/approvisionnement.component';
-import { RefMedicamentANSMComponent } from './referentiels/refMedicamentANSM/refMedicamentANSM.component';
 import { MatPaginatorIntl } from '@angular/material';
 import { getDutchPaginatorIntl } from './smart-paginator-override';
 import { FooterComponent } from './template/footer/footer.component';
@@ -69,8 +55,21 @@ import { NavigationBarComponent } from './template/navigation-bar/navigation-bar
 import { NavComponent } from './template/nav/nav.component';
 import { FileDownloadComponent } from './util/util-component/file-download/file-download.component';
 import { FileUploadComponent } from './util/util-component/file-upload/file-upload.component';
-import { SearchComponent } from './util/util-component/search/search.component';
 import { TestThingsComponent } from './util/util-component/test-things/test-things.component';
+import { ProduitComponent } from './administration/produit/produit.component';
+import { AddProduitComponent } from './administration/produit/add-produit/add-produit.component';
+import { EditProduitComponent } from './administration/produit/edit-produit/edit-produit.component';
+import { DeleteProduitComponent } from './administration/produit/delete-produit/delete-produit.component';
+import { StatistiqueComponent } from './statistique/statistique.component';
+import { NotificationComponent } from './util/notification/notification.component';
+import { AmChartComponent } from './statistique/am-chart/am-chart.component';
+import { RefProduitComponent } from './administration/ref-produit/ref-produit.component';
+import { ApprovisionnementComponent } from './administration/produit/approvisionnement/approvisionnement.component';
+import { AddRefProduitComponent } from './administration/ref-produit/add-ref-produit/add-ref-produit.component';
+import { EditRefProduitComponent } from './administration/ref-produit/edit-ref-produit/edit-ref-produit.component';
+import { DeleteRefProduitComponent } from './administration/ref-produit/delete-ref-produit/delete-ref-produit.component';
+import { RefMedicamentANSMComponent } from './administration/refMedicamentANSM/refMedicamentANSM.component';
+import { SearchComponent } from './elasticsearch/search/search.component';
 @NgModule({
    declarations: [
       AppComponent,

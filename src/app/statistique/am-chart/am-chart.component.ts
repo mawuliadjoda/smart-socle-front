@@ -4,9 +4,9 @@ import { Component, OnInit, NgZone, AfterViewInit, OnDestroy } from '@angular/co
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
-import { LigneCommandeService } from '../services/ligne-commande.service';
 import { environment } from 'src/environments/environment';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { LigneCommandeService } from 'src/app/services/ligne-commande.service';
 
 am4core.useTheme(am4themes_animated);
 

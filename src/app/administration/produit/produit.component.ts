@@ -1,12 +1,12 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { Produit } from '../models/produit';
 import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { ProduitService } from '../services/produit.service';
 import { AddProduitComponent } from './add-produit/add-produit.component';
 import { EditProduitComponent } from './edit-produit/edit-produit.component';
 import { DeleteProduitComponent } from './delete-produit/delete-produit.component';
 import { ApprovisionnementComponent } from './approvisionnement/approvisionnement.component';
+import { Produit } from 'src/app/models/produit';
+import { ProduitService } from 'src/app/services/produit.service';
 
 
 @Component({

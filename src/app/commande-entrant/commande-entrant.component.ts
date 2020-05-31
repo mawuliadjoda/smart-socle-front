@@ -8,7 +8,7 @@ import { CommandeService } from '../services/commande.service.ts';
 import { FournisseurService } from '../services/fournisseur.service';
 import { Fournisseur } from '../models/fournisseur';
 import { HttpErrorResponse } from '@angular/common/http';
-import { SearchComponent } from '../util/util-component/search/search.component';
+import { SearchComponent } from '../elasticsearch/search/search.component';
 
 @Component({
   selector: 'app-commande-entrant',

@@ -4,20 +4,13 @@ import { LoginComponent } from './authentication/login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { ProduitComponent } from './produit/produit.component';
 import { CommandeComponent } from './commande/commande.component';
 import { PannierComponent } from './commande/pannier/pannier.component';
 import { FactureComponent } from './commande/facture/facture.component';
 import { CommandListComponent } from './commandList/commandList.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
-import { NotificationComponent } from './notification/notification.component';
-import { AmChartComponent } from './am-chart/am-chart.component';
-import { RefProduitComponent } from './ref-produit/ref-produit.component';
-import { RefMedicamentANSMComponent } from './referentiels/refMedicamentANSM/refMedicamentANSM.component';
-
 import { AuthGaurdService } from './services/jwt-auth/auth-gaurd.service';
 import { ElasticsearchComponent } from './elasticsearch/elasticsearch.component';
-import { ApprovisionnementComponent } from './produit/approvisionnement/approvisionnement.component';
 import { CommandeEntrantComponent } from './commande-entrant/commande-entrant.component';
 import { CommandeEntrantAttenteComponent } from './commande-entrant-attente/commande-entrant-attente.component';
 import { CommandeEntrantReceptionComponent } from './commande-entrant-reception/commande-entrant-reception.component';
@@ -30,6 +23,11 @@ import { CategorieComponent } from './administration/categorie/categorie.compone
 import { FournisseurComponent } from './administration/fournisseur/fournisseur.component';
 import { FileUploadComponent } from './util/util-component/file-upload/file-upload.component';
 import { TestThingsComponent } from './util/util-component/test-things/test-things.component';
+import { NotificationComponent } from './util/notification/notification.component';
+import { AmChartComponent } from './statistique/am-chart/am-chart.component';
+import { RefProduitComponent } from './administration/ref-produit/ref-produit.component';
+import { RefMedicamentANSMComponent } from './administration/refMedicamentANSM/refMedicamentANSM.component';
+import { ProduitComponent } from './administration/produit/produit.component';
 
 
 const routes: Routes = [
