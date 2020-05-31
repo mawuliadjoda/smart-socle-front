@@ -47,7 +47,7 @@
 				<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenuAdmin}">expand_more</mat-icon>
       </mat-list-item>
       <div *ngIf="showSubmenuAdmin" class="submenu" [ngClass]="{'expanded' : showSubmenuAdmin}" >
-        <a *ngFor="let item of customerRoutes"
+        <a *ngFor="let item of adminRoutes"
             (click)="snav.close()"
             [routerLink]="[item.route]"
             [ngClass]="{'disabled-element ': !item.isActive, '': item.isActive}"

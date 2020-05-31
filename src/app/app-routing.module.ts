@@ -26,6 +26,8 @@ import { StatJournaliereComponent } from './statistique/stat-journaliere/stat-jo
 import { TestThingsComponent } from './util-component/test-things/test-things.component';
 import { DeclarationVenteJournaliereComponent } from './statistique/declarationVenteJournaliere/declarationVenteJournaliere.component';
 import { CompaireStatComponent } from './statistique/compaire-stat/compaire-stat.component';
+import { CategorieComponent } from './administration/categorie/categorie.component';
+import { FournisseurComponent } from './administration/fournisseur/fournisseur.component';
 
 
 const routes: Routes = [
@@ -55,7 +57,8 @@ const routes: Routes = [
 
   {path: 'smart/declaration-vente', component: DeclarationVenteJournaliereComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/test-things', component: TestThingsComponent, canActivate: [AuthGaurdService]},
-
+  {path: 'smart/gestion-categorie', component: CategorieComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/gestion-fournisseur', component: FournisseurComponent, canActivate: [AuthGaurdService]},
 
   {path: '**', component: PageNotFoundComponent}
 ];

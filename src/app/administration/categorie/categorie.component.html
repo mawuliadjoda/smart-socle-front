@@ -1,0 +1,70 @@
+
+  <!-- <span class="spacer"></span>
+  <button mat-icon-button (click)="refresh()">
+    <mat-icon>refresh</mat-icon>
+  </button> -->
+
+  <div style=" padding: 8px 24px 0;">
+
+    <div class="form">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+
+    <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+      ng update @angular/cli @angular/core
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <button mat-icon-button (click)="refresh()">
+            <mat-icon>refresh</mat-icon>
+        </button>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row" >{{row.id}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="libelle">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Libelle</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row?.libelle}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="code">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Code</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row?.code}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="created_at">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Créé le</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.createdAt | date: 'dd/MM/yyyy hh:mm'}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>
+          <button mat-icon-button color="primary" (click)="addNew()">
+            <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+          </button>
+
+          <!-- <button mat-icon-button (click)="refresh()">
+              <mat-icon>refresh</mat-icon>
+          </button> -->
+        </mat-header-cell>
+
+        <mat-cell *matCellDef="let row; let i=index;">
+          <button mat-icon-button  (click)="deleteItem(i, row)">
+            <!-- <mat-icon aria-label="Delete">delete</mat-icon> -->
+            <img class="label-header-person" src="assets/images/clarity/trash-line.svg" style="width: 20px; height: 20px; margin-right: 3px;" />
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+
+    <div class="no-results" [style.display]="dataSource.data.length == 0 ? '' : 'none'">
+      No results
+    </div>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>

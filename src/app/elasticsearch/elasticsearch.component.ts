@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LigneCommande } from '../models/ligne-commande';
 import { deprecate } from 'util';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-elasticsearch',
@@ -31,7 +32,8 @@ export class ElasticsearchComponent implements OnInit {
   constructor(private elasticsearchService: ElasticsearchService,
               private router: Router,
               private snackBar: MatSnackBar,
-              private store: Store) { }
+              private store: Store,
+              private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     // this.loadCartTotal();
@@ -40,8 +42,10 @@ export class ElasticsearchComponent implements OnInit {
   search($event) {
     this.fieldValue = $event.target.value;
     if (this.fieldValue.length > 2) {
+      this.spinner.show();
       this.elasticsearchService.searchProduit('nom', this.fieldValue).subscribe(
         data => {
+          this.spinner.hide();
           this.produits = data;
           // console.log(this.produits);
         }

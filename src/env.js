@@ -3,8 +3,8 @@
 
   // API url
   window.__env.baseUrl = 'http://127.0.0.1:8080';
-  window.__env.versionFront = '1.0.0';
-  window.__env.versionBackend = '1.0.0';
+  window.__env.versionFront = '1.0.2';
+  window.__env.versionBackend = '1.0.2';
 
   window.__env.envNameFront = 'dev';
   window.__env.envNameBackend = 'dev';

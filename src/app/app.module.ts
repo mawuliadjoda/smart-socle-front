@@ -65,6 +65,12 @@ import { DeclarationVenteJournaliereComponent } from './statistique/declarationV
 import { DeleteDeclarationComponent } from './statistique/declarationVenteJournaliere/delete-declaration/delete-declaration.component';
 import { CompaireStatComponent } from './statistique/compaire-stat/compaire-stat.component';
 import { EnvServiceProvider } from './services/config/env.service.provider';
+import { CategorieComponent } from './administration/categorie/categorie.component';
+import { DeleteCategorieComponent } from './administration/categorie/delete-categorie/delete-categorie.component';
+import { AddCategorieComponent } from './administration/categorie/add-categorie/add-categorie.component';
+import { FournisseurComponent } from './administration/fournisseur/fournisseur.component';
+import { DeleteFournisseurComponent } from './administration/fournisseur/delete-fournisseur/delete-fournisseur.component';
+import { AddFournisseurComponent } from './administration/fournisseur/add-fournisseur/add-fournisseur.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -111,6 +117,12 @@ import { EnvServiceProvider } from './services/config/env.service.provider';
       DeclarationVenteJournaliereComponent,
       DeleteDeclarationComponent,
       CompaireStatComponent,
+      CategorieComponent,
+      DeleteCategorieComponent,
+      AddCategorieComponent,
+      FournisseurComponent,
+      AddFournisseurComponent,
+      DeleteFournisseurComponent,
       TestThingsComponent
    ],
    imports: [
@@ -146,7 +158,11 @@ import { EnvServiceProvider } from './services/config/env.service.provider';
       UserIdleComponent,
       DeleteCommandeEntrantAttenteComponent,
       StatJournaliereComponent,
-      DeleteDeclarationComponent
+      DeleteDeclarationComponent,
+      DeleteCategorieComponent,
+      AddCategorieComponent,
+      AddFournisseurComponent,
+      DeleteFournisseurComponent,
    ],
    providers: [
      // Translate angular-material paginator

@@ -36,7 +36,7 @@ export class NavComponent  implements OnInit,  OnDestroy {
   subscription: Subscription;
 
   shouldRun = true;
-  customerRoutes = [
+  adminRoutes = [
 
     {
       icon: 'assignment',
@@ -92,6 +92,18 @@ export class NavComponent  implements OnInit,  OnDestroy {
       icon:  'dashboard',
       route: 'smart/produitsAcmder',
       title: 'Produits à commander',
+      isActive: true
+    },
+    {
+      icon: '',
+      route: 'smart/gestion-categorie',
+      title: 'Gestion catégorie',
+      isActive: true
+    },
+    {
+      icon: '',
+      route: 'smart/gestion-fournisseur',
+      title: 'Gestion fournisseur',
       isActive: true
     }
   ];
