@@ -18,7 +18,7 @@ export class CommandeEntrantReceptionComponent implements OnInit {
     'id',
     'nom',
     'reference',
-    'categorie',
+    'fournisseur',
     'qte',
     'prixUnitaire',
     'prixTotal',
