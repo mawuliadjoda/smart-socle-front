@@ -14,7 +14,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { AmChartComponent } from './am-chart/am-chart.component';
 import { RefProduitComponent } from './ref-produit/ref-produit.component';
 import { RefMedicamentANSMComponent } from './referentiels/refMedicamentANSM/refMedicamentANSM.component';
-import { FileUploadComponent } from './util-component/file-upload/file-upload.component';
+
 import { AuthGaurdService } from './services/jwt-auth/auth-gaurd.service';
 import { ElasticsearchComponent } from './elasticsearch/elasticsearch.component';
 import { ApprovisionnementComponent } from './produit/approvisionnement/approvisionnement.component';
@@ -23,11 +23,13 @@ import { CommandeEntrantAttenteComponent } from './commande-entrant-attente/comm
 import { CommandeEntrantReceptionComponent } from './commande-entrant-reception/commande-entrant-reception.component';
 import { ProduitACoursStockComponent } from './administration/produit-a-cours-stock/produit-a-cours-stock.component';
 import { StatJournaliereComponent } from './statistique/stat-journaliere/stat-journaliere.component';
-import { TestThingsComponent } from './util-component/test-things/test-things.component';
+
 import { DeclarationVenteJournaliereComponent } from './statistique/declarationVenteJournaliere/declarationVenteJournaliere.component';
 import { CompaireStatComponent } from './statistique/compaire-stat/compaire-stat.component';
 import { CategorieComponent } from './administration/categorie/categorie.component';
 import { FournisseurComponent } from './administration/fournisseur/fournisseur.component';
+import { FileUploadComponent } from './util/util-component/file-upload/file-upload.component';
+import { TestThingsComponent } from './util/util-component/test-things/test-things.component';
 
 
 const routes: Routes = [

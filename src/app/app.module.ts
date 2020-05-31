@@ -35,8 +35,6 @@ import { ApprovisionnementComponent } from './produit/approvisionnement/approvis
 import { RefMedicamentANSMComponent } from './referentiels/refMedicamentANSM/refMedicamentANSM.component';
 import { MatPaginatorIntl } from '@angular/material';
 import { getDutchPaginatorIntl } from './smart-paginator-override';
-import { FileUploadComponent } from './util-component/file-upload/file-upload.component';
-import { FileDownloadComponent } from './util-component/file-download/file-download.component';
 import { FooterComponent } from './template/footer/footer.component';
 import { BasicAuthHtppInterceptorService } from './services/jwt-auth/basic-auth-interceptor.service';
 import { ElasticsearchComponent } from './elasticsearch/elasticsearch.component';
@@ -45,7 +43,6 @@ import { BnNgIdleService } from 'bn-ng-idle';
 import { UserIdleComponent } from './authentication/user-idle/user-idle.component';
 import { ShoppingCardComponent } from './template/shopping-card/shopping-card.component';
 import { CommandeEntrantComponent } from './commande-entrant/commande-entrant.component';
-import { SearchComponent } from './util-component/search/search.component';
 import { CommandeEntrantReceptionComponent } from './commande-entrant-reception/commande-entrant-reception.component';
 import { CommandeEntrantAttenteComponent } from './commande-entrant-attente/commande-entrant-attente.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -56,7 +53,6 @@ import { DashboardComponent } from './administration/dashboard/dashboard.compone
 import { StatJournaliereComponent } from './statistique/stat-journaliere/stat-journaliere.component';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { PipeModule } from './pipe.module';
-import { TestThingsComponent } from './util-component/test-things/test-things.component';
 
 import { MdePopoverModule } from '@material-extended/mde';
 import { DeclarationVenteJournaliereComponent } from './statistique/declarationVenteJournaliere/declarationVenteJournaliere.component';
@@ -71,6 +67,10 @@ import { DeleteFournisseurComponent } from './administration/fournisseur/delete-
 import { AddFournisseurComponent } from './administration/fournisseur/add-fournisseur/add-fournisseur.component';
 import { NavigationBarComponent } from './template/navigation-bar/navigation-bar.component';
 import { NavComponent } from './template/nav/nav.component';
+import { FileDownloadComponent } from './util/util-component/file-download/file-download.component';
+import { FileUploadComponent } from './util/util-component/file-upload/file-upload.component';
+import { SearchComponent } from './util/util-component/search/search.component';
+import { TestThingsComponent } from './util/util-component/test-things/test-things.component';
 @NgModule({
    declarations: [
       AppComponent,

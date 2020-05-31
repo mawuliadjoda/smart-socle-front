@@ -1,5 +1,5 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { MontantFormatterPipe } from './util-component/montant-formatter.pipe';
+import { MontantFormatterPipe } from './util/util-component/montant-formatter.pipe';
 
 @NgModule({
     imports:        [],

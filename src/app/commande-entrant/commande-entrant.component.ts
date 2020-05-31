@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
-import { SearchComponent } from '../util-component/search/search.component';
 import { LigneCommande } from '../models/ligne-commande';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { Produit } from '../models/produit';
@@ -9,6 +8,7 @@ import { CommandeService } from '../services/commande.service.ts';
 import { FournisseurService } from '../services/fournisseur.service';
 import { Fournisseur } from '../models/fournisseur';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SearchComponent } from '../util/util-component/search/search.component';
 
 @Component({
   selector: 'app-commande-entrant',

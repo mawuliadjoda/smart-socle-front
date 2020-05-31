@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
-import { RefMedicamentAnsmService } from 'src/app/util/services/refMedicament-ansm.service';
+import { RefMedicamentAnsmService } from 'src/app/services/refMedicament-ansm.service';
 import { MatDialog, MatPaginator, MatSort, MatTableDataSource, PageEvent } from '@angular/material';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RefMedicamentANSM } from 'src/app/models/ref-medicament-ansm';
