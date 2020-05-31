@@ -17,7 +17,7 @@ export class CommandeEntrantAttenteComponent implements OnInit {
     'id',
     'nom',
     'reference',
-    'categorie',
+    'fournisseur',
     'qte',
     'prixUnitaire',
     'prixTotal',
