@@ -1,0 +1,73 @@
+<div>
+  <app-search (selectonEmitter)="recieveSelection($event)"></app-search>
+</div>
+
+<hr>
+
+<div *ngIf="selecton?.length !== 0" style=" padding: 8px 24px 0;">
+  <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+    ng update @angular/cli @angular/core
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+      <mat-cell *matCellDef="let row" >{{row.id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nom">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Nom</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row?.nom}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="reference">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Reference</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row?.cis}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="fournisseur">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Fournisseur</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row?.fournisseur?.nom}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="qte">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Qte</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.qte}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="prixUnitaire">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>prix unit.</mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row?.prixUnitaire}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="created_at">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Date commande</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.createdAt | date: 'dd/MM/yyyy'}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="prixTotal">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Prix total</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row?.prixUnitaire * row.qte}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let row; let i=index;">
+        <button mat-icon-button color="accent" (click)="downloadQrCode(row)" matTooltip="télécharger le QR code">
+          <img  src="assets/images/clarity/download-line.svg" style="width: 20px; height: 20px; margin-right: 3px;" />
+        </button>
+      </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+
+  <div class="no-results" [style.display]="dataSource.data.length == 0 ? '' : 'none'">
+    No results
+  </div>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

@@ -104,6 +104,12 @@ export class NavComponent  implements OnInit,  OnDestroy {
       route: 'smart/gestion-fournisseur',
       title: 'Gestion fournisseur',
       isActive: true
+    },
+    {
+      icon: '',
+      route: 'smart/generate-qr-code',
+      title: 'imprimer code QR',
+      isActive: true
     }
   ];
 

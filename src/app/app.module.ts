@@ -70,6 +70,7 @@ import { DeleteRefProduitComponent } from './administration/ref-produit/delete-r
 import { RefMedicamentANSMComponent } from './administration/refMedicamentANSM/refMedicamentANSM.component';
 import { SearchComponent } from './elasticsearch/search/search.component';
 import { PageNotFoundComponent } from './util/page-not-found/page-not-found.component';
+import { GenerateQrCodeComponent } from './administration/generate-qr-code/generate-qr-code.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -122,6 +123,7 @@ import { PageNotFoundComponent } from './util/page-not-found/page-not-found.comp
       FournisseurComponent,
       AddFournisseurComponent,
       DeleteFournisseurComponent,
+      GenerateQrCodeComponent,
       TestThingsComponent
    ],
    imports: [

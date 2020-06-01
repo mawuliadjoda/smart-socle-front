@@ -28,6 +28,7 @@ import { RefProduitComponent } from './administration/ref-produit/ref-produit.co
 import { RefMedicamentANSMComponent } from './administration/refMedicamentANSM/refMedicamentANSM.component';
 import { ProduitComponent } from './administration/produit/produit.component';
 import { PageNotFoundComponent } from './util/page-not-found/page-not-found.component';
+import { GenerateQrCodeComponent } from './administration/generate-qr-code/generate-qr-code.component';
 
 
 const routes: Routes = [
@@ -59,6 +60,7 @@ const routes: Routes = [
   {path: 'smart/test-things', component: TestThingsComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/gestion-categorie', component: CategorieComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/gestion-fournisseur', component: FournisseurComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/generate-qr-code', component: GenerateQrCodeComponent, canActivate: [AuthGaurdService]},
 
   {path: '**', component: PageNotFoundComponent}
 ];
