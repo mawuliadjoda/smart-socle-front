@@ -69,7 +69,7 @@ export class GenerateQrCodeComponent implements OnInit {
 
     downloadLink.href = linkSource;
     downloadLink.target = '_self';
-    downloadLink.download = 'qrcode.png';
+    downloadLink.download = `${produit.nom}.png`;
     downloadLink.click();
   }
 
