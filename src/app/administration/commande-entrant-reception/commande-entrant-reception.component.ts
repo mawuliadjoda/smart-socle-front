@@ -22,7 +22,8 @@ export class CommandeEntrantReceptionComponent implements OnInit {
     'qte',
     'prixUnitaire',
     'prixTotal',
-    'created_at'
+    'created_at',
+    'actions'
   ];
 
   dataSource = new MatTableDataSource<LigneCommande>([]);
@@ -99,5 +100,21 @@ export class CommandeEntrantReceptionComponent implements OnInit {
         );
       }
     }
+  }
+
+  // dans un navigateur = > data:image/png;base64, + base64 value (byte[]) pour afficher l'image dans le navigateur = > utile à savoir
+  // data:image/png;base64,produit.qrcode
+  downloadQrCode(produit: Produit) {
+    const linkSource = `data:image/png;base64,${produit.qrcode}`;
+    const downloadLink = document.createElement('a');
+
+    // open in new window ne donne pas la main pour telecharger
+    // window.open(linkSource);
+    document.body.appendChild(downloadLink);
+
+    downloadLink.href = linkSource;
+    downloadLink.target = '_self';
+    downloadLink.download = 'qrcode.png';
+    downloadLink.click();
   }
 }

@@ -24,12 +24,6 @@
 
 
     <br>
-    <!-- <div class="form">
-      <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-      </mat-form-field>
-    </div> -->
-
     <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
       ng update @angular/cli @angular/core
       <ng-container matColumnDef="id">
@@ -71,6 +65,19 @@
         <mat-header-cell *matHeaderCellDef mat-sort-header>Prix total</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row?.produit?.prixUnitaire * row.qte}}</mat-cell>
       </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>
+
+        </mat-header-cell>
+
+        <mat-cell *matCellDef="let row; let i=index;">
+          <button mat-icon-button color="accent" (click)="downloadQrCode(row?.produit)" matTooltip="télécharger le QR code">
+            <img  src="assets/images/clarity/download-line.svg" style="width: 20px; height: 20px; margin-right: 3px;" />
+          </button>
+        </mat-cell>
+      </ng-container>
+
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

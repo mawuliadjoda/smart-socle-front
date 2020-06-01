@@ -5,8 +5,8 @@ export class Produit {
   nom: string;
   reference: string;
   categorie: string;
-  qrcode: string;
-  barcode: string;
+  qrcode: any;
+  barcode: any;
   qte: number;
   prixUnitaire: number;
   description: string;
