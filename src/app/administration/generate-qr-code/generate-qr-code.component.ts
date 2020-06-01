@@ -52,11 +52,6 @@ export class GenerateQrCodeComponent implements OnInit {
   ngOnInit() {
   }
 
-  ngAfterViewInit() {
-    // this.selecton = this.searchComponent.selecton;
-    // this.dataSource = new MatTableDataSource<Produit>(this.selecton.value);
-  }
-
   recieveSelection($event) {
      this.selecton = [...this.selecton, ...$event];
      this.dataSource = new MatTableDataSource<Produit>(this.selecton);
