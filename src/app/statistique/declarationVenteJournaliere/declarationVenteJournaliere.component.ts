@@ -48,17 +48,17 @@ export class DeclarationVenteJournaliereComponent implements OnInit {
     this.spinner.show();
     this.declarationVenteService.getAllByUserName(this.authenticationService.getUserLogin()).subscribe( data => {
 
-
+      data.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : -1);
       this.todayDate = this.datePipe.transform(new Date(), 'dd-MM-yyyy');
 
       data.map( obj => {
         obj.createdAt = this.datePipe.transform(obj.createdAt, 'dd-MM-yyyy');
       });
-
+      /*
       data.sort((obj1, obj2) => {
         return obj2.createdAt.localeCompare(obj1.createdAt);
       });
-
+      */
       this.data = data;
       this.dataSource = new MatTableDataSource(this.data);
       this.dataSource.paginator = this.paginator;
