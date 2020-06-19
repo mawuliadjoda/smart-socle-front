@@ -71,6 +71,7 @@ import { RefMedicamentANSMComponent } from './administration/refMedicamentANSM/r
 import { SearchComponent } from './elasticsearch/search/search.component';
 import { PageNotFoundComponent } from './util/page-not-found/page-not-found.component';
 import { GenerateQrCodeComponent } from './administration/generate-qr-code/generate-qr-code.component';
+import { PrimeNgModule } from './prime-ng.module';
 @NgModule({
    declarations: [
       AppComponent,
@@ -145,7 +146,8 @@ import { GenerateQrCodeComponent } from './administration/generate-qr-code/gener
       // https://www.npmjs.com/package/mat-table-exporter
       MatTableExporterModule,
       PipeModule.forRoot(),
-      MdePopoverModule
+      MdePopoverModule,
+      PrimeNgModule
    ],
    schemas: [CUSTOM_ELEMENTS_SCHEMA],
    entryComponents: [

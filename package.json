@@ -36,6 +36,8 @@
     "ng2-pdfjs-viewer": "^5.0.5",
     "ngx-spinner": "^9.0.2",
     "ngxs-schematics": "^1.0.7",
+    "primeicons": "^4.0.0",
+    "primeng": "^9.1.0",
     "rxjs": "~6.5.5",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
