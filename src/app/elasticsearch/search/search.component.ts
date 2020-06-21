@@ -36,14 +36,23 @@ export class SearchComponent implements OnInit {
       this.elasticsearchService.searchProduit('nom', this.fieldValue).subscribe(
         data => {
           this.produits = data;
-          console.log(this.produits);
+          if (data && data.length === 1 ) {
+            this.selecton.setValue(data[0]);
+          }
         }
       );
     }
   }
   add(produits: Produit[]) {
     if (this.selecton.value) {
-      this.selectonEmitter.emit(this.selecton.value);
+      let data = null;
+      // Un array est attendu à la réception
+      if (this.selecton.value instanceof Array) {
+        data = this.selecton.value;
+      } else {
+        data = [this.selecton.value];
+      }
+      this.selectonEmitter.emit(data);
       this.fieldValue = '';
       this.selecton = new FormControl();
       this.produits = [];

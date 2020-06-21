@@ -29,7 +29,14 @@
 
   <mat-form-field *ngIf="produits?.length > 0" style="width:95%!important;">
     <mat-label>Résultats</mat-label>
-    <mat-select [formControl]="selecton" multiple style="width:95%!important;">
+    <mat-select *ngIf="produits?.length === 1 " [formControl]="selecton">
+      <mat-option *ngFor="let produit of produits" [value]="produit">
+        {{ (produit.nom.length>50)? (produit.nom | slice:0:50)+'...':(produit.nom) }} / Qte:{{produit.qte}} / Prix:{{produit.prixUnitaire}} / Empl.:{{produit.emplacement}}
+      </mat-option>
+    </mat-select>
+
+
+    <mat-select *ngIf="produits?.length > 1 " [formControl]="selecton" multiple style="width:95%!important;">
       <mat-select-trigger>
         {{selecton.value ? selecton.value[0]?.nom : ''}}
         <span *ngIf="selecton.value?.length > 1" class="example-additional-selection">

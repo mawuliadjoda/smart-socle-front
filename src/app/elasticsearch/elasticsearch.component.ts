@@ -47,7 +47,9 @@ export class ElasticsearchComponent implements OnInit {
         data => {
           this.spinner.hide();
           this.produits = data;
-          // console.log(this.produits);
+          if (data && data.length === 1) {
+            this.selecton.setValue(data[0]);
+          }
         }
       );
     }
