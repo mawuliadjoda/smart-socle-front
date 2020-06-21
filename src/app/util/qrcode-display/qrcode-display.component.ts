@@ -10,7 +10,7 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./qrcode-display.component.css']
 })
 export class QrcodeDisplayComponent implements OnInit {
-
+  @ViewChild('contentToConvert') content: ElementRef;
   constructor(
     public dialogRef: MatDialogRef<QrcodeDisplayComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Produit
@@ -23,31 +23,31 @@ export class QrcodeDisplayComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  @ViewChild('content') content: ElementRef;
 
-  makePdf() {
-    let doc = new jspdf();
-    doc.addHTML(this.content.nativeElement, function() {
-       doc.save("obrz.pdf");
+
+  // makePdf() {
+  //   let doc = new jspdf();
+  //   doc.addHTML(this.content.nativeElement, function() {
+  //      doc.save("obrz.pdf");
+  //   });
+  // }
+
+  public convetToPDF() {
+    // var  data = document.getElementById('contentToConvert');
+    let  data = this.content.nativeElement;
+    html2canvas(data).then(canvas => {
+      // Few necessary setting options
+      let imgWidth = 30;
+      let pageHeight = 30;
+      let imgHeight = canvas.height * imgWidth / canvas.width;
+      let heightLeft = imgHeight;
+
+      const contentDataURL = canvas.toDataURL('image/png');
+      let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
+      let position = 0;
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+      pdf.save('new-file.pdf'); // Generated PDF
     });
   }
-
-  public convetToPDF()
-{
-var data = document.getElementById('contentToConvert');
-html2canvas(data).then(canvas => {
-// Few necessary setting options
-var imgWidth = 30;
-var pageHeight = 30;
-var imgHeight = canvas.height * imgWidth / canvas.width;
-var heightLeft = imgHeight;
-
-const contentDataURL = canvas.toDataURL('image/png')
-let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
-var position = 0;
-pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-pdf.save('new-file.pdf'); // Generated PDF
-});
-}
 
 }
