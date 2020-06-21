@@ -72,6 +72,7 @@ import { SearchComponent } from './elasticsearch/search/search.component';
 import { PageNotFoundComponent } from './util/page-not-found/page-not-found.component';
 import { GenerateQrCodeComponent } from './administration/generate-qr-code/generate-qr-code.component';
 import { PrimeNgModule } from './prime-ng.module';
+import { QrcodeDisplayComponent } from './util/qrcode-display/qrcode-display.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -125,6 +126,7 @@ import { PrimeNgModule } from './prime-ng.module';
       AddFournisseurComponent,
       DeleteFournisseurComponent,
       GenerateQrCodeComponent,
+      QrcodeDisplayComponent,
       TestThingsComponent
    ],
    imports: [
@@ -166,6 +168,7 @@ import { PrimeNgModule } from './prime-ng.module';
       AddCategorieComponent,
       AddFournisseurComponent,
       DeleteFournisseurComponent,
+      QrcodeDisplayComponent
    ],
    providers: [
      // Translate angular-material paginator

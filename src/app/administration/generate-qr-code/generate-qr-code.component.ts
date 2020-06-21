@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { LigneCommande } from '../../models/ligne-commande';
-import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
 import { Produit } from '../../models/produit';
 import { ReplaySubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -9,6 +9,7 @@ import { FournisseurService } from '../../services/fournisseur.service';
 import { Fournisseur } from '../../models/fournisseur';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SearchComponent } from '../../elasticsearch/search/search.component';
+import { QrcodeDisplayComponent } from 'src/app/util/qrcode-display/qrcode-display.component';
 
 @Component({
   selector: 'app-generate-qr-code',
@@ -47,7 +48,8 @@ export class GenerateQrCodeComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild('filter', { static: true }) filter: ElementRef;
   constructor(private commandeService: CommandeService,
-              private fournisseurService: FournisseurService) { }
+              private fournisseurService: FournisseurService,
+              public dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -73,4 +75,18 @@ export class GenerateQrCodeComponent implements OnInit {
     downloadLink.click();
   }
 
+  displayQrCode(produit: Produit) {
+    const dialogRef = this.dialog.open(QrcodeDisplayComponent, {
+      data: produit, disableClose: false
+      ,
+      height: '200px',
+      width: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.downloadQrCode(result);
+      }
+    });
+  }
 }

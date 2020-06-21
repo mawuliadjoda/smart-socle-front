@@ -1,0 +1,71 @@
+<!-- <div style="width: 30px; height: 30px;">
+  <div  id="contentToConvert">
+    <img  src='data:image/png;base64,{{ data.qrcode }}' style="padding: 0; margin: 0;">
+
+    <p style="text-align: center; padding: 0; margin: 0;font-size: 7px; font-weight: bold;">{{data.cis}}</p>
+  </div>
+
+</div> -->
+
+<!-- <div style="width: 300px;">
+  <div class="grid">
+    <div class="cell">
+      <div class="grid">
+        <div class="cell">
+          <img src='data:image/png;base64,{{ data.qrcode }}' style="padding: 0; margin: 0;">
+        </div>
+      </div>
+      <div class="grid">
+        <div class="cell">
+          <p style="text-align: center; padding: 0; margin: 0;">{{data.cis}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div style="width: 40px; height: 40px;">
+  <div  >
+    <div class="grid">
+      <div class="cell">
+       <br>
+        <div class="grid">
+          <div class="cell"> <p style="font-size: 7px; font-weight: bold;">{{data.cis}}</p> </div>
+        </div>
+        <div class="grid">
+          <div class="cell"> <p style="font-size: 5px;">{{data.nom}}</p> </div>
+        </div>
+      </div>
+      <div id="contentToConvert" class="cell cell-width-10">
+        <img  src='data:image/png;base64,{{ data.qrcode }}' style="padding: 0; margin: 0;">
+        <p style="font-size: 7px; font-weight: bold; padding: 0; margin: 0; margin-left: 25px;">{{data.cis}}</p>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<table id="contentToConvert">
+
+  <tr>
+    <td>
+      <p style="width:35px;font-size: 8px; padding: 0; margin: 0;">{{data.cis}}</p>
+      <p style="width:35px;font-size: 5px; padding: 0; margin: 0;">{{data.nom}}</p>
+    </td>
+    <td>
+      <img  src='data:image/png;base64,{{ data.qrcode }}' style="padding: 0; margin: 0;">
+    </td>
+  </tr>
+</table>
+
+<!-- <div #content class="content" >
+  <p>ceci est un test </p>
+</div> -->
+<br><br>
+
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" tabindex="-1">Annuler</button>
+  <!-- <button (click)="convetToPDF()">make pdf</button> -->
+  <button pButton class="ui-button-raised ui-button-secondary" type="button" (click)="convetToPDF()" label="Télécharger" ></button>
+  <button mat-button   [mat-dialog-close]="data" >Télécharger</button>
+</div>

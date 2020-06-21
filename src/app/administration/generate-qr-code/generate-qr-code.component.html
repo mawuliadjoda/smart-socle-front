@@ -53,7 +53,7 @@
       </mat-header-cell>
 
       <mat-cell *matCellDef="let row; let i=index;">
-        <button mat-icon-button color="accent" (click)="downloadQrCode(row)" matTooltip="télécharger le QR code">
+        <button mat-icon-button color="accent" (click)="displayQrCode(row)" matTooltip="télécharger le QR code">
           <img  src="assets/images/clarity/download-line.svg" style="width: 20px; height: 20px; margin-right: 3px;" />
         </button>
       </mat-cell>
