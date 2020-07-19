@@ -73,6 +73,15 @@ import { PageNotFoundComponent } from './util/page-not-found/page-not-found.comp
 import { GenerateQrCodeComponent } from './administration/generate-qr-code/generate-qr-code.component';
 import { PrimeNgModule } from './prime-ng.module';
 import { QrcodeDisplayComponent } from './util/qrcode-display/qrcode-display.component';
+import { ViewFactureComponent } from './administration/commande/facture/view-facture/view-facture.component';
+// import {NgxPrintModule} from 'ngx-print';
+// import { ThermalPrintModule } from 'ng-thermal-print';
+import { PrintPageComponent } from './administration/commande/facture/view-facture/print-page/print-page.component';
+import { MainPageComponent } from './administration/commande/facture/view-facture/main-page/main-page.component';
+import { BarecodeScannerLivestreamModule } from 'ngx-barcode-scanner';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { QrCodeScannerComponent } from './util/qr-code-scanner/qr-code-scanner.component';
+
 @NgModule({
    declarations: [
       AppComponent,
@@ -127,6 +136,10 @@ import { QrcodeDisplayComponent } from './util/qrcode-display/qrcode-display.com
       DeleteFournisseurComponent,
       GenerateQrCodeComponent,
       QrcodeDisplayComponent,
+      ViewFactureComponent,
+      PrintPageComponent,
+      MainPageComponent,
+      QrCodeScannerComponent,
       TestThingsComponent
    ],
    imports: [
@@ -149,7 +162,11 @@ import { QrcodeDisplayComponent } from './util/qrcode-display/qrcode-display.com
       MatTableExporterModule,
       PipeModule.forRoot(),
       MdePopoverModule,
-      PrimeNgModule
+      PrimeNgModule,
+      BarecodeScannerLivestreamModule,
+      ZXingScannerModule
+      // NgxPrintModule,
+      // ThermalPrintModule
    ],
    schemas: [CUSTOM_ELEMENTS_SCHEMA],
    entryComponents: [
