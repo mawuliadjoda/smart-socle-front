@@ -163,6 +163,11 @@ export class ElasticsearchComponent implements OnInit {
         }
       );
 
+    } else {
+      this.fieldValue = '';
+      this.snackBar.open('Médicament déjà scanné', 'Info', {
+        duration: environment.durationOfSnackBar,
+      });
     }
 
   }
