@@ -29,6 +29,8 @@ import { RefMedicamentANSMComponent } from './administration/refMedicamentANSM/r
 import { ProduitComponent } from './administration/produit/produit.component';
 import { PageNotFoundComponent } from './util/page-not-found/page-not-found.component';
 import { GenerateQrCodeComponent } from './administration/generate-qr-code/generate-qr-code.component';
+import { ViewFactureComponent } from './administration/commande/facture/view-facture/view-facture.component';
+import { QrCodeScannerComponent } from './util/qr-code-scanner/qr-code-scanner.component';
 
 
 const routes: Routes = [
@@ -40,6 +42,8 @@ const routes: Routes = [
   {path: 'smart/commandes-sortant', component: CommandeComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/pannier', component: PannierComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/facture', component: FactureComponent, canActivate: [AuthGaurdService]},
+  // {path: 'smart/facture', component: ViewFactureComponent, canActivate: [AuthGaurdService]},
+
   {path: 'smart/list-commande-sortant', component: CommandListComponent, canActivate: [AuthGaurdService]},
 
   {path: 'smart/stat', component: StatistiqueComponent, canActivate: [AuthGaurdService]},
@@ -61,6 +65,7 @@ const routes: Routes = [
   {path: 'smart/gestion-categorie', component: CategorieComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/gestion-fournisseur', component: FournisseurComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/generate-qr-code', component: GenerateQrCodeComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/scan-qr-code', component: QrCodeScannerComponent, canActivate: [AuthGaurdService]},
 
   {path: '**', component: PageNotFoundComponent}
 ];
