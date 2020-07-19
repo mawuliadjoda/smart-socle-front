@@ -1,49 +1,46 @@
 <br>
 <div class="form">
     <mat-form-field>
-        <input [(ngModel)]="fieldValue" (keyup)="search($event)" matInput placeholder="----Rechercher un médicament par nom, categorie, référence, ... ----">
+        <input [(ngModel)]="fieldValue" (ngModelChange)="search($event)" matInput placeholder="----Rechercher un médicament par nom, categorie, référence, ... ----">
     </mat-form-field>
 
 </div>
 
-<div class="form">
-    <div *ngIf="produits?.length < 1">
-        <p class="no-results">Aucun résultat!</p>
-    </div>
 
-    <mat-form-field *ngIf="produits?.length > 0" style="width:95%!important;">
+<div class="grid">
+  <div class="cell cell-width-90">
+    <div class="form">
+      <div *ngIf="produits?.length < 1">
+          <p class="no-results">Aucun résultat!</p>
+      </div>
 
-      <mat-label>Séléctionner un résultat</mat-label>
-      <mat-select [formControl]="selecton">
-        <!-- <mat-option>None</mat-option> -->
-        <mat-option *ngFor="let produit of produits" [value]="produit">
-          {{ (produit.nom.length>50)? (produit.nom | slice:0:50)+'...':(produit.nom) }} / Qte:{{produit.qte}} / Prix:{{produit.prixUnitaire}} / Empl.:{{produit.emplacement}}
-        </mat-option>
-      </mat-select>
-        <!--
-         <mat-select [formControl]="selecton" multiple style="width:95%!important;">
-            <mat-select-trigger>
-                {{selecton.value ? selecton.value[0]?.nom : ''}}
-                <span *ngIf="selecton.value?.length > 1" class="example-additional-selection">
-          (+{{selecton.value.length - 1}} {{selecton.value?.length === 2 ? 'autre' : 'autres'}})
-        </span>
-            </mat-select-trigger>
-            <mat-option *ngFor="let ligneCommande of ligneCommandes" [value]="ligneCommande" matTooltip="{{ligneCommande.produit.nom}}" style="font-size: 10px;">
-                {{ (ligneCommande.produit.nom.length>50)? (ligneCommande.produit.nom | slice:0:50)+'...':(ligneCommande.produit.nom) }} / Qte:{{ligneCommande.produit.qte}} / Prix:{{ligneCommande.produit.prixUnitaire}} / Empl.:{{ligneCommande.produit.emplacement}}
-            </mat-option>
-        </mat-select> -->
-    </mat-form-field>
+      <mat-form-field *ngIf="produits?.length > 0" style="width:95%!important;">
 
-    <button *ngIf="produits?.length > 0"
-             [disabled]="!selecton.value"
-             mat-raised-button title="Ajouter au panier"
-             (click)="addToSelection(selecton.value)">
-        <!-- <i class="material-icons">add_shopping_cart</i>  -->
-            <img mat-list-avatar src="assets/images/clarity/shopping-cart-line.svg" style="width: 20px; height: 20px;" />
-        Ajouter
-    </button>
+        <mat-label>Séléctionner un résultat</mat-label>
+        <mat-select [formControl]="selecton">
+          <!-- <mat-option>None</mat-option> -->
+          <mat-option *ngFor="let produit of produits" [value]="produit">
+            {{ (produit.nom.length>50)? (produit.nom | slice:0:50)+'...':(produit.nom) }} / Qte:{{produit.qte}} / Prix:{{produit.prixUnitaire}} / Empl.:{{produit.emplacement}}
+          </mat-option>
+        </mat-select>
 
+      </mat-form-field>
+
+      <button *ngIf="produits?.length > 0"
+               [disabled]="!selecton.value"
+               mat-raised-button title="Ajouter au panier"
+               (click)="addToSelection(selecton.value)">
+              <img mat-list-avatar src="assets/images/clarity/shopping-cart-line.svg" style="width: 20px; height: 20px;" />
+          Ajouter
+      </button>
+  </div>
+  </div>
+  <div class="cell cell-width-10">
+    <zxing-scanner (scanSuccess)="onCodeResult($event)"></zxing-scanner>
+    <!-- <app-qr-code-scanner></app-qr-code-scanner> -->
+  </div>
 </div>
+
 
 <mat-divider></mat-divider>
 
@@ -143,3 +140,14 @@
                     [fullScreen] = "true">
                     <p style="color: white" > Loading... </p>
 </ngx-spinner> -->
+
+<br>
+<!-- <app-qr-code-scanner></app-qr-code-scanner> -->
+<!-- <div class="grid">
+  <div class="cell cell-width-90">
+
+  </div>
+  <div class="cell cell-width-10">
+    <app-qr-code-scanner></app-qr-code-scanner>
+  </div>
+</div> -->

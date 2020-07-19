@@ -40,8 +40,8 @@ export class ElasticsearchComponent implements OnInit {
   }
 
   search($event) {
-    this.fieldValue = $event.target.value;
-    if (this.fieldValue.length > 2) {
+    this.fieldValue = $event.target ? $event.target.value : undefined;
+    if (this.fieldValue && this.fieldValue.length > 2) {
       this.spinner.show();
       this.elasticsearchService.searchProduit('nom', this.fieldValue).subscribe(
         data => {
@@ -144,6 +144,35 @@ export class ElasticsearchComponent implements OnInit {
     });
   }
 
+  clearResult(): void {
+    this.fieldValue = null;
+  }
+
+  onCodeResult(resultString: string) {
+    this.fieldValue = resultString;
+    if (!this.isAlreadyScanned(resultString)) {
+
+      this.elasticsearchService.searchProduit('nom', this.fieldValue).subscribe(
+        data => {
+          this.spinner.hide();
+          this.produits = data;
+          if (data && data.length === 1) {
+            this.selecton.setValue(data[0]);
+            this.addToSelection(this.selecton.value);
+          }
+        }
+      );
+
+    }
+
+  }
+
+  isAlreadyScanned(cis: string) {
+    // check if selection already exist in list
+    const result = this.ligneCommandes.filter(element =>  element.produit.cis === cis);
+
+    return result.length > 0 ? true : false;
+  }
   // deprecate methode @see addToSelection()
  /*
   ajoutPanier(selecton: LigneCommande[]) {
