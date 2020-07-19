@@ -29,7 +29,7 @@ import { RefMedicamentANSMComponent } from './administration/refMedicamentANSM/r
 import { ProduitComponent } from './administration/produit/produit.component';
 import { PageNotFoundComponent } from './util/page-not-found/page-not-found.component';
 import { GenerateQrCodeComponent } from './administration/generate-qr-code/generate-qr-code.component';
-import { ViewFactureComponent } from './administration/commande/facture/view-facture/view-facture.component';
+// import { ViewFactureComponent } from './administration/commande/facture/view-facture/view-facture.component';
 import { QrCodeScannerComponent } from './util/qr-code-scanner/qr-code-scanner.component';
 
 
