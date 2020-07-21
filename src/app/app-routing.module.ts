@@ -31,6 +31,8 @@ import { PageNotFoundComponent } from './util/page-not-found/page-not-found.comp
 import { GenerateQrCodeComponent } from './administration/generate-qr-code/generate-qr-code.component';
 // import { ViewFactureComponent } from './administration/commande/facture/view-facture/view-facture.component';
 import { QrCodeScannerComponent } from './util/qr-code-scanner/qr-code-scanner.component';
+import { NgThermalPrintComponent } from './util/ng-thermal-print/ng-thermal-print.component';
+import { SimplePrintComponent } from './util/simple-print/simple-print.component';
 
 
 const routes: Routes = [
@@ -65,7 +67,10 @@ const routes: Routes = [
   {path: 'smart/gestion-categorie', component: CategorieComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/gestion-fournisseur', component: FournisseurComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/generate-qr-code', component: GenerateQrCodeComponent, canActivate: [AuthGaurdService]},
-  {path: 'smart/scan-qr-code', component: QrCodeScannerComponent, canActivate: [AuthGaurdService]},
+  // {path: 'smart/scan-qr-code', component: QrCodeScannerComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/print', component: NgThermalPrintComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/simple-print', component: SimplePrintComponent, canActivate: [AuthGaurdService]},
+
 
   {path: '**', component: PageNotFoundComponent}
 ];

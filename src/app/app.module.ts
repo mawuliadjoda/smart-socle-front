@@ -75,12 +75,17 @@ import { PrimeNgModule } from './prime-ng.module';
 import { QrcodeDisplayComponent } from './util/qrcode-display/qrcode-display.component';
 // import { ViewFactureComponent } from './administration/commande/facture/view-facture/view-facture.component';
 // import {NgxPrintModule} from 'ngx-print';
+import {NgxPrintModule} from 'ngx-print';
 // import { ThermalPrintModule } from 'ng-thermal-print';
+import { ThermalPrintModule } from 'ng-thermal-print';
 // import { PrintPageComponent } from './administration/commande/facture/view-facture/print-page/print-page.component';
 // import { MainPageComponent } from './administration/commande/facture/view-facture/main-page/main-page.component';
 import { BarecodeScannerLivestreamModule } from 'ngx-barcode-scanner';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { QrCodeScannerComponent } from './util/qr-code-scanner/qr-code-scanner.component';
+import { SimplePrintComponent } from './util/simple-print/simple-print.component';
+import { PrintPageComponent } from './util/simple-print/print-page/print-page.component';
+
 
 @NgModule({
    declarations: [
@@ -140,6 +145,8 @@ import { QrCodeScannerComponent } from './util/qr-code-scanner/qr-code-scanner.c
       // PrintPageComponent,
       // MainPageComponent,
       QrCodeScannerComponent,
+      SimplePrintComponent,
+      PrintPageComponent,
       TestThingsComponent
    ],
    imports: [
@@ -163,9 +170,10 @@ import { QrCodeScannerComponent } from './util/qr-code-scanner/qr-code-scanner.c
       PipeModule.forRoot(),
       MdePopoverModule,
       PrimeNgModule,
-      BarecodeScannerLivestreamModule,
-      ZXingScannerModule
-      // NgxPrintModule,
+      // BarecodeScannerLivestreamModule,
+      // ZXingScannerModule,
+      ThermalPrintModule,
+      NgxPrintModule,
       // ThermalPrintModule
    ],
    schemas: [CUSTOM_ELEMENTS_SCHEMA],
