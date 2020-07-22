@@ -85,6 +85,7 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { QrCodeScannerComponent } from './util/qr-code-scanner/qr-code-scanner.component';
 import { SimplePrintComponent } from './util/simple-print/simple-print.component';
 import { PrintPageComponent } from './util/simple-print/print-page/print-page.component';
+import { NgxPrintFactureComponent } from './administration/commande/ngx-print-facture/ngx-print-facture.component';
 
 
 @NgModule({
@@ -147,6 +148,7 @@ import { PrintPageComponent } from './util/simple-print/print-page/print-page.co
       QrCodeScannerComponent,
       SimplePrintComponent,
       PrintPageComponent,
+      NgxPrintFactureComponent,
       TestThingsComponent
    ],
    imports: [

@@ -1,0 +1,38 @@
+<div  id="print-section">
+  <!-- <p class="print">adjoda</p> -->
+  <div class="ticket">
+    <p class="centered">{{nomPharmacie}}
+        <br>Bienvenue !
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th class="quantity">Q.</th>
+                <th class="description">Description</th>
+                <th class="price">CFA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ligneCommande of ligneCommandes">
+                <td class="quantity">{{ligneCommande.qte}}</td>
+                <td class="description">
+                  <!-- {{ligneCommande?.produit?.nom}} -->
+                  {{ (ligneCommande?.produit?.nom.length>30)? (ligneCommande?.produit?.nom.toLowerCase() | slice:0:30) +'...':(ligneCommande?.produit?.nom) | lowercase}}
+                </td>
+                <td class="price">{{ligneCommande?.produit?.prixUnitaire}}</td>
+            </tr>
+
+            <tr>
+              <td class="quantity"></td>
+              <td class="description">Total</td>
+              <td class="price">{{montantTotal}}</td>
+             </tr>
+
+        </tbody>
+    </table>
+    <p class="centered">Merci pour votre achat
+        <br>digitalacademy-diaspora.com</p>
+</div>
+
+</div>
+

@@ -1,7 +1,8 @@
 <br>
 <div class="form">
     <mat-form-field>
-        <input [(ngModel)]="fieldValue" (ngModelChange)="search($event)" matInput placeholder="----Rechercher un médicament par nom, categorie, référence, ... ----">
+        <!-- <input [(ngModel)]="fieldValue" (ngModelChange)="search($event)" matInput placeholder="----Rechercher un médicament par nom, categorie, référence, ... ----"> -->
+        <input [(ngModel)]="fieldValue" (keyup)="search($event)" matInput placeholder="----Rechercher un médicament par nom, categorie, référence, ... ----">
     </mat-form-field>
 
 </div>

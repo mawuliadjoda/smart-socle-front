@@ -19,6 +19,7 @@ export class EnvService {
 
   public envNameFront = '';
   public envNameBackend = '';
+  public nomPharmacie = '';
   public production = false;
 
   constructor() { }

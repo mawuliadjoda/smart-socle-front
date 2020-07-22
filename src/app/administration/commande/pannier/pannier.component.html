@@ -114,11 +114,22 @@
               <button mat-raised-button color="primary" (click)="downloadFileSystem()">Facture</button>
           </div> -->
           <div style="float: right;">
-            <button mat-raised-button
+            <!-- <button mat-raised-button
                     (click)="visualiserFacture()"
                     [disabled] = "! (ligneCommandes.length > 0)">
                     Passer la commande
+            </button> -->
+
+            <app-ngx-print-facture id="print-section"></app-ngx-print-facture>
+
+
+            <button mat-raised-button
+
+                    printSectionId="print-section"
+                    ngxPrint>Valider
             </button>
+
+
           </div>
       </div>
 
