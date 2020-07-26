@@ -11,6 +11,7 @@ export class Produit {
   prixUnitaire: number;
   description: string;
   cis: string;
+  dci: string;
   // refProduit: RefProduit;
   emplacement?: string;
   constructor(attrs: any = null) {

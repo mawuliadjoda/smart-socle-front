@@ -21,7 +21,7 @@
         <mat-select [formControl]="selecton">
           <!-- <mat-option>None</mat-option> -->
           <mat-option *ngFor="let produit of produits" [value]="produit">
-            {{ (produit.nom.length>50)? (produit.nom | slice:0:50)+'...':(produit.nom) }} / Qte:{{produit.qte}} / Prix:{{produit.prixUnitaire}} / Empl.:{{produit.emplacement}}
+            {{ ((produit.dci + produit.nom).length>80)? ( (produit.dci + '__'+ produit.nom+ '__'+ produit.formeDosage).toLowerCase() | slice:0:80)+'...':(produit.dci + '__'+ produit.nom + '__'+ produit.formeDosage ).toLowerCase() }} / Qte:{{produit.qte}} / Prix:{{produit.prixUnitaire}} / Empl.:{{produit.emplacement}}
           </mat-option>
         </mat-select>
 
