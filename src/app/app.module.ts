@@ -173,7 +173,7 @@ import { NgxPrintFactureComponent } from './administration/commande/ngx-print-fa
       MdePopoverModule,
       PrimeNgModule,
       // BarecodeScannerLivestreamModule,
-      // ZXingScannerModule,
+      ZXingScannerModule,
       ThermalPrintModule,
       NgxPrintModule,
       // ThermalPrintModule
