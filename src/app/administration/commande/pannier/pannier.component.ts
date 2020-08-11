@@ -13,8 +13,9 @@ import { Select, Store } from '@ngxs/store';
 import * as fileSaver from 'file-saver'; // npm i --save file-saver
 import { LigneCommande } from 'src/app/models/ligne-commande';
 import { Router } from '@angular/router';
-import { UpdateProductToCart, DeleteProductToCart } from 'src/app/util/ngxs/action';
+import { UpdateProductToCart, DeleteProductToCart, DeleteAllProductToCart } from 'src/app/util/ngxs/action';
 import { EnvService } from 'src/app/services/config/env.service';
+import { CommandeService } from 'src/app/services/commande.service.ts';
 @Component({
   selector: 'app-pannier',
   templateUrl: './pannier.component.html',
@@ -52,7 +53,8 @@ export class PannierComponent implements OnInit  {
               private sanitizer: DomSanitizer,
               private router: Router,
               private store: Store,
-              private env: EnvService) {
+              private env: EnvService,
+              public commandeService: CommandeService) {
   }
 
 
@@ -174,6 +176,29 @@ export class PannierComponent implements OnInit  {
     const message = `produit supprimé du pannier !`;
     this.snackBar.open(message, action, {
       duration: environment.durationOfSnackBar,
+    });
+  }
+
+  saveLigneFactureAndBuildPdf() {
+    const ligneCommandeToSave = this.ligneCommandes.map(item => {
+
+      const container = {
+        id: null,
+        produit: item.produit,
+        qte: item.qte,
+        // important pour enregistrer une commande de type vente
+        typeCommande: environment.lib_commande_sortant,
+        isReceive: true,
+        isActif: true
+      };
+      return container;
+    });
+
+    this.commandeService.save(ligneCommandeToSave).subscribe(response => {
+
+      // Vider le panier
+      this.store.dispatch(new DeleteAllProductToCart());
+
     });
   }
 }

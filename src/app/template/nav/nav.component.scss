@@ -64,7 +64,18 @@ h1.example-app-name {
   transform: scaleY(0);
   transform-origin: top;
   padding-left: 30px;
+
+  color: #b62424!important;
 }
 .submenu.expanded {
   transform: scaleY(1);
+
+  background-color: rgb(252, 248, 248)!important;
+ /* color: #333333!important;*/
+}
+
+mat-list-item, mat-list-item-avatar, mat-list-item-with-avatar {
+
+  background-color: #cbd1d3!important;
+  margin-bottom: 2px!important;
 }

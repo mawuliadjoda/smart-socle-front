@@ -1,4 +1,4 @@
-<div class="mat-elevation-z8" style="margin-left: 10%; margin-right: 10%; "
+<div class="mat-elevation-z8 " style="margin-left: 10%; margin-right: 10%; "
   class="example-container"
   [class.example-is-mobile]="mobileQuery.matches"
   *ngIf="shouldRun"
@@ -11,20 +11,20 @@
   <app-navigation-bar *ngIf="isLogged" (toggleSidenav)="snav.toggle()"> </app-navigation-bar>
 
   <mat-sidenav-container
-    class="example-sidenav-container"
+    class="example-sidenav-container mat-elevation-z8 "
     [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
   >
     <mat-sidenav #snav
       [mode]="'over'"
       [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56"
-      style="width: 250px!important;background-color:#f2f2f2"
+      style="width: 250px!important;background-color:#f2f2f2;"
     >
 
 
 
     <mat-nav-list>
-      <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+      <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent mat-elevation-z8 ">
         <span class="full-width">Activités</span>
         <img mat-list-avatar src="assets/images/clarity/grid-chart-line.svg" style="width: 20px; height: 20px; margin-right: 3px;" />
 				<!-- <mat-icon mat-list-icon>dashboard</mat-icon> -->
@@ -40,7 +40,7 @@
         </a>
       </div>
 
-      <mat-list-item (click)="showSubmenuAdmin = !showSubmenuAdmin" class="parent">
+      <mat-list-item (click)="showSubmenuAdmin = !showSubmenuAdmin" class="parent mat-elevation-z8 ">
         <span class="full-width">Administration</span>
         <img mat-list-avatar src="assets/images/clarity/administrator-line.svg" style="width: 20px; height: 20px; margin-right: 3px;"/>
 				<!-- <mat-icon mat-list-icon>work</mat-icon> -->
@@ -56,7 +56,7 @@
         </a>
       </div>
 
-      <mat-list-item (click)="showSubmenuParam = !showSubmenuParam" class="parent">
+      <mat-list-item (click)="showSubmenuParam = !showSubmenuParam" class="parent mat-elevation-z8 ">
         <span class="full-width">Paramétrage</span>
         <img mat-list-avatar src="assets/images/clarity/cog-line.svg" style="width: 20px; height: 20px; margin-right: 3px;" />
 				<!-- <mat-icon mat-list-icon>settings</mat-icon> -->

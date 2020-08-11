@@ -35,7 +35,7 @@ export class NgxPrintFactureComponent implements OnInit {
     this.calculMontantTotal();
   }
 
-  saveLigneFactureAndBuildPdf() {
+  /*saveLigneFactureAndBuildPdf() {
     const ligneCommandeToSave = this.ligneCommandes.map(item => {
 
       const container = {
@@ -56,7 +56,7 @@ export class NgxPrintFactureComponent implements OnInit {
       this.store.dispatch(new DeleteAllProductToCart());
 
     });
-  }
+  }*/
 
 
   loadCartTotal() {
