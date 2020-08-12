@@ -117,13 +117,17 @@ app-print-page, app-ngx-print-facture {
   color: #333333!important;
   border-bottom-left-radius: 0!important;
   border-bottom-right-radius: 0!important;
+  padding: 0px !important
+
 }
 .ng-tns-c299-1 .ng-star-inserted {
 
-  color: #333333!important;
+  // color: #333333!important;
+  color: #eee!important;
 }
 .ui-panelmenu-icon .pi .pi-fw .ng-tns-c299-1 .ng-star-inserted .pi-chevron-right{
-  color: #333333!important;
+  // color: #333333!important;
+  color: #eee!important;
 }
 
 
@@ -140,6 +144,15 @@ app-print-page, app-ngx-print-facture {
 }
 
 
-.mat-list-item .parent .mat-list-item-avatar .mat-list-item-with-avatar {
-  background-color: #9b2020!important;
+
+
+
+.mat-list-base .mat-list-item .mat-list-item-content {
+  // padding: 0px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+
 }
+

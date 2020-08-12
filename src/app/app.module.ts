@@ -86,8 +86,7 @@ import { QrCodeScannerComponent } from './util/qr-code-scanner/qr-code-scanner.c
 import { SimplePrintComponent } from './util/simple-print/simple-print.component';
 import { PrintPageComponent } from './util/simple-print/print-page/print-page.component';
 import { NgxPrintFactureComponent } from './administration/commande/ngx-print-facture/ngx-print-facture.component';
-import { PanelMenuModule } from 'primeng/panelmenu';
-import { PrimeNgNavbarComponent } from './template/nav/prime-ng-navbar/prime-ng-navbar.component';
+import { SmartBreadcrumbComponent } from './util/smart-breadcrumb/smart-breadcrumb.component';
 
 @NgModule({
    declarations: [
@@ -150,7 +149,7 @@ import { PrimeNgNavbarComponent } from './template/nav/prime-ng-navbar/prime-ng-
       SimplePrintComponent,
       PrintPageComponent,
       NgxPrintFactureComponent,
-      PrimeNgNavbarComponent,
+      SmartBreadcrumbComponent,
       TestThingsComponent
    ],
    imports: [
@@ -178,7 +177,6 @@ import { PrimeNgNavbarComponent } from './template/nav/prime-ng-navbar/prime-ng-
       ZXingScannerModule,
       ThermalPrintModule,
       NgxPrintModule,
-      PanelMenuModule
       // ThermalPrintModule
    ],
    schemas: [CUSTOM_ELEMENTS_SCHEMA],

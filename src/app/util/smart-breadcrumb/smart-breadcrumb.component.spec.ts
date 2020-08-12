@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { PrimeNgNavbarComponent } from './prime-ng-navbar.component';
+import { SmartBreadcrumbComponent } from './smart-breadcrumb.component';
 
-describe('PrimeNgNavbarComponent', () => {
-  let component: PrimeNgNavbarComponent;
-  let fixture: ComponentFixture<PrimeNgNavbarComponent>;
+describe('SmartBreadcrumbComponent', () => {
+  let component: SmartBreadcrumbComponent;
+  let fixture: ComponentFixture<SmartBreadcrumbComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PrimeNgNavbarComponent ]
+      declarations: [ SmartBreadcrumbComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PrimeNgNavbarComponent);
+    fixture = TestBed.createComponent(SmartBreadcrumbComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

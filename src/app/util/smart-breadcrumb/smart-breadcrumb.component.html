@@ -1,0 +1,11 @@
+
+<div class="">
+  <ul class="breadcrumb">
+    <li *ngFor="let breadcrumb of breadcrumbs"
+        class="breadcrumb-item">
+      <a routerLink="{{breadcrumb.url}}" style="margin-left: 10px;">
+        {{ breadcrumb.label }}
+      </a>
+    </li>
+  </ul>
+</div>

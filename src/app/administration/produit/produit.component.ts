@@ -23,7 +23,7 @@ export class ProduitComponent implements OnInit {
     'qte',
     'prixUnitaire',
     'createdAt',
-    'updatedAt',
+    // 'updatedAt',
     'actions'
   ];
 
