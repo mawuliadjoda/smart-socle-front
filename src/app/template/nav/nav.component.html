@@ -1,17 +1,17 @@
 
-<div class="mat-elevation-z8 " style="margin-left: 10%; margin-right: 10%; "
+<div class="card-2" style="margin-left: 10%; margin-right: 10%; "
   class="example-container"
   [class.example-is-mobile]="mobileQuery.matches"
   *ngIf="shouldRun"
 >
 
 
-  <app-navigation-bar *ngIf="isLogged" (toggleSidenav)="snav.toggle()"> </app-navigation-bar>
+  <app-navigation-bar *ngIf="isLogged" (toggleSidenav)="snav.toggle()" class="card-4"> </app-navigation-bar>
 
 
 
   <mat-sidenav-container
-    class="example-sidenav-container mat-elevation-z8 "
+    class="example-sidenav-container card-2 "
     [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
   >
     <mat-sidenav #snav
@@ -22,12 +22,12 @@
     >
 
 
-
+    <!-- <app-sidebar></app-sidebar> -->
     <mat-nav-list *ngIf="isLogged">
       <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent " style="padding: 0!important;">
         <span class="full-width">Activités</span>
         <img mat-list-avatar src="assets/images/clarity/grid-chart-line.svg" style="width: 20px; height: 20px; margin-right: 3px;" />
-				<!-- <mat-icon mat-list-icon>dashboard</mat-icon> -->
+
 				<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}">expand_more</mat-icon>
 			</mat-list-item>
 			<div *ngIf="showSubmenu" class="submenu" [ngClass]="{'expanded' : showSubmenu}" >
@@ -43,7 +43,7 @@
       <mat-list-item (click)="showSubmenuAdmin = !showSubmenuAdmin" class="parent ">
         <span class="full-width">Administration</span>
         <img mat-list-avatar src="assets/images/clarity/administrator-line.svg" style="width: 20px; height: 20px; margin-right: 3px;"/>
-				<!-- <mat-icon mat-list-icon>work</mat-icon> -->
+
 				<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenuAdmin}">expand_more</mat-icon>
       </mat-list-item>
       <div *ngIf="showSubmenuAdmin" class="submenu" [ngClass]="{'expanded' : showSubmenuAdmin}" >
@@ -59,7 +59,7 @@
       <mat-list-item (click)="showSubmenuParam = !showSubmenuParam" class="parent">
         <span class="full-width">Paramétrage</span>
         <img mat-list-avatar src="assets/images/clarity/cog-line.svg" style="width: 20px; height: 20px; margin-right: 3px;" />
-				<!-- <mat-icon mat-list-icon>settings</mat-icon> -->
+
 				<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenuParam}">expand_more</mat-icon>
       </mat-list-item>
       <div *ngIf="showSubmenuParam" class="submenu" [ngClass]="{'expanded' : showSubmenuParam}" >
