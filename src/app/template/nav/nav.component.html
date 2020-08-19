@@ -6,7 +6,7 @@
 >
 
 
-  <app-navigation-bar *ngIf="isLogged" (toggleSidenav)="snav.toggle()" class="card-4"> </app-navigation-bar>
+  <app-navigation-bar *ngIf="isLogged" (toggleSidenav)="snav.toggle()" class="card-6"> </app-navigation-bar>
 
 
 
@@ -25,7 +25,7 @@
     <!-- <app-sidebar></app-sidebar> -->
     <mat-nav-list *ngIf="isLogged">
       <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent " style="padding: 0!important;">
-        <span class="full-width">Activités</span>
+        <span class="full-width label-header-sidebar">Activités</span>
         <img mat-list-avatar src="assets/images/clarity/grid-chart-line.svg" style="width: 20px; height: 20px; margin-right: 3px;" />
 
 				<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}">expand_more</mat-icon>
@@ -41,7 +41,7 @@
       </div>
 
       <mat-list-item (click)="showSubmenuAdmin = !showSubmenuAdmin" class="parent ">
-        <span class="full-width">Administration</span>
+        <span class="full-width label-header-sidebar">Administration</span>
         <img mat-list-avatar src="assets/images/clarity/administrator-line.svg" style="width: 20px; height: 20px; margin-right: 3px;"/>
 
 				<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenuAdmin}">expand_more</mat-icon>
@@ -57,7 +57,7 @@
       </div>
 
       <mat-list-item (click)="showSubmenuParam = !showSubmenuParam" class="parent">
-        <span class="full-width">Paramétrage</span>
+        <span class="full-width label-header-sidebar">Paramétrage</span>
         <img mat-list-avatar src="assets/images/clarity/cog-line.svg" style="width: 20px; height: 20px; margin-right: 3px;" />
 
 				<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenuParam}">expand_more</mat-icon>
@@ -76,7 +76,7 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
-      <div style="padding: 8px 24px 0;">
+      <div style="padding: 8px 24px 0; margin-left: 10%; margin-right: 10%;">
 
           <app-smart-breadcrumb *ngIf="isLogged"></app-smart-breadcrumb>
 
