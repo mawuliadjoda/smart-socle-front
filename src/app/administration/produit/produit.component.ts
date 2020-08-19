@@ -7,6 +7,7 @@ import { DeleteProduitComponent } from './delete-produit/delete-produit.componen
 import { ApprovisionnementComponent } from './approvisionnement/approvisionnement.component';
 import { Produit } from 'src/app/models/produit';
 import { ProduitService } from 'src/app/services/produit.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -36,6 +37,7 @@ export class ProduitComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild('filter', { static: true }) filter: ElementRef;
 
+  labelNonDefini = environment.LABEL_NON_DEFINI;
   constructor(
     public httpClient: HttpClient,
     public dialog: MatDialog,

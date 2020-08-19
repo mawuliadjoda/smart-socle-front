@@ -35,7 +35,7 @@
 
       <ng-container matColumnDef="categorie">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Categorie</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row?.produit?.categorie}}</mat-cell>
+        <mat-cell *matCellDef="let row"> {{row?.produit?.categorie ? row?.produit?.categorie : labelNonDefini}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="qte">

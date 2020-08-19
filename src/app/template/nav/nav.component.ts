@@ -40,7 +40,7 @@ export class NavComponent  implements OnInit,  OnDestroy {
     {
       icon: 'assignment',
       route: 'smart/produits',
-      title: 'Produits',
+      title: 'Liste des produits',
       isActive: true
     },
     // {
@@ -53,7 +53,7 @@ export class NavComponent  implements OnInit,  OnDestroy {
     {
       icon: 'assignment',
       route: 'smart/am-chart',
-      title: 'Statistique',
+      title: 'Statistique de vente',
       isActive: true
     },
     {
@@ -116,12 +116,12 @@ export class NavComponent  implements OnInit,  OnDestroy {
 
     myWorkRoutes = [
 
-    {
-      icon: '',
-      route: 'smart/commandes-sortant',
-      title: 'Nouvelle vente',
-      isActive: false
-    },
+    // {
+    //   icon: '',
+    //   route: 'smart/commandes-sortant',
+    //   title: 'Nouvelle vente',
+    //   isActive: false
+    // },
     {
       icon: '',
       route: 'smart/search',
@@ -131,13 +131,13 @@ export class NavComponent  implements OnInit,  OnDestroy {
     {
       icon: '',
       route: 'smart/list-commande-sortant',
-      title: 'Ventes',
+      title: 'Liste des ventes',
       isActive: true
     },
     {
       icon: '',
       route: 'smart/declaration-vente',
-      title: 'Déclaration ventes',
+      title: 'Déclaration de ventes',
       isActive: true
     }
   ];

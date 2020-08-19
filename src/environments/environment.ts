@@ -10,7 +10,8 @@ export const environment = {
   lib_commande_sortant: 'CMD_SORTANT',
   lib_commande_entrant: 'CMD_ENTRANT',
   sizeOfCis: 8,
-  durationOfSnackBar: 1000
+  durationOfSnackBar: 1000,
+  LABEL_NON_DEFINI: 'Non défini'
 };
 
 /*

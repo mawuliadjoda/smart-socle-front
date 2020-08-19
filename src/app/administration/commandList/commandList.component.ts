@@ -6,6 +6,7 @@ import { CommandeService } from '../../services/commande.service.ts';
 import { ProduitService } from '../../services/produit.service';
 import { LigneCommande } from '../../models/ligne-commande';
 import { LigneCommandeService } from '../../services/ligne-commande.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-command-list',
@@ -34,6 +35,7 @@ export class CommandListComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild('filter', { static: true }) filter: ElementRef;
 
+  labelNonDefini = environment.LABEL_NON_DEFINI;
   constructor(
     public httpClient: HttpClient,
     public dialog: MatDialog,

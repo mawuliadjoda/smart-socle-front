@@ -1,17 +1,17 @@
 
-<div class="card-2" style="margin-left: 10%; margin-right: 10%; "
+<div
   class="example-container"
   [class.example-is-mobile]="mobileQuery.matches"
   *ngIf="shouldRun"
 >
 
-
-  <app-navigation-bar *ngIf="isLogged" (toggleSidenav)="snav.toggle()" class="card-6"> </app-navigation-bar>
+<!-- style="margin-left: 10%; margin-right: 10%; " -->
+  <app-navigation-bar *ngIf="isLogged" (toggleSidenav)="snav.toggle()" class="card-4"> </app-navigation-bar>
 
 
 
   <mat-sidenav-container
-    class="example-sidenav-container card-2 "
+    class="example-sidenav-container  "
     [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
   >
     <mat-sidenav #snav
@@ -75,8 +75,8 @@
 
     </mat-sidenav>
 
-    <mat-sidenav-content>
-      <div style="padding: 8px 24px 0; margin-left: 10%; margin-right: 10%;">
+    <mat-sidenav-content >
+      <div style="padding: 8px 24px 0; ">
 
           <app-smart-breadcrumb *ngIf="isLogged"></app-smart-breadcrumb>
 
@@ -90,7 +90,9 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
 
-  <!-- <app-footer></app-footer> -->
+  <!-- <app-footer></app-footer>
+  style="margin-left: 10%; margin-right: 10%; "
+ -->
 </div>
 
 

@@ -47,3 +47,7 @@ create folder smart on ~tomcat/webapp
 #RouterModule.forRoot(routes, {useHash: true}) == > https://stackoverflow.com/questions/47366792/404-error-on-refresh-for-angularv4-deployed-on-tomcat-server
 // https://codecraft.tv/courses/angular/routing/routing-strategies/#_hashlocationstrategy
 
+
+
+> supprimer approvisionner depuit produit.component
+> supprimer ref-produit.component
