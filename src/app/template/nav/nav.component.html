@@ -6,8 +6,9 @@
 >
 
 <!-- style="margin-left: 10%; margin-right: 10%; " -->
-  <app-navigation-bar *ngIf="isLogged" (toggleSidenav)="snav.toggle()" class="card-4"> </app-navigation-bar>
-
+<div class="card-2" style="margin-bottom: 1%;">
+  <app-navigation-bar *ngIf="isLogged" (toggleSidenav)="snav.toggle()"> </app-navigation-bar>
+</div>
 
 
   <mat-sidenav-container
@@ -75,21 +76,27 @@
 
     </mat-sidenav>
 
-    <mat-sidenav-content >
+    <mat-sidenav-content class="card-2">
       <div style="padding: 8px 24px 0; ">
 
           <app-smart-breadcrumb *ngIf="isLogged"></app-smart-breadcrumb>
 
-          <router-outlet></router-outlet>
-
-          <div id="bottom">
-            <app-footer></app-footer>
+          <div class="card-2" style="margin-bottom: 1%;">
+            <router-outlet></router-outlet>
           </div>
+
+
+          <!-- <div id="bottom">
+            <app-footer></app-footer>
+          </div> -->
 
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
 
+  <div>
+    <app-footer></app-footer>
+  </div>
   <!-- <app-footer></app-footer>
   style="margin-left: 10%; margin-right: 10%; "
  -->
