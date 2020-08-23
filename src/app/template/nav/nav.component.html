@@ -76,15 +76,17 @@
 
     </mat-sidenav>
 
-    <mat-sidenav-content class="card-2">
-      <div style="padding: 8px 24px 0; ">
+    <mat-sidenav-content>
+      <div style="padding: 0px 5% 0; ">
 
           <app-smart-breadcrumb *ngIf="isLogged"></app-smart-breadcrumb>
 
-          <div class="card-2" style="margin-bottom: 1%;">
+          <div style="margin-bottom: 1%; min-height: 350px;" [ngClass]="{'smart-box-shadow': isLogged}" >
             <router-outlet></router-outlet>
           </div>
-
+          <!-- <mat-card>
+            <router-outlet></router-outlet>
+          </mat-card> -->
 
           <!-- <div id="bottom">
             <app-footer></app-footer>
@@ -94,7 +96,7 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
 
-  <div>
+  <div *ngIf="isLogged"  style="background-color: #eee"  >
     <app-footer></app-footer>
   </div>
   <!-- <app-footer></app-footer>

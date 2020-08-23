@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 import { UpdateProductToCart, DeleteProductToCart, DeleteAllProductToCart } from 'src/app/util/ngxs/action';
 import { EnvService } from 'src/app/services/config/env.service';
 import { CommandeService } from 'src/app/services/commande.service.ts';
+import { UtilService } from 'src/app/services/util/util.service';
 @Component({
   selector: 'app-pannier',
   templateUrl: './pannier.component.html',
@@ -54,7 +55,8 @@ export class PannierComponent implements OnInit  {
               private router: Router,
               private store: Store,
               private env: EnvService,
-              public commandeService: CommandeService) {
+              public commandeService: CommandeService,
+              private utilService: UtilService) {
   }
 
 
@@ -85,7 +87,7 @@ export class PannierComponent implements OnInit  {
   loadCartTotal() {
     this.state$.subscribe(
       (data) => {
-        this.ligneCommandes = this.reduceArray(data.cart);
+        this.ligneCommandes = this.utilService.reduceArray(data.cart);
         this.cartTotal =  this.ligneCommandes.reduce((a, b) => a + b.qte, 0);
         console.log('==============cartTotal:' + this.cartTotal);
       }
@@ -109,7 +111,7 @@ export class PannierComponent implements OnInit  {
     fileSaver.saveAs(blob, filename);
   }
 
-  reduceArray(ligneCommandes: Array<LigneCommande> ) {
+  /*reduceArray(ligneCommandes: Array<LigneCommande> ) {
 
     const result = [...ligneCommandes.reduce((r, o) => {
       const key = o.id;
@@ -130,7 +132,7 @@ export class PannierComponent implements OnInit  {
       console.log(element.id, element.produit.nom, element.qte, element.isDisableUpdate);
     });
     return result;
-  }
+  }*/
 
   visualiserFacture() {
     this.router.navigateByUrl('smart/facture');

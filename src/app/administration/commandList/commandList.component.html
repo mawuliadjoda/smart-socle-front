@@ -49,13 +49,15 @@
       </ng-container>
 
       <ng-container matColumnDef="created_at">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Created at</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Créé le.</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.createdAt | date: 'dd/MM/yyyy hh:mm'}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="prixTotal">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Prix total</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row?.produit?.prixUnitaire * row.qte}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Prix total (FCFA)</mat-header-cell>
+        <mat-cell *matCellDef="let row" style="float: right;">
+          <span style="text-align: right">{{ ((row?.produit?.prixUnitaire * row.qte) | montantFormatter).replace('FCFA', '') }}</span>
+        </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

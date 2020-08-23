@@ -10,7 +10,12 @@
 
 
     <div>
-      <button style="float: right;" mat-raised-button (click)="addNew()"> Ajouter </button>
+      <button style="float: right;"
+        mat-raised-button
+        (click)="addNew()"
+        class="template-color" >
+        <span class="template-label" >Ajouter</span>
+      </button>
     </div>
     <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
       ng update @angular/cli @angular/core

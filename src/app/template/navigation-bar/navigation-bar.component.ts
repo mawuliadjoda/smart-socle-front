@@ -13,6 +13,7 @@ export class NavigationBarComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter<void>();
 
   login: string;
+  lastConnecionDate: Date = new Date();
   constructor(private messageService: MessageService,
               private router: Router,
               private authentocationService: AuthenticationService) { }

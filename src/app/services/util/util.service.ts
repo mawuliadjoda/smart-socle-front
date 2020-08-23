@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { LigneCommande } from 'src/app/models/ligne-commande';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,30 @@ export class UtilService {
     this.mapDisplayNavigation.set('gestion-fournisseur', {parent: 'Administration', child: 'Liste Fournisseurs'});
     this.mapDisplayNavigation.set('generate-qr-code', {parent: 'Administration', child: 'Impression QR Code'});
 
+  }
+
+
+  reduceArray(ligneCommandes: Array<LigneCommande> ) {
+
+    const result = [...ligneCommandes.reduce((r, o) => {
+      const key = o.id;
+
+      const item = r.get(key) || Object.assign({}, o, {
+        qte: 0,
+        // permettre la modification de la qte du panier
+        isDisableUpdate: true
+      });
+
+      item.qte += o.qte;
+
+      return r.set(key, item);
+    }, new Map()).values()];
+
+    console.log('===============================reduce:' + result);
+    result.forEach(element => {
+      console.log(element.id, element.produit.nom, element.qte, element.isDisableUpdate);
+    });
+    return result;
   }
 
 }

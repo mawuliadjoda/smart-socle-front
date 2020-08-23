@@ -8,7 +8,8 @@ export class MontantFormatterPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
     const montantEuro = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(value);
-    return montantEuro.replace('€', environment.devisePays);
+    // return montantEuro.replace('€', environment.devisePays);
+    return montantEuro.split(',')[0] + ' ' + environment.devisePays;
   }
 
 }

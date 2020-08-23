@@ -202,4 +202,31 @@ app-print-page, app-ngx-print-facture {
 
 
 
-// sidebar
+.template-color {
+  background-color: #24596d!important
+  // background-color: white!important
+}
+.pharmacie-color {
+  color: white!important;
+  // color: #111111;
+}
+
+.template-label {
+  font-size: 13px;
+  font-family: sans-serif;
+  color: white!important;
+}
+
+.label-header {
+  font-size: 13px;
+  font-family: sans-serif;
+  color: white!important;
+  float: right;
+
+ /* white  */
+ // font-size: 14px;
+ // font-family: sans-serif;
+ // color: #111111;
+ // float: right;
+
+}

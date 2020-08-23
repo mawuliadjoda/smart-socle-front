@@ -28,7 +28,7 @@ export class ElasticsearchComponent implements OnInit {
   oldQteValue: number;
   // produitsPanier: Array<Produit> = [];
   // @Select(ProductState) state$: Observable<any>;
-
+  interval;
   constructor(private elasticsearchService: ElasticsearchService,
               private router: Router,
               private snackBar: MatSnackBar,
@@ -40,6 +40,20 @@ export class ElasticsearchComponent implements OnInit {
   }
 
   search($event) {
+    console.log('------call-------');
+    this.fieldValue = $event.target ? $event.target.value : undefined;
+
+
+    this.interval = setTimeout(() => {
+      console.log('------call 2-------')
+      console.log($event.target.value);
+
+      this.doSearch($event);
+
+    }, 1000);
+  }
+
+  doSearch($event) {
     this.fieldValue = $event.target ? $event.target.value : undefined;
     if (this.fieldValue && this.fieldValue.length > 2) {
       this.spinner.show();

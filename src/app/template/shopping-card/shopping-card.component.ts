@@ -4,6 +4,7 @@ import { Produit } from '../../models/produit';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { ProductState } from '../../util/ngxs/state';
+import { UtilService } from 'src/app/services/util/util.service';
 
 @Component({
   selector: 'app-shopping-card',
@@ -14,7 +15,10 @@ export class ShoppingCardComponent implements OnInit {
 
   produitsPanier: Array<Produit> = [];
   @Select(ProductState) state$: Observable<any>;
-  constructor(private router: Router) { }
+
+  cartTotal: any;
+  constructor(private router: Router,
+              private utilService: UtilService) { }
 
   ngOnInit() {
     this.loadCartTotal();
@@ -28,8 +32,21 @@ export class ShoppingCardComponent implements OnInit {
     this.state$.subscribe(
       (data) => {
         this.produitsPanier = data.cart;
+
+        const ligneCommandes = this.utilService.reduceArray(data.cart);
+        this.cartTotal =  ligneCommandes.reduce((a, b) => a + b.qte, 0);
       }
     );
   }
 
+
+  // loadCartTotal() {
+  //   this.state$.subscribe(
+  //     (data) => {
+  //       let ligneCommandes = this.utilService.reduceArray(data.cart);
+  //       this.cartTotal =  ligneCommandes.reduce((a, b) => a + b.qte, 0);
+  //       console.log('==============cartTotal:' + this.cartTotal);
+  //     }
+  //   );
+  // }
 }

@@ -30,9 +30,11 @@
       <button *ngIf="produits?.length > 0"
                [disabled]="!selecton.value"
                mat-raised-button title="Ajouter au panier"
-               (click)="addToSelection(selecton.value)">
-              <img mat-list-avatar src="assets/images/clarity/shopping-cart-line.svg" style="width: 20px; height: 20px;" />
-          Ajouter
+               (click)="addToSelection(selecton.value)"
+               class="template-color" >
+              <img mat-list-avatar class="template-label" src="assets/images/clarity/shopping-cart-line.svg" style="width: 20px; height: 20px; color: white;" />
+              <!-- <i   class="material-icons">shopping_cart</i> -->
+              <span class="template-label"> Ajouter </span>
       </button>
   </div>
   </div>
