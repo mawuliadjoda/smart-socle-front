@@ -90,5 +90,14 @@
     No results
   </div>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
+
+  <mat-paginator class="myPagination"
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+
+    (page)="changePage($event)"
+    [showFirstLastButtons] = "true">
+  </mat-paginator>
 </div>

@@ -19,6 +19,10 @@ export class ProduitService {
     return this.http.get<any>(this.baseUrl);
   }
 
+  getAllByPage(pageSize, pageNo, sortBy): Observable<any> {
+    return this.http.get<any>(this.baseUrl + '/page' + `?pageSize=${pageSize}&pageNo=${pageNo}&sortBy=${sortBy}`);
+  }
+
   add(t: Produit): Observable<any> {
     return this.http.post(this.baseUrl, t);
   }

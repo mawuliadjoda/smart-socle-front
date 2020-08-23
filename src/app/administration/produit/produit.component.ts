@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort, MatDialog, PageEvent } from '@angular/material';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AddProduitComponent } from './add-produit/add-produit.component';
 import { EditProduitComponent } from './edit-produit/edit-produit.component';
@@ -38,17 +38,37 @@ export class ProduitComponent implements OnInit {
   @ViewChild('filter', { static: true }) filter: ElementRef;
 
   labelNonDefini = environment.LABEL_NON_DEFINI;
+
+  /** The current page index. */
+  pageIndex = 0;
+  /** The current page size */
+  pageSize = 5;
+  /** The current total number of items being paged */
+  length: number;
+  /**
+   * Index of the page that was selected previously.
+   * @breaking-change 8.0.0 To be made into a required property.
+   */
+  previousPageIndex?: number;
+
+  sortBy = 'nom';
+
+  loading = true;
+  pageSizeOptions: number[] = [5, 10];
+
   constructor(
     public httpClient: HttpClient,
     public dialog: MatDialog,
     public produitService: ProduitService
   ) {}
   ngOnInit() {
-    this.loadData();
+    // this.loadData();
+    this.loadDataByPage();
   }
 
   refresh() {
-    this.loadData();
+    // this.loadData();
+    this.loadDataByPage();
   }
 
   addNew() {
@@ -136,6 +156,38 @@ export class ProduitComponent implements OnInit {
     },
     (err: HttpErrorResponse) => {
       console.log(err.name + ' ' + err.message);
+    });
+  }
+
+  public loadDataByPage() {
+    this.produitService.getAllByPage(this.pageSize, this.pageIndex, this.sortBy).subscribe(data => {
+      this.data = data.content;
+      this.dataSource = new MatTableDataSource(this.data);
+
+      // this.paginator.pageIndex = data.number;
+      // this.paginator.pageSize = data.size;
+      // this.paginator.length = data.totalElements;
+
+      this.length = data.totalElements;
+      this.pageIndex = data.number;
+      this.pageSize = data.size;
+
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+
+      this.loading = false;
+    },
+    (err: HttpErrorResponse) => {
+      this.loading = true;
+      console.log(err.name + ' ' + err.message);
+    });
+  }
+
+  changePage(e: PageEvent) {
+    // this.no = e.pageIndex > 0 ? e.pageIndex * e.pageSize : 0;
+    this.produitService.getAllByPage(e.pageSize, e.pageIndex, this.sortBy).subscribe((page) => {
+      this.dataSource = new MatTableDataSource(page.content);
+      this.length = page.totalElements;
     });
   }
 
