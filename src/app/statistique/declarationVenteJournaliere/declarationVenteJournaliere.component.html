@@ -25,8 +25,11 @@
       </ng-container>
 
       <ng-container matColumnDef="montant">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Montant</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row?.montant}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Montant (FCFA) </mat-header-cell>
+        <mat-cell *matCellDef="let row" style="float: right;">
+          <!-- {{row?.montant}} -->
+          <span style="text-align: right">{{ ((row?.montant) | montantFormatter).replace('FCFA', '') }}</span>
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="createdAt">

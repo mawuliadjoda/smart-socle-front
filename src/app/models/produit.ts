@@ -14,6 +14,7 @@ export class Produit {
   dci: string;
   // refProduit: RefProduit;
   emplacement?: string;
+  formeDosage?:string;
   constructor(attrs: any = null) {
     if (attrs) {
       this.build(attrs);

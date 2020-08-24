@@ -38,15 +38,17 @@
 
               <div class="cell cell-width-60">
                   <div class="grid">
-                      <span class="link-caption" matTooltip="{{ligneCommande.produit.nom}}">
-                            {{(ligneCommande?.produit?.nom.length>50)? (ligneCommande?.produit?.nom | slice:0:50)+'...':(ligneCommande.produit.nom) }}
-                      </span>
+                    <span class="link-caption" matTooltip="{{ligneCommande.produit.nom}}">
+                          {{(ligneCommande?.produit?.nom.length>50)? (ligneCommande?.produit?.nom | slice:0:50)+'...':(ligneCommande?.produit?.nom) }} / {{ligneCommande?.produit?.dci}}
+                    </span>
+                    <br>
+
                   </div>
                   <div class="grid">
-                      <p mat-line>Ref.</p>
+                      <p mat-line>Ref: {{ligneCommande?.produit?.cis}}</p>
                   </div>
                   <div class="grid">
-                      <p mat-line>Conditionnement: </p>
+                      <p mat-line>Dosage: {{ligneCommande?.produit?.formeDosage}}</p>
                   </div>
                   <!-- <div class="grid">
                           <p mat-line>Laboratoire: </p>
