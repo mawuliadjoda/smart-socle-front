@@ -29,6 +29,9 @@ export class UtilService {
     this.mapDisplayNavigation.set('gestion-fournisseur', {parent: 'Administration', child: 'Liste Fournisseurs'});
     this.mapDisplayNavigation.set('generate-qr-code', {parent: 'Administration', child: 'Impression QR Code'});
 
+    this.mapDisplayNavigation.set('pannier', {parent: 'Activités', child: 'Panier'});
+
+
   }
 
 

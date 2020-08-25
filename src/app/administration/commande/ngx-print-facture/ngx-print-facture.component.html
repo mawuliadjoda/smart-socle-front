@@ -1,15 +1,36 @@
 <div  id="print-section">
   <!-- <p class="print">adjoda</p> -->
-  <div class="ticket">
-    <p class="centered">{{nomPharmacie}}
-        <br>Bienvenue !
-    </p>
+  <div class="ticket" style="float: left;">
+    <div style="text-align: center;" >
+      <span style="text-align: center;">Bienvenue à la</span>
+    </div>
+
+    <div style="text-align: center;" >
+      <span style="text-align: center;"> {{nomPharmacie}} </span>
+    </div>
+
+    <div style="text-align: center;" >
+      <span style="text-align: center;">
+        - - - - - - - - - - - - - - - - - - - - - - - - - - -
+       </span>
+    </div>
+
+    <!-- <p class="centered">
+        <span style="text-align: center;">Bienvenue à la</span>
+        <br>
+        <span style="text-align: center;">{{nomPharmacie}}</span>
+        <br>
+        <span style="text-align: center;">
+          - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        </span>
+        <br>
+    </p> -->
     <table>
         <thead>
             <tr>
-                <th class="quantity">Q.</th>
-                <th class="description">Description</th>
-                <th class="price">CFA</th>
+                <th class="quantity">Qte.</th>
+                <th class="description">Libellé</th>
+                <th class="price">Prix (FCFA)</th>
             </tr>
         </thead>
         <tbody>
@@ -17,21 +38,42 @@
                 <td class="quantity">{{ligneCommande.qte}}</td>
                 <td class="description">
                   <!-- {{ligneCommande?.produit?.nom}} -->
-                  {{ (ligneCommande?.produit?.nom.length>30)? (ligneCommande?.produit?.nom.toLowerCase() | slice:0:30) +'...':(ligneCommande?.produit?.nom) | lowercase}}
+                  <span *ngIf="ligneCommande?.produit?.nom.length > 0" >{{ (ligneCommande?.produit?.nom.length>30)? (ligneCommande?.produit?.nom.toLowerCase() | slice:0:30) +'...':(ligneCommande?.produit?.nom) | lowercase}}</span>
+                  <span *ngIf="ligneCommande?.produit?.nom.length === 0" > {{ligneCommande?.produit?.dci}} </span>
+
                 </td>
-                <td class="price">{{ligneCommande?.produit?.prixUnitaire}}</td>
+                <td class="price">{{ (ligneCommande?.produit?.prixUnitaire | montantFormatter).replace('FCFA', '') }}</td>
             </tr>
 
             <tr>
               <td class="quantity"></td>
               <td class="description">Total</td>
-              <td class="price">{{montantTotal}}</td>
+              <td class="price">{{ (montantTotal | montantFormatter).replace('FCFA', '') }}</td>
              </tr>
 
         </tbody>
     </table>
+    <!-- <br>
+        <span style="text-align: center;">
+          - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        </span>
+    <br>
     <p class="centered">Merci pour votre achat
-        <br>digitalacademy-diaspora.com</p>
+        <br>digitalacademy-diaspora.com</p> -->
+
+
+        <div style="text-align: center;" >
+          <span style="text-align: center;">
+            - - - - - - - - - - - - - - - - - - - - - - - - - - -
+           </span>
+        </div>
+        <div style="text-align: center;" >
+          <span style="text-align: center;">Merci pour votre achat</span>
+        </div>
+
+        <div style="text-align: center;" >
+          <span style="text-align: center;"> digitalacademy-diaspora </span>
+        </div>
 </div>
 
 </div>
