@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { EnvService } from '../config/env.service';
+import { Store } from '@ngxs/store';
+import { DeleteAllProductToCart } from 'src/app/util/ngxs/action';
 
 export class User {
   constructor(public status: string) {}
@@ -14,7 +16,7 @@ export class AuthenticationService {
    // let url = 'http://localhost:8080/token/generate-token';
    url = this.env.baseUrl + '/api/auth/signin';
 
-  constructor(private httpClient: HttpClient, private env: EnvService) {}
+  constructor(private httpClient: HttpClient, private env: EnvService, private store: Store) {}
   isResetTimerVar: boolean;
 // Provide username and password for authentication, and once authentication is successful,
 // store JWT token in session
@@ -48,6 +50,9 @@ export class AuthenticationService {
 
   logOut() {
     sessionStorage.removeItem('username');
+
+    // vider le panier
+    this.store.dispatch(new DeleteAllProductToCart());
   }
   setisResetTimer(isResetTimerVar: boolean) {
     this.isResetTimerVar = isResetTimerVar;

@@ -2,7 +2,11 @@
 <div class="form">
     <mat-form-field>
         <!-- <input [(ngModel)]="fieldValue" (ngModelChange)="search($event)" matInput placeholder="----Rechercher un médicament par nom, categorie, référence, ... ----"> -->
-        <input [(ngModel)]="fieldValue" (keyup)="search($event)" matInput placeholder="----Rechercher un médicament par nom, categorie, référence, ... ----">
+        <input [(ngModel)]="fieldValue"
+               (keyup)="search($event)"
+               matInput
+               placeholder="------------------------------------------  Rechercher un médicament par nom, categorie, référence  ------------------------------------------"
+               >
     </mat-form-field>
 
 </div>
@@ -111,7 +115,8 @@
 
                                       style="margin-top: 10px; margin-left: 5px;"
                                       (click)="startUpdateQte(ligneCommande)">
-                                  <i class="material-icons">edit</i>
+                                  <!-- <i class="material-icons">edit</i> -->
+                                  <img class="label-header-person" src="assets/images/clarity/pencil-line.svg" style="width: 20px; height: 20px; margin-right: 3px;" />
                               </button>
                               <button  mat-raised-button title="Modifier la quantité"
                                       *ngIf="!ligneCommande?.isDisableUpdate"
@@ -123,7 +128,8 @@
                             <div class="cell">
                                 <button mat-raised-button title="supprimer du pannier" style="margin-top: 10px; margin-left: 5px;"
                                         (click)="removeSelection(ligneCommande)">
-                                    <i class="material-icons">delete</i>
+                                    <!-- <i class="material-icons">delete</i> -->
+                                    <img class="label-header-person" src="assets/images/clarity/trash-line.svg" style="width: 20px; height: 20px; margin-right: 3px;" />
                                 </button>
                             </div>
 
