@@ -236,3 +236,17 @@ app-print-page, app-ngx-print-facture {
 mat-sidenav {
   background-color: #fff!important;
 }
+
+
+.disabled-element {
+  cursor: not-allowed!important;
+  pointer-events: none!important;
+}
+
+.not-allowed-cursor {
+  cursor: not-allowed!important;
+}
+
+.button-template-color {
+  background-color: #195e83!important
+}

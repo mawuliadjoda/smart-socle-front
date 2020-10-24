@@ -148,8 +148,8 @@ export class CustumSearchComponent implements OnInit {
     this.produits = [];
     console.log(this.router.url);
 
-    if ('/smart/handle-search' !== this.router.url) {
-      this.router.navigateByUrl('smart/handle-search');
+    if ('/smart/pannier' !== this.router.url) {
+      this.router.navigateByUrl('smart/pannier');
     }
   }
 

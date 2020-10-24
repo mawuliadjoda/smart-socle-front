@@ -67,13 +67,13 @@ export class PannierComponent implements OnInit  {
     this.loadCartTotal();
   }
 
-  applyFilter(filterValue: string) {
+  /*applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
     this.ligneCommandes = this.dataSource.filteredData;
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-  }
+  }*/
 
   getTotal() {
     let total = 0;

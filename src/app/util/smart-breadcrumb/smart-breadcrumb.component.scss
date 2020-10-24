@@ -4,11 +4,14 @@
   padding: 0;
   list-style: none !important;
   list-style-type: none;
-  background-color: #eee;
+
+
+
 }
 .breadcrumb li {
   display: inline;
-  font-size: 12px;
+  font-size: 13px;
+
 }
 .breadcrumb li+li:before {
   padding: 8px;
