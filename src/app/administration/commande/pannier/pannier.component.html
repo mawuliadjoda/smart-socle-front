@@ -71,7 +71,7 @@
                               </div>
                               <div class="cell" *ngIf="ligneCommande?.produit.qte > 0">
                                 <!-- <input [hidden] = "false" #modifStatus /> -->
-                                <button mat-raised-button title="Modifier la quantité"
+                                <button mat-icon-button title="Modifier la quantité"
                                         *ngIf="ligneCommande?.isDisableUpdate"
 
                                         style="margin-top: 10px; margin-left: 5px;"
@@ -79,7 +79,7 @@
                                     <!-- <i class="material-icons">edit</i> -->
                                     <img class="label-header-person" src="assets/images/clarity/pencil-line.svg" style="width: 20px; height: 20px; margin-right: 3px;" />
                                 </button>
-                                <button  mat-raised-button title="Modifier la quantité"
+                                <button  mat-icon-button title="Enregistrer la quantité"
                                         *ngIf="!ligneCommande?.isDisableUpdate"
                                         style="margin-top: 10px; margin-left: 5px;"
                                         (click)="updateQte(ligneCommande)">
@@ -87,7 +87,7 @@
                                 </button>
                               </div>
                               <div class="cell">
-                                  <button mat-raised-button title="supprimer du pannier" style="margin-top: 10px; margin-left: 5px;"
+                                  <button mat-icon-button title="supprimer du pannier" style="margin-top: 10px; margin-left: 5px;"
                                           (click)="removeSelection(ligneCommande)">
                                       <!-- <i class="material-icons">delete</i> -->
                                       <img class="label-header-person" src="assets/images/clarity/trash-line.svg" style="width: 20px; height: 20px; margin-right: 3px;" />

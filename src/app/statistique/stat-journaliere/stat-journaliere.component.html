@@ -18,7 +18,7 @@
               </mat-form-field>
           </div>
           <div class="cell">
-              <button style="margin-top: 5px;" mat-raised-button type="submit" [disabled]="!myForm.valid" class="template-color" >
+              <button style="margin-top: 5px;" mat-raised-button type="submit" [disabled]="!myForm.valid" class="button-template-color" >
                   <span class="template-label" > Ajouter</span>
               </button>
           </div>
@@ -88,6 +88,10 @@
 
 
 <div mat-dialog-actions style="float: right;">
-  <button style="float: right;" mat-button (click)="onNoClick()">Fermer</button>
-  <button [disabled] = "dataSource.data.length == 0" mat-button [mat-dialog-close]="total" >Enregistrer</button>
+  <button style="float: right;" mat-button (click)="onNoClick()" mat-raised-button class="button-template-color">
+    <span class="template-label" > Fermer</span>
+  </button>
+  <button [disabled] = "dataSource.data.length == 0" mat-button [mat-dialog-close]="total" mat-raised-button class="button-template-color">
+    <span class="template-label" > Enregistrer</span>
+  </button>
 </div>
