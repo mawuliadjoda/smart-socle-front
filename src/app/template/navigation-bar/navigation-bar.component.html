@@ -13,26 +13,47 @@
     <span class="spacer"></span>
     <span class="spacer"></span>
 
+    <div >
+      <app-custum-search></app-custum-search>
+
+      <!-- <mat-form-field style="width: 450px!important; color: #fff!important; ">
+        <input type="text"  style="font-size: 11px!important; color: #fff!important;"
+               placeholder="Rechercher un médicament"
+               aria-label="Number"
+               matInput
+               [formControl]="myControl"
+               [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" style="background-color: #fff; font-size: 11px!important;">
+          <mat-option *ngFor="let option of options" [value]="option" style="font-size: 11px!important;">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <button mat-raised-button class="template-color_" style="background-color: #5c928d!important">
+        <span class="template-label">Sélectionner</span>
+      </button> -->
+    </div>
 
 
-    <div class="pharmacie-color" >
+    <span class="filler"></span>
+    <!-- <span class="spacer label-header" >Dernière connexion: {{lastConnecionDate | date: 'dd/MM/yyyy hh:mm' }}</span> -->
+
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div style="float: right; margin-top: 10px; margin-left: 10px; color: lightgray!important;">
+      <app-shopping-card></app-shopping-card>
+    </div>
+
+
+
+    <div class="pharmacie-color" matTooltip="Dernière connexion: {{lastConnecionDate | date: 'dd/MM/yyyy hh:mm' }}">
       <button mat-button >
         <i class="label-header-person material-icons pharmacie-color">person</i>
 
         <!-- <img class="label-header-person" src="assets/images/clarity/user-line.svg" style="width: 20px; height: 20px; margin-right: 3px;" /> -->
-        <span class="label-header">{{login}}</span>
+        <span class="label-header" >{{login}}</span>
       </button>
     </div>
-    <span class="filler"></span>
-    <span class="spacer label-header" >Dernière connexion: {{lastConnecionDate | date: 'dd/MM/yyyy hh:mm' }}</span>
-
-    <div class="spacer"></div>
-
-    <div style="float: right; margin-top: 10px; margin-left: 10px; color: lightgray!important;">
-      <app-shopping-card></app-shopping-card>
-    </div>
-    <div class="spacer"></div>
-    <div class="spacer"></div>
 
    <div style="float: right;">
     <button mat-button (click)="logout()">

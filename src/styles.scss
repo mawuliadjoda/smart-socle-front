@@ -203,8 +203,9 @@ app-print-page, app-ngx-print-facture {
 
 
 .template-color {
-  background-color: #24596d!important
-  // background-color: white!important
+  //background-color: #24596d!important
+  // background-color: #01897b;
+  background-color: #30746d!important
 }
 .pharmacie-color {
   color: lightgray!important;
@@ -229,4 +230,9 @@ app-print-page, app-ngx-print-facture {
  // color: #111111;
  // float: right;
 
+}
+
+
+mat-sidenav {
+  background-color: #fff!important;
 }

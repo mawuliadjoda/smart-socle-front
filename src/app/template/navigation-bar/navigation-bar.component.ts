@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'src/app/services/util/message.service';
 import { AuthenticationService } from 'src/app/services/jwt-auth/authentication.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -14,6 +15,10 @@ export class NavigationBarComponent implements OnInit {
 
   login: string;
   lastConnecionDate: Date = new Date();
+
+  myControl = new FormControl();
+  options: string[] = ['Doliprane', 'Venlafaxine', 'Paracetamol'];
+
   constructor(private messageService: MessageService,
               private router: Router,
               private authentocationService: AuthenticationService) { }

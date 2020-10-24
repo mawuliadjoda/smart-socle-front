@@ -4,7 +4,7 @@
     <li *ngFor="let breadcrumb of breadcrumbs"
         class="breadcrumb-item">
       <a routerLink="{{breadcrumb.url}}">
-        {{ breadcrumb.label }}
+        <span style="color: rgb(44, 51, 45);">{{ breadcrumb.label }}</span>
       </a>
     </li>
   </ul>

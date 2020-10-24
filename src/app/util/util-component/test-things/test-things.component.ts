@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
+import { Component, ViewChild, ViewChildren, QueryList, OnInit } from '@angular/core';
 import { MdePopoverTrigger } from '@material-extended/mde';
 
 @Component({
@@ -6,11 +6,24 @@ import { MdePopoverTrigger } from '@material-extended/mde';
   templateUrl: './test-things.component.html',
   styleUrls: ['./test-things.component.css']
 })
-export class TestThingsComponent {
+export class TestThingsComponent implements OnInit {
 
   name = 'Angular 8';
 
+  test: any;
+  test2: any;
+
   @ViewChildren(MdePopoverTrigger) trigger: QueryList<MdePopoverTrigger>;
+
+
+  ngOnInit() {
+    this.test = 'test';
+    this.test2 = this.test;
+
+    this.test = 'testtttt';
+
+    console.log(this.test2);
+  }
 
   closePopover(id: number) {
 
