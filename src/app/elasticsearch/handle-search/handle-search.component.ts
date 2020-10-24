@@ -65,7 +65,7 @@ export class HandleSearchComponent implements OnInit {
     const position = this.ligneCommandes.map(element =>  element.produit.id).indexOf(selected.produit.id);
     // remove element in position
     if (position !== -1) {
-      this.ligneCommandes.splice(position, 1);
+      // this.ligneCommandes.splice(position, 1);
       this.store.dispatch(new DeleteProductToCart(selected.produit.id));
     }
 
