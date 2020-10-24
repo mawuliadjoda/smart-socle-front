@@ -88,6 +88,7 @@ import { PrintPageComponent } from './util/simple-print/print-page/print-page.co
 import { NgxPrintFactureComponent } from './administration/commande/ngx-print-facture/ngx-print-facture.component';
 import { SmartBreadcrumbComponent } from './util/smart-breadcrumb/smart-breadcrumb.component';
 import { CustumSearchComponent } from './elasticsearch/custum-search/custum-search.component';
+import { HandleSearchComponent } from './elasticsearch/handle-search/handle-search.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -151,6 +152,7 @@ import { CustumSearchComponent } from './elasticsearch/custum-search/custum-sear
       NgxPrintFactureComponent,
       SmartBreadcrumbComponent,
       CustumSearchComponent,
+      HandleSearchComponent,
       TestThingsComponent
    ],
    imports: [

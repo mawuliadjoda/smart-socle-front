@@ -37,14 +37,15 @@
            [matAutocomplete]="auto"
            style="font-size: 11px!important; color: #fff!important;"/>
 
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onSelectionChanged($event)" >
       <mat-option *ngFor="let produit of produits" [value]="produit" style="font-size: 11px!important;">
         {{ ((produit.dci + produit.nom).length>80)? ( (produit.dci + '__'+ produit.nom+ '__'+ produit.formeDosage).toLowerCase() | slice:0:80)+'...':(produit.dci + '__'+ produit.nom + '__'+ produit.formeDosage ).toLowerCase() }} / Qte:{{produit.qte}} / Prix:{{produit.prixUnitaire}} / Empl.:{{produit.emplacement}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
 
-  <button mat-raised-button class="template-color_" style="background-color: #5c928d!important">
+  <button mat-raised-button (click)="addToSelection()"
+          class="template-color_" style="background-color: #5c928d!important">
     <span class="template-label">Sélectionner</span>
   </button>
 
