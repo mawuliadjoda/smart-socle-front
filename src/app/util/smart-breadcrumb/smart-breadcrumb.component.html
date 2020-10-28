@@ -1,5 +1,5 @@
 
-<div class="button-template-color">
+<div *ngIf="breadcrumbs?.length > 0" class="button-template-color">
   <ul class="breadcrumb ">
     <li *ngFor="let breadcrumb of breadcrumbs"
         class="breadcrumb-item">

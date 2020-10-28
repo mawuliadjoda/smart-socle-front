@@ -40,7 +40,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
   // {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'home', component: HomeComponent, canActivate: [AuthGaurdService]},
+  {path: 'home', component: CompaireStatComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/produits', component: ProduitComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/commandes-sortant', component: CommandeComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/pannier', component: PannierComponent, canActivate: [AuthGaurdService]},

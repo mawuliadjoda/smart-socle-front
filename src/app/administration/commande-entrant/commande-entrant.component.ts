@@ -9,6 +9,7 @@ import { FournisseurService } from '../../services/fournisseur.service';
 import { Fournisseur } from '../../models/fournisseur';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SearchComponent } from '../../elasticsearch/search/search.component';
+import { UtilService } from 'src/app/services/util/util.service';
 
 @Component({
   selector: 'app-commande-entrant',
@@ -45,7 +46,8 @@ export class CommandeEntrantComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild('filter', { static: true }) filter: ElementRef;
   constructor(private commandeService: CommandeService,
-              private fournisseurService: FournisseurService) { }
+              private fournisseurService: FournisseurService,
+              private utilService: UtilService) { }
 
   ngOnInit() {
     this.loadFournisseurs();
@@ -72,7 +74,8 @@ export class CommandeEntrantComponent implements OnInit, AfterViewInit {
       };
       return container;
     });
-    this.selecton = [...this.selecton, ...transformReceiveProduit];
+    // this.selecton = [...this.selecton, ...transformReceiveProduit];
+    this.selecton = this.utilService.reduceArray([...this.selecton, ...transformReceiveProduit]);
   }
   commander() {
     console.log(this.selecton);

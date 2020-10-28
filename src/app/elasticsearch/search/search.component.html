@@ -1,4 +1,4 @@
-<br>
+<!-- <br>
 <div class="form">
   <mat-form-field>
     <input [(ngModel)]="fieldValue"
@@ -6,20 +6,7 @@
            matInput
            placeholder="----Rechercher un médicament par nom, categorie, référence, ... ----" >
   </mat-form-field>
-
-  <!-- <div style="text-align: right; flex: 1 auto;">
-    <app-shopping-card></app-shopping-card>
-    <button mat-raised-button title="Mon panier" (click)="viewShoppingCart()">
-        <i matBadge="{{produitsPanier?.length}}" matBadgeColor="warn" class="material-icons">shopping_cart</i>
-    </button>
-  </div> -->
 </div>
-
-<!-- <input type="text" (keyup)="search($event)" placeholder="Rechercher un médicament" class="input"> -->
-<!--
-<div *ngFor="let hit of produits">
-  <p>{{hit._source.nom}}
-</div> -->
 
 <div class="form">
   <div *ngIf="produits?.length < 1">
@@ -44,8 +31,6 @@
         </span>
       </mat-select-trigger>
       <mat-option  *ngFor="let produit of produits" [value]="produit" matTooltip="{{produit.nom}}" style="font-size: 10px;">
-        <!-- <mat-option [disabled]="produit.qte === 0" *ngFor="let produit of produits" [value]="produit" matTooltip="{{produit.nom}}" style="font-size: 10px;"> -->
-        <!-- {{ (produit.nom.length>50)? (produit.nom | slice:0:50)+'...':(produit.nom) }} /  Qte:{{produit.qte}} /  Prix:{{produit.prixUnitaire}} /  Empl.:{{produit.emplacement}} -->
         {{ ((produit.dci + produit.nom).length>80)? ( (produit.dci + '__'+ produit.nom+ '__'+ produit.formeDosage).toLowerCase() | slice:0:80)+'...':(produit.dci + '__'+ produit.nom + '__'+ produit.formeDosage ).toLowerCase() }} / Qte:{{produit.qte}} / Prix:{{produit.prixUnitaire}} / Empl.:{{produit.emplacement}}
       </mat-option>
     </mat-select>
@@ -55,11 +40,31 @@
     <span class="template-label" >Ajouter</span>
   </button>
 
-</div>
-
-
-
-<!-- <div>
-  <input [(ngModel)]="username" type="text" placeholder="username" />
-  <button (click)="sendName()"> Send Name </button>
 </div> -->
+
+
+
+<div class="smart-padding">
+
+  <mat-form-field style="width: 85%!important;  ">
+    <input [(ngModel)]="fieldValue"
+           (keyup)="search($event)"
+           placeholder="Rechercher un médicament"
+           type="text"
+           matInput
+           [matAutocomplete]="auto"
+           style="font-size: 11px!important; "/>
+
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onSelectionChanged($event)" >
+      <mat-option *ngFor="let produit of produits" [value]="produit" style="font-size: 11px!important;">
+        {{ ((produit.dci + produit.nom).length>80)? ( (produit.dci + '__'+ produit.nom+ '__'+ produit.formeDosage).toLowerCase() | slice:0:80)+'...':(produit.dci + '__'+ produit.nom + '__'+ produit.formeDosage ).toLowerCase() }} / Qte:{{produit.qte}} / Prix:{{produit.prixUnitaire}} / Empl.:{{produit.emplacement}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <button mat-raised-button (click)="addToSelection()"
+          class="button-template-color">
+    <span class="template-label">Sélectionner</span>
+  </button>
+
+</div>

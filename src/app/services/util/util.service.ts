@@ -9,7 +9,7 @@ export class UtilService {
   public mapDisplayNavigation: Map<string, any> =  new Map();
 
   constructor() {
-    this.mapDisplayNavigation.set('home', {parent: 'Acueil', child: ''});
+    this.mapDisplayNavigation.set('home', {parent: 'Acueil', child: 'Tableau de bord'});
     this.mapDisplayNavigation.set('Activite', {parent: 'Activités', child: ''});
     this.mapDisplayNavigation.set('administration', {parent: 'Administration', child: ''});
     this.mapDisplayNavigation.set('parametrage', {parent: 'Paramétrage', child: ''});
