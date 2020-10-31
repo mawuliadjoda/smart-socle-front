@@ -7,12 +7,12 @@
 
     <div class="grid">
       <div class="cell cell-width-60">
-        <mat-form-field style="width: 60%;">
+        <mat-form-field style="width: 60%;" class="text-template">
           <input matInput [(ngModel)]="scanCode"  placeholder="Scanner la référence du produit">
         </mat-form-field>
       </div>
       <div class="cell">
-        <mat-form-field class="my-form-field" style="width: 100px;">
+        <mat-form-field class="my-form-field text-template" style="width: 100px;">
           <input matInput type="number" min="1" placeholder="Qte reçu" [(ngModel)]="qteRecu">
         </mat-form-field>
       </div>
@@ -29,43 +29,43 @@
     <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
       ng update @angular/cli @angular/core
       <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
-        <mat-cell *matCellDef="let row" >{{row.id}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">ID</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="text-template">{{row.id}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="nom">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Nom</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row?.produit?.nom}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Nom</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="text-template"> {{row?.produit?.nom}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="reference">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Reference</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row?.produit?.cis}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Reference</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="text-template"> {{row?.produit?.cis}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="fournisseur">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Fournisseur</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row?.fournisseur?.nom}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Fournisseur</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="text-template"> {{row?.fournisseur?.nom}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="qte">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>Qte</mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.qte}}</mat-cell>
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Qte</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="text-template"> {{row.qte}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="prixUnitaire">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>prix unit.</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row?.produit?.prixUnitaire}}</mat-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">prix unit.</mat-header-cell>
+            <mat-cell *matCellDef="let row" class="text-template"> {{row?.produit?.prixUnitaire}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="created_at">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Date commande</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.createdAt | date: 'dd/MM/yyyy'}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Date commande</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="text-template"> {{row.createdAt | date: 'dd/MM/yyyy'}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="prixTotal">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Prix total</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row?.produit?.prixUnitaire * row.qte}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Prix total</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="text-template"> {{row?.produit?.prixUnitaire * row.qte}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="actions">
@@ -86,7 +86,7 @@
     </mat-table>
 
 
-    <div class="no-results" [style.display]="dataSource.data.length == 0 ? '' : 'none'">
+    <div class="no-results text-template" [style.display]="dataSource.data.length == 0 ? '' : 'none'">
       No results
     </div>
 

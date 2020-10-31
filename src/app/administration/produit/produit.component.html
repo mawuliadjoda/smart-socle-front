@@ -7,7 +7,7 @@
 <div class="container ">
 
   <div class="form">
-    <mat-form-field>
+    <mat-form-field class="text-template">
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
     </mat-form-field>
   </div>
@@ -15,38 +15,38 @@
   <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
     ng update @angular/cli @angular/core
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
-      <mat-cell *matCellDef="let row" >{{row.id}}</mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Id</mat-header-cell>
+      <mat-cell *matCellDef="let row" class="text-template">{{row.id}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="nom">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Nom</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{ row.nom ? row.nom : row.dci}}</mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Nom</mat-header-cell>
+      <mat-cell *matCellDef="let row" class="text-template"> {{ row.nom ? row.nom : row.dci}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="reference">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Reference</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.reference}}</mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Reference</mat-header-cell>
+      <mat-cell *matCellDef="let row" class="text-template"> {{row.reference}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="categorie">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Categorie</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.categorie ? row.categorie : labelNonDefini}}</mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Categorie</mat-header-cell>
+      <mat-cell *matCellDef="let row" class="text-template"> {{row.categorie ? row.categorie : labelNonDefini}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="qte">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Quantite</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.qte}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Quantite</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="text-template"> {{row.qte}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="prixUnitaire">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>prixUnitaire</mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.prixUnitaire}}</mat-cell>
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">prixUnitaire</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="text-template"> {{row.prixUnitaire}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="createdAt">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Créé le.</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.createdAt | date: 'dd/MM/yyyy hh:mm'}}</mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Créé le.</mat-header-cell>
+      <mat-cell *matCellDef="let row" class="text-template"> {{row.createdAt | date: 'dd/MM/yyyy hh:mm'}}</mat-cell>
     </ng-container>
 
     <!-- <ng-container matColumnDef="updatedAt">
@@ -58,7 +58,7 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef>
         <button mat-icon-button color="primary" (click)="addNew()">
-          <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+          <mat-icon aria-label="Example icon-button with a heart icon ">add</mat-icon>
         </button>
 
         <button mat-icon-button (click)="refresh()">
@@ -88,7 +88,7 @@
   </mat-table>
 
 
-  <div class="no-results" [style.display]="dataSource.data.length == 0 ? '' : 'none'">
+  <div class="no-results text-template" [style.display]="dataSource.data.length == 0 ? '' : 'none'">
     No results
   </div>
 

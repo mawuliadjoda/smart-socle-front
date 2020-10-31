@@ -7,14 +7,14 @@
                   <mat-label>select.</mat-label>
                   <mat-select formControlName="unite" required>
                       <mat-option *ngFor="let unite of unites" [value]="unite">
-                          {{ unite.formatValue }}
+                         <span class="text-template"> {{ unite.formatValue }}</span>
                       </mat-option>
                   </mat-select>
               </mat-form-field>
           </div>
           <div class="cell">
-              <mat-form-field class="example-full-width">
-                  <input type="number" min="1" matInput placeholder="Nombre" formControlName="qte" required />
+              <mat-form-field class="example-full-width text-template">
+                  <input type="number" min="1" matInput placeholder="Nombre" formControlName="qte" required class="text-template"/>
               </mat-form-field>
           </div>
           <div class="cell">
@@ -34,20 +34,20 @@
     <mat-table *ngIf="dataSource && dataSource.data && dataSource.data.length > 0"  [dataSource]="dataSource" matSort style="max-height: 250px; overflow-y: scroll; overflow-x: hidden;">
       ng update @angular/cli @angular/core
       <ng-container matColumnDef="unite">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>Unite</mat-header-cell>
-          <mat-cell *matCellDef="let row">{{ row.unite }}</mat-cell>
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Unite</mat-header-cell>
+          <mat-cell *matCellDef="let row"> <span class="text-template">{{ row.unite }}</span> </mat-cell>
           <!-- <mat-footer-cell  *matFooterCellDef> Total</mat-footer-cell> -->
       </ng-container>
 
       <ng-container matColumnDef="qte">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{ row.qte }}</mat-cell>
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template"> Nombre</mat-header-cell>
+          <mat-cell *matCellDef="let row"> <span class="text-template">{{ row.qte }}</span> </mat-cell>
           <!-- <mat-footer-cell  *matFooterCellDef style="flex: 0 0 40%;"> 1000</mat-footer-cell> -->
       </ng-container>
 
       <!-- actions -->
       <ng-container matColumnDef="action">
-          <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef class="text-template"> Action </mat-header-cell>
 
           <mat-cell *matCellDef="let row; let i = index">
               <button mat-icon-button (click)="delete(row, i)">
@@ -67,7 +67,7 @@
     <div class="grid">
       <div class="cell cell-width-50"></div>
       <div class="cell cell-width-25">
-        <p style="margin-left: 20px;">Total: {{total | montantFormatter}} </p>
+        <p  class="text-template">Total: {{total | montantFormatter}} </p>
       </div>
       <div class="cell cell-width-25">
         <!-- <button mat-raised-button style="float: right; margin-right: 20px;" (click)="enregistreVenteDuJour()">
@@ -78,7 +78,7 @@
 
 
   </div>
-      <div class="no-results" [style.display]="dataSource.data.length == 0 ? '' : 'none'">
+      <div class="no-results text-template" [style.display]="dataSource.data.length == 0 ? '' : 'none'">
           No results
       </div>
   </div>

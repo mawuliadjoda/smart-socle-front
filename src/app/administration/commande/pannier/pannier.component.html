@@ -24,28 +24,28 @@
                       <img style="width: 60px!important; height: 80px!important;" mat-list-avatar src="assets/images/product_image.png.webp" alt="Desc 1" />
                   </div>
                   <div class="grid">
-                      <a href="#">Afficher détail</a>
+                      <a href="#" class="text-template">Afficher détail</a>
                   </div>
                   <div class="grid">
-                      <span *ngIf="ligneCommande?.produit.qte > 0" style="color: green;">En stock | Qte: {{ligneCommande?.produit.qte}}</span>
+                      <span *ngIf="ligneCommande?.produit.qte > 0" class="text-template" style="color: green;">En stock | Qte: {{ligneCommande?.produit.qte}}</span>
 
-                      <span *ngIf="ligneCommande?.produit.qte === 0" style="color: red;">Non disponible | Qte: {{ligneCommande?.produit.qte}}</span>
+                      <span *ngIf="ligneCommande?.produit.qte === 0" class="text-template" style="color: red;">Non disponible | Qte: {{ligneCommande?.produit.qte}}</span>
                   </div>
               </div>
 
               <div class="cell cell-width-60">
                   <div class="grid">
-                    <span class="link-caption" matTooltip="{{ligneCommande.produit.nom}}">
+                    <span class="text-template" matTooltip="{{ligneCommande.produit.nom}}">
                           {{(ligneCommande?.produit?.nom.length>50)? (ligneCommande?.produit?.nom | slice:0:50)+'...':(ligneCommande?.produit?.nom) }} / {{ligneCommande?.produit?.dci}}
                     </span>
                     <br>
 
                   </div>
                   <div class="grid">
-                      <p mat-line>Ref: {{ligneCommande?.produit?.cis}}</p>
+                      <p mat-line class="text-template">Ref: {{ligneCommande?.produit?.cis}}</p>
                   </div>
                   <div class="grid">
-                      <p mat-line>Dosage: {{ligneCommande?.produit?.formeDosage}}</p>
+                      <p mat-line class="text-template">Dosage: {{ligneCommande?.produit?.formeDosage}}</p>
                   </div>
                   <!-- <div class="grid">
                           <p mat-line>Laboratoire: </p>
@@ -54,7 +54,7 @@
 
               <div class="cell">
                   <div class="grid">
-                      <p mat-line>Prix unit: {{ligneCommande?.produit.prixUnitaire}} fcfa</p>
+                      <p mat-line class="text-template">Prix unit: {{ligneCommande?.produit.prixUnitaire | montantFormatter}}</p>
                   </div>
                   <div class="grid">
                       <div class="cell" style="flex: 0 0 1%">
@@ -83,7 +83,7 @@
                                         *ngIf="!ligneCommande?.isDisableUpdate"
                                         style="margin-top: 10px; margin-left: 5px;"
                                         (click)="updateQte(ligneCommande)">
-                                    <i class="material-icons">save</i>
+                                    <i class="material-icons ">save</i>
                                 </button>
                               </div>
                               <div class="cell">
@@ -107,7 +107,7 @@
 
     <div style="padding: 8px 24px 0;">
       <div style="text-align: right; float: right; width: 50%;">
-          <span>Total:  {{getTotal() | montantFormatter}} </span>
+          <span class="text-template">Total:  {{getTotal() | montantFormatter}} </span>
           <br>
           <mat-divider></mat-divider>
           <br>

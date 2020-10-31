@@ -11,7 +11,13 @@ export const environment = {
   lib_commande_entrant: 'CMD_ENTRANT',
   sizeOfCis: 8,
   durationOfSnackBar: 1000,
-  LABEL_NON_DEFINI: 'Non défini'
+  LABEL_NON_DEFINI: 'Non défini',
+  PAGINATOR_MESSAGE_ELMENT_PAR_PAGE: 'élément par page:',
+  PAGINATOR_SUIVANT: 'Suivant',
+  PAGINATOR_PRECEDENT: 'Précedent',
+  PAGINATOR_LABEL_FIN: 'Fin',
+  PAGINATOR_LABEL_DEBUT: 'Début'
+
 };
 
 /*

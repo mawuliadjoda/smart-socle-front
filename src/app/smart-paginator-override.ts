@@ -1,4 +1,5 @@
 import { MatPaginatorIntl } from '@angular/material';
+import { environment } from 'src/environments/environment';
 
 const dutchRangeLabel = (page: number, pageSize: number, length: number) => {
   if (length === 0 || pageSize === 0) { return `0 van ${length}`; }
@@ -21,11 +22,11 @@ const dutchRangeLabel = (page: number, pageSize: number, length: number) => {
 export function getDutchPaginatorIntl() {
   const paginatorIntl = new MatPaginatorIntl();
 
-  paginatorIntl.itemsPerPageLabel = 'element par page:';
-  paginatorIntl.nextPageLabel = 'Suivant';
-  paginatorIntl.previousPageLabel = 'Precedent';
-  paginatorIntl.lastPageLabel = 'Fin';
-  paginatorIntl.firstPageLabel = 'Debut';
+  paginatorIntl.itemsPerPageLabel = environment.PAGINATOR_MESSAGE_ELMENT_PAR_PAGE;
+  paginatorIntl.nextPageLabel = environment.PAGINATOR_SUIVANT;
+  paginatorIntl.previousPageLabel = environment.PAGINATOR_PRECEDENT;
+  paginatorIntl.lastPageLabel = environment.PAGINATOR_LABEL_FIN;
+  paginatorIntl.firstPageLabel = environment.PAGINATOR_LABEL_DEBUT;
   // paginatorIntl.getRangeLabel = 'sur';
   paginatorIntl.getRangeLabel = dutchRangeLabel;
 

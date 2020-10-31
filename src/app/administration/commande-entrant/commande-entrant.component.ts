@@ -59,23 +59,33 @@ export class CommandeEntrantComponent implements OnInit, AfterViewInit {
   }
 
   recieveSelection($event) {
-    // this.selecton = [...this.selecton, ...$event];
-    // this.dataSource = new MatTableDataSource<Produit>(this.selecton);
+    if ($event) {
+      $event.forEach(element => {
+        const position = this.selecton.map(item =>  item.produit.id).indexOf(element.id);
+        if (position === -1) {
+         const transformReceiveProduit = $event.map(item => {
 
-    const transformReceiveProduit = $event.map(item => {
+           const container = {
+             id: null,
+             produit: item,
+             qte: 1,
+             // important pour enregistrer une commande de type approvisionnnement
+             typeCommande: environment.lib_commande_entrant,
+             fournisseur: null
+           };
+           return container;
+         });
 
-      const container = {
-        id: null,
-        produit: item,
-        qte: 1,
-        // important pour enregistrer une commande de type approvisionnnement
-        typeCommande: environment.lib_commande_entrant,
-        fournisseur: null
-      };
-      return container;
-    });
-    // this.selecton = [...this.selecton, ...transformReceiveProduit];
-    this.selecton = this.utilService.reduceArray([...this.selecton, ...transformReceiveProduit]);
+         this.selecton = [...this.selecton, ...transformReceiveProduit];
+
+        } else {
+           const existLigneCommande = this.selecton[position];
+           existLigneCommande.qte = existLigneCommande.qte + 1;
+        }
+     });
+
+    }
+
   }
   commander() {
     console.log(this.selecton);

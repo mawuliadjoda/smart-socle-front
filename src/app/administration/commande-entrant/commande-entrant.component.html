@@ -7,23 +7,23 @@
 <div *ngIf="selecton?.length !== 0" style=" padding: 8px 24px 0;">
   <div>
     <div class="grid">
-      <div class="cell cell-width-40 "> Nom </div>
-      <div class="cell"> Qte. init. </div>
-      <div class="cell"> Fournisseur </div>
-      <div class="cell"> Prix unit. </div>
-      <div class="cell"> Qte à commander </div>
+      <div class="cell cell-width-40 text-template"> Nom </div>
+      <div class="cell text-template"> Qte. init. </div>
+      <div class="cell text-template"> Fournisseur </div>
+      <div class="cell text-template"> Prix unit. </div>
+      <div class="cell text-template"> Qte à commander </div>
     </div>
     <hr>
   </div>
   <div *ngFor="let item of selecton; let i=index" >
     <div class="grid">
-      <div class="cell cell-width-40 " matTooltip="{{item.nom}}">
+      <div class="cell cell-width-40 text-template" matTooltip="{{item.nom}}" style="margin-top:10px!important">
         {{ (item?.produit?.nom.length>50)? (item?.produit?.nom | slice:0:50)+'...':(item?.produit?.nom) }}
       </div>
-      <div class="cell"> {{item?.produit?.qte}} </div>
-      <div class="cell">
+      <div class="cell text-template" style="margin-top:10px!important"> {{item?.produit?.qte}} </div>
+      <div class="cell text-template">
         <mat-form-field style="width: 100px;">
-          <mat-label>Fournisseur</mat-label>
+          <mat-label class="">Fournisseur</mat-label>
           <mat-select [(ngModel)]="item.fournisseur">
             <mat-option *ngFor="let f of fournisseurs" [value]="f">
               {{f.nom}}
@@ -32,7 +32,7 @@
         </mat-form-field>
       </div>
 
-      <div class="cell">
+      <div class="cell text-template">
         <mat-form-field class="my-form-field" style="width: 100px;">
           <input matInput type="number" placeholder="Prix. unit." [(ngModel)]="item.produit.prixUnitaire">
         </mat-form-field>
