@@ -51,3 +51,7 @@ create folder smart on ~tomcat/webapp
 
 > supprimer approvisionner depuit produit.component
 > supprimer ref-produit.component
+
+
+avatar user logged 
+https://stackblitz.com/edit/uxg-theme-avatars?file=app%2Favatar-types-example.html

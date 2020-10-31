@@ -1,0 +1,36 @@
+
+<!-- https://stackblitz.com/edit/uxg-theme-avatars?file=app%2Favatar-types-example.html -->
+<div class="example-menu-row">
+  <!-- <button mat-stroked-button [matMenuTriggerFor]="menuHero" color="primary" ng-init>Click </button> -->
+
+  <div class="pharmacie-color">
+    <button mat-button [matMenuTriggerFor]="menuHero"  ng-init>
+      <i class="label-header-person material-icons pharmacie-color">person</i>
+      <span class="label-header"
+            matTooltip="Dernière connexion: {{lastConnecionDate | date: 'dd/MM/yyyy hh:mm' }}">
+            {{login}}
+      </span>
+    </button>
+  </div>
+
+  <mat-menu #menuHero="matMenu" class="uxg-user-profile">
+      <div class="uxg-menu-header">
+          <div class="uxg-avatar-hero-block">
+              <div class="uxg-avatar" dense></div>
+              <h6 class="uxg-h6">{{login}}</h6>
+              <span class="uxg-caption">{{login + '@digitalacademy-d.com'}}</span>
+              <p class="text-template">Dernière connexion: {{lastConnecionDate | date: 'dd/MM/yyyy hh:mm' }}</p>
+          </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="uxg-menu-footer">
+          <button (click)="logout()" mat-flat-button color="primary" dense>
+              <mat-icon>exit_to_app</mat-icon>
+              Se déconnecter
+          </button>
+          <button mat-button color="primary" dense>
+              Voir le profile
+          </button>
+      </div>
+  </mat-menu>
+</div>
