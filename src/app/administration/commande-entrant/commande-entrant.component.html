@@ -2,7 +2,7 @@
   <app-search (selectonEmitter)="recieveSelection($event)"></app-search>
 </div>
 
-<hr>
+<mat-divider></mat-divider>
 
 <div *ngIf="selecton?.length !== 0" style=" padding: 8px 24px 0;">
   <div>
@@ -13,7 +13,7 @@
       <div class="cell text-template"> Prix unit. </div>
       <div class="cell text-template"> Qte à commander </div>
     </div>
-    <hr>
+    <mat-divider></mat-divider>
   </div>
   <div *ngFor="let item of selecton; let i=index" >
     <div class="grid">
@@ -43,7 +43,7 @@
         </mat-form-field>
       </div>
     </div>
-    <hr>
+    <mat-divider></mat-divider>
   </div>
 
   <div style="text-align: right;">

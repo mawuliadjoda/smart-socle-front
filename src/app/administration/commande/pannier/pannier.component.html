@@ -16,10 +16,10 @@
     <div *ngIf="ligneCommandes?.length > 0" style="padding: 8px 24px 0;">
 
       <!-- <div *ngFor="let ligneCommande of selecton?.value; index as i"> -->
-        <div *ngFor="let ligneCommande of ligneCommandes; index as i">
-          <div class="grid">
+        <div *ngFor="let ligneCommande of ligneCommandes; index as i" style="padding: 8px 24px 0;">
+          <div class="grid" >
 
-              <div class="cell cell-width-15">
+              <div class="cell cell-width-15"  style="padding: 8px 24px 0;">
                   <div class="grid">
                       <img style="width: 60px!important; height: 80px!important;" mat-list-avatar src="assets/images/product_image.png.webp" alt="Desc 1" />
                   </div>
@@ -101,7 +101,7 @@
               </div>
 
           </div>
-          <hr>
+          <mat-divider></mat-divider>
       </div>
   </div>
 
