@@ -1,6 +1,6 @@
 
 <!-- https://stackblitz.com/edit/uxg-theme-avatars?file=app%2Favatar-types-example.html -->
-<div class="example-menu-row">
+<div class="example-menu-row" >
   <!-- <button mat-stroked-button [matMenuTriggerFor]="menuHero" color="primary" ng-init>Click </button> -->
 
   <div class="pharmacie-color">
@@ -14,7 +14,7 @@
   </div>
 
   <mat-menu #menuHero="matMenu" class="uxg-user-profile">
-      <div class="uxg-menu-header">
+      <div class="uxg-menu-header" style="padding-left: 10px!important; padding-right: 10px!important;">
           <div class="uxg-avatar-hero-block">
               <div class="uxg-avatar" dense></div>
               <h6 class="uxg-h6">{{login}}</h6>
@@ -23,14 +23,14 @@
           </div>
       </div>
       <mat-divider></mat-divider>
-      <div class="uxg-menu-footer">
-          <button (click)="logout()" mat-flat-button color="primary" dense>
+      <div class="uxg-menu-footer" style="text-align: center;">
+          <button (click)="logout()" mat-flat-button color="primary" dense style="text-align: center;">
               <mat-icon>exit_to_app</mat-icon>
               Se déconnecter
           </button>
-          <button mat-button color="primary" dense>
+          <!-- <button mat-button color="primary" dense>
               Voir le profile
-          </button>
+          </button> -->
       </div>
   </mat-menu>
 </div>
