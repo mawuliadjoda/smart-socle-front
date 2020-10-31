@@ -2,8 +2,7 @@
   <app-search (selectonEmitter)="recieveSelection($event)"></app-search>
 </div>
 
-<hr>
-
+<mat-divider></mat-divider>
 <div *ngIf="selecton?.length !== 0" style=" padding: 8px 24px 0;">
   <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
     ng update @angular/cli @angular/core

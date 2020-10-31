@@ -26,9 +26,12 @@
 </div> -->
 
 
+
 <div>
 
   <mat-form-field style="width: 450px!important; color: #fff!important; ">
+    <mat-icon matPrefix>search</mat-icon>
+    <span matPrefix> &nbsp;&nbsp; </span>
     <input [(ngModel)]="fieldValue"
            (keyup)="search($event)"
            placeholder="Rechercher un médicament"

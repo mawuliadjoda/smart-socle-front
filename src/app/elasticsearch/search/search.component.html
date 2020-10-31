@@ -47,6 +47,8 @@
 <div class="smart-padding">
 
   <mat-form-field style="width: 85%!important;  ">
+    <mat-icon matPrefix>search</mat-icon>
+    <span matPrefix> &nbsp;&nbsp; </span>
     <input [(ngModel)]="fieldValue"
            (keyup)="search($event)"
            placeholder="Rechercher un médicament"

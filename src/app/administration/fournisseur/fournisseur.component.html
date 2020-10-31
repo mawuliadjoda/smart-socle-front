@@ -7,7 +7,7 @@
   <div style=" padding: 8px 24px 0;">
 
     <div class="form">
-      <mat-form-field>
+      <mat-form-field class="text-template">
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
       </mat-form-field>
     </div>
@@ -19,23 +19,23 @@
           <button mat-icon-button (click)="refresh()">
             <mat-icon>refresh</mat-icon>
         </button>
-        </mat-header-cell>
-        <mat-cell *matCellDef="let row" >{{row.id}}</mat-cell>
+        </mat-header-cell >
+        <mat-cell *matCellDef="let row" class="text-template">{{row.id}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="nom">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Nom</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row?.nom}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Nom</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="text-template"> {{row?.nom}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="tel">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Tel</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row?.tel}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Tel</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="text-template"> {{row?.tel}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="created_at">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Créé le</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.createdAt | date: 'dd/MM/yyyy hh:mm'}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Créé le</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="text-template"> {{row.createdAt | date: 'dd/MM/yyyy hh:mm'}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="actions">
