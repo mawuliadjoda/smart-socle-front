@@ -30,4 +30,8 @@ export class LigneCommandeService {
     return this.http.put(`${this.baseUrl}/disable`, ligneCommande);
   }
 
+  getCommandesByTypeCommande(typeCommande: string): Observable<any> {
+    return this.http.get<any>(this.env.baseUrl + '/smart/' + 'ligneCommandes/findByTypeCommande?typeCommande=' + typeCommande);
+  }
+
 }

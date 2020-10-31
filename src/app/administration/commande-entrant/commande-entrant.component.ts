@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { LigneCommande } from '../../models/ligne-commande';
-import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort, MatSnackBar } from '@angular/material';
 import { Produit } from '../../models/produit';
 import { ReplaySubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -10,6 +10,7 @@ import { Fournisseur } from '../../models/fournisseur';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SearchComponent } from '../../elasticsearch/search/search.component';
 import { UtilService } from 'src/app/services/util/util.service';
+import { error } from 'protractor';
 
 @Component({
   selector: 'app-commande-entrant',
@@ -47,6 +48,7 @@ export class CommandeEntrantComponent implements OnInit, AfterViewInit {
   @ViewChild('filter', { static: true }) filter: ElementRef;
   constructor(private commandeService: CommandeService,
               private fournisseurService: FournisseurService,
+              private snackBar: MatSnackBar,
               private utilService: UtilService) { }
 
   ngOnInit() {
@@ -93,6 +95,11 @@ export class CommandeEntrantComponent implements OnInit, AfterViewInit {
       data => {
         console.log(data);
         this.selecton = [];
+
+        this.snackBar.open('Commande passée avec succès !', 'Ok', {
+          duration: environment.durationOfSnackBar,
+        });
+
       }
     );
   }

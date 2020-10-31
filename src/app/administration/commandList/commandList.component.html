@@ -49,7 +49,7 @@
       </ng-container>
 
       <ng-container matColumnDef="created_at">
-        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Créé le.</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Date</mat-header-cell>
         <mat-cell *matCellDef="let row" class="text-template"> {{row.createdAt | date: 'dd/MM/yyyy hh:mm'}}</mat-cell>
       </ng-container>
 

@@ -50,7 +50,8 @@ export class CommandListComponent implements OnInit {
   }
 
   public loadData() {
-    this.ligneCommandeService.getAll().subscribe(data => {
+    // Recuperation de la liste des commandes sortant (vente)
+    this.ligneCommandeService.getCommandesByTypeCommande(environment.lib_commande_sortant).subscribe(data => {
       this.data = data;
       this.dataSource = new MatTableDataSource(this.data);
       this.dataSource.paginator = this.paginator;
