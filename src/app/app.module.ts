@@ -186,7 +186,8 @@ import { UserProfileComponent } from './authentication/user-profile/user-profile
    ],
    schemas: [CUSTOM_ELEMENTS_SCHEMA],
    entryComponents: [
-      AddProduitComponent,
+     // Pas besoin si on utilise Ivy
+     /* AddProduitComponent,
       EditProduitComponent,
       DeleteProduitComponent,
       ApprovisionnementComponent,
@@ -201,7 +202,7 @@ import { UserProfileComponent } from './authentication/user-profile/user-profile
       AddCategorieComponent,
       AddFournisseurComponent,
       DeleteFournisseurComponent,
-      QrcodeDisplayComponent
+      QrcodeDisplayComponent */
    ],
    providers: [
      // Translate angular-material paginator
