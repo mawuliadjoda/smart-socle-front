@@ -30,7 +30,7 @@ import { ProduitComponent } from './administration/produit/produit.component';
 import { PageNotFoundComponent } from './util/page-not-found/page-not-found.component';
 import { GenerateQrCodeComponent } from './administration/generate-qr-code/generate-qr-code.component';
 // import { ViewFactureComponent } from './administration/commande/facture/view-facture/view-facture.component';
-import { QrCodeScannerComponent } from './util/qr-code-scanner/qr-code-scanner.component';
+// import { QrCodeScannerComponent } from './util/qr-code-scanner/qr-code-scanner.component';
 import { NgThermalPrintComponent } from './util/ng-thermal-print/ng-thermal-print.component';
 import { SimplePrintComponent } from './util/simple-print/simple-print.component';
 import { HandleSearchComponent } from './elasticsearch/handle-search/handle-search.component';

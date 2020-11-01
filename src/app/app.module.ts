@@ -80,9 +80,9 @@ import {NgxPrintModule} from 'ngx-print';
 import { ThermalPrintModule } from 'ng-thermal-print';
 // import { PrintPageComponent } from './administration/commande/facture/view-facture/print-page/print-page.component';
 // import { MainPageComponent } from './administration/commande/facture/view-facture/main-page/main-page.component';
-import { BarecodeScannerLivestreamModule } from 'ngx-barcode-scanner';
+// import { BarecodeScannerLivestreamModule } from 'ngx-barcode-scanner';
 // import { ZXingScannerModule } from '@zxing/ngx-scanner';
-import { QrCodeScannerComponent } from './util/qr-code-scanner/qr-code-scanner.component';
+// import { QrCodeScannerComponent } from './util/qr-code-scanner/qr-code-scanner.component';
 import { SimplePrintComponent } from './util/simple-print/simple-print.component';
 import { PrintPageComponent } from './util/simple-print/print-page/print-page.component';
 import { NgxPrintFactureComponent } from './administration/commande/ngx-print-facture/ngx-print-facture.component';
@@ -147,7 +147,7 @@ import { UserProfileComponent } from './authentication/user-profile/user-profile
       // ViewFactureComponent,
       // PrintPageComponent,
       // MainPageComponent,
-      QrCodeScannerComponent,
+      // QrCodeScannerComponent,
       SimplePrintComponent,
       PrintPageComponent,
       NgxPrintFactureComponent,
