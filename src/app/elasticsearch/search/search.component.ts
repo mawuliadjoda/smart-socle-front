@@ -1,7 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatAutocompleteSelectedEvent, MatSnackBar } from '@angular/material';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { ElasticsearchService } from 'src/app/services/elasticsearch/elasticsearch.service';

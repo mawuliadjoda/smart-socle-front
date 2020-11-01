@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DeclarationVenteService } from 'src/app/services/declaration-vente.service';
 import { AuthenticationService } from 'src/app/services/jwt-auth/authentication.service';
-import { MatTableDataSource, MatPaginator, MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableDataSource } from '@angular/material/table';
 import { DeclarationVente } from 'src/app/models/declaration-vente';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { HttpErrorResponse } from '@angular/common/http';

@@ -18,7 +18,7 @@ import { ProductState } from './util/ngxs/state';
 import { PdfJsViewerModule } from 'ng2-pdfjs-viewer';
 import { FactureComponent } from './administration/commande/facture/facture.component';
 import { CommandListComponent } from './administration/commandList/commandList.component';
-import { MatPaginatorIntl } from '@angular/material';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 import { getDutchPaginatorIntl } from './smart-paginator-override';
 import { FooterComponent } from './template/footer/footer.component';
 import { BasicAuthHtppInterceptorService } from './services/jwt-auth/basic-auth-interceptor.service';

@@ -3,7 +3,7 @@ import * as jsonData from './_files/myJson.json';
 import { Store } from '@ngxs/store';
 import { LoadProducts } from './util/ngxs/action/index.js';
 import { BnNgIdleService } from 'bn-ng-idle';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { UserIdleComponent } from './authentication/user-idle/user-idle.component';
 
 import { Subject, timer, Subscription } from 'rxjs';

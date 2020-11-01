@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Inject, ViewChild, ElementRef } from '@angular/core';
 import { Produit } from 'src/app/models/produit';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import * as jspdf from 'jspdf';
 // import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';

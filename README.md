@@ -55,3 +55,8 @@ create folder smart on ~tomcat/webapp
 
 avatar user logged 
 https://stackblitz.com/edit/uxg-theme-avatars?file=app%2Favatar-types-example.html
+
+
+UPGRADE TO ANGULAR 10 
+> https://update.angular.io/
+https://angular.io/guide/build#configuring-commonjs-dependencies

@@ -3,7 +3,7 @@ import { ElasticsearchService } from '../services/elasticsearch/elasticsearch.se
 import { FormControl } from '@angular/forms';
 import { Produit } from '../models/produit';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store, Select } from '@ngxs/store';
 import { AddProductToCart, UpdateProductToCart, DeleteProductToCart } from '../util/ngxs/action';
 import { ProductState } from '../util/ngxs/state';

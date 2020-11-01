@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { LigneCommande } from 'src/app/models/ligne-commande';

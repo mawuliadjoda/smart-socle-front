@@ -1,4 +1,4 @@
-import { MatPaginatorIntl } from '@angular/material';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 import { environment } from 'src/environments/environment';
 
 const dutchRangeLabel = (page: number, pageSize: number, length: number) => {

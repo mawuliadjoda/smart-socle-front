@@ -1,5 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AddRefProduitComponent } from './add-ref-produit/add-ref-produit.component';
 import { EditRefProduitComponent } from './edit-ref-produit/edit-ref-produit.component';
