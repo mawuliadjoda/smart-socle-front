@@ -5,6 +5,8 @@
 // @import "~bootstrap-4-grid/scss/grid.scss";
 @import "~grid-css/grid.css";
 
+@import '~@ffdc/uxg-angular-theme/all-theme';
+
 html, body { height: 100%; widows: 50%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
