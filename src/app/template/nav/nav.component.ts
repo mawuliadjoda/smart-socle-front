@@ -107,6 +107,12 @@ export class NavComponent  implements OnInit,  OnDestroy {
     },
     {
       icon: '',
+      route: 'smart/gestion-tier-payant',
+      title: 'Gestion Tiers payant',
+      isActive: true
+    },
+    {
+      icon: '',
       route: 'smart/generate-qr-code',
       title: 'imprimer code QR',
       isActive: true

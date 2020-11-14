@@ -32,6 +32,8 @@ export class UtilService {
     this.mapDisplayNavigation.set('pannier', {parent: 'Activités', child: 'Détail du panier'});
 
     this.mapDisplayNavigation.set('handle-search', {parent: 'Activités', child: 'Gérer les séléctionns'});
+    this.mapDisplayNavigation.set('gestion-tier-payant', {parent: 'Activités', child: 'Gérer les tiers-payants'});
+
 
 
   }

@@ -1,0 +1,55 @@
+ <div class="container">
+  <h3 mat-dialog-title class="text-template">Ajouter un tier-payant</h3>
+
+  <form>
+    <div class="form">
+      <mat-form-field color="accent" class="text-template">
+        <input  matInput #inputstate class="form-control" placeholder="Nom" [(ngModel)]="data.nom" name="nom"  required >
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent" class="text-template">
+        <input  matInput #inputstate class="form-control" placeholder="Prénom" [(ngModel)]="data.prenom" name="prenom"  required >
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <div class="form">
+      <mat-form-field color="accent" class="text-template">
+        <input matInput placeholder="Tel" [(ngModel)]="data.tel" name="tel">
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent" class="text-template">
+        <input matInput placeholder="N° Carte Assurance" [(ngModel)]="data.numCarteAssurance" name="numCarteAssurance">
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent" class="text-template">
+        <mat-label>Date Expiration</mat-label>
+        <input disabled matInput [matDatepicker]="dp3" [(ngModel)]="data.dateExpirationAssurance" name="dateExpirationAssurance">
+        <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+        <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+
+    <div mat-dialog-actions>
+      <!-- <button mat-button  [disabled]="!formControl.valid" [mat-dialog-close]="data" class="text-template"> Save </button> -->
+      <button mat-button [mat-dialog-close]="data" class="text-template"> Save </button>
+      <button mat-button (click)="onNoClick()" tabindex="-1" class="text-template"> Cancel </button>
+    </div>
+  </form>
+</div>
+
+<!--
+  <mat-form-field appearance="fill">
+    <mat-label>Input</mat-label>
+    <input matInput>
+  </mat-form-field>
+-->

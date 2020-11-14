@@ -34,6 +34,7 @@ import { GenerateQrCodeComponent } from './administration/generate-qr-code/gener
 import { NgThermalPrintComponent } from './util/ng-thermal-print/ng-thermal-print.component';
 import { SimplePrintComponent } from './util/simple-print/simple-print.component';
 import { HandleSearchComponent } from './elasticsearch/handle-search/handle-search.component';
+import { TierPayantComponent } from './gestion-tiers-payant/tier-payant/tier-payant.component';
 
 
 const routes: Routes = [
@@ -73,6 +74,8 @@ const routes: Routes = [
   {path: 'smart/simple-print', component: SimplePrintComponent, canActivate: [AuthGaurdService]},
 
   {path: 'smart/handle-search', component: HandleSearchComponent, canActivate: [AuthGaurdService]},
+  {path: 'smart/gestion-tier-payant', component: TierPayantComponent, canActivate: [AuthGaurdService]},
+
   {path: '**', component: PageNotFoundComponent}
 ];
 

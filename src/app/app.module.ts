@@ -90,6 +90,10 @@ import { SmartBreadcrumbComponent } from './util/smart-breadcrumb/smart-breadcru
 import { CustumSearchComponent } from './elasticsearch/custum-search/custum-search.component';
 import { HandleSearchComponent } from './elasticsearch/handle-search/handle-search.component';
 import { UserProfileComponent } from './authentication/user-profile/user-profile.component';
+import { TierPayantComponent } from './gestion-tiers-payant/tier-payant/tier-payant.component';
+import { AddTierPayantComponent } from './gestion-tiers-payant/tier-payant/add-tier-payant/add-tier-payant.component';
+import { DeleteTierPayantComponent } from './gestion-tiers-payant/tier-payant/delete-tier-payant/delete-tier-payant.component';
+import { UpdateTierComponent } from './gestion-tiers-payant/tier-payant/update-tier/update-tier.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -155,7 +159,11 @@ import { UserProfileComponent } from './authentication/user-profile/user-profile
       CustumSearchComponent,
       HandleSearchComponent,
       UserProfileComponent,
-      TestThingsComponent
+      TestThingsComponent,
+      TierPayantComponent,
+      AddTierPayantComponent,
+      DeleteTierPayantComponent,
+      UpdateTierComponent
    ],
    imports: [
       BrowserModule,
