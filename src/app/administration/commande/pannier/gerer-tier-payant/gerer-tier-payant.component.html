@@ -1,0 +1,78 @@
+
+<div class="container smart-padding ">
+  <div class="grid">
+    <div class="cell cell-width-85">
+      <mat-form-field style="width: 100%!important; ">
+        <mat-icon matPrefix>search</mat-icon>
+        <span matPrefix> &nbsp;&nbsp; </span>
+        <input [(ngModel)]="fieldValue"
+
+               placeholder="Rechercher un tier par numéro assurance"
+               type="text"
+               matInput
+
+               style="font-size: 11px!important;"/>
+      </mat-form-field>
+    </div>
+    <div class="cell">
+      <button (click)="rechercherTiersParNumAssurance()"
+              mat-raised-button
+              class="button-template-color">
+          <span class="template-label">Rechercher</span>
+      </button>
+    </div>
+  </div>
+
+
+
+  <div *ngIf="data != null && showResult" >
+    <mat-form-field color="accent" class="text-template" style="width: 100%!important; " >
+      <input  matInput
+              #inputstate
+              class="form-control"
+
+              placeholder="Nom"
+              value="{{data?.nom}}"
+              name="nom"
+              required disabled >
+    </mat-form-field>
+
+    <mat-form-field color="accent" class="text-template" style="width: 100%!important; ">
+      <input  matInput #inputstate class="form-control" placeholder="Prenom" value="{{data?.prenom}}" name="prenom"  required disabled >
+    </mat-form-field>
+
+    <mat-form-field color="accent" class="text-template" style="width: 100%!important; ">
+      <input  matInput #inputstate class="form-control" placeholder="Num carte assurance" value="{{data?.numCarteAssurance}}" name="numCarteAssurance"  required disabled >
+    </mat-form-field>
+
+    <mat-form-field color="accent" class="text-template" style="width: 100%!important; ">
+      <input [ngStyle]="{'color': isEpire ? 'red' : ''}"  matInput #inputstate class="form-control" placeholder="Date expiration" value="{{data?.dateExpirationAssurance | date: 'dd/MM/yyyy' }}" name="dateExpirationAssurance"  required disabled >
+    </mat-form-field>
+
+    <mat-form-field color="accent" class="text-template" style="width: 100%!important; ">
+      <input  matInput #inputstate class="form-control" placeholder="Assurance" value="{{data?.etablissementAssurance?.nom}}" name="nom"  required disabled >
+    </mat-form-field>
+
+    <mat-form-field color="accent" class="text-template" style="width: 100%!important; ">
+      <input  matInput #inputstate class="form-control" placeholder="Pourcentage de reduction" value="{{ data?.detailReduction | jsonPipe }}" name="detailReduction"  required disabled >
+    </mat-form-field>
+
+  </div>
+
+  <div mat-dialog-actions>
+    <!-- <button mat-button  [disabled]="!formControl.valid" [mat-dialog-close]="data" class="text-template"> Save </button> -->
+    <button mat-button
+
+            matTooltip="{{ isEpire ? 'La carte est expirée !': ''}}"
+            [mat-dialog-close]="data"
+            [disabled]="data && showResult && !isEpire? null: 'disabled' "
+            [ngClass]="{'not-allowed-cursor ': !data  || !showResult || isEpire, '': data && showResult }"
+
+
+            class="text-template">
+            Save
+    </button>
+    <button mat-button (click)="onNoClick()" tabindex="-1" class="text-template"> Cancel </button>
+  </div>
+
+</div>

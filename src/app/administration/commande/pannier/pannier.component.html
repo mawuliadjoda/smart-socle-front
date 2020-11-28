@@ -107,9 +107,20 @@
 
     <div style="padding: 8px 24px 0;">
       <div style="text-align: right; float: right; width: 50%;">
-          <span class="text-template">Total:  {{getTotal() | montantFormatter}} </span>
+          <span class="text-template">Total à payer:  {{getTotal() | montantFormatter}} </span>
           <br>
           <mat-divider></mat-divider>
+
+          <div *ngIf="showPourcentageReduction">
+            <span class="text-template">Reduction: {{pourcentageReduction}} % =  {{ ( getTotal() * pourcentageReduction/100) | montantFormatter}} </span>
+            <br>
+            <mat-divider></mat-divider>
+
+            <span class="text-template">Reste à payer:  {{ (getTotal() - ( getTotal() * pourcentageReduction/100) )| montantFormatter}} </span>
+            <br>
+            <mat-divider></mat-divider>
+          </div>
+
           <br>
           <!-- <div style="float: left;">
               <button mat-raised-button color="primary" (click)="downloadFileSystem()">Facture</button>
@@ -123,18 +134,38 @@
 
             <app-ngx-print-facture id="print-section"></app-ngx-print-facture>
 
+            <div class="grid">
+              <div class="cell" style="margin-right: 2%!important;" >
+                <button mat-raised-button
+                        class="button-template-color"
+                        (click)="traiterTierPayant()"
 
-            <button mat-raised-button
-                    class="button-template-color"
-                    (click)="saveLigneFactureAndBuildPdf()"
-                    printSectionId="print-section"
-                    ngxPrint
-                    [disabled]="ligneCommandes?.length == 0 ? 'disabled': null"
-                    [ngClass]="{'not-allowed-cursor ': ligneCommandes?.length == 0, '': ligneCommandes?.length > 0}"
-                    matTooltip="{{ligneCommandes?.length == 0  ? 'Panier vide' : null }}" >
-                    <span class="template-label">Valider</span>
+                        [disabled]="ligneCommandes?.length == 0 ? 'disabled': null"
+                        [ngClass]="{'not-allowed-cursor ': ligneCommandes?.length == 0, '': ligneCommandes?.length > 0}"
+                        matTooltip="{{ligneCommandes?.length == 0  ? 'Panier vide' : 'Traiter la partie assurance' }}">
+                        <span class="template-label">Saisir un tier payant</span>
 
-            </button>
+                </button>
+              </div>
+              <div class="cell">
+                <button mat-raised-button
+                        class="button-template-color"
+                        (click)="saveLigneFactureAndBuildPdf()"
+                        printSectionId="print-section"
+                        ngxPrint
+                        [disabled]="ligneCommandes?.length == 0 ? 'disabled': null"
+                        [ngClass]="{'not-allowed-cursor ': ligneCommandes?.length == 0, '': ligneCommandes?.length > 0}"
+                        matTooltip="{{ligneCommandes?.length == 0  ? 'Panier vide' : 'Valider sans assurance' }}" >
+                        <span class="template-label">Valider l'achat</span>
+
+                </button>
+              </div>
+            </div>
+
+
+
+
+
 
 
           </div>

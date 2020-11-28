@@ -21,6 +21,10 @@ import { UpdateProductToCart, DeleteProductToCart, DeleteAllProductToCart } from
 import { EnvService } from 'src/app/services/config/env.service';
 import { CommandeService } from 'src/app/services/commande.service.ts';
 import { UtilService } from 'src/app/services/util/util.service';
+import { GererTierPayantComponent } from './gerer-tier-payant/gerer-tier-payant.component';
+import { TierPayant } from 'src/app/models/tierPayant';
+import { JsonPipe } from '@angular/common';
+import { JsonPipePipe } from 'src/app/util/json-pipe.pipe';
 @Component({
   selector: 'app-pannier',
   templateUrl: './pannier.component.html',
@@ -38,6 +42,9 @@ export class PannierComponent implements OnInit  {
 
   fileUrl = this.env.baseUrl + '/smart/' + 'download2';
 
+  pourcentageReduction: number;
+  showPourcentageReduction: boolean;
+  tierPayant: TierPayant;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild('filter', { static: true }) filter: ElementRef;
@@ -60,7 +67,8 @@ export class PannierComponent implements OnInit  {
               private store: Store,
               private env: EnvService,
               public commandeService: CommandeService,
-              private utilService: UtilService) {
+              private utilService: UtilService,
+              private jsonPipe: JsonPipePipe) {
   }
 
 
@@ -195,7 +203,8 @@ export class PannierComponent implements OnInit  {
         // important pour enregistrer une commande de type vente
         typeCommande: environment.lib_commande_sortant,
         isReceive: true,
-        isActif: true
+        isActif: true,
+        tierPayant: this.tierPayant
       };
       return container;
     });
@@ -204,7 +213,27 @@ export class PannierComponent implements OnInit  {
 
       // Vider le panier
       this.store.dispatch(new DeleteAllProductToCart());
-
+      this.showPourcentageReduction = false;
     });
   }
+
+
+  traiterTierPayant() {
+    this.pourcentageReduction = 0;
+    this.showPourcentageReduction = false;
+    this.tierPayant = new TierPayant();
+    const dialogRef = this.dialog.open(GererTierPayantComponent, {
+      data: this.tierPayant, disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result && result.detailReduction) {
+        this.tierPayant = result;
+        this.pourcentageReduction = this.jsonPipe.transform(result.detailReduction).trim().split('%')[0];
+        this.showPourcentageReduction = true;
+        console.log(this.pourcentageReduction);
+      }
+    });
+  }
+
 }

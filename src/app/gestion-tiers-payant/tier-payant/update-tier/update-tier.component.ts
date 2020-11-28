@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProduitService } from 'src/app/services/produit.service';
 import { FormControl, Validators } from '@angular/forms';
+import { TierPayant } from 'src/app/models/tierPayant';
 
 @Component({
   selector: 'app-update-tier',
@@ -11,7 +12,7 @@ import { FormControl, Validators } from '@angular/forms';
 export class UpdateTierComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<UpdateTierComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any) { }
+              @Inject(MAT_DIALOG_DATA) public data: TierPayant) { }
 
   formControl = new FormControl('', [
   Validators.required

@@ -94,6 +94,11 @@ import { TierPayantComponent } from './gestion-tiers-payant/tier-payant/tier-pay
 import { AddTierPayantComponent } from './gestion-tiers-payant/tier-payant/add-tier-payant/add-tier-payant.component';
 import { DeleteTierPayantComponent } from './gestion-tiers-payant/tier-payant/delete-tier-payant/delete-tier-payant.component';
 import { UpdateTierComponent } from './gestion-tiers-payant/tier-payant/update-tier/update-tier.component';
+import { EtablissementAssuranceComponent } from './administration/etablissement-assurance/etablissement-assurance.component';
+import { AddEtsAssuranceComponent } from './administration/etablissement-assurance/add-ets-assurance/add-ets-assurance.component';
+import { UpdateEtsAssuranceComponent } from './administration/etablissement-assurance/update-ets-assurance/update-ets-assurance.component';
+import { DeleteEtsAssuranceComponent } from './administration/etablissement-assurance/delete-ets-assurance/delete-ets-assurance.component';
+import { GererTierPayantComponent } from './administration/commande/pannier/gerer-tier-payant/gerer-tier-payant.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -163,7 +168,13 @@ import { UpdateTierComponent } from './gestion-tiers-payant/tier-payant/update-t
       TierPayantComponent,
       AddTierPayantComponent,
       DeleteTierPayantComponent,
-      UpdateTierComponent
+      UpdateTierComponent,
+
+      EtablissementAssuranceComponent,
+      DeleteEtsAssuranceComponent,
+      UpdateEtsAssuranceComponent,
+      AddEtsAssuranceComponent,
+      GererTierPayantComponent
    ],
    imports: [
       BrowserModule,

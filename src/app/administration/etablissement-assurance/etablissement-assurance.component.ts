@@ -4,36 +4,32 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { TierPayant } from 'src/app/models/tierPayant';
-import { TierPayanService } from 'src/app/services/tier-payan.service';
-import { AddTierPayantComponent } from './add-tier-payant/add-tier-payant.component';
-import { DeleteTierPayantComponent } from './delete-tier-payant/delete-tier-payant.component';
-import { UpdateTierComponent } from './update-tier/update-tier.component';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { environment } from 'src/environments/environment';
-import { UtilService } from 'src/app/services/util/util.service';
+import { EtablissementAssurance } from 'src/app/models/etablissement-assurance';
+import { EtablissementAssuranceService } from 'src/app/services/etablissement-assurance.service';
+import { AddEtsAssuranceComponent } from './add-ets-assurance/add-ets-assurance.component';
+import { DeleteEtsAssuranceComponent } from './delete-ets-assurance/delete-ets-assurance.component';
+import { UpdateEtsAssuranceComponent } from './update-ets-assurance/update-ets-assurance.component';
 
 @Component({
-  selector: 'app-tier-payant',
-  templateUrl: './tier-payant.component.html',
-  styleUrls: ['./tier-payant.component.scss']
+  selector: 'app-etablissement-assurance',
+  templateUrl: './etablissement-assurance.component.html',
+  styleUrls: ['./etablissement-assurance.component.scss']
 })
-export class TierPayantComponent implements OnInit {
+export class EtablissementAssuranceComponent implements OnInit {
   displayedColumns = [
     'id',
     'nom',
-    'prenom',
     'tel',
-    'numCarteAssurance',
-    'dateExpirationAssurance',
+    'contactMail',
+    'adresse',
     'created_at',
     'actions'
   ];
 
   index: number;
   id: number;
-  dataSource = new MatTableDataSource<TierPayant>([]);
-  data: Array<TierPayant>;
+  dataSource = new MatTableDataSource<EtablissementAssurance>([]);
+  data: Array<EtablissementAssurance>;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -42,9 +38,7 @@ export class TierPayantComponent implements OnInit {
   constructor(
     public httpClient: HttpClient,
     public dialog: MatDialog,
-    public service: TierPayanService,
-    private snackBar: MatSnackBar,
-    private utilService: UtilService
+    public service: EtablissementAssuranceService
   ) {}
   ngOnInit() {
     this.loadData();
@@ -76,9 +70,9 @@ export class TierPayantComponent implements OnInit {
 
 
   addNew() {
-    const tierPayaToSave = new TierPayant();
-    const dialogRef = this.dialog.open(AddTierPayantComponent, {
-      data: tierPayaToSave, disableClose: true
+    const etablissementToSave = new EtablissementAssurance();
+    const dialogRef = this.dialog.open(AddEtsAssuranceComponent, {
+      data: etablissementToSave, disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -91,14 +85,13 @@ export class TierPayantComponent implements OnInit {
         },
         (err: HttpErrorResponse) => {
           console.log(err.name + ' ' + err.message);
-          this.utilService.displayMessage('Erreur lors de l\'ajout', 'Erreur');
         });
       }
     });
   }
-  deleteItem(index: number, tierPaya: TierPayant) {
-    const dialogRef = this.dialog.open(DeleteTierPayantComponent, {
-      data: tierPaya, disableClose: true
+  deleteItem(index: number, etablissement: EtablissementAssurance) {
+    const dialogRef = this.dialog.open(DeleteEtsAssuranceComponent, {
+      data: etablissement, disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -115,32 +108,27 @@ export class TierPayantComponent implements OnInit {
         },
         (err: HttpErrorResponse) => {
           console.log(err.name + ' ' + err.message);
-          this.utilService.displayMessage('Erreur lors de la suppression', 'Erreur');
         });
       }
     });
   }
 
-
-  startEdit(index: number, tierPaya: TierPayant) {
-    const dialogRef = this.dialog.open(UpdateTierComponent, {
-      data: tierPaya, disableClose: true
+  startEdit(index: number, etablissement: EtablissementAssurance) {
+    const dialogRef = this.dialog.open(UpdateEtsAssuranceComponent, {
+      data: etablissement, disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.service.update(tierPaya).subscribe(data => {
+        this.service.update(etablissement).subscribe(data => {
           this.data[index] = data;
           this.dataSource = new MatTableDataSource(this.data);
         },
         (err: HttpErrorResponse) => {
           console.log(err.name + ' ' + err.message);
-          this.utilService.displayMessage('Erreur lors de la modification', 'Erreur');
         });
       }
     });
   }
-
-
 
 }

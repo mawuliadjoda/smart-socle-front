@@ -4,6 +4,8 @@ import { Validators, FormControl } from '@angular/forms';
 
 
 import { TierPayant } from 'src/app/models/tierPayant';
+import { EtablissementAssuranceService } from 'src/app/services/etablissement-assurance.service';
+import { EtablissementAssurance } from 'src/app/models/etablissement-assurance';
 
 @Component({
   selector: 'app-add-tier-payant',
@@ -12,9 +14,11 @@ import { TierPayant } from 'src/app/models/tierPayant';
 })
 export class AddTierPayantComponent implements OnInit {
 
+  etablissementAssurances: EtablissementAssurance [] = [];
   constructor(
     public dialogRef: MatDialogRef<AddTierPayantComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: TierPayant
+    @Inject(MAT_DIALOG_DATA) public data: TierPayant,
+    private etsService: EtablissementAssuranceService
   ) {}
 
   formControl = new FormControl('', [
@@ -23,6 +27,7 @@ export class AddTierPayantComponent implements OnInit {
   ]);
 
   ngOnInit() {
+    this.loadEtsAssurance();
   }
 
   onNoClick(): void {
@@ -35,5 +40,10 @@ export class AddTierPayantComponent implements OnInit {
       : this.formControl.hasError('email')
       ? 'Not a valid email'
       : '';
+  }
+  loadEtsAssurance() {
+    this.etsService.getAll().subscribe(data => {
+      this.etablissementAssurances = data;
+    });
   }
 }

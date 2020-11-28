@@ -39,6 +39,13 @@
       </mat-form-field>
     </div>
 
+    <div class="form">
+      <mat-form-field color="accent" class="text-template">
+        <input matInput placeholder="Etablissement Assurance" value="{{data?.etablissementAssurance?.nom}}" name="etablissementAssurance">
+      </mat-form-field>
+    </div>
+
+
     <div mat-dialog-actions>
       <!-- <button mat-button  [disabled]="!formControl.valid" [mat-dialog-close]="data" class="text-template"> Save </button> -->
       <button mat-button [mat-dialog-close]="data" class="text-template"> Save </button>

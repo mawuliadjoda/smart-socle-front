@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class TierPayanService {
+export class EtablissementAssuranceService {
 
-  private baseUrl = this.env.baseUrl + '/smart/' + 'tierPayants';
+  private baseUrl = this.env.baseUrl + '/smart/' + 'etablissementAssurances';
   constructor(private http: HttpClient, private env: EnvService) {
   }
 
@@ -26,10 +26,6 @@ export class TierPayanService {
 
   delete(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/` + id);
-  }
-
-  findByNumCarteAssurance(numCarteAssurance: string): Observable<any> {
-    return this.http.get<any>(this.baseUrl + '/findByNumCarteAssurance' + '?numCarteAssurance=' + numCarteAssurance );
   }
 
 }

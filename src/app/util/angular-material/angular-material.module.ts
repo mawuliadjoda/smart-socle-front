@@ -68,6 +68,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { JsonPipePipe } from '.c:/Users/koffi/Documents/dev/git/smart-socle-front/src/app/util/json-pipe.pipe';
 
 const modules: any[] = [
 
@@ -120,6 +121,9 @@ const modules: any[] = [
 
 @NgModule({
   imports: [ ...modules ],
-  exports: [ ...modules ]
+  exports: [ ...modules ],
+   declarations: [
+    "JsonPipePipe"
+  ]
 })
 export class AngularMaterialModule {}

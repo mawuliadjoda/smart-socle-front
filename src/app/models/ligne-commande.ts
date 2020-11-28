@@ -1,4 +1,5 @@
 import { Produit } from './produit';
+import { TierPayant } from './tierPayant';
 
 export class LigneCommande {
   id: number;
@@ -12,4 +13,5 @@ export class LigneCommande {
   // is just used on front
   isDisableUpdate?: boolean;
   isActif: boolean;
+  tierPayant?: TierPayant;
 }

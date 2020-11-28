@@ -113,6 +113,12 @@ export class NavComponent  implements OnInit,  OnDestroy {
     },
     {
       icon: '',
+      route: 'smart/etablissement-assurance',
+      title: 'Etablissements d\'assurance',
+      isActive: true
+    },
+    {
+      icon: '',
       route: 'smart/generate-qr-code',
       title: 'imprimer code QR',
       isActive: true

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { LigneCommande } from 'src/app/models/ligne-commande';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,7 @@ export class UtilService {
 
   public mapDisplayNavigation: Map<string, any> =  new Map();
 
-  constructor() {
+  constructor( private snackBar: MatSnackBar) {
     this.mapDisplayNavigation.set('home', {parent: 'Acueil', child: 'Tableau de bord'});
     this.mapDisplayNavigation.set('Activite', {parent: 'Activités', child: ''});
     this.mapDisplayNavigation.set('administration', {parent: 'Administration', child: ''});
@@ -33,7 +35,7 @@ export class UtilService {
 
     this.mapDisplayNavigation.set('handle-search', {parent: 'Activités', child: 'Gérer les séléctionns'});
     this.mapDisplayNavigation.set('gestion-tier-payant', {parent: 'Activités', child: 'Gérer les tiers-payants'});
-
+    this.mapDisplayNavigation.set('etablissement-assurance', {parent: 'Activités', child: 'Gérer les établissements d\'assurance'});
 
 
   }
@@ -60,6 +62,12 @@ export class UtilService {
       console.log(element.id, element.produit.nom, element.qte, element.isDisableUpdate);
     });
     return result;
+  }
+
+  displayMessage(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: environment.durationOfSnackBar,
+    });
   }
 
 }
