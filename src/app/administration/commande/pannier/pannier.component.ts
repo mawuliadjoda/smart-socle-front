@@ -25,6 +25,7 @@ import { GererTierPayantComponent } from './gerer-tier-payant/gerer-tier-payant.
 import { TierPayant } from 'src/app/models/tierPayant';
 import { JsonPipe } from '@angular/common';
 import { JsonPipePipe } from 'src/app/util/json-pipe.pipe';
+import { AuthenticationService } from 'src/app/services/jwt-auth/authentication.service';
 @Component({
   selector: 'app-pannier',
   templateUrl: './pannier.component.html',
@@ -58,6 +59,7 @@ export class PannierComponent implements OnInit  {
 
 
   oldQteValue: number;
+  loggedUser: string;
   constructor(public dialog: MatDialog,
               public produitService: ProduitService,
               public fileService: FileService,
@@ -68,11 +70,14 @@ export class PannierComponent implements OnInit  {
               private env: EnvService,
               public commandeService: CommandeService,
               private utilService: UtilService,
-              private jsonPipe: JsonPipePipe) {
+              private jsonPipe: JsonPipePipe,
+              private authentocationService: AuthenticationService) {
   }
 
 
   ngOnInit() {
+    this.pourcentageReduction = 0;
+    this.loggedUser = this.authentocationService.getUserLogin();
     // this.produitsPanier = history && history.state && history.state.data ? history.state.data : [];
     console.log('panier from pannier component ' + this.ligneCommandes);
 
@@ -88,11 +93,7 @@ export class PannierComponent implements OnInit  {
   }*/
 
   getTotal() {
-    let total = 0;
-    this.ligneCommandes.forEach(element => {
-      total += element.produit.prixUnitaire * element.qte;
-    });
-    return total;
+    return this.utilService.calculPrixCommande(this.ligneCommandes);
   }
 
 
@@ -209,7 +210,7 @@ export class PannierComponent implements OnInit  {
       return container;
     });
 
-    this.commandeService.save(ligneCommandeToSave).subscribe(response => {
+    this.commandeService.save(ligneCommandeToSave, this.loggedUser).subscribe(response => {
 
       // Vider le panier
       this.store.dispatch(new DeleteAllProductToCart());

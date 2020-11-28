@@ -21,8 +21,8 @@ export class CommandeService {
     return this.http.get<any>(this.baseUrl);
   }
 
-  save(ligneCommandes: Array<LigneCommande>): Observable<any> {
-    return this.http.post(this.baseUrl, ligneCommandes);
+  save(ligneCommandes: Array<LigneCommande>, username: string): Observable<any> {
+    return this.http.post(this.baseUrl + `?username=${username}`, ligneCommandes);
   }
   saveCommandeEntrant(ligneCommandes: Array<LigneCommande>): Observable<any> {
     return this.http.post(this.env.baseUrl + '/smart/' + 'commandes-entrant', ligneCommandes);

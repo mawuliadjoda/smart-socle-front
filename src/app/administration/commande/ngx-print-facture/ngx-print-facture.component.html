@@ -48,11 +48,22 @@
             <tr>
               <td class="quantity"></td>
               <td class="description">Total</td>
-              <td class="price">{{ (montantTotal | montantFormatter).replace('FCFA', '') }}</td>
+              <td class="price">{{ (calculMontantTotal() | montantFormatter).replace('FCFA', '') }}</td>
              </tr>
 
         </tbody>
     </table>
+
+    <div *ngIf="pourcentageReduction">
+      <span class="text-template">Reduction: {{pourcentageReduction}} % =  {{ ( calculMontantTotal() * pourcentageReduction/100) | montantFormatter}} </span>
+      <br>
+      <mat-divider></mat-divider>
+
+      <span class="text-template">Reste à payer:  {{ (calculMontantTotal() - ( calculMontantTotal() * pourcentageReduction/100) )| montantFormatter}} </span>
+      <br>
+      <mat-divider></mat-divider>
+    </div>
+
     <!-- <br>
         <span style="text-align: center;">
           - - - - - - - - - - - - - - - - - - - - - - - - - - -

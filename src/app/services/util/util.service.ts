@@ -64,6 +64,14 @@ export class UtilService {
     return result;
   }
 
+  calculPrixCommande(ligneCommandes: Array<LigneCommande> ) {
+    let total = 0;
+    ligneCommandes.forEach(element => {
+      total += element.produit.prixUnitaire * element.qte;
+    });
+    return total;
+  }
+
   displayMessage(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: environment.durationOfSnackBar,

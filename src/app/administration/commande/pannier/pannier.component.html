@@ -105,6 +105,7 @@
       </div>
   </div>
 
+
     <div style="padding: 8px 24px 0;">
       <div style="text-align: right; float: right; width: 50%;">
           <span class="text-template">Total à payer:  {{getTotal() | montantFormatter}} </span>
@@ -132,7 +133,7 @@
                     Passer la commande
             </button> -->
 
-            <app-ngx-print-facture id="print-section"></app-ngx-print-facture>
+            <app-ngx-print-facture [pourcentageReduction] ="pourcentageReduction" id="print-section"></app-ngx-print-facture>
 
             <div class="grid">
               <div class="cell" style="margin-right: 2%!important;" >

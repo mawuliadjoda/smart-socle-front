@@ -21,8 +21,8 @@ export class DeclarationVenteService {
     return this.http.get<any>(this.baseUrl + `/findByUserName?userName=${userName}`);
   }
 
-  add(t: any): Observable<any> {
-    return this.http.post(this.baseUrl, t);
+  add(t: any, username: string): Observable<any> {
+    return this.http.post(this.baseUrl + `?username=${username}`, t);
   }
 
   delete(id: number): Observable<any> {

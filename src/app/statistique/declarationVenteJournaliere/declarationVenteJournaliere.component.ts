@@ -87,7 +87,7 @@ export class DeclarationVenteJournaliereComponent implements OnInit {
             montant: result
           };
 
-          this.declarationVenteService.add(declarationVente).subscribe(response => {
+          this.declarationVenteService.add(declarationVente, this.authenticationService.getUserLogin()).subscribe(response => {
             console.log(response);
             response.createdAt = this.datePipe.transform(response.createdAt, 'dd-MM-yyyy');
 

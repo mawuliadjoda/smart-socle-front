@@ -9,6 +9,7 @@ import { CommandeService } from 'src/app/services/commande.service.ts';
 import { DeleteAllProductToCart } from 'src/app/util/ngxs/action';
 import { environment } from 'src/environments/environment';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { AuthenticationService } from 'src/app/services/jwt-auth/authentication.service';
 @Component({
   selector: 'app-facture',
   templateUrl: './facture.component.html',
@@ -22,13 +23,16 @@ export class FactureComponent implements OnInit {
   cartTotal = 0;
   ligneCommandes: Array<LigneCommande> = [];
 
+  loggedUser: string;
   constructor(public fileService: FileService,
               public commandeService: CommandeService,
               private store: Store,
-              private spinner: NgxSpinnerService) {
+              private spinner: NgxSpinnerService,
+              private authentocationService: AuthenticationService) {
               }
 
   ngOnInit() {
+    this.loggedUser = this.authentocationService.getUserLogin();
     /** spinner starts on init */
     this.spinner.show();
 
@@ -65,7 +69,7 @@ export class FactureComponent implements OnInit {
       return container;
     });
 
-    this.commandeService.save(ligneCommandeToSave).pipe(
+    this.commandeService.save(ligneCommandeToSave, this.loggedUser).pipe(
       debounceTime(500),
       switchMap(data => {
          console.log(data);

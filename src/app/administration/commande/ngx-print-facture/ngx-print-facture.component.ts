@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ProductState } from 'src/app/util/ngxs/state';
 import { Select, Store } from '@ngxs/store';
 import { LigneCommande } from 'src/app/models/ligne-commande';
@@ -10,6 +10,7 @@ import { DeleteAllProductToCart } from 'src/app/util/ngxs/action';
 import { environment } from 'src/environments/environment';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { EnvService } from 'src/app/services/config/env.service';
+import { UtilService } from 'src/app/services/util/util.service';
 @Component({
   selector: 'app-ngx-print-facture',
   templateUrl: './ngx-print-facture.component.html',
@@ -19,17 +20,22 @@ export class NgxPrintFactureComponent implements OnInit {
 
   @Select(ProductState) state$: Observable<any>;
   cartTotal = 0;
-  montantTotal = 0;
+  // montantTotal = 0;
   ligneCommandes: Array<LigneCommande> = [];
   nomPharmacie: string;
+
+  @Input()
+  pourcentageReduction: number;
   constructor(public fileService: FileService,
               public commandeService: CommandeService,
               private store: Store,
               private spinner: NgxSpinnerService,
-              private env: EnvService) {
+              private env: EnvService,
+              private utilService: UtilService) {
               }
 
   ngOnInit() {
+    console.log('------------pourcentageReduction----------'+ this.pourcentageReduction);
     this.nomPharmacie = this.env.nomPharmacie;
     this.loadCartTotal();
     this.calculMontantTotal();
@@ -70,12 +76,10 @@ export class NgxPrintFactureComponent implements OnInit {
   }
 
   calculMontantTotal() {
-    this.montantTotal = 0;
-    this.ligneCommandes.forEach(element => {
-      this.montantTotal += element.produit.prixUnitaire * element.qte;
-    });
-    return this.montantTotal;
+    return this.utilService.calculPrixCommande(this.ligneCommandes);
   }
+
+
 
   reduceArray(ligneCommandes: Array<LigneCommande> ) {
 
