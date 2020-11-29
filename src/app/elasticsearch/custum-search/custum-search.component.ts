@@ -55,7 +55,7 @@ export class CustumSearchComponent implements OnInit {
 
       this.doSearch($event);
 
-    }, 1000);
+    }, 500);
   }
 
   doSearch($event) {
