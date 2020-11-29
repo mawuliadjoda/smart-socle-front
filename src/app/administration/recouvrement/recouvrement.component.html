@@ -1,0 +1,121 @@
+  <div style=" padding: 8px 24px 0;">
+
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <div class="form">
+        <div class="grid">
+          <div class="cell cell-width-30">
+            <mat-form-field style="width: 100px;" class="form-control">
+                <mat-label>Mois.</mat-label>
+                <mat-select formControlName="moisCommande" required>
+                    <mat-option *ngFor="let mois of moisCommande" [value]="mois">
+                      <span class="text-template"> {{ mois.formatValue }}</span>
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="cell cell-width-30">
+            <mat-form-field style="width: 100px;" class="form-control">
+                <mat-label>Annee.</mat-label>
+                <mat-select formControlName="anneeCommande" required>
+                    <mat-option *ngFor="let annee of anneeCommande" [value]="annee">
+                      <span class="text-template"> {{ annee.formatValue }}</span>
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="cell cell-width-10">
+            <button mat-raised-button
+                type="submit"
+                [disabled]="!myForm.valid"
+                matTooltip="{{!myForm.valid ? 'Vérifiez la saisie !': ''}}"
+                style="margin-top: 5px;"
+                class="button-template-color">
+               <span class="template-label" > Valider </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="form">
+      <mat-form-field class="text-template">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <div style="float: right;">
+        <button style="float: right;" mat-button (click)="exporter.exportTable('csv')">
+          <img mat-list-avatar src="assets/images/csv-file-icon.svg" alt="csv" style="width: 15px; height: 15px;" />
+        </button>
+        <button style="float: right;" mat-button (click)="exporter.exportTable('xlsx')">
+          <img mat-list-avatar src="assets/images/excel-icon.svg" alt="csv" style="width: 15px; height: 15px;" />
+        </button>
+      </div>
+    </div>
+
+
+
+    <mat-table matTableExporter #exporter="matTableExporter" #table [dataSource]="dataSource" matSort class="mat-cell">
+      ng update @angular/cli @angular/core
+      <ng-container matColumnDef="nomProduit">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Nom Produit</mat-header-cell>
+
+        <mat-cell *matCellDef="let row" class="text-template">{{row.nomProduit}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="prixUnitaire">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Prix Unitaire</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="text-template"> {{row?.prixUnitaire}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="qte">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Qte</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="text-template"> {{row?.qte}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="montant">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Montant</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="text-template"> {{row.montant}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="detailReduction">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Reduction (%)</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="text-template"> {{row.detailReduction}}</mat-cell>
+      </ng-container>
+
+
+      <ng-container matColumnDef="montantReduction">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Montant Reduction</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="text-template"> {{row.montantReduction}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="nomTier">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Nom Tier</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="text-template"> {{row.nomTier}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="prenomTier">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Prenom Tier</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="text-template"> {{row.prenomTier}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="numCarteAssurance">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">N° Carte Assurance</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="text-template"> {{row.numCarteAssurance}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="nomEtablissement">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-template">Ets Assurance</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="text-template"> {{row.nomEtablissement}}</mat-cell>
+      </ng-container>
+
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+
+    <div class="no-results" [style.display]="dataSource.data.length == 0 ? '' : 'none'">
+      No results
+    </div>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>

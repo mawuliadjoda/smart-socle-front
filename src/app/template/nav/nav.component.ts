@@ -117,6 +117,14 @@ export class NavComponent  implements OnInit,  OnDestroy {
       title: 'Etablissements d\'assurance',
       isActive: true
     },
+
+    {
+      icon: '',
+      route: 'smart/recouvrement-assurance',
+      title: 'Recouvrement Assurance',
+      isActive: true
+    },
+
     {
       icon: '',
       route: 'smart/generate-qr-code',

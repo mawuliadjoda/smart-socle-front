@@ -37,6 +37,9 @@ export class UtilService {
     this.mapDisplayNavigation.set('gestion-tier-payant', {parent: 'Activités', child: 'Gérer les tiers-payants'});
     this.mapDisplayNavigation.set('etablissement-assurance', {parent: 'Activités', child: 'Gérer les établissements d\'assurance'});
 
+    this.mapDisplayNavigation.set('recouvrement-assurance', {parent: 'Administration', child: 'Recouvrement Assurance'});
+
+
 
   }
 

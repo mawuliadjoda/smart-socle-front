@@ -36,6 +36,7 @@ import { SimplePrintComponent } from './util/simple-print/simple-print.component
 import { HandleSearchComponent } from './elasticsearch/handle-search/handle-search.component';
 import { TierPayantComponent } from './gestion-tiers-payant/tier-payant/tier-payant.component';
 import { EtablissementAssuranceComponent } from './administration/etablissement-assurance/etablissement-assurance.component';
+import { RecouvrementComponent } from './administration/recouvrement/recouvrement.component';
 
 
 const routes: Routes = [
@@ -78,6 +79,7 @@ const routes: Routes = [
   {path: 'smart/gestion-tier-payant', component: TierPayantComponent, canActivate: [AuthGaurdService]},
   {path: 'smart/etablissement-assurance', component: EtablissementAssuranceComponent, canActivate: [AuthGaurdService]},
 
+  {path: 'smart/recouvrement-assurance', component: RecouvrementComponent, canActivate: [AuthGaurdService]},
 
   {path: '**', component: PageNotFoundComponent}
 ];

@@ -99,6 +99,7 @@ import { AddEtsAssuranceComponent } from './administration/etablissement-assuran
 import { UpdateEtsAssuranceComponent } from './administration/etablissement-assurance/update-ets-assurance/update-ets-assurance.component';
 import { DeleteEtsAssuranceComponent } from './administration/etablissement-assurance/delete-ets-assurance/delete-ets-assurance.component';
 import { GererTierPayantComponent } from './administration/commande/pannier/gerer-tier-payant/gerer-tier-payant.component';
+import { RecouvrementComponent } from './administration/recouvrement/recouvrement.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -174,7 +175,8 @@ import { GererTierPayantComponent } from './administration/commande/pannier/gere
       DeleteEtsAssuranceComponent,
       UpdateEtsAssuranceComponent,
       AddEtsAssuranceComponent,
-      GererTierPayantComponent
+      GererTierPayantComponent,
+      RecouvrementComponent
    ],
    imports: [
       BrowserModule,
