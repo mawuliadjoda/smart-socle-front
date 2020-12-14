@@ -14,7 +14,8 @@ export class Produit {
   dci: string;
   // refProduit: RefProduit;
   emplacement?: string;
-  formeDosage?:string;
+  formeDosage?: string;
+  dateExpiration?: Date;
   constructor(attrs: any = null) {
     if (attrs) {
       this.build(attrs);

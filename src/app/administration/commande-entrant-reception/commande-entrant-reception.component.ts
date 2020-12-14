@@ -33,6 +33,8 @@ export class CommandeEntrantReceptionComponent implements OnInit {
   qteRecu: number;
   scanCode: string;
 
+  dateExpiration: Date;
+
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild('filter', { static: true }) filter: ElementRef;
@@ -78,7 +80,7 @@ export class CommandeEntrantReceptionComponent implements OnInit {
         const receiveProduct =  newArray[0].produit;
         receiveProduct.qte = receiveProduct.qte + newArray[0].qte;
         // p.setQte(p.qte);
-
+        receiveProduct.dateExpiration = this.dateExpiration;
         const ligneCommande = {
           id: newArray[0].id,
           produit: receiveProduct,
@@ -97,7 +99,7 @@ export class CommandeEntrantReceptionComponent implements OnInit {
             this.dataSource = new MatTableDataSource(this.data);
             this.qteRecu = 0;
             this.scanCode = '';
-
+            this.dateExpiration = null;
           }
         );
       }

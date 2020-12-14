@@ -6,7 +6,7 @@
   <div class="container" style=" padding: 8px 24px 0;">
 
     <div class="grid">
-      <div class="cell cell-width-60">
+      <div class="cell cell-width-40">
         <mat-form-field style="width: 60%;" class="text-template">
           <input matInput [(ngModel)]="scanCode"  placeholder="Scanner la référence du produit">
         </mat-form-field>
@@ -16,8 +16,24 @@
           <input matInput type="number" min="1" placeholder="Qte reçu" [(ngModel)]="qteRecu">
         </mat-form-field>
       </div>
+
+      <div class="form">
+        <mat-form-field color="accent" class="text-template">
+          <mat-label>Date Expiration</mat-label>
+          <input  matInput [matDatepicker]="dp3" [(ngModel)]="dateExpiration" name="dateExpiration">
+          <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+          <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+
       <div class="cell">
-        <button style="margin-top: 15px;" mat-raised-button (click)="reception()" class="button-template-color">
+        <button [disabled] ="!scanCode  || !dateExpiration || qteRecu < 1"
+                matTooltip="{{(!scanCode  || !dateExpiration || qteRecu < 1) ? 'Veuillez vérifier les saisies !' : ''}} "
+                [ngClass]="{'not-allowed-cursor ': !scanCode  || !dateExpiration || qteRecu < 1 }"
+                style="margin-top: 15px;"
+                mat-raised-button (click)="reception()"
+                class="button-template-color">
           <span class="template-label" > Valider la réception </span>
         </button>
       </div>
